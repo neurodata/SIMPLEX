@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPLEX Q2</title>
+    <title>SIMPLEX Q3.A</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -44,6 +44,7 @@
       li p { line-height: 1.25em; }
       .red { color: #fa0000; }
       .y { color: #FFFF00; }
+      .orange { color:#FFA500;}
       .pink { color: #FF87F3;}
       .green { color: #00CC00; }
       .blue { color: #75E9FF;}
@@ -215,13 +216,18 @@ class: center, middle
 ###  Technical executive overview
 
 
-- RAG Embedding
-
+- RAG Embedding:
+  - [FlashX](http://flashx.io) = FlashR + FlashGraph + FlashMatrix
 - Data Management
-
+  - AWS branch in testing phase
+  - Deployed new hardware
+  - Compute histogram statistics service
 - Data Ingest
-
+  - ~18 different fMRI datasets fully processed
+  - 600 DTI scans processed, each with 25 resolution graphs
+  - Obtained new dataset
 - RAG Construct
+  - Finalizing manuscript on choosing optimal sparsity
 
 
 
@@ -230,118 +236,81 @@ class: center, middle
 ##  RAG Embedding
 
 
-- O:
-- C:
-- A: 
-- R: 
+- O: We created FlashGraph, FlashMatrix, and FlashR
+- C: They were separate entities
+- A: [FlashX](http://flashx.io): FlashR now can run both FlashGraph and FlashMatrix
+- R: Will be releasing R package soon
 
 
----
-
-
-## RAG Embedding
-
-### [New Algorithms](http://www.flashgraph.net/documents/flashr-api) in FlashGraphR
-  - NMF
-  - K-means
-  - PageRank
-  - [LOL](jovo.me/LOL) (Linear Optimal Low-rank embedding)
-  - Joint Embedding
-    - Implementation now improved and in R
-    - Theory for proving estimators are consistent in progress
-
-Note: original plan did not include k-means or PageRank or Joint Embedding
 
 ---
 
 ## Data Management
+### Dense Arrays - Scaling up
 
-### Dense Arrays
-- [Refactored code](https://github.com/openconnectome/open-connectome/tree/microns) to facilitate hierarchical memory (in the commerical cloud)
-- [Auto-ingest](http://docs.neurodata.io/open-connectome/sphinx/ingesting.html) is now operational
-- Added a ton of [documentation](http://docs.neurodata.io/open-connectome/index.html)
-- New functions
-  - Histograms
-  - Mean of time-series
-  - dF/F
+- O: Many more petabytes of data 
+- C: We cannot scale fast enough
+- A: Deploying Amazon branch and moving data to cloud
+- R: Arbitrary scalability, must test price and refactor to make both efficient and inexpensive
 
 ---
 
 ## Data Management
+### Dense Arrays - Histograms
 
-
-### Sparse Arrays
-
-
-New implementation of RAMON standard that facilitates:
-
--  storing a new object should take only a single I/O
-- It will also let us implement Ramon in key/value architectures, including Dynamo, Reddis,
-Cassandra, etc.
-
+- O: With many differing quality datasets, automatic screening would be desirable
+- C: Requires computing histogram statistics at scale
+- A: We deployed a Web-service for computing histograms, eg, <http://brainviz1.cs.jhu.edu/ocp/stats/kharris15apical/em/all/>
+- R: Can easily compute histogram statistics on abritrary subvolumes 
 
 ---
 
-## Data Ingest
+## Data Management
+### Sparse Arrays - Shapes
 
-### diffusion MRI
+- O: Shapes encode lots of information about the brain (and other stuff)
+- C: Computing shape statistics is hard
+- A: We released new package for computing [shape statistics](https://github.com/mkazhdan/ShapeSPH)
+- R: Can now compute statistics to use for clustering & other inference tasks
 
-- Made [list](https://docs.google.com/spreadsheets/d/1kRdYBgl_LdB6SRdUh6DI3yS6sxVUlHhlaDqYx7blT-Y/edit#gid=0) of ~10,000 open access diffusion MRI brains
-- Made list of all open source [atlases](https://docs.google.com/spreadsheets/d/1kRdYBgl_LdB6SRdUh6DI3yS6sxVUlHhlaDqYx7blT-Y/edit#gid=1971002708) of interest
-- Processed [Kirby21](http://openconnecto.me/data/public/MR/m2g_v1_1_1/KKI2009/) dataset using multiple atlases at different resolutions
-- Installation [documentation](http://m2g.io/sphinx/services.html#using-m2g-on-our-captive-cluster) operational
-- Amazon [AMI](http://m2g.io/sphinx/services.html#using-m2g-in-an-ami) publicly available
+---
+
+## Data Ingest: diffusion MRI
+
+- O: 10,000 open access DTI scans are available
+- C: They are all in different formats
+- A: We converted most of them to conform to our spec, which happens to be quite similar to [BIDS](http://bids.neuroimaging.io/), a new standard
+- R: We are ready to start ingesting them all
+
+---
+
+## Data Ingest:  functional MRI
+
+- O: Many software packages for fMRI are [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) 
+- C: It is not clear which ones perform the best
+- A: We tried 64 different combos on 12 different datasets
+- R: CFXXG consistently outperformeds all others
+
 
 
 .center[
-<img src="https://raw.githubusercontent.com/openconnectome/weekly-status-reports/master/images/ingested_atlas_QC.png?token=AACjckz8qL5HVLL-GUY0zxZG5d6t4HkMks5WcBFzwA%3D%3D"  style="height:228px;">
+<img src="https://raw.githubusercontent.com/shangsiwang/Reliability/master/Figs/Multidataset/64_pipelines_gg.png?token=AACjctRoTEeC_68WUe7UocNzDViXj01Zks5WmuxTwA%3D%3D"  style="width:100%;">
 ]
 
+
+
 ---
 
-## Data Ingest
+## RAG Construct:  Graph Sparsification
 
-### functional MRI
-
-
-- Processed all [CoRR datasets](http://fcon_1000.projects.nitrc.org/indi/CoRR/html/samples.html)
-- For each, we considered 64 different [CPAC](http://fcp-indi.github.io/docs/user/index.html) pipelines
-- Preliminary results demonstrate certain pipelines much more effective than others
-- Primary result so far: converting correlation matrices to ranks yields far more reliable estimates
-
+- O: Many datasets for which we desire to know which variables/measurements are dependent on others
+- C: No method exists that has: (i) theory guarantees, (ii) good performance for linear & nonlinear functions, (iii) low & high-dimensional settings, and (iv) real data
+- A: Multiscale Graph Correlation
+- R: Is the best
 
 
 .center[
-<img src="https://raw.githubusercontent.com/openconnectome/f2g/master/Code/f2g_CoRR/BNU_1/BNU_1%20gsr.png"  style="height:228px;">
-]
-
----
-
-## Data Ingest
-
-### CLARITY
-
-- 12 CLARITY brains ingested
-- [ndreg](https://github.com/openconnectome/ndreg) registration pipeline open sourced
-- [Tutorial](https://github.com/openconnectome/ndreg/blob/master/maskPipelineExample.ipynb) including quality control exists
-
-
-Note: not scheduled until next quarter
-
-
----
-
-## RAG Construct
-
-### Graph Sparsification
-
-- Local Distance Correlation finds optimal sparsity for testing
-- Power goes to 1 for all dependence structures
-- Power better than "global" (previous) variants for many cases (see Red line below)
-
-
-.center[
-<img src="Fig5.jpg"  style="height:228px;">
+<img src="https://raw.githubusercontent.com/jovo/RankdCorr/master/Figures/Fig0.png?token=AACjcr_rMDXUgKtQv100yTRmmLBpplNDks5Wmu5ywA%3D%3D"  style="height:228px;">
 ]
 
 
@@ -349,14 +318,17 @@ Note: not scheduled until next quarter
 
 ## Potential Next Steps
 
-- RAG Embedding: JOFC
-- Data Management: More on sparse arrays, include NeuroBlaze and Object DB
+
+- RAG Embedding: Release R package
+- Data Management: 
+  - Deploy histogram stuff in main branch
+  - Deploy Amazon verion
 - Data Ingest: 
   - Will ingest 10,0000 multiscale DTI neurographs
   - Will ingest several thousand fMRI neurographs
   - New CLARITY data coming in now 
   - All of [codeneuro  data](http://datasets.codeneuro.org/) to be ingested
-- Finish graph sparsification for dependence testing, start sparsification for other inference tasks.
+- RAG Construst: submit manuscript
 
 
 ---
@@ -364,15 +336,34 @@ Note: not scheduled until next quarter
 
 ## Software
 
-- [m2g](http://m2g.io/)
-- [i2g](http://i2g.io/)
-- [Flash](flashgraph.net)
-  - FlashGraph
-  - FlashMatrix
-  - FlashR
-- [NeuroDataViz](https://github.com/openconnectome/NeuroDataViz)
-- [ndio](http://docs.neurodata.io/nddocs/ndio/) Python wrapper for NeuroData
-- [ndreg](https://github.com/openconnectome/ndreg/)
+.pull-left[
+- Infrastructure
+  - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
+  - [ndlims](https://github.com/openconnectome/ndlims/) 
+  - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
+- Explorers
+  - [Vector-Explorer](http://vx.neurodata.io)
+  - [Graph-Explorer](http://gx.neurodata.io)
+  - [Image-Explorer](https://github.com/openconnectome/NeuroDataViz)
+- Pre-process
+  - [ndreg](https://github.com/openconnectome/ndreg/)
+  - [dmg](https://github.com/mkazhdan/DMG)
+  - [gdf](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+]
+
+.pull-right[
+- Parse Applications
+  - [m2g](http://m2g.io/)
+  - [i2g](http://i2g.io/)
+- Infer
+  - Vectors
+      - [Randomer Forest](http://ttomita.github.io/RandomerForest/)
+  - Graphs
+      - [FlashX](http://flashgx.io)
+      - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
+      - [LLG](https://github.com/mketcha/SimplexMDK)
+  - [Shapes](https://github.com/mkazhdan/ShapeSPH)   
+]
 
 
 
@@ -391,11 +382,12 @@ class:  center
 | :--- | :--- | :--- |
 | Data | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Clay Reid, Davi Bock, Jeff Licthman, Bobb Kasthuri, Karl Deisseroth, Raju Tomer, Li Ye, Ed Boyden, Mike Milham, Cameron Craddock, Stephen Smith, Forrest Collman, Kristen Harris, Scott Emmons, Dan Bumbarger, Mitya Chklovskii, Nikhil Bhatla] 
 | Store | | Randal Burns, Eric Perlman, Kunal Lillaney, Priya Manavalan, Alex Eusman 
-| Look | | .pink[Misha Kazhdan, Alex Baden, Jordan Matelsky]
-| Pre-Process | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
+| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky]
+| PreProcess | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
 | Parse | | .green[Will Gray Roncal, Mark Chevillet,  R. Jacob Vogelstein, Guillermo Sapiro, Anish Simhal, Konrad Kording, Eva Dyer]
-| Analyze | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen, Ivan Kuznetsov]
+| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen, Ivan Kuznetsov]
 | Graphs | | .black[Da Zheng, Disa Mhembere, Vince Lyzinski, Avanti Athreya, Daniel Sussman, Shangsi Wang, Runze Tang, Minh Tang]
+| Love | | .pink[yummy, family, friends, earth, universe, multiverse?]
 ]]
 
 
