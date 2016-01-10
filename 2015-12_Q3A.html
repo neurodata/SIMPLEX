@@ -220,8 +220,9 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2015-12_Q3A.html>
   - [FlashX](http://flashx.io) = FlashR + FlashGraph + FlashMatrix
 - Data Management
   - AWS branch in testing phase
-  - Deployed new hardware
+  - Deploying new hardware
   - Compute histogram statistics service
+  - Shape statistics package
 - Data Ingest
   - ~18 different fMRI datasets fully processed
   - 600 DTI scans processed, each with 25 resolution graphs
@@ -236,10 +237,10 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2015-12_Q3A.html>
 ##  RAG Embedding
 
 
-- O: We created FlashGraph, FlashMatrix, and FlashR
-- C: They were separate entities
-- A: [FlashX](http://flashx.io): FlashR now can run both FlashGraph and FlashMatrix
-- R: Will be releasing R package soon
+- We created FlashGraph, FlashMatrix, and FlashR
+- They were separate entities
+- [FlashX](http://flashx.io): FlashR now can run both FlashGraph and FlashMatrix
+- Will be releasing R package soon
 
 
 
@@ -248,48 +249,48 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2015-12_Q3A.html>
 ## Data Management
 ### Dense Arrays - Scaling up
 
-- O: Many more petabytes of data 
-- C: We cannot scale fast enough
-- A: Deploying Amazon branch and moving data to cloud
-- R: Arbitrary scalability, must test price and refactor to make both efficient and inexpensive
+- Many more petabytes of data 
+- We cannot scale fast enough
+- Deploying Amazon branch and moving data to cloud
+- Arbitrary scalability, must test price and refactor to make both efficient and inexpensive
 
 ---
 
 ## Data Management
 ### Dense Arrays - Histograms
 
-- O: With many differing quality datasets, automatic screening would be desirable
-- C: Requires computing histogram statistics at scale
-- A: We deployed a Web-service for computing histograms, eg, <http://brainviz1.cs.jhu.edu/ocp/stats/kharris15apical/em/all/>
-- R: Can easily compute histogram statistics on abritrary subvolumes 
+- With many differing quality datasets, automatic screening would be desirable
+- Requires computing histogram statistics at scale
+- We deployed a Web-service for computing histograms, eg, <http://brainviz1.cs.jhu.edu/ocp/stats/kharris15apical/em/all/>
+- Can easily compute histogram statistics on abritrary subvolumes 
 
 ---
 
 ## Data Management
 ### Sparse Arrays - Shapes
 
-- O: Shapes encode lots of information about the brain (and other stuff)
-- C: Computing shape statistics is hard
-- A: We released new package for computing [shape statistics](https://github.com/mkazhdan/ShapeSPH)
-- R: Can now compute statistics to use for clustering & other inference tasks
+- Shapes encode lots of information about the brain (and other stuff)
+- Computing shape statistics is hard
+- We released new package for computing [shape statistics](https://github.com/mkazhdan/ShapeSPH)
+- Can now compute statistics to use for clustering & other inference tasks
 
 ---
 
 ## Data Ingest: diffusion MRI
 
-- O: 10,000 open access DTI scans are available
-- C: They are all in different formats
-- A: We converted most of them to conform to our spec, which happens to be quite similar to [BIDS](http://bids.neuroimaging.io/), a new standard
-- R: We are ready to start ingesting them all
+- 10,000 open access DTI scans are available
+- They are all in different formats
+- We converted most of them to conform to our spec, which happens to be quite similar to [BIDS](http://bids.neuroimaging.io/), a new standard
+- We are ready to start ingesting them all
 
 ---
 
 ## Data Ingest:  functional MRI
 
-- O: Many software packages for fMRI are [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) 
-- C: It is not clear which ones perform the best
-- A: We tried 64 different combos on 12 different datasets
-- R: CFXXG consistently outperformeds all others
+- Many software packages for fMRI are available 
+- It is not clear which ones perform the best
+- We tried 64 different combos on 12 different datasets
+- CFXXG consistently outperformeds all others
 
 
 
@@ -303,10 +304,10 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2015-12_Q3A.html>
 
 ## RAG Construct:  Graph Sparsification
 
-- O: Many datasets for which we desire to know which variables/measurements are dependent on others
-- C: No method exists that has: (i) theory guarantees, (ii) good performance for linear & nonlinear functions, (iii) low & high-dimensional settings, and (iv) real data
-- A: Multiscale Graph Correlation
-- R: Is the best
+- Many datasets for which we desire to know which variables/measurements are dependent on others
+- No method exists that has: (i) theory guarantees, (ii) good performance for linear & nonlinear functions, (iii) low & high-dimensional settings, and (iv) real data
+- Multiscale Graph Correlation
+- Is the best
 
 
 .center[
@@ -338,20 +339,28 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2015-12_Q3A.html>
 
 .pull-left[
 - Infrastructure
-  - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
-  - [ndlims](https://github.com/openconnectome/ndlims/) 
-  - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
-- Explorers
-  - [Vector-Explorer](http://vx.neurodata.io)
-  - [Graph-Explorer](http://gx.neurodata.io)
-  - [Image-Explorer](https://github.com/openconnectome/NeuroDataViz)
-- Pre-process
-  - [ndreg](https://github.com/openconnectome/ndreg/)
-  - [dmg](https://github.com/mkazhdan/DMG)
-  - [gdf](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+  - Management
+     - [ndlims](https://github.com/openconnectome/ndlims/) 
+     - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
+     - [ndtilecache](https://github.com/openconnectome/ocptilecache)
+  - Analytics
+     - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
+     - [CAJAL](http://docs.neurodata.io/CAJAL/)
+- Store
+  - [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
+  - [Annotations](http://docs.neurodata.io/ndintro/#21)
+  - [Graphs](http://openconnecto.me/graph-services/download/)
+- Explorer
+  - [Vectors](http://vx.neurodata.io)
+  - [Graphs](http://gx.neurodata.io)
+  - [Images](https://github.com/openconnectome/NeuroDataViz)
 ]
 
 .pull-right[
+- Pre-process
+  - [2D Chromatic](https://github.com/mkazhdan/DMG)
+  - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+  - [Volume Registration](https://github.com/openconnectome/ndreg/)
 - Parse Applications
   - [m2g](http://m2g.io/)
   - [i2g](http://i2g.io/)
@@ -374,7 +383,6 @@ class:  center
 
 # NeuroData Family
 
-<br />
 
 .center[
 .small[
@@ -382,10 +390,10 @@ class:  center
 | :--- | :--- | :--- |
 | Data | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Clay Reid, Davi Bock, Jeff Licthman, Bobb Kasthuri, Karl Deisseroth, Raju Tomer, Li Ye, Ed Boyden, Mike Milham, Cameron Craddock, Stephen Smith, Forrest Collman, Kristen Harris, Scott Emmons, Dan Bumbarger, Mitya Chklovskii, Nikhil Bhatla] 
 | Store | | Randal Burns, Eric Perlman, Kunal Lillaney, Priya Manavalan, Alex Eusman 
-| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky]
+| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky, Ivan Kuznetsov]
 | PreProcess | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
 | Parse | | .green[Will Gray Roncal, Mark Chevillet,  R. Jacob Vogelstein, Guillermo Sapiro, Anish Simhal, Konrad Kording, Eva Dyer]
-| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen, Ivan Kuznetsov]
+| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen]
 | Graphs | | .black[Da Zheng, Disa Mhembere, Vince Lyzinski, Avanti Athreya, Daniel Sussman, Shangsi Wang, Runze Tang, Minh Tang]
 | Love | | .pink[yummy, family, friends, earth, universe, multiverse?]
 ]]
@@ -404,7 +412,7 @@ _____
 Funding
 
 
-DARPA: SIMPLEX
+DARPSIMPLEX
 
 
 ____
