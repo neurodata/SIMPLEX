@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SIMPLEX</title>
+    <title>SIMPLEX Site Visit</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -44,6 +44,7 @@
       li p { line-height: 1.25em; }
       .red { color: #fa0000; }
       .y { color: #FFFF00; }
+      .orange { color:#FFA500;}
       .pink { color: #FF87F3;}
       .green { color: #00CC00; }
       .blue { color: #75E9FF;}
@@ -186,25 +187,188 @@
 
 
 
-class:  middle
+class: center, middle
 
-## ￼From RAGs to Riches:  
-### Utilizing Richly Attributed Graphs to Reason from Heterogeneous Data
+# ￼From RAGs to Riches: 
 
-PI: Joshua T. Vogelstein {BME,ICM,CIS}@JHU
+## Utilizing Richly Attributed Graphs to Reason from Heterogeneous Data
 
-Co-I: Randal Burns {CS,IDIES}@JHU, Carey E. Priebe {AMS,CIS}@JHU
+### PI: Joshua T. Vogelstein, Johns Hopkins University
+### Co-I: Randal Burns, Carey Priebe
 
-- [Q2.C](2015-11_Q2.html)
-- [Q3.A](2015-12_Q3A.html)
-- [Site Visit](2016-site_visit.html)
+### SIMPLEX Site Visit: Jan 25, 2016 
+<!-- #### [Dec 1, 2015 - Dec 31, 2015] -->
+
+<!-- ### Joshua T. Vogelstein -->
+<!-- ### {[BME](http://bme.jhu.edu),[ICM](http://icm.jhu.edu),[CIS](http://cis.jhu.edu),[Kavli](http://kndi.jhu.edu)}@[jhu](http://jhu.edu) -->
+
+<!-- #### e: [jovo@jhu.edu](mailto:jovo@jhu.edu) | w:  -->
+<!-- ### [NeuroData.io](http://neurodata.io) -->
 
 
+
+these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
+
+
+
+---
+
+# Intro
+
+---
+
+## Infrastructure
+
+---
+
+## Explore
+
+---
+
+## FlashX
+### SPAA Paper/Eigenstuff
+
+---
+
+## FlashX
+### k-means
+
+---
+
+## Joint Embedding
+
+---
+
+## Data
+
+
+---
+
+# Applications
+
+
+---
+
+## Average Connectome
+
+---
+
+## CLARITY
+
+---
+
+## Reliability
+
+---
+
+## m2g
+
+---
+
+## semipar-cci
+
+---
+
+## MGC
 
 
 
 
 ---
+
+
+## Software
+
+.pull-left[
+- Infrastructure
+  - Hardware
+     - [Local](http://docs.neurodata.io/ndintro/#13)
+     - [AMI](http://docs.neurodata.io/nddocs/ami.html)
+     - AWS Cluster (soon...)
+  - Management
+     - [ndlims](https://github.com/openconnectome/ndlims/) 
+     - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
+     - [ndtilecache](https://github.com/openconnectome/ocptilecache)
+  - Analytics
+     - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
+     - [CAJAL](http://docs.neurodata.io/CAJAL/)
+- Store
+  - [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
+  - [Annotations](http://docs.neurodata.io/ndintro/#21)
+  - [Graphs](http://openconnecto.me/graph-services/download/)
+]
+
+.pull-right[
+- Explorer
+  - [Vectors](http://vx.neurodata.io)
+  - [Graphs](http://gx.neurodata.io)
+  - [Images](https://github.com/openconnectome/NeuroDataViz)
+- Pre-process
+  - [2D Chromatic](https://github.com/mkazhdan/DMG)
+  - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+  - [Volume Registration](https://github.com/openconnectome/ndreg/)
+- Parse
+  - [m2g](http://m2g.io/)
+  - [i2g](http://i2g.io/)
+- Infer
+  - Vectors: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
+  - Graphs
+      - [FlashX](http://flashgx.io)
+      - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
+      - [LLG](https://github.com/mketcha/SimplexMDK)
+  - [Shapes](https://github.com/mkazhdan/ShapeSPH)   
+]
+
+
+
+---
+template: default
+layout: false
+class:  center
+
+# NeuroData Family
+
+
+.center[
+.small[
+|   |   | |
+| :--- | :--- | :--- |
+| Data | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Clay Reid, Davi Bock, Jeff Licthman, Bobb Kasthuri, Karl Deisseroth, Raju Tomer, Li Ye, Ed Boyden, Mike Milham, Cameron Craddock, Stephen Smith, Forrest Collman, Kristen Harris, Scott Emmons, Dan Bumbarger, Mitya Chklovskii, Nikhil Bhatla] 
+| Store | | Randal Burns, Eric Perlman, Kunal Lillaney, Priya Manavalan, Alex Eusman 
+| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky, Ivan Kuznetsov]
+| PreProcess | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
+| Parse | | .green[Will Gray Roncal, Mark Chevillet,  R. Jacob Vogelstein, Guillermo Sapiro, Anish Simhal, Konrad Kording, Eva Dyer]
+| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen]
+| Graphs | | .black[Da Zheng, Disa Mhembere, Vince Lyzinski, Avanti Athreya, Daniel Sussman, Shangsi Wang, Runze Tang, Minh Tang]
+| Love | | .pink[yummy, family, friends, earth, universe, multiverse?]
+]]
+
+
+
+
+---
+class:   center
+
+
+# Questions?
+
+_____
+
+Funding
+
+
+DARPSIMPLEX
+
+
+____
+
+
+w: [neurodata.io](http://neurodata.io)
+
+d: [docs.neurodata.io](http://docs.neurodata.io)
+
+e: [support@neurodata.io](mailto:support@neurodata.io) 
+
 
 
 
