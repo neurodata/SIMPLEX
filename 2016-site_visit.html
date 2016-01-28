@@ -215,7 +215,14 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 
 # Intro
 
+
 ---
+
+# Computations
+
+
+---
+
 
 ## Infrastructure
 
@@ -235,12 +242,41 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 
 ---
 
-## Joint Embedding
 
 ---
 
 ## Data
 
+
+---
+
+# Statistics
+
+---
+
+
+## Vertex Nomination Via Local Neighborhood Matching  
+![](site-visit/F2large.jpg)
+* list 
+
+---
+
+##Action
+Use seed based graph matching to create a vector consisting of vertices from the second network listed in order of which are most likely to correspond to the vertex of interest (VOI). 
+
+![Twitter]{TwitGraphNumbers.pdf}
+![Instagram](site-visit/InstaGraphNumbers.png)
+
+---
+
+##Benefit of Seeds in Instagram/Twitter matching
+![instatwitseeds]{instatwit_evenSeedsS56781_20160120.pdf}
+
+---
+
+##Benefits of Seeds in Matchings using Simulated Networks 
+The more seeds available for matching the graphs, the fewer vertices in the remainder of the nieghborhood that need to be observed in order to find the VOI. 
+![simseeds]{SeedVaryPlot20160127cor6.pdf}
 
 ---
 
@@ -271,6 +307,76 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 
 ## MGC
 
+- Testing dependence between variables is a fundamental statistical inquiry
+- Lots of work on it, largely focusing on low-dimensional and/or linear data
+- We would like a test that works in the following settings:
+  - linear & nonlinear
+  - low-dimensional and high-dimensional
+  - in the presence of outliers
+  - reveals *scale* of interest
+  - on real data
+
+
+
+
+
+---
+
+## 20 different simulation settings
+
+.center[
+<img src="site-visit/Fig0.png" alt="Drawing" style="width: 800px;"/>
+]
+
+
+---
+
+## power in low dimensions
+
+.center[
+<img src="site-visit/Fig1b.png" alt="Drawing" style="width: 800px;"/>
+]
+
+---
+
+## power in high dimensions
+
+.center[
+<img src="site-visit/Fig5b.png" alt="Drawing" style="width: 800px;"/>
+]
+
+---
+
+## discovering scale
+
+.center[
+<img src="site-visit/Fig6.png" alt="Drawing" style="width: 800px;"/>
+]
+
+---
+
+### theory
+
+- multiscale graph correlation is consistent for .y[all] possible relationships
+- this includes for increasingly .y[high-dimensional] data
+- and there are examples where multiscale .y[improves] upon global for any sample size
+
+---
+
+## real data
+
+.center[
+<img src="site-visit/FigReal1.png" alt="Drawing" style="height: 500px;"/>
+]
+
+
+---
+
+## implications
+
+- we can now discover .y[relationships] that were previously difficult to detect
+- we can also discover which .y[scales] are relevant
+- next we will deployable more .y[efficient] implementations
 
 
 
