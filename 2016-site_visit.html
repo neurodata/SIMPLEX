@@ -196,7 +196,7 @@ class: center, middle
 ### PI: Joshua T. Vogelstein, Johns Hopkins University
 ### Co-I: Randal Burns, Carey Priebe
 
-### SIMPLEX Site Visit: Jan 25, 2016 
+### SIMPLEX Site Visit: Feb 24, 2016 
 <!-- #### [Dec 1, 2015 - Dec 31, 2015] -->
 
 <!-- ### Joshua T. Vogelstein -->
@@ -224,7 +224,9 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 ---
 
 
-## Infrastructure
+## [Infrastructure](https://docs.google.com/presentation/d/1tjeHu0WSsBJLm-ByAXEnnNq93yNiD_2Ya0E_t0u7w-A/edit?usp=sharing)
+
+
 
 ---
 
@@ -232,44 +234,50 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 
 ---
 
-## FlashX
-### SPAA Paper/Eigenstuff
+## [FlashX](https://docs.google.com/presentation/d/12lffy9A2uSGrJXNQN21KpSiYdeNvh69mr5wHWgxuOTE/edit?usp=sharing)
 
 ---
 
-## FlashX
-### k-means
+## [FlashX: k-means](site-visit/kmeans.pdf)
 
 ---
 
 
 ---
 
-## Data
-
-- NeuroData is both the largest and most diverse public neuroscience data repository in the world
-- We have 20,000 Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
-- We have XXX fMRI derived graphs from XXX subjects across multiple atlases
-- We have approximately 100TB of high resolution data (EM, array tomography, CLARITY...)
-
----
 
 # Statistics
 
 ---
 
 
-## Vertex Nomination Via Local Neighborhood Matching  
-![](site-visit/F2large.jpg)
-* list 
+##Vertex Nomination Via Local Neighborhood Matching  
+
+.center[
+<img src="site-visit/F2large.jpg" style="height: 350px;"/>
+]
+
+image courtesy of: Suvakov et al. 'How the Online Social Networks are used: dialogues-bsed structure of MySpace,' http://rsif.royalsocietypublishing.org/content/10/79/20120819
 
 ---
 
-##Action
-Use seed based graph matching to create a vector consisting of vertices from the second network listed in order of which are most likely to correspond to the vertex of interest (VOI). 
+### Problem Formulation
 
-![Twitter]{TwitGraphNumbers.pdf}
-![Instagram](site-visit/InstaGraphNumbers.png)
+* Have two (or more) large networks
+* There are vertices of interest (VOI) in one network that we'd like to find in the other network. 
+* Often vertex attributes alone are not enough to identify VOI in the other networks.
+* So we find seeded vertices adjacent to VOIs and identifiable in both networks. 
+
+---
+
+### Real Data Example
+
+* Use the seeds to generate local neighborhood graphs in both networks (hopefully containing the VOI in each network)
+* Use seeded graph matching to align the networks and create a nomination list for each VOI. 
+
+![Twitter](TwitGraphNumbers.png)
+![Instagram](InstaGraphNumbers.png)
+
 
 ---
 
@@ -281,6 +289,15 @@ Use seed based graph matching to create a vector consisting of vertices from the
 ##Benefits of Seeds in Matchings using Simulated Networks 
 The more seeds available for matching the graphs, the fewer vertices in the remainder of the nieghborhood that need to be observed in order to find the VOI. 
 ![simseeds]{SeedVaryPlot20160127cor6.pdf}
+
+---
+
+## Data
+
+- NeuroData is both the largest and most diverse public neuroscience data repository in the world
+- We have 20,000 Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
+- We have XXX fMRI derived graphs from XXX subjects across multiple atlases
+- We have approximately 100TB of high resolution data (EM, array tomography, CLARITY...)
 
 ---
 
@@ -320,24 +337,40 @@ The more seeds available for matching the graphs, the fewer vertices in the rema
 ## m2g: pipeline
 
 - We have a one-click scalable pipeline to estimate diffusion and functional connectomes
-![](https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/m2g.png)
 
 ---
 
 ## m2g: test retest
 
-![](https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/m2g_trt.png)
+.center[
+<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/m2g.png" alt="Pipeline" style="width: 90%; padding-top:30px"/>
+]
 
+---
+
+## m2g: test retest
+
+.middle[
+.center[
+<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/m2g_trt.png" alt="m2g is reliable" style="width: 80%"/>
+]
+]
 ---
 
 ## m2g: best atlas - reliability in practice
 
-![](https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/OHBM2016-fig1.png)
+.center[
+<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/OHBM2016-fig1.png" alt="m2g is reliable" style="width: 80%"/>
+]
+
 
 
 ---
 
-## semipar-cci
+## [semipar-cci](http://www.cis.jhu.edu/~parky/MRN/ceplm.html)
+
+
+
 
 ---
 

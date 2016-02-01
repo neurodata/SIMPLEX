@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SIMPLEX Q3.A</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Varela+Round:regular,italic,bold,bolditalic);
+      @import url(http://fonts.googleapis.com/css?family=Raleway:regular,italic,bold,bolditalic);
+
+      body {
+        font-family: 'Varela Round';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Raleway';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content h4 { font-size: 1.4em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      .navbar {
+        position: absolute;
+        float: center;
+        top: 0em;
+        font-family: 'Yanone Kaffeesatz';
+        color: #A7A7A7;
+      }
+      .navbar a {
+        color: #A7A7A7;
+      }
+      .remark-slide-content {
+        font-size: 1.5em;
+        background: #272822;
+        color: white;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .y { color: #FFFF00; }
+      .orange { color:#FFA500;}
+      .pink { color: #FF87F3;}
+      .green { color: #00CC00; }
+      .blue { color: #75E9FF;}
+      .purple { color: #A149A9;}
+      .large { font-size: 2em; }
+      .black { color: black; background-color: white;}
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #424242;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+/*      .pull-left {
+        float: left;
+        width: 47%;
+      }*/
+      .pull-left {
+        position: absolute;
+        left: 25px;
+        width: 50%;
+      }
+      .pull-right {
+        position: absolute;
+        right: 25px;
+        width: 50%;
+      }
+      .center {
+        margin: auto;
+        width: 100%;
+        padding: 10px;
+      }
+      .small {
+        font-size: 0.8em;        
+      }
+/*      .pull-right {
+        float: right;
+        width: 47%;
+      }*/      
+      .pull-bottom {
+        position: absolute;
+        bottom: 0;
+      }
+      .bottom {
+        position: absolute;
+        bottom: 11px;
+        left: 10px;
+        font-family: 'Yanone Kaffeesatz';
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: white;
+        color: white;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse p {
+        color: white;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      #frame { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+      br {
+        line-height: 50%;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+
+    </style>
+  </head>
+  <body onload="var slideshow = remark.create();">
+    <textarea id="source">
+
+
+
+class: center, middle
+
+# ￼NeuroData
+
+## [January 2016 Update](http://docs.neurodata.io/SIMPLEX/2016-01.html)
+
+<!-- ### PI: Joshua T. Vogelstein, Johns Hopkins University
+
+### SIMPLEX Q3.B Report 
+#### [Jan 1, 2016 - Jan 31, 2016]
+ -->
+<!-- ### Joshua T. Vogelstein -->
+<!-- ### {[BME](http://bme.jhu.edu),[ICM](http://icm.jhu.edu),[CIS](http://cis.jhu.edu),[Kavli](http://kndi.jhu.edu)}@[jhu](http://jhu.edu) -->
+
+<!-- #### e: [jovo@jhu.edu](mailto:jovo@jhu.edu) | w:  -->
+<!-- ### [NeuroData.io](http://neurodata.io) -->
+
+<!-- these slides: <http://docs.neurodata.io/SIMPLEX/2016-01_Q3B.html> -->
+
+
+
+---
+
+
+## Summary
+
+- Tools (TA1 Task A)
+  - Infrastructure: CDN, auto-ingest, S3
+  - Explore: histogram stats, conditional VX
+  - Pre-process: open sourced 2D, 3D, ndreg & shape code
+  - Parse: open sourced ndparse, cell det'n  RF & CNN
+- Infer (TA1 Task B)
+  - MGC discovers scales 
+  - Discriminability is robust DISCO
+  - RerF beats {RF,RotF} in benchmark suite
+  - Robust LLG is more efficient than LLG
+  - OptiSBM outperforms spectral clustering
+  - SGM improves vertex nomination
+  - FlashX includes R spectral clustering tutorial
+- Applications (TA2)
+  - functional MRI: discriminability finds optimal pipeline
+  - diffusion MRI: discriminability finds optimal atlas
+  - CLARITY: timing results on 10 um resolution brains
+
+
+---
+
+
+# Tools (TA1 Task A)
+  
+  - Infrastructure: CDN, auto-ingest, S3
+  - Explore: histogram stats, conditional VX
+  - Pre-process: open sourced 2D, 3D, ndreg & shape code
+  - Parse: open sourced ndparse, cell det'n  RF & CNN
+  
+
+---
+
+## Infrastructure
+
+.center[
+<img src="http://docs.neurodata.io/open-connectome/_images/ocp_cluster.png" style="width: 700px;"/>
+]
+
+
+1. Deployed West Coast CDN 
+2. Updated [auto-ingest](http://docs.neurodata.io/open-connectome/sphinx/ingesting.html)
+3. Testing new branch to deploy on S3
+
+
+.bottom[
+1. [@alexbaden](https://github.com/alexbaden), 2. [@micro-alex](https://github.com/aeusman), 3. [@kunal](https://github.com/kunallillaney)]
+
+---
+
+## Explore: Images
+
+- Added histogram statistics Web-services
+
+<iframe src="http://openconnecto.me/ocp/stats/kharris15apical/image/all/"></iframe> 
+
+
+.bottom[[@alexbaden](https://github.com/alexbaden)]
+
+
+---
+
+## Vector Explorer 
+
+- Enabled selecting & conditioning on variables
+
+<iframe allowtransparency="true" style="background: #FFFFFF;" src="http://shiny.neurodata.io/Vector-Explorer/" frameborder="0" height="500" width="100%">
+</iframe>
+
+
+.bottom[[@ikuznet1](https://github.com/ikuznet1/)]
+
+
+---
+
+## Pre-process: 2D
+
+- Open sourced .y[dmg for 2D histogram normalization]
+- [Web](https://github.com/mkazhdan/DMG) | [Code](https://github.com/mkazhdan/DMG) | [Manuscript](http://www.cs.jhu.edu/~misha/MyPapers/ToG10.pdf) | [App](#r_pre)
+
+
+.center[
+<img src="https://raw.githubusercontent.com/mkazhdan/DMG/master/PNC3/pixels.0.tn.jpg" alt="Drawing" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/mkazhdan/DMG/master/PNC3/out.0.tn.jpg" alt="Drawing" style="height: 300px;"/>
+]
+
+
+.bottom[[@mkazhdan](https://github.com/mkazhdan/)]
+
+---
+
+## Pre-process: 3D
+
+- Open sourced .y[gdf] for 3D histogram normalization
+- [Web](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/) |  [Manuscript](http://arxiv.org/pdf/1506.02079v1.pdf) | [App](#r_3d)
+
+
+.center[
+<img src="http://docs.neurodata.io/ndintro/images/GDF2.png" alt="Drawing" style="width: 80%;"/>
+]
+
+
+.bottom[[@mkazhdan](https://github.com/mkazhdan/)]
+
+---
+
+## Pre-process: Volume Reg'n
+
+- Open sourced [ndreg](https://github.com/openconnectome/ndreg) for multimodal nonlinear volume registration
+- [Code](https://github.com/openconnectome/ndreg) | [Demo](https://github.com/openconnectome/ndreg/blob/master/maskPipelineExample.ipynb) | [Setup](https://github.com/openconnectome/ndreg/blob/master/README.md) | [App](#r_ndreg)
+
+
+.center[
+<img src="http://docs.neurodata.io/ndintro/images/ndreg2.png" alt="Drawing" style="height: 200;"/>
+<img src="http://docs.neurodata.io/ndintro/images/ndreg.png"   alt="Drawing" style="height: 200px;"/>
+]
+
+.bottom[[@kkutten1](https://github.com/kkutten1/)]
+
+---
+
+## Shape Spherical Harmonics 
+
+- [Code](https://github.com/mkazhdan/ShapeSPH)
+- Rotation invariant descriptors
+- Shape alignment
+- Reflective and rotational symmetries
+
+.center[
+<img src="site-visit/shape.png" alt="Drawing" style="width: 800px;"/>
+]
+
+
+.bottom[[@mkazhdan](https://github.com/mkazhdan/)]
+
+
+
+---
+## Parse
+
+- Open sourced [ndparse](http://docs.neurodata.io/nddocs/#parse)
+  - [**mana**](mana.html):  manual annotation 
+  - [**maca**](maca.html): machine annotation
+  - [**maxa**](maxa.html): deploy at scale
+
+
+.center[
+<img src="http://docs.neurodata.io/nddocs/images/ndod/ndod_example.png" alt="Drawing" style="height: 350px;"/>
+]
+
+
+
+.bottom[[@willgray](https://github.com/willgray/)]
+
+---
+
+## Parse: docs
+
+<!-- Documentation for each component can be found using the above links.  Additionally, users may find the following pages helpful: -->
+
+- [function reference](http://docs.neurodata.io/ndparse)
+- [tutorial for mouse brain cell detection using ilastik](http://docs.neurodata.io/nddocs/mbcd.html)
+- [tutorial for mouse brain cell detection using deep learning](http://docs.neurodata.io/nddocs/nddl.html)
+- [vesicle](http://docs.neurodata.io/vesicle/)
+
+.center[
+<img src="http://docs.neurodata.io/nddocs/images/ndod/PMD2040_slice140_overlay_zoom.png"   alt="Drawing" style="height: 350px;"/>
+]
+
+
+.bottom[[@willgray](https://github.com/willgray/)]
+
+---
+
+
+##  Infer (TA1 Task B)
+  - MGC discovers scales 
+  - Discriminability is robust DISCO
+  - RerF beats {RF,RotF} in benchmark suite
+  - Robust LLG is more efficient than LLG
+  - OptiSBM outperforms spectral clustering
+  - SGM improves vertex nomination
+  - FlashX includes R spectral clustering tutorial
+
+---
+
+## MGC
+
+- Multiscale Graph Correlation infers the scales of maximal dependence
+
+
+.center[
+<img src="http://docs.neurodata.io/SIMPLEX/site-visit/Fig6.png" alt="Drawing" style="width: 800px;"/>
+]
+
+
+.bottom[[@cshen6](https://github.com/cshen6/)]
+
+
+---
+
+## Discriminability 
+
+- Discriminability is a robust generalized [DISCO](https://projecteuclid.org/euclid.aoas/1280842151) statistic for testing equality of distributions
+- This connection opens the door for more interesting nonparametric theory and use cases
+
+
+
+.bottom[[@shangsiwang](https://github.com/shangsiwang/)]
+
+
+---
+
+## Randomer Forest (RerF)
+
+- RerF outperforms RF and RotF on suite of benchmarks
+- RerF is also more robust to affine transformations
+
+.center[
+<img src="https://raw.githubusercontent.com/ttomita/RandomerForest/master/Figures/png/Fig4_benchmark.png" alt="Drawing" style="width: 800px;"/>
+]
+
+
+.bottom[[@ttomita](https://github.com/ttomita/)]
+
+
+---
+
+## Optimal Clustering
+
+- Optimization based clustering beats Spectral Clustering
+- Theory on robust estimation of mean graph with outliers
+
+
+.bottom[[@TangRunze](https://github.com/TangRunze/)]
+
+
+---
+
+## FlashX
+
+- [Webpage](http://flashx.io) | [Code](https://github.com/icoming/FlashX)   | [AMI](http://www.flashgraph.net/documents/get_started2) | [Virtual Box](http://openconnecto.me/data/public/FlashGraph-VMs/) | [Setup](http://www.flashgraph.net/documents/get_started2) | [Manuscript](https://www.usenix.org/system/files/conference/fast15/fast15-paper-zheng.pdf)
+- [Spectral Clustering Demo](https://github.com/icoming/FlashX/wiki/Examples-of-using-FlashR)
+- FlashR now supports a number of GenOps
+
+
+.center[
+<img src="site-visit/kmeans.png" alt="Drawing" style="width: 640px;"/>
+]
+
+
+.bottom[[@icoming](https://github.com/icoming/), [@disa-mhembere](https://github.com/disa-mhembere/)]
+
+
+
+---
+
+# Applications (TA2)
+
+  - functional MRI: discriminability finds optimal pipeline
+  - diffusion MRI: discriminability finds optimal atlas
+  - CLARITY: timing results on 10 um resolution brains
+
+
+---
+
+## fMRI: discriminability
+
+- Determined the optimal fMRI pre-processing pipeline
+
+.center[
+<img src="https://raw.githubusercontent.com/shangsiwang/Reliability/master/Figs/64_pipelines_gg.png?token=AACjctAPeYvDS00wc0JQBSZiuLV6T6Vpks5Wt25BwA%3D%3D" alt="Drawing" style="width: 640px;"/>
+]
+
+
+.bottom[[@shangsiwang](https://github.com/shangsiwang/)]
+
+---
+
+
+## fMRI: discriminability
+
+- Decisions for each stage can  be made independently
+
+.center[
+<img src="https://raw.githubusercontent.com/shangsiwang/Reliability/master/Figs/Differ_violin_mean.png?token=AACjcs0KJFAIInoM4yuPwjaMxtHSyK-Yks5Wt9PGwA%3D%3D" alt="Drawing" style="width: 640px;"/>
+]
+
+
+.bottom[[@shangsiwang](https://github.com/shangsiwang/)]
+
+
+
+---
+
+
+## fMRI: discriminability
+
+- Converting correlation matrices to ranks improves discriminability
+
+.center[
+<img src="site-visit/rank_vs_cor.png" alt="Drawing" style="width: 640px;"/>
+]
+
+
+.bottom[[@shangsiwang](https://github.com/shangsiwang/)]
+
+---
+
+## fMRI: predicting creativity
+
+
+- New data is different from old data
+- Reprocessing old data using new m2g
+
+
+.center[
+<img src="site-visit/oldnew.png" alt="Drawing" style="height: 400px;"/>
+]
+
+
+
+.bottom[[@youngser](https://github.com/youngser/)]
+
+---
+
+## dMRI: optimal atlas
+
+
+- The Talairach atlas (with the highest # of ROIs) is the best
+- We will investigate additional atlases and datasets
+
+
+.center[
+<img src="https://raw.githubusercontent.com/openconnectome/gk/master/m2g/ohbm2016figs/OHBM2016-fig1.png?token=AACjcgzUiNjBgV_Zff9QWguUenpISdZuks5Wt9hmwA%3D%3D" alt="Drawing" style="height: 400px;"/>
+]
+
+
+.bottom[[@gkiar](https://github.com/gkiar/)]
+
+---
+
+## dMRI: LLG
+
+- Estimating mean connectome for different datasets and scales
+
+
+---
+
+## CLARITY: .y[ndreg] timing
+
+- 10 um timing is unacceptably long
+- Currenly building a multiscale method to speed it up
+
+| Resolution (um)  | Size (voxels) | Number of Voxels | Memory (GB) | Time (hour:min:sec)
+| --- | ------------- | ------------- | ------- | -------- |
+| 10  | 1438x1199x688 | 1,186,223,456 | 410.896 | 42:53:36 |
+| 25  | 576x480x275   |    76,032,000 | 26.342  | 03:25:08 |
+| 50  | 288x240x138   |     9,538,560 | 3.326   | 00:41:35 |
+| 100 | 144x120x69    |     1,192,320 | 0.475   | 00:10:18 |
+| 250 | 58x48x28      |        77,952 | 0.048   | 00:02:52 |
+
+
+---
+
+## Potential Next Steps: TA1
+
+
+- Tools (Task 1)
+  - Infrastructure: deploy S3 backend
+  - Explore: dataviews for all datasets
+  - Pre-process: 2D & 3D histogram normalization on new 100 TB dataset
+  - Parse: run ndparse at scale
+- Infer (Task 2)
+    - MGC robust to outliers, 
+    - Discriminability nonparametric theory,
+    - Submit RerF to ICML
+    - Robust LLG is more efficient than LLG
+    - OptiSBM vs. spectral clustering phase shifts
+    - SGM improves vertex nomination?
+    - FlashX: in memory k-means improvements
+
+---
+
+## Potential Next Steps: TA2
+
+- Ingest (Task 1)
+  - Calcium imaging
+  - Array tomography
+  - Cleared brains
+- Applications (Task 2)
+  - functional MRI: finds optimal atlas
+  - diffusion MRI: update atlas comparison
+  - CLARITY: multiscale registration and benchmark
+
+
+
+---
+
+
+## Software
+
+.pull-left[
+- Infrastructure
+     - [AMI](http://docs.neurodata.io/nddocs/ami.html)
+     - [ndlims](https://github.com/openconnectome/ndlims/) 
+     - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
+     - [ndtilecache](https://github.com/openconnectome/ocptilecache)
+     - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
+     - [CAJAL](http://docs.neurodata.io/CAJAL/)
+- Explorer
+  - [Vectors](http://vx.neurodata.io)
+  - [Graphs](http://gx.neurodata.io)
+  - [Images](https://github.com/openconnectome/NeuroDataViz)
+- Pre-process
+  - [2D Chromatic](https://github.com/mkazhdan/DMG)
+  - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+  - [Volume Registration](https://github.com/openconnectome/ndreg/)
+  - [Shape Spherical Harmonics](https://github.com/mkazhdan/ShapeSPH)
+]
+
+.pull-right[
+- Parse
+  - [ndparse](https://github.com/openconnectome/ndparse/)
+- Infer
+  - [Randomer Forest](http://ttomita.github.io/RandomerForest/)
+  - [FlashX](http://flashgx.io)
+  - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
+  - [LLG](https://github.com/mketcha/SimplexMDK)
+- Applications
+  - [m2g](http://m2g.io/)
+  - [i2g](http://i2g.io/)
+  - [vesicle](http://docs.neurodata.io/vesicle/)
+  - [ilastik cell detection](http://docs.neurodata.io/nddocs/mbcd.html)
+  - [CNN cell detection](http://docs.neurodata.io/nddocs/nddl.html)
+]
+
+
+
+---
+
+## Data
+
+
+
+- [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
+- [Graphs](http://openconnecto.me/graph-services/download/)
+
+
+
+
+---
+template: default
+layout: false
+class:  center
+
+# NeuroData Family
+
+
+.center[
+.small[
+|   |   | |
+| :--- | :--- | :--- |
+| Data | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Clay Reid, Davi Bock, Jeff Licthman, Bobb Kasthuri, Karl Deisseroth, Raju Tomer, Li Ye, Ed Boyden, Mike Milham, Cameron Craddock, Stephen Smith, Forrest Collman, Kristen Harris, Scott Emmons, Dan Bumbarger, Mitya Chklovskii, Nikhil Bhatla] 
+| Store | | Randal Burns, Eric Perlman, Kunal Lillaney, Priya Manavalan, Alex Eusman 
+| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky, Ivan Kuznetsov]
+| PreProcess | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
+| Parse | | .green[Will Gray Roncal, Mark Chevillet,  R. Jacob Vogelstein, Guillermo Sapiro, Anish Simhal, Konrad Kording, Eva Dyer]
+| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen]
+| Graphs | | .black[Da Zheng, Disa Mhembere, Vince Lyzinski, Avanti Athreya, Daniel Sussman, Shangsi Wang, Runze Tang, Minh Tang]
+| Love | | .pink[Yummy, Family, Friends, Earth, Universe, Multiverse?]
+]]
+
+
+
+
+---
+class:   center
+
+
+# Questions?
+
+_____
+
+Funding
+
+
+DARPA SIMPLEX
+
+
+____
+
+
+w: [neurodata.io](http://neurodata.io)
+
+d: [docs.neurodata.io](http://docs.neurodata.io)
+
+e: [support@neurodata.io](mailto:support@neurodata.io) 
+
+
+
+
+
+    </textarea>
+<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+
+      // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+
+  </body>
+</html>
