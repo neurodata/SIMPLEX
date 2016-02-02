@@ -1,0 +1,152 @@
+
+> On Jan 30, 2016, at 10:16 PM, jovo Vogelstein <jovo@jhu.edu> wrote:
+> 
+> youngser - can you restrict the list to those only with graphs or simplex (eg, not those that only acknowledge xdata)?
+> 
+> if you send the bib file and the latex file for building the pdf, that would be great.
+> thanks, 
+> 
+> ---------- Forwarded message ----------
+> From: Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil>
+> Date: Fri, Jan 29, 2016 at 5:14 PM
+> Subject: RE: DARPA - Open Catalog
+> To: jovo Vogelstein <jovo@jhu.edu>
+> 
+> 
+> Yes. You should restrict to that subset.
+> 
+> The reason why I identified that paper right away is because I was looking at while preparing for the upcoming quarterly for GRAPHS, when I noticed that it wasn't even a GRAPHS paper!
+> 
+> Again, it seems silly, but you should be careful about it. Things can get territorial, misunderstandings happen, etc.
+> 
+> -----Original Message-----
+> From: joshuav@gmail.com [mailto:joshuav@gmail.com] On Behalf Of joshua vogelstein
+> Sent: Friday, January 29, 2016 5:08 PM
+> To: Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil>
+> Subject: Re: DARPA - Open Catalog
+> 
+> ah, ok, that is good to know!
+> i guess i sent everything that i thought would belong in the DARPA open catalog.
+> do you want me to send you the subset that only has GRAPHS/SIMPLEX acknowledgements?
+> 
+> 
+> On Friday, January 29, 2016, Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <mailto:jonathan.whitehouse.ctr@darpa.mil> > wrote:
+> 
+> 
+>         Josh,
+> 
+>         Thanks. This looks good.
+> 
+>         There is one thing you need to be cautious about in the future.
+> 
+>         I see that in the acknowledgments section of some of the papers, neither GRAPHS nor SIMPLEX is listed as a funding source. For example, the Robust Vertex Classification paper lists XDATA as its sole DARPA funding source. As such, you shouldn't be lumping it under Reza's programs.
+> 
+>         While this may seem to be a minor issue, it can cause problems for us (and perhaps for you) depending on perceptions.
+> 
+>         So, in the future please only send us things that attribute GRAPHS and SIMPLEX in the funding sources.
+> 
+>         Tyler
+> 
+> 
+> 
+>         -----Original Message-----
+>         From: joshuav@gmail.com <javascript:;>  [mailto:joshuav@gmail.com <javascript:;> ] On Behalf Of joshua vogelstein
+>         Sent: Friday, January 29, 2016 4:54 PM
+>         To: Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <javascript:;> >
+>         Cc: Best, Tyler (contr-dso) <tyler.best.ctr@darpa.mil <javascript:;> >; Carey Priebe <cep@jhu.edu <javascript:;> >; Randal Burns <randal@cs.jhu.edu <javascript:;> >; Youngser Park <youngser@jhu.edu <javascript:;> >
+>         Subject: DARPA - Open Catalog
+> 
+>         sorry for the delay, i believe this is most of them.
+>         does that help?
+> 
+>         ps - thank you youngser!!!
+> 
+> 
+> 
+>         On Thursday, January 28, 2016, Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <javascript:;>  <javascript:_e(%7B%7D,'cvml','jonathan.whitehouse.ctr@darpa.mil <javascript:;> ');> > wrote:
+> 
+> 
+>                 Josh,
+> 
+>                 Sorry to bug, but any progress on this?
+> 
+>                 Reza would like a list of publications under the GRAPHS effort.
+> 
+>                 After looking through what we've got, I see that the last publication push to us was in the attached report.
+> 
+>                 What do you have since this point?
+> 
+>                 He wants to review them before the next meeting on Feb 24th.
+> 
+>                 Thanks!
+> 
+>                 Tyler W
+> 
+>                 -----Original Message-----
+>                 From: joshuav@gmail.com <javascript:;>  [mailto:joshuav@gmail.com <javascript:;> ] On Behalf Of joshua vogelstein
+>                 Sent: Wednesday, October 28, 2015 12:34 PM
+>                 To: Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <javascript:;> >
+>                 Subject: Re: DARPA - Open Catalog
+> 
+>                 got 'em, working on it....
+> 
+>                 On Wed, Oct 28, 2015 at 12:06 PM, Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <javascript:;>  <mailto:jonathan.whitehouse.ctr@darpa.mil <javascript:;> > > wrote:
+> 
+> 
+>                         Josh,
+> 
+>                         Sent you two emails on this. Let me know if I can help.
+> 
+>                         Tyler
+> 
+>                         -----Original Message-----
+>                         From: joshuav@gmail.com <javascript:;>  <mailto:joshuav@gmail.com <javascript:;> >  [mailto:joshuav@gmail.com <javascript:;>  <mailto:joshuav@gmail.com <javascript:;> > ] On Behalf Of joshua vogelstein
+>                         Sent: Monday, October 26, 2015 10:58 PM
+>                         To: Whitehouse, Jonathan (contr-dso) <jonathan.whitehouse.ctr@darpa.mil <javascript:;>  <mailto:jonathan.whitehouse.ctr@darpa.mil <javascript:;> > >
+>                         Subject: DARPA - Open Catalog
+> 
+> 
+>                         http://opencatalog.darpa.mil/index.html
+> 
+>                         i noticed we are not listed here.
+>                         what shall i do to rectify that?
+> 
+> 
+> 
+> 
+> 
+>                 --
+> 
+>                 the glass is all full:  half water, half air.
+> 
+>                 neurodata.io <http://neurodata.io>  <http://neurodata.io>  <http://neurodata.io>
+> 
+> 
+> 
+> 
+> 
+>         --
+> 
+>         the glass is all full:  half water, half air.
+> 
+>         neurodata.io <http://neurodata.io>  <http://neurodata.io>
+> 
+> 
+> 
+> 
+> 
+> 
+> --
+> 
+> the glass is all full:  half water, half air.
+> 
+> neurodata.io <http://neurodata.io>
+> 
+> 
+> 
+> 
+> 
+> -- 
+> the glass is all full:  half water, half air.
+> neurodata.io
+
