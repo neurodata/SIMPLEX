@@ -222,36 +222,38 @@ class: center, middle
 ---
 
 
-## Summary
+## Computational Statistics
 
-- Tools (TA1 Task A)
+- Computational
   - Infrastructure: CDN, auto-ingest, S3
   - Explore: histogram stats, conditional VX
   - Pre-process: open sourced 2D, 3D, ndreg & shape code
   - Parse: open sourced ndparse, cell det'n  RF & CNN
-- Infer (TA1 Task B)
-  - MGC discovers scales 
-  - Discriminability is robust DISCO
-  - RerF beats {RF,RotF} in benchmark suite
-  - Robust LLG is more efficient than LLG
-  - OptiSBM outperforms spectral clustering
-  - SGM improves vertex nomination
-  - FlashX includes R spectral clustering tutorial
-- Applications (TA2)
-  - functional MRI: discriminability finds optimal pipeline
-  - diffusion MRI: discriminability finds optimal atlas
-  - CLARITY: timing results on 10 um resolution brains
+  - Infer:   FlashX includes R spectral clustering tutorial
+- Statistics
+  - Design: Discriminability is robust DISCO
+  - Testing: MGC discovers scales 
+  - Estimation:
+      - Robust LLG is more efficient than LLG
+      - OptiSBM outperforms spectral clustering
+  - Ranking: SGM improves vertex nomination
+  - Prediction: RerF beats {RF,RotF} in benchmark suite
 
 
 ---
 
 
-# Tools (TA1 Task A)
+## Datafication and Discovery
   
-  - Infrastructure: CDN, auto-ingest, S3
-  - Explore: histogram stats, conditional VX
-  - Pre-process: open sourced 2D, 3D, ndreg & shape code
-  - Parse: open sourced ndparse, cell det'n  RF & CNN
+- Datafication
+  - MRI: 
+      - NIfTI service
+      - Graph Downloads
+  - CLARITY: Ingest registered brains
+- Discovery
+  - functional MRI: discriminability finds optimal pipeline
+  - diffusion MRI: discriminability finds optimal atlas
+  - CLARITY: timing results on 10 um resolution brains
   
 
 ---
@@ -278,7 +280,7 @@ name: exlore
 ## Image Explorer
 
 - Added histogram statistics Web-services
-- [http://openconnecto.me/ocp/stats/kharris15apical/image/all/]
+- e.g., [http://openconnecto.me/ocp/stats/kharris15apical/image/all/]
 
 <iframe style="background-color: #fff"; height="400px" src="http://openconnecto.me/ocp/stats/kharris15apical/image/all/"></iframe> 
 
