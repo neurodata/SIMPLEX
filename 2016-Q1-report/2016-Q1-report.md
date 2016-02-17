@@ -140,9 +140,6 @@ In the above, the improved performance requires data comes from a particular and
 # Datafication
 
 
-## Electron Microscopy
-
-## Array Tomography
 
 ## CLARITY
 
