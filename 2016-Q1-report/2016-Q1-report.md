@@ -143,6 +143,10 @@ In the above, the improved performance requires data comes from a particular and
 
 ## CLARITY
 
+By annotating CLARITY brains scientific observations can made on the texture and shape of specific brain structures. Manual labeling of entire CLARITY brains is time-consuming hence the most efficient way to annotate a brain image is through atlas registration. Therefore ndreg was developed to align the Allen Mouse Brain Atlas to these types of images. In the procedure, a CLARITY brain is downloaded from the spatial database using ndio. The atlas annotations are registered to the brain using ndreg and ingested into the database using ndio. The deformed annotations can then be visualized over the CLARITY brain [using NeuroDataViz](http://viz.neurodata.io/project/Fear199KwameSimplex/5/269/358/697).
+
+![NeuroDataViz](ndviz.png "NeuroDataViz")
+
 ## Expansion Microscopy
 
 ## X-Ray Histology
