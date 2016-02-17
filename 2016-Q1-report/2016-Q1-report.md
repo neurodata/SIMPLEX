@@ -133,7 +133,8 @@ In the above, the improved performance requires data comes from a particular and
 
 ### Dependence Testing
 
-### Optimal Signal Detection
+### Discriminability
+In the above, we always want to know how much signal there is to differentiate classes. We have designed a new statistics called discriminability which quantifies the amount signal in the data. It is defined to be the probability that within class distance to be smaller than the across distance. Our Discriminability statistics has the property of being robust and bound Bayes classification error under suitable settings. For more details see [here](http://docs.neurodata.io/ndintro/stats.html#rllg). In the coming quarter we will develope these ideas, prove theorems, and apply the framework to real data applications.
 
 
 
@@ -162,7 +163,7 @@ By annotating CLARITY brains scientific observations can made on the texture and
 ## Connectome vs. CCI
 
 ## Optimal Pipeline
-In order to obtain good quanlity fMRI processing, one key 
+In order to obtain good quanlity fMRI graph, one key question is which processing pipeline we use.  
 
 ## Cell Detection in XRM
 
