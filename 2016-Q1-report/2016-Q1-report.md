@@ -134,7 +134,7 @@ In the above, the improved performance requires data comes from a particular and
 ### Dependence Testing
 
 ### Discriminability
-In the above, we always want to know how much signal there is to differentiate classes. We have designed a new statistics called discriminability which quantifies the amount signal in the data. It is defined to be the probability that within class distance to be smaller than the across distance. Our Discriminability statistics has the property of being robust and bound Bayes classification error under suitable settings. For more details see [here](http://docs.neurodata.io/ndintro/stats.html#rllg). In the coming quarter we will develope these ideas, prove theorems, and apply the framework to real data applications.
+In the above, we always want to know how much signal there is to differentiate classes. We have designed a new statistics called discriminability which quantifies the amount signal in the data. It is defined to be the probability that within class distance to be smaller than the across distance. Our Discriminability statistics has the property of being robust and bound Bayes classification error under suitable settings. For more details see [here](http://docs.neurodata.io/ndintro/stats.html#rllg). In the coming quarter we will develope these ideas, prove theorems, and apply the framework to real data applications. 
 
 
 
@@ -163,7 +163,7 @@ By annotating CLARITY brains scientific observations can made on the texture and
 ## Connectome vs. CCI
 
 ## Optimal Pipeline
-In order to obtain good quanlity fMRI graph, one key question is which processing pipeline we use.  
+In order to obtain good quanlity fMRI graph, one key question is which processing pipeline we use. By treating each subject as a class, we compute the Discriminability statistics of 12 fMRI data sets using 64 pipelines. We find the optimal pipeline, and be able to decide what to do at each processing step (like global signal regression or not). In the coming quarter we will summarize our findings, investigate the optimal number of ROIs for atlas, and compare the quanlity of fMRI and DTI.
 
 ## Cell Detection in XRM
 
