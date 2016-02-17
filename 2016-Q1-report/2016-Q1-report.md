@@ -162,6 +162,7 @@ By annotating CLARITY brains scientific observations can made on the texture and
 ## Connectome vs. CCI
 
 ## Optimal Pipeline
+In order to obtain good quanlity fMRI processing, one key 
 
 ## Cell Detection in XRM
 
