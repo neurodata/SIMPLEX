@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>jovo</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+       <style>
+div.md {
+    width:640px;
+    margin: auto;
+}
+
+       </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+
 
 # Computer Science
 
@@ -158,7 +215,7 @@ In the above, we always want to know how much signal there is to differentiate c
 
 By annotating CLARITY brains scientific observations can made on the texture and shape of specific brain structures. Manual labeling of entire CLARITY brains is time-consuming hence the most efficient way to annotate a brain image is through atlas registration. Therefore ndreg was developed to align the Allen Mouse Brain Atlas to these types of images. In the procedure, a CLARITY brain is downloaded from the spatial database using ndio. The atlas annotations are registered to the brain using ndreg and ingested into the database using ndio. The deformed annotations can then be visualized over the CLARITY brain using [NeuroDataViz](http://viz.neurodata.io/project/Fear199KwameSimplex/5/269/358/697). For more details see [here](http://docs.neurodata.io/ndintro/data.html#clarity).  In the coming quarter we will apply this method to the remaining CLARITY brains, as well as add additional metadata to the fields. 
 
-![NeuroDataViz](ndviz.png "NeuroDataViz")
+<img src="ndviz.png" alt="Drawing" style="width: 640px;"/>
 
 
 
@@ -167,14 +224,15 @@ By annotating CLARITY brains scientific observations can made on the texture and
 
 Understanding the brain is a complex challenge involving multiple scales and acquisition modalities.  One emerging technique leverages high-powered X-Ray imaging to obtain a mesoscale map of the brain without the need for slicing or time consuming reconstruction.  We helped develop novel methods for HPC and cell detection on a new dataset during this past quarter. For more details see [here](http://docs.neurodata.io/ndintro/neuro.html#xrm). In the coming quarter, we will quantify our performance numbers and plan to submit a manuscript.
 
-![](xbrain_cells.png)
+
+<img src="xbrain_cells.png" alt="Drawing" style="width: 640px;"/>
 
 
 ## Cell Detection in Histology
 
 Reliably estimating cell densities in histological data is an ongoing challenge for neuroscience that promises to elucidate whole-brain maps at a micron scale and enable comparisons across individuals.  During this reporting period, we built mechanisms for both random forest and deep learning cell cluster detection.  These techniques were applied to a nissl stained mouse brain as shown below.
 
-![](PMD2040_slice140_overlay_full.png)
+<img src="PMD2040_slice140_overlay_full.png" alt="Drawing" style="width: 640px;"/>
 
 
 ## Calcium Imaging
@@ -208,3 +266,41 @@ Reproducing scientific claims on emerging big neuroscience data is a critical
 challenge to verifying and building on scientific discoveries.  During this past
 quarter, we leveraged our RAMON metadata standard to reproduce ten scientific claims from the recent Kasthuri2015 Cell paper in a series of [jupyter notebooks](https://github.com/neurodata/kasthuri2015/tree/master/claims). For more details see [here](http://docs.neurodata.io/kasthuri15). In the next quarter, we plan to develop a standard endpoint for ingesting metadata for other datasets and complete notebooks for the majority of claims in the [Kasthuri 2015](http://www.cell.com/abstract/S0092-8674(15)00824-7) paper.  
 
+
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://jovo.me">jovo.me</a>  2016</p>                    
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>
