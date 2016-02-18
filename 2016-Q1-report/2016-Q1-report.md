@@ -166,13 +166,49 @@ By annotating CLARITY brains scientific observations can made on the texture and
 ## Optimal Pipeline
 In order to obtain good quanlity fMRI graph, one key question is which processing pipeline we use. By treating each subject as a class, we compute the Discriminability statistics of 12 fMRI data sets using 64 pipelines. We find the optimal pipeline, and be able to decide what to do at each processing step (like global signal regression or not). In the coming quarter we will summarize our findings, investigate the optimal number of ROIs for atlas, and compare the quanlity of fMRI and DTI.
 
+<<<<<<< Updated upstream
 ## Cell Detection in XRM
+=======
+In this period we generated brain graphs for many different brain scans (>2000) and many atlases, resulting in tens of thousands of brain graphs from both structural and functional brain scans.  We have formalized our pipeline and submitted it as a standard python package on *pip* for community use and development.  In the upcoming period, we will work toward standardizing our diverse datasets into a common format suitable for storage in our spatial database to enable reproducible science.
+
+Discovery
+=========
+>>>>>>> Stashed changes
 
 ## Cell Detection in Histology
 
 ## Kasthuri Claims
 
+<<<<<<< Updated upstream
+=======
+In order to obtain good quanlity fMRI graph, one key question is which
+processing pipeline we use. By treating each subject as a class, we compute the
+Discriminability statistics of 12 fMRI data sets using 64 pipelines. We find the
+optimal pipeline, and be able to decide what to do at each processing step (like
+global signal regression or not). In the coming quarter we will summarize our
+findings, investigate the optimal number of ROIs for atlas, and compare the
+quantity of fMRI and DTI.
+>>>>>>> Stashed changes
 
 
+<<<<<<< Updated upstream
 
 
+=======
+Understanding the brain is a complex challenge involving multiple scales and acquistion modalities.  One emerging technique leverages high-powered X-Ray imaging to obtain a mesoscale map of the brain without the need for slicing or time consuming reconstruction.  We helped develop novel methods for HPC and cell detection on a new dataset during this past quarter.  In the upcoming period, we will quantify our performance numbers and plan to submit a manuscript.
+![](xbrain_cells.png)
+
+Cell Detection in Histology
+---------------------------
+
+Reliably estimating cell densities in histological data is an ongoing challenge for neuroscience that promises to elucidate whole-brain maps at a micron scale and enable comparisons across individuals.  During this reporting period, we built mechanisms for both random forest and deep learning cell cluster detection.  These techniques were applied to a nissl stained mouse brain as shown below.
+
+![](PMD2040_slice140_overlay_full.png)
+
+Kasthuri Claims
+---------------
+
+Reproducing scientific claims on emerging big neuroscience data is a critical
+challenge to verifying and building on scientific discoveries.  During this past
+quarter, we leveraged our RAMON metadata standard to reproduce ten scientific claims from the recent Kasthuri2015 Cell paper in a series of [jupyter notebooks](https://github.com/neurodata/kasthuri2015/tree/master/claims).  In the next quarter, we plan to develop a standard endpoint for ingesting metadata for other datasets and complete notebooks for the majority of claims in the [Kasthuri 2015](http://www.cell.com/abstract/S0092-8674(15)00824-7) paper.  
+>>>>>>> Stashed changes
