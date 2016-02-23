@@ -203,10 +203,10 @@ class: center, middle
 
 ## Utilizing Richly Attributed Graphs to Reason from Heterogeneous Data
 
-### PI: Joshua T. Vogelstein, Johns Hopkins University
+### PI: Joshua T. Vogelstein, 
 ### Co-I: Randal Burns, Carey Priebe
 
-### SIMPLEX Site Visit: Feb 24, 2016 
+#### SIMPLEX Site Visit: Feb 24, 2016, Johns Hopkins University
 <!-- #### [Dec 1, 2015 - Dec 31, 2015] -->
 
 <!-- ### Joshua T. Vogelstein -->
@@ -217,7 +217,7 @@ class: center, middle
 
 
 
-these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
+these slides: <http://docs.neurodata.io/SIMPLEX/Q3/2016-site_visit.html>
 
 
 
@@ -225,8 +225,16 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 
 # Intro
 
+.y[Grute]: Graph with Rich Attributes
+
+- [Task A: Computer Science](#cs) building terascale tools to estimate/extract Grutes
+- [Task B: Statistical Science](#stats) analyzing the statistics of Grutes
+- [Task C: Datafication](#data) converting data into Grutes
+- [Task D: Discovery](#discovery) discovering neuroscience principles using Grutes
+
 
 ---
+name: cs
 
 # Computations
 
@@ -276,12 +284,20 @@ these slides: <http://docs.neurodata.io/SIMPLEX/2016-site_visit.html>
 .bottom[vince: GRAPHS/SIMPLEX]
 
 ---
-
+name: stats
 
 # Statistics
 
----
+- [Vertex Nomination](#vn)
+- [HSBM](#hsbm)
+- [Robust LLG](#llg)
+- [Testing on Sub-manifolds](#lrt)
+- [Randomer Forest](#rerf)
+- [Dependence Testing](#mgc)
 
+
+---
+name: vn
 
 ## Vertex Nomination Via Local Neighborhood Matching  
 
@@ -334,6 +350,7 @@ The more seeds available for matching the graphs, the fewer vertices in the rema
 - We have approximately 100TB of high resolution data (EM, array tomography, CLARITY...)
 
 ---
+name: hsbm
 
 ## [HSBM]
 
@@ -376,16 +393,19 @@ name:llg
 
 
 ---
+name: lrt
 
 ## [Testing on Sub-manifolds]
 
 
 ---
+name: rerf
 
 ## [Randomer Forest]
 
 
 ---
+name: mgc
 
 ## [Dependence Testing]
 
@@ -465,6 +485,7 @@ name:llg
 ## Future Directions
 
 ---
+name: data
 
 # [Datafication]
 
@@ -477,11 +498,18 @@ name:llg
 	- Expansion Microscopy
 	- MR
 - Graphs
-
+	- Human
+	- Non-human
 
 ---
 
 ## [Images](ttps://github.com/openconnectome/ocp-journal-paper/blob/gh-pages/Results/Tables/Table1/table1_v3.md)
+
+.center[
+<iframe width="700" height="500" src="http://docs.neurodata.io/ocp-journal-paper/#tab:images" frameborder="0" allowfullscreen></iframe>
+]
+
+
 
 ---
 name:human-graphs
@@ -504,26 +532,17 @@ name:all-graphs
 
 
 ---
+name: discovery
 
-# Applications
+# Discovery
 
-- Optimal Pipelines
+- [Optimal Pipelines](#discrim)
+- [Connectome vs. CCI](#cci)
 - Kasthuri Claims
-- Connectome vs. CCI
 - CLARITY
 
 ---
-
-## Average Connectome
-
-
-
----
-
-## CLARITY
-
-
----
+name: discrim
 
 ## Optimal Pipelines
 
@@ -604,9 +623,15 @@ The estimator designed is shown to be unbiased, and converges to the true reliab
 
 
 ---
+name: cci
 
 ## [semipar-cci](http://www.cis.jhu.edu/~parky/MRN/ceplm.html)
 
+
+---
+
+
+## CLARITY
 
 
 
