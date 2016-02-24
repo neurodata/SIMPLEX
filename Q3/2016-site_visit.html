@@ -242,7 +242,7 @@ these slides: <http://docs.neurodata.io/SIMPLEX/Q3/2016-site_visit.html>
 |   |   | |
 | :--- | :--- | :--- |
 | A: CS | | Randal Burns, Kunal Lillaney, Alex Baden, Alex Eusman, Da Zheng, Disa Mhembere,   Ivan Kuznetsov
-| B: Stats | | .r[Carey Priebe,  Cencheng Shen, Vince Lyzinski, Heather Gaddy, Mingyue Gao, Avanti Athreya, Tyler Tomita, Shangsi Wang, Runze Tang, Minh Tang]
+| B: Stats | | .red[Carey Priebe,  Cencheng Shen, Vince Lyzinski, Heather Gaddy, Mingyue Gao, Avanti Athreya, Tyler Tomita, Shangsi Wang, Runze Tang, Minh Tang]
 | C: Data | | .y[Joshua Vogelstein, Kwame Kutten, Greg Kiar, Eric Bridgeford]
 | D: Discovery | | .green[Joshua Vogelstein, Youngser Park, Jesse Patsolic, Will Gray, Jordan Matelsky]
 | Collabs | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Karl Deisseroth,  Ed Boyden, Bobby Kasthuri, Mike Milham, Stephen Smith, Rafa Yuste] 
@@ -258,7 +258,7 @@ Success leverages across all components.
 - CS:
 	- spdb supports multispectral *registered* data
 	- FlashX supports matrix operations (eg, SVD, k-means, NMF)
-- .r[Stats]:
+- .red[Stats]:
 	- Models & methods for n>=2 graphs
 	- Graphs with hierarchical labels
 - .y[Data]:
@@ -289,7 +289,7 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
 ## Software
 
 .pull-left[
-- Infrastructure
+- Store
   - Hardware
      - [Local](http://docs.neurodata.io/ndintro/#13)
      - [AMI](http://docs.neurodata.io/nddocs/ami.html)
@@ -300,10 +300,6 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
   - Analytics
      - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
      - [CAJAL](http://docs.neurodata.io/CAJAL/)
-- Store
-  - [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
-  - [Annotations](http://docs.neurodata.io/ndintro/#21)
-  - [Graphs](http://openconnecto.me/graph-services/download/)
 ]
 
 .pull-right[
@@ -315,9 +311,9 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
   - [2D Chromatic](https://github.com/mkazhdan/DMG)
   - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
   - [Volume Registration](https://github.com/openconnectome/ndreg/)
-- Parse
-  - [m2g](http://m2g.io/)
-  - [i2g](http://i2g.io/)
+	- Parse
+	  - [m2g](http://m2g.io/)
+	  - [i2g](http://i2g.io/)
 - Infer
   - Vectors: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
   - Graphs
@@ -334,11 +330,11 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
 
 - NeuroData is both the largest and most diverse public neuroscience data repository in the world
 - NeuroGraphs
-	- We have 20,000 Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
-	- We have 200,000+ fMRI derived graphs from ~2,000 subjects across multiple atlases
-	- We have 50+ other graphs from other modalities and species with various attributes
+	- We have .y[80,000+] Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
+	- We have .y[200,000+] fMRI derived graphs from ~2,000 subjects across multiple atlases
+	- We have .y[50+] other graphs from other modalities and species with various attributes
 - NeuroImages
-	- We have  100TB+ of high resolution data (EM, array tomography, CLARITY, MRI...)
+	- We have  .y[100TB+] of high resolution data (EM, array tomography, CLARITY, MRI...)
 
 
 
@@ -347,8 +343,9 @@ name: cs
 
 # Computations
 
-[randal]
+## [Spatial Data](site-vist/darpa.jhu.2016.spatial.pptx)
 
+.bottom[randal: SIMPLEX]
 ---
 
 
@@ -363,6 +360,15 @@ name: cs
 
 
 .bottom[@alexbaden: SIMPLEX]
+
+---
+
+
+# Computations
+
+## [Semi-External Memory](site-vist/darpa.jhu.2016.sem.pptx)
+
+.bottom[randal: GRAPHS + SIMPLEX]
 
 
 
