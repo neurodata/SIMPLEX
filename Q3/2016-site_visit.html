@@ -290,9 +290,6 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
 
 .pull-left[
 - Store
-  - Hardware
-     - [Local](http://docs.neurodata.io/ndintro/#13)
-     - [AMI](http://docs.neurodata.io/nddocs/ami.html)
   - Management
      - [ndlims](https://github.com/openconnectome/ndlims/) 
      - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
@@ -300,22 +297,22 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
   - Analytics
      - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
      - [CAJAL](http://docs.neurodata.io/CAJAL/)
-]
-
-.pull-right[
 - Explorer
   - [Vectors](http://vx.neurodata.io)
   - [Graphs](http://gx.neurodata.io)
   - [Images](https://github.com/openconnectome/NeuroDataViz)
-- Pre-process
+]
+
+.pull-right[
+- Wrangle
   - [2D Chromatic](https://github.com/mkazhdan/DMG)
   - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
   - [Volume Registration](https://github.com/openconnectome/ndreg/)
-	- Parse
-	  - [m2g](http://m2g.io/)
-	  - [i2g](http://i2g.io/)
-- Infer
-  - Vectors: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
+  - [ndparse](http://docs.neurodata.io/nddocs/ndparse/nddl.html)
+  - [m2g](http://m2g.io/)
+  - [i2g](http://i2g.io/)
+- Analyze
+  - Matrices: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
   - Graphs
       - [FlashX](http://flashgx.io)
       - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
@@ -328,7 +325,7 @@ Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Mu
 # Data
 
 
-- NeuroData is both the largest and most diverse public neuroscience data repository in the world
+- NeuroData is both the .y[largest and most diverse public] neuroscience data repository in the world
 - NeuroGraphs
 	- We have .y[80,000+] Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
 	- We have .y[200,000+] fMRI derived graphs from ~2,000 subjects across multiple atlases
@@ -405,7 +402,7 @@ name: cs
 ## Future Directions
 
 
-.bottom[@randburns]
+.bottom[@randal]
 
 ---
 
