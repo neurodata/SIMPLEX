@@ -203,8 +203,7 @@ class: center, middle
 
 ## Utilizing Richly Attributed Graphs to Reason from Heterogeneous Data
 
-### PI: Joshua T. Vogelstein, 
-### Co-I: Randal Burns, Carey Priebe
+### Joshua T. Vogelstein,  Randal Burns, Carey Priebe
 
 #### SIMPLEX Site Visit: Feb 24, 2016, Johns Hopkins University
 <!-- #### [Dec 1, 2015 - Dec 31, 2015] -->
@@ -225,12 +224,122 @@ these slides: <http://docs.neurodata.io/SIMPLEX/Q3/2016-site_visit.html>
 
 # Intro
 
-.y[Grute]: Graph with Rich Attributes
 
 - [Task A: Computer Science](#cs) building terascale tools to estimate/extract Grutes
 - [Task B: Statistical Science](#stats) analyzing the statistics of Grutes
 - [Task C: Datafication](#data) converting data into Grutes
 - [Task D: Discovery](#discovery) discovering neuroscience principles using Grutes
+
+.y[Grute]: Graph with Rich Attributes
+
+---
+
+# NeuroData Family
+
+
+.center[
+.small[
+|   |   | |
+| :--- | :--- | :--- |
+| A: CS | | Randal Burns, Kunal Lillaney, Alex Baden, Alex Eusman, Da Zheng, Disa Mhembere,   Ivan Kuznetsov
+| B: Stats | | .r[Carey Priebe,  Cencheng Shen, Vince Lyzinski, Heather Gaddy, Mingyue Gao, Avanti Athreya, Tyler Tomita, Shangsi Wang, Runze Tang, Minh Tang]
+| C: Data | | .y[Joshua Vogelstein, Kwame Kutten, Greg Kiar, Eric Bridgeford]
+| D: Discovery | | .green[Joshua Vogelstein, Youngser Park, Jesse Patsolic, Will Gray, Jordan Matelsky]
+| Collabs | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Karl Deisseroth,  Ed Boyden, Bobby Kasthuri, Mike Milham, Stephen Smith, Rafa Yuste] 
+| Love | | .pink[yummy, family, friends, earth, universe, multiverse?]
+]]
+
+Success leverages across all components.
+
+---
+
+## Q1-Q3 Main Results:
+
+- CS:
+	- spdb supports multispectral *registered* data
+	- FlashX supports matrix operations (eg, SVD, k-means, NMF)
+- .r[Stats]:
+	- Models & methods for n>=2 graphs
+	- Graphs with hierarchical labels
+- .y[Data]:
+	- 100+ TB of images from many different data modalities
+	- 100,000+ derived brain graphs (grutes)
+- .green[Discovery]
+	- Optimal pipelines
+	- Creativity prediction
+	- Reproducible science
+
+---
+
+# Publications
+
+.small[
+1. S. Chen, K. Liu, Y. Yang, Y. Xu, S. Lee, M. Lindquist, B. S. Caffo, and J. T. Vogelstein. An M-Estimator for Reduced-Rank High-Dimensional Linear Dynamical System Identification. arXiv, 1509.03927, 2015.
+2. N. Binkiewicz, J. T. Vogelstein, and K. Rohe. Covariate Assisted Spectral Clustering. Biometrika (under 2nd round of review), 2016.
+3. V. Lyzinski, D. Fishkind, M. Fiori, J. T. Vogelstein, C. E. Priebe, and G. Sapiro. Graph Matching: Relax at Your Own Risk. PAMI, 1405.3133, 2016.
+4. R. Airan, J. T. Vogelstein, J. J. Pillai, B. Caffo, J. Pekar, and H. Sair. Stability and localization of inter-individual differences in functional connectivity. HBM, 2016.
+5. T. M. Tomita, J. T. Vogelstein, M. Maggioni.  Randomer Forest. Under Review, 2016.
+6. D. Zheng, D. Mhembere, V. Lyzinksi, J. T. Vogelstein, C. E. Priebe, R. Burns. 
+Semi-External Memory Sparse Matrix Multiplication on Billion-node Graphs in a Multicore Architecture. Under review, 2016.
+7. D. Zheng, R. Burns, J. T. Vogelstein, C. E. Priebe, A. S. Szalay. An SSD-based eigensolver for spectral analysis on billion-node graphs. Under review, 2016.]
+
+---
+
+
+## Software
+
+.pull-left[
+- Infrastructure
+  - Hardware
+     - [Local](http://docs.neurodata.io/ndintro/#13)
+     - [AMI](http://docs.neurodata.io/nddocs/ami.html)
+  - Management
+     - [ndlims](https://github.com/openconnectome/ndlims/) 
+     - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
+     - [ndtilecache](https://github.com/openconnectome/ocptilecache)
+  - Analytics
+     - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
+     - [CAJAL](http://docs.neurodata.io/CAJAL/)
+- Store
+  - [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
+  - [Annotations](http://docs.neurodata.io/ndintro/#21)
+  - [Graphs](http://openconnecto.me/graph-services/download/)
+]
+
+.pull-right[
+- Explorer
+  - [Vectors](http://vx.neurodata.io)
+  - [Graphs](http://gx.neurodata.io)
+  - [Images](https://github.com/openconnectome/NeuroDataViz)
+- Pre-process
+  - [2D Chromatic](https://github.com/mkazhdan/DMG)
+  - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+  - [Volume Registration](https://github.com/openconnectome/ndreg/)
+- Parse
+  - [m2g](http://m2g.io/)
+  - [i2g](http://i2g.io/)
+- Infer
+  - Vectors: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
+  - Graphs
+      - [FlashX](http://flashgx.io)
+      - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
+      - [LLG](https://github.com/mketcha/SimplexMDK)
+  - [Shapes](https://github.com/mkazhdan/ShapeSPH)   
+]
+
+---
+
+# Data
+
+
+- NeuroData is both the largest and most diverse public neuroscience data repository in the world
+- NeuroGraphs
+	- We have 20,000 Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
+	- We have 200,000+ fMRI derived graphs from ~2,000 subjects across multiple atlases
+	- We have 50+ other graphs from other modalities and species with various attributes
+- NeuroImages
+	- We have  100TB+ of high resolution data (EM, array tomography, CLARITY, MRI...)
+
 
 
 ---
@@ -267,14 +376,30 @@ name: cs
 
 ---
 
-## [FlashX: k-means](site-visit/kmeans.pdf)
+## [FlashX: k-means](https://docs.google.com/presentation/d/1z62_SqSNqbDkY4ECBJrb5TWkpP10csnRp_aVuPEVUG0/edit?usp=sharing)
 
 
 .bottom[@disa-mhembere: SIMPLEX]
 
 ---
 
+## Other Stuff
+
+- [Graph Explorer](http://gx.neurodata.io)
+- [Matrix Explorer](http://vx.neurodata.io)
+- [Shape Descriptors](https://github.com/mkazhdan/ShapeSPH)
+- [2D Stiching Correction](https://github.com/mkazhdan/DMG)
+- [3D Histogram Normalization](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
+- [LIMS](https://github.com/neurodata/ndlims)
+- [Pyton API](http://docs.neurodata.io/nddocs/ndio/)
+
+
+---
+
 ## Future Directions
+
+
+.bottom[@randburns]
 
 ---
 
@@ -294,6 +419,9 @@ name: stats
 - [Testing on Sub-manifolds](#lrt)
 - [Randomer Forest](#rerf)
 - [Dependence Testing](#mgc)
+
+- Graphs: statistical models/methods for analysis of single/simple graphs
+- SIMPLEX: statistical models/methods for analysis of multiple/complicated graphs
 
 
 ---
@@ -325,35 +453,29 @@ image courtesy of: Suvakov et al. 'How the Online Social Networks are used: dial
 * Use the seeds to generate local neighborhood graphs in both networks (hopefully containing the VOI in each network)
 * Use seeded graph matching to align the networks and create a nomination list for each VOI. 
 
-![Twitter](site-visit/TwitGraphNumbers.png)
-![Instagram](site-visit/InstaGraphNumbers.png)
+.center[
+<img src="site-visit/TwitGraphNumbers.png" style="height: 250px;"/>
+<img src="site-visit/InstaGraphNumbers.png" style="height: 250px;"/>
+]
 
 
 ---
 
-##Benefit of Seeds in Instagram/Twitter matching
-![instatwitseeds](site-visit/instatwit_evenSeedsS56781_20160120.pdf)
+### Benefit of Seeds in Instagram/Twitter matching
 
----
+.center[
+<img src="site-visit/instatwit_evenSeedsS56781_20160120.png" style="height: 400px;"/>
+]
 
-##Benefits of Seeds in Matchings using Simulated Networks 
-The more seeds available for matching the graphs, the fewer vertices in the remainder of the nieghborhood that need to be observed in order to find the VOI. 
-![simseeds](site-visit/SeedVaryPlot20160127cor6.pdf)
 
----
-
-## Data
-
-- NeuroData is both the largest and most diverse public neuroscience data repository in the world
-- We have 20,000 Diffusion MRI derived graphs from 1,000 subjects across multiple atlases.  Currently processing additional subjects which will yield a total of 250,000 graphs.
-- We have XXX fMRI derived graphs from XXX subjects across multiple atlases
-- We have approximately 100TB of high resolution data (EM, array tomography, CLARITY...)
 
 ---
 name: hsbm
 
 ## [HSBM](site-visit/hsbm.pdf)
 
+
+.bottom[@avanti: SIMPLEX]
 ---
 name:llg
 
@@ -369,22 +491,26 @@ name:llg
 
 ---
 
-### relationship?
+### Relationship
 
-.pull-left[
-- one
-- two 
-- three
-]
+- Rank-reduction procedure improves the element-wise MLE;
+- Robust estimator degrades much slower than MLE with contaminations;
+- Our estimator not only inherits robustness from element-wise robust estimators but also has small variance due to rank-reduction procedure.
 
 
-.pull-right[
+
+.center[
 <img src="site-visit/Relationship.png" style="width: 500px;"/>
 ]
 
 
 ---
 
+### Contamination
+
+
+- Without conatmination: Robust estimator is slightly worse than MLE;
+- With contamination: Robust estimator, which degrades slowly, outperforms the MLE.
 
 
 .center[
@@ -398,16 +524,19 @@ name: lrt
 ## [Testing on Sub-manifolds]
 
 
+.bottom[@mingyue: SIMPLEX]
+
 ---
 name: rerf
 
 ## [Randomer Forest]
 
+.bottom[@ttomita: SIMPLEX]
 
 ---
 name: mgc
 
-## [Dependence Testing]
+## Dependence Testing
 
 
 - Testing dependence between variables is a fundamental statistical inquiry
@@ -419,6 +548,7 @@ name: mgc
   - reveals *scale* of interest
   - on real data
 
+.bottom[@chsen6: SIMPLEX]
 
 ---
 
@@ -487,7 +617,7 @@ name: mgc
 ---
 name: data
 
-# [Datafication]
+# Datafication
 
 - Images
 	- EM
@@ -501,6 +631,7 @@ name: data
 	- Human
 	- Non-human
 
+
 ---
 
 ## [Images](ttps://github.com/openconnectome/ocp-journal-paper/blob/gh-pages/Results/Tables/Table1/table1_v3.md)
@@ -510,6 +641,7 @@ name: data
 ]
 
 
+.bottom[@jordan: everything not EM/AT is SIMPLEX]
 
 ---
 name:human-graphs
@@ -517,8 +649,10 @@ name:human-graphs
 
 
 .center[
-<iframe width="700" height="500" src="https://docs.google.com/spreadsheets/d/185ApVnlONXB5sOrkxkYv10tR-IFEYLILaHgwFYTX5Sc/edit?usp=sharing" frameborder="0" allowfullscreen></iframe>
+<iframe width="700" height="500" src="https://docs.google.com/spreadsheets/d/1kRdYBgl_LdB6SRdUh6DI3yS6sxVUlHhlaDqYx7blT-Y/edit?usp=sharing" frameborder="0" allowfullscreen></iframe>
 ]
+
+.bottom[@greg: 1st 2,000=GRAPHS, rest=SIMPLEX]
 
 ---
 name:all-graphs
@@ -529,7 +663,7 @@ name:all-graphs
 <iframe width="700" height="500" src="http://openconnecto.me/graph-services/download/" frameborder="0" allowfullscreen></iframe>
 ]
 
-
+.bottom[@disa: GRAPHS]
 
 ---
 name: discovery
@@ -634,76 +768,6 @@ name: cci
 ## CLARITY
 
 
-
-
----
-
-
-## Software
-
-.pull-left[
-- Infrastructure
-  - Hardware
-     - [Local](http://docs.neurodata.io/ndintro/#13)
-     - [AMI](http://docs.neurodata.io/nddocs/ami.html)
-     - AWS Cluster (soon...)
-  - Management
-     - [ndlims](https://github.com/openconnectome/ndlims/) 
-     - [SpatialDB+RamonDB](https://github.com/openconnectome/open-connectome/)
-     - [ndtilecache](https://github.com/openconnectome/ocptilecache)
-  - Analytics
-     - [ndio](http://docs.neurodata.io/nddocs/ndio/) 
-     - [CAJAL](http://docs.neurodata.io/CAJAL/)
-- Store
-  - [Images](http://docs.neurodata.io/ocp-journal-paper/#tab:images)
-  - [Annotations](http://docs.neurodata.io/ndintro/#21)
-  - [Graphs](http://openconnecto.me/graph-services/download/)
-]
-
-.pull-right[
-- Explorer
-  - [Vectors](http://vx.neurodata.io)
-  - [Graphs](http://gx.neurodata.io)
-  - [Images](https://github.com/openconnectome/NeuroDataViz)
-- Pre-process
-  - [2D Chromatic](https://github.com/mkazhdan/DMG)
-  - [3D Chromatic](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/)
-  - [Volume Registration](https://github.com/openconnectome/ndreg/)
-- Parse
-  - [m2g](http://m2g.io/)
-  - [i2g](http://i2g.io/)
-- Infer
-  - Vectors: [Randomer Forest](http://ttomita.github.io/RandomerForest/)
-  - Graphs
-      - [FlashX](http://flashgx.io)
-      - [Optimal Graph Clustering](https://github.com/TangRunze/SBMopti)
-      - [LLG](https://github.com/mketcha/SimplexMDK)
-  - [Shapes](https://github.com/mkazhdan/ShapeSPH)   
-]
-
-
-
----
-template: default
-layout: false
-class:  center
-
-# NeuroData Family
-
-
-.center[
-.small[
-|   |   | |
-| :--- | :--- | :--- |
-| Data | &nbsp;&nbsp;&nbsp;&nbsp; | .purple[Clay Reid, Davi Bock, Jeff Licthman, Bobb Kasthuri, Karl Deisseroth, Raju Tomer, Li Ye, Ed Boyden, Mike Milham, Cameron Craddock, Stephen Smith, Forrest Collman, Kristen Harris, Scott Emmons, Dan Bumbarger, Mitya Chklovskii, Nikhil Bhatla] 
-| Store | | Randal Burns, Eric Perlman, Kunal Lillaney, Priya Manavalan, Alex Eusman 
-| Explore | | .orange[Misha Kazhdan, Alex Baden, Jordan Matelsky, Ivan Kuznetsov]
-| PreProcess | | .y[Mike Miller, Micholas Charon, Kwame Kutten, Greg Kiar, Eric Bridgeford, Greg Hager]
-| Parse | | .green[Will Gray Roncal, Mark Chevillet,  R. Jacob Vogelstein, Guillermo Sapiro, Anish Simhal, Konrad Kording, Eva Dyer]
-| Infer | | .blue[Joshua T. Vogelstein, Carey Priebe, Dan Naiman,  Tyler Tomita, Youngser Park, Cencheng Shen]
-| Graphs | | .black[Da Zheng, Disa Mhembere, Vince Lyzinski, Avanti Athreya, Daniel Sussman, Shangsi Wang, Runze Tang, Minh Tang]
-| Love | | .pink[yummy, family, friends, earth, universe, multiverse?]
-]]
 
 
 
