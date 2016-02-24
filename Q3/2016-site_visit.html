@@ -591,7 +591,7 @@ The estimator designed is shown to be unbiased, and converges to the true reliab
 
 ---
 
-## ndmg: an overview
+## dwi connectomes: an overview
 <br>
 .pull-left[
 ##### We have a one-click scalable pipeline to estimate structural connectomes
@@ -616,7 +616,7 @@ The estimator designed is shown to be unbiased, and converges to the true reliab
 
 ---
 
-## m2g: region mapping
+## dwi connectomes: region mapping
 <br>
 .center[
 <img src="site-visit/m2g_regions.png" alt="regionmap" style="width: 100%; padding-top=60px; padding-left:30px"/>
@@ -624,38 +624,40 @@ The estimator designed is shown to be unbiased, and converges to the true reliab
 
 ---
 
-## m2g: graph generation
+## dwi connectomes: graph generation
 
 <br>
 .center[
-<img src="site-visit/m2g_graphgen.png" alt="graphgen" style="width: 100%; padding-top=30px"/>
+<img src="site-visit/m2g_graphgen.png" alt="graphgen" style="width: 90%"/>
 ]
 ---
 
-## m2g: reliability
+## connectomes: assessment
 
-.middle[
-.center[
-<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/m2g_trt.png" alt="m2g is reliable" style="width: 80%"/>
+- We evaluate the discriminability of our derivatives by computing a mean normalized rank (MNR) score [0, 1].  
+- We achieve excellent scores [KKI42:  0.989, SWU: 0.986]
+.pull-left[
+<br>
+
+<img src="site-visit/desikan_trt.jpeg" alt="desikan" style="width: 80%; padding-top=30px"/>
 ]
-]
+.pull-right[
+<br>
 
----
-
-## m2g: take aways
-
-
----
-
-## m2g: best atlas - reliability in practice
-
-.center[
-<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/OHBM2016-fig1.png" alt="m2g is reliable" style="width: 80%"/>
+<img src="https://raw.githubusercontent.com/openconnectome/m2g/dipy-dev/docs/images/OHBM2016-fig1.png" alt="m2g is reliable" style="width: 100%"/>
 ]
 
 
+---
+
+## dwi connectomes: summary
+<br>
+#### We have a novel robust, reliable pipeline to estimate brain graphs
+#### Pipeline has been used to generate 100,000 graphs across many different atlases with more to come
+#### Code and results are publicly available (e.g., `pip install ndmg`)
 
 ---
+
 name: cci
 
 ## [semipar-cci](http://www.cis.jhu.edu/~parky/MRN/ceplm.html)
