@@ -92,7 +92,9 @@ Below, we provide a summary of technical progress for each task. This includes c
 
 ### Databases
 
-- **Spatial Database**: In the project one of the workload is to run computer vision algorithms at scale to detect cell bodies in the data. This workload can be split into three sections to provide a better understanding of the problem. First section, reading sub volumes of data from the spatial database using multiple readers. The NDStore backend is scalable and is capable of upto 9GB/sec read throughput one a single node running MySQL. Usually, we run multiple nodes providing much higher read throughput. Second section, to detect cell bodies in the data using a large compute cluster. We will talk more about this in the next section. Third section, to write the detected cell bodies as annotation back to the database. We can achieve upto 1.5GB/sec write throughput with 16 threads on a single nodes running MySQL. With high read and write throughput we avoid bottlenecks in the first and third section for large scale runs.
+#### Spatial Database
+
+ In the project one of the workload is to run computer vision algorithms at scale to detect cell bodies in the data. This workload can be split into three sections to provide a better understanding of the problem. First section, reading sub volumes of data from the spatial database using multiple readers. The NDStore backend is scalable and is capable of upto 9GB/sec read throughput one a single node running MySQL. Usually, we run multiple nodes providing much higher read throughput. Second section, to detect cell bodies in the data using a large compute cluster. We will talk more about this in the next section. Third section, to write the detected cell bodies as annotation back to the database. We can achieve upto 1.5GB/sec write throughput with 16 threads on a single nodes running MySQL. With high read and write throughput we avoid bottlenecks in the first and third section for large scale runs.
 
 You can reproduce our Read/Write throughput benchmarks using the following steps:
 <ul>
@@ -109,23 +111,28 @@ You can reproduce our Tilecache benchmarks using the following steps:
 </p>
 
 
-- **Geometric Object Database**: The vast majority of the imaging data we collect is 3-dimensional data imaged in 2-dimensional slices. Analysis is done on each slice, creating a series of 2-dimensional analysis overlays which we call “annotations”. These annotations can be skeleton annotations, where a centroid or a particularly interesting point is labeled and multiple points are connected, or paint annotations, where cells or intracellular components are labeled by “coloring”. There is high demand from the neuroscience community for 3D visualization of these annotations, both for quality control and analysis purposes. 
+#### Geometric Object Database: The vast majority of the imaging data we collect is 3-dimensional data imaged in 2-dimensional slices. Analysis is done on each slice, creating a series of 2-dimensional analysis overlays which we call “annotations”. These annotations can be skeleton annotations, where a centroid or a particularly interesting point is labeled and multiple points are connected, or paint annotations, where cells or intracellular components are labeled by “coloring”. There is high demand from the neuroscience community for 3D visualization of these annotations, both for quality control and analysis purposes. 
 
 In the course of investigating 3D visualization of annotations, it became clear that we needed to generate the 3D representation of the annotation. Initially, we hoped to generate 3D representations on-the-fly. But, after generating different 3D representations, we believe a mesh or line segment based representation will be more compact than the 2D representation we currently store. To investigate further, we are building a geometric object database that stores mesh or segment representations of 3D objects using the same spatial layout as ND Store. We have built a prototype of the database and are currently in the process of accelerating the code used to generate the 3D representation of an annotation and insert it. The process of generating these representations is more compute-intensive than the process of inserting images into ND Store. Thus, we have been utilizing new programming technologies, such as the Go programming language, to leverage parallelism from the start and optimize memory usage. We plan to develop a prototype of the database and run comparisons between the 3D representations in the geometric object database and the image-based representations in ND store. 
 
 
--  **Graphs with Rich Attributes Database**: We develop a searchable database of biologically derived graphs that contain a rich spectrum of metadata-like attributes that are commonly associated with common exploratory graph analysis techniques. We partition the database by genus; we currently store 7 different genera, totalling nearly 30 non-human graphs and another 700 human graphs. 
+#### Graphs with Rich Attributes Database
+We develop a searchable database of biologically derived graphs that contain a rich spectrum of metadata-like attributes that are commonly associated with common exploratory graph analysis techniques. We partition the database by genus; we currently store 7 different genera, totalling nearly 30 non-human graphs and another 700 human graphs. 
 Our database is accessible via scalable web-services at [http://www.openconnecto.me/graph-services/download/](http://www.openconnecto.me/graph-services/download/). We provide mechanisms to downsample, rescale and convert graph format to nearly a dozen commonly used graph formats all with a single click. We accelerate commonly used functionality like downsampling and format conversions using optimized C++ bindings.
 We develop highly scalable backend capabilities using the lightweight task queuing framework, RabbitMQ that has asynchronous callback jobs submitted to it directly through the Python interface, Celery.
 
 ### Utilities
 
-- **Content Distribution Network**: 
-
-- **Laboratory Information Management System**: We use a document-based (schemaless) database built in MongoDB to store dataset metadata. These data can be accessed and manipulated via a public-facing RESTful API, provided through the Meteor JavaScript platform. NeuroData LIMS (ndlims) can attach documents — freeform JSON trees — to arbitrary objects for retrieval. That is, we have attached individual document records to each token-channel pair as defined in ndstore, with the intention of allowing document-attachment to RAMON, locations in ndviz, features in an MR scan, or other objects in the future.
+#### Content Distribution Network
 
 
-- **Python API**:  We provide ndio, a publicly accessible Python API, to aid in interactions with ndstore, ndlims, grute, and other NeuroData services. ndio is available on the [Python Package Index](https://pypi.python.org/pypi/ndio/), with a stable version 1.0 planned for release at the end of March 2016.  This API enables big data neuroscience for researchers from a wide-variety of backgrounds and experience levels.  RESTful queries and database details are handled by the API, which allows users to complete basic queries, gets and puts with only a few lines of code.
+#### Laboratory Information Management System
+We use a document-based (schemaless) database built in MongoDB to store dataset metadata. These data can be accessed and manipulated via a public-facing RESTful API, provided through the Meteor JavaScript platform. NeuroData LIMS (ndlims) can attach documents — freeform JSON trees — to arbitrary objects for retrieval. That is, we have attached individual document records to each token-channel pair as defined in ndstore, with the intention of allowing document-attachment to RAMON, locations in ndviz, features in an MR scan, or other objects in the future.
+
+
+#### Python API
+
+We provide ndio, a publicly accessible Python API, to aid in interactions with ndstore, ndlims, grute, and other NeuroData services. ndio is available on the [Python Package Index](https://pypi.python.org/pypi/ndio/), with a stable version 1.0 planned for release at the end of March 2016.  This API enables big data neuroscience for researchers from a wide-variety of backgrounds and experience levels.  RESTful queries and database details are handled by the API, which allows users to complete basic queries, gets and puts with only a few lines of code.
 
 
 
@@ -165,7 +172,8 @@ We provide a web application using the R Shiny package for real-time exploratory
 
 ### Matrices
 
--**Matrix-Explorer:
+#### Matrix-Explorer
+
 We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset, the user has the following capabilities:
 - Visualizing the data in a table format with column reordering, sorting, and searching
 - Selecting a subset of the data for further analysis
@@ -186,9 +194,12 @@ Figure: PCA embedding and k-means clustering of Iris R dataset with correspondin
 
 ## Parse
 
+
 ### Image Processing
 
-- **2D Stitching Artifact Removal**: We leverage the Distributed MultiGrid Poisson solver [KSH](http://www.cs.jhu.edu/~misha/MyPapers/ToG10.pdf) to address 2D image stitching artefacts.  The code is open source and available on github with tutorials [here](https://github.com/mkazhdan/DMG).
+#### 2D Stitching Artifact Removal
+
+We leverage the Distributed MultiGrid Poisson solver [KSH](http://www.cs.jhu.edu/~misha/MyPapers/ToG10.pdf) to address 2D image stitching artefacts.  The code is open source and available on github with tutorials [here](https://github.com/mkazhdan/DMG).
 
 <div class="fig-container" id="fig:i2D">
 <img src="http://docs.neurodata.io/ndintro/images/A_full_section_2402.jpg" style="height: 300px;"/>
@@ -197,7 +208,9 @@ Figure: Before (left) and After (right) processing a plane of data to correct fo
 </div>
 
 
-- **3D Histogram Normalization**:  We leverage Gradient Domain Fusion [KLR](http://arxiv.org/pdf/1506.02079v1.pdf) to address 3D image stitching artefacts.  The code is open source and available with tutorials [here](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/).
+#### 3D Histogram Normalization
+
+ We leverage Gradient Domain Fusion [KLR](http://arxiv.org/pdf/1506.02079v1.pdf) to address 3D image stitching artefacts.  The code is open source and available with tutorials [here](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/).
 
 <div class="fig-container" id="fig:i2D">
 <img src="http://docs.neurodata.io/ndintro/images/GDF2.png" style="height: 300px;"/>
@@ -205,7 +218,9 @@ Figure: Before (left) and After (right) processing a cube of data to correct for
 </div>
 
 
-- **Volume Registration**: The most efficient way to annotate image volumes is to register them to a standard atlas. 
+#### Volume Registration
+
+The most efficient way to annotate image volumes is to register them to a standard atlas. 
 Thus an image registration pipeline to do this was developed.  The registration pipeline consisted of rigid, affine and then deformable registration.  Deformable  registration was done by the Large Deformation Diffeomorphic Metric Mapping Algorithm (LDDMM), an algorithm which computes smooth invertible transform between image volumes. NeuroData Registration (ndreg), a python module to create LDDMM-based registration pipelines was developed. The module can be downloaded at https://github.com/neurodata/ndreg.
 
 ### Object Detection
@@ -218,11 +233,21 @@ rich  library  of  techniques  is  available  to  aid  in  neuroscience  inferen
 
 ### Graph Estimation
 
-- **functional MRI**: Utilizing CPAC (Configurable Pipeline for the Analysis of Connectomes), we have estimated human connectomes from structural and functional MR images. Using Amazon EC2 instances, we were able to process and extract timeseries data for over 3,000 scans using 64 pipelines, which we then analyzed using our open source software to produce 210,000 graphs. We have made all graphs publicly available http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html, and are in the process of analyzing optimal pipeline strategies to extract connectomes that are most easily discriminable by subject. 
-- **diffusion MRI**: We have developed a pipeline that leverages existing processing tools in the community and estimates human connectomes from structural and diffusion MR images. Our open-source scalable pipeline, ndmg, found at http://m2g.io, abstracts hyper-parameter selection from users and estimates connectomes reliably for downstream inference tasks.
+#### functional MRI
+
+
+
+Utilizing CPAC (Configurable Pipeline for the Analysis of Connectomes), we have estimated human connectomes from structural and functional MR images. Using Amazon EC2 instances, we were able to process and extract timeseries data for over 3,000 scans using 64 pipelines, which we then analyzed using our open source software to produce 210,000 graphs. We have made all graphs publicly available http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html, and are in the process of analyzing optimal pipeline strategies to extract connectomes that are most easily discriminable by subject. 
+
+#### diffusion MRI
+
+We have developed a pipeline that leverages existing processing tools in the community and estimates human connectomes from structural and diffusion MR images. Our open-source scalable pipeline, ndmg, found at http://m2g.io, abstracts hyper-parameter selection from users and estimates connectomes reliably for downstream inference tasks.
+
 The ndmg pipeline is able to be run on both standalone personal computers with minimal complexity for installation, as well as scale to be deployed across large computational clusters. Tutorials exist which help users install the software, prepare their data, generate graphs, and analyze their data. The ndmg pipeline and associated resources significantly lower the barrier for entry to human connectome estimation and analysis.   
 
-- **electron microscopy**: Reconstructing a map of neuronal connectivity is a critical challenge in contemporary neuroscience. Recent advances in high-throughput serial section electron microscopy (EM) have produced massive 3D image volumes of nanoscale brain tissue for the first time. The resolution of EM allows for individual neurons and their synaptic connections to be directly observed. Recovering neuronal networks by manually tracing each neuronal process at this scale is unmanageable, and therefore researchers are developing automated image processing modules. Thus far, state-of-the-art algorithms focus only on the solution to a particular task (e.g., neuron segmentation or synapse identification).
+#### electron microscopy
+
+Reconstructing a map of neuronal connectivity is a critical challenge in contemporary neuroscience. Recent advances in high-throughput serial section electron microscopy (EM) have produced massive 3D image volumes of nanoscale brain tissue for the first time. The resolution of EM allows for individual neurons and their synaptic connections to be directly observed. Recovering neuronal networks by manually tracing each neuronal process at this scale is unmanageable, and therefore researchers are developing automated image processing modules. Thus far, state-of-the-art algorithms focus only on the solution to a particular task (e.g., neuron segmentation or synapse identification).
                         
 We built the first known fully automated images-to-graphs pipeline (i.e., a pipeline that begins with an imaged volume of neural tissue and produces a brain graph without any human interaction). To evaluate overall performance and select the best parameters and methods, we also develop a metric to assess the quality of the output graphs. We evaluate a set of algorithms and parameters, searching possible operating points to identify the best available brain graph for our assessment metric. Finally, we deploy a reference end-to-end version of the pipeline on a large, publicly available data set. This provides a baseline result and framework for community analysis and future algorithm development and testing. All code and data derivatives have been made publicly available toward eventually unlocking new biofidelic computational primitives and understanding of neuropathologies. 
                     
@@ -256,18 +281,26 @@ We implement the following graph algorithms with C++ in FlashGraph and provide R
 
 ### Matrices
 
-- **k-means**:  We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
+#### k-means
+
+ We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
 
 Fig: The per iteration performance of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 
 Fig: The peak memory usage of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 
-- **gmm**: We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our preliminary result shows that our R implementation outperforms the implementation in Spark MLlib.
+#### gmm
+
+We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our preliminary result shows that our R implementation outperforms the implementation in Spark MLlib.
 R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
-- **other stuff**: Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashR with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashR and scale to very large dense matrices. Both of their in-memory and out-of-core execution significantly outperforms the implementations in Spark MLlib.
-R code: https://github.com/zheng-da/FlashX/tree/dev-zd/Rpkg/R
-Performance: https://github.com/neurodata/SIMPLEX/blob/gh-pages/Q4/imgs/FlashR.png
-Tutorial of FlashR: https://github.com/zheng-da/FlashX/wiki/FlashR-programming-tutorial
+
+#### other stuff
+
+Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashR with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashR and scale to very large dense matrices. Both of their in-memory and out-of-core execution significantly outperforms the implementations in Spark MLlib.
+
+- R code: https://github.com/zheng-da/FlashX/tree/dev-zd/Rpkg/R
+- Performance: https://github.com/neurodata/SIMPLEX/blob/gh-pages/Q4/imgs/FlashR.png
+- Tutorial of FlashR: https://github.com/zheng-da/FlashX/wiki/FlashR-programming-tutorial
 
 # Statistical Science
 
@@ -366,7 +399,10 @@ Many scientific, government, and corporate groups are collecting and processing 
 
 ## CLARITY
 
-CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.  ![comparison](imgs/comparison.png)
+CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.  
+
+<img src="imgs/comparison.png" style="width: 640px;"/>
+
 
 Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Image-LDDMM and MI-BSpline pipelines when aligning 3 different CLARITY brains to the [Allen Rererence Atlas (ARA)](http://mouse.brain-map.org/static/atlas). Image-LDDMM performed well when aligning CLARITY images to other CLARITY images. [KVC16]
 
