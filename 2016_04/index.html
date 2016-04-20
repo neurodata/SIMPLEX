@@ -297,12 +297,12 @@ We implement the following graph algorithms with C++ in FlashGraph and provide R
  We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
 
 <div class="fig-container" id="fig:k-means-perf">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-perf.png" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/Q4/imgs/k-means-perf.png" style="height: 300px;"/>
 Figure: The per iteration performance of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 </div>
 
 <div class="fig-container" id="fig:k-means-mem">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-mem.png" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/Q4/imgs/k-means-mem.png" style="height: 300px;"/>
 Figure: The peak memory usage of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 
 </div>
@@ -345,12 +345,12 @@ We propose an algorithm to estimate the mean of a collection of graphs. Our meth
 To estimate the mean of a collection of weighted graphs under a low rank random graph model (e.g. Stochastic Blockmodel) when observing contaminated graphs, we propose an estimator which not only inherits robustness from element-wise robust estimators but also has small variance due to application of a rank-reduction procedure. Under appropriate conditions, we prove that our estimator outperforms standard estimators via asymptotic relative efficiency. We illustrate our theory and methods by Monte Carlo simulation studies and experimental results.
 
 <div class="fig-container" id="fig:RobustLLG_est_comp">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/RobustLLG_estimator_comparison.png" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/Q4/imgs/RobustLLG_estimator_comparison.png" style="height: 300px;"/>
 Figure: Comparison of Estimators. Our estimator wins according to asymptotic mean squared error by taking advantage of robust estimators and rank-reduction procedure.
 </div>
 
 <div class="fig-container" id="fig:RobustLLG_cluster">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/RobustLLG_cluster.png" style="height: 500px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/Q4/imgs/RobustLLG_cluster.png" style="height: 500px;"/>
 Figure: Plots for embedded latent positions under different circumstance. Without conatmination, out estimator (yellow) is slightly worse than element-wise MLE (green) for estimating the true latent position (black);
 With contamination, out estimator (blue), which degrades slowly, outperforms the element-wise MLE (red).
 </div>
@@ -381,7 +381,7 @@ In his landmark paper on random forests, Leo Breiman derived an upper bound for 
 
 Additionally, we recomputed performance profiles on the benchmark data under random scaling and random affine transformations. The new calculations apply more pronounced scaling factors in order to better demonstrate the effectiveness of passing the data to ranks before fitting RerF. The bottom figure shows that RerF (in green) performs better than RF (in blue) on the untransformed data, but performs worse than RF when the data is affine transformed. Rerf_r (in red), which passes to ranks before fitting RerF, performs better than RF on the affine transformed data.
 
-![](https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Q4_TT.png)
+![](https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/Q4/imgs/Q4_TT.png)
 
 
 
