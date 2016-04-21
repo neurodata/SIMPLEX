@@ -414,6 +414,15 @@ Additionally, we recomputed performance profiles on the benchmark data under ran
 ![](https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Q4_TT.png)
 
 
+The merit of a particular classifier is determined by its probability of making an incorrect prediction, called the misclassification rate. It is widely known that three factors contribute to the misclassificat\
+ion rate. One of these contributions is the intrinsic noise in the data and does not depend on the classifier. The other two contributions stem from the classification procedure, and are the bias and variance o\
+f the classifier. Estimating the bias and variance for RF and RerF under various settings will help to elucidate the underlying forces contributing to overall classifier performance, and will aid in fine-tuning\
+ the design of RerF. While several bias/variance decompositions have been proposed, we adopt that proposed by Kohavi and Wolpert (1996). Using their definitions, we estimated bias and variance of RF and RerF un\
+der various settings.
+
+<div class="fig-container" id="fig:rerfr-bias-variance">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Sparse_parity_bias_variance.png" style="height: 300px;"/>
+
 
 ### Dependence Testing
 
