@@ -192,14 +192,13 @@ We provide a web application using the R Shiny package for real-time exploratory
 
 ### Matrices
 
-
-We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset, the user has the following capabilities:
+We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset (the current release accepts csv, xlsx, and txt files), the user has the following capabilities:
 - Visualizing the data in a table format with column reordering, sorting, and searching
 - Selecting a subset of the data for further analysis
-- Constructing a heatmap and dendrogram for the remaining data
+- Constructing a heatmap and dendrogram for the remaining data. For data with a large number of samples or features the dendrogram option is disabled.
 - Constructing the marginal distributions of the the data feature columns with the option of conditioning on a class column of the user's choosing
 - Using Mahalanobis distance to flag outliers within the data at a certain significance level
-- Constructing the Pearson correlation and distance matrix of the select data
+- Constructing the Pearson correlation and distance matrix of the selected data
 - Visualizing the distribution of the feature columns via a scatter plot, box plot, and violin plot
 - Using PCA or t-SNE to 2D embed the data and visualize it
 - Using k-means to cluster the embedded data into a chosen number of clusters
@@ -210,6 +209,8 @@ The latter 2 features are shown in the figure below:
 <img src="https://raw.githubusercontent.com/neurodata/Matrix-Explorer/master/images/MX_cropped_HR.png" style="height: 300px;"/>
 Figure: PCA embedding and k-means clustering of Iris R dataset with corresponding scree plot
 </div>
+
+The code is open-source and is available [here](https://github.com/neurodata/Matrix-Explorer).
 
 ## Parse
 
@@ -270,6 +271,8 @@ We have developed a pipeline that leverages existing processing tools in the com
 
 The ndmg pipeline is able to be run on both standalone personal computers with minimal complexity for installation, as well as scale to be deployed across large computational clusters. Tutorials exist which help users install the software, prepare their data, generate graphs, and analyze their data. The ndmg pipeline and associated resources significantly lower the barrier for entry to human connectome estimation and analysis.   
 
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/ndmg_graph.png" style="height: 300px;"/>
+
 #### electron microscopy
 
 Reconstructing a map of neuronal connectivity is a critical challenge in contemporary neuroscience. Recent advances in high-throughput serial section electron microscopy (EM) have produced massive 3D image volumes of nanoscale brain tissue for the first time. The resolution of EM allows for individual neurons and their synaptic connections to be directly observed. Recovering neuronal networks by manually tracing each neuronal process at this scale is unmanageable, and therefore researchers are developing automated image processing modules. Thus far, state-of-the-art algorithms focus only on the solution to a particular task (e.g., neuron segmentation or synapse identification).
@@ -327,15 +330,24 @@ Figure: The peak memory usage of k||means, k||means with triangle inequality pru
 
 #### gmm
 
-We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our preliminary result shows that our R implementation outperforms the implementation in Spark MLlib.
+We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our experiment shows that our R implementation outperforms the implementation in Spark MLlib on a large parallel machine.
 R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
 
 #### other stuff
 
 Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashR with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashR and scale to very large dense matrices. Both of their in-memory and out-of-core execution significantly outperforms the implementations in Spark MLlib.
 
+<div class="fig-container" id="fig:flashr-perf">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR.png" style="height: 300px;"/>
+The runtime of FlashR both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
+</div>
+
+<div class="fig-container" id="fig:flashr-mem">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR-mem.png" style="height: 300px;"/>
+The memory consumption of FlashR both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
+</div>
+
 - R code: https://github.com/zheng-da/FlashX/tree/dev-zd/Rpkg/R
-- Performance: https://github.com/neurodata/SIMPLEX/blob/gh-pages/Q4/imgs/FlashR.png
 - Tutorial of FlashR: https://github.com/zheng-da/FlashX/wiki/FlashR-programming-tutorial
 
 # Statistical Science
