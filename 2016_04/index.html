@@ -330,15 +330,24 @@ Figure: The peak memory usage of k||means, k||means with triangle inequality pru
 
 #### gmm
 
-We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our preliminary result shows that our R implementation outperforms the implementation in Spark MLlib.
+We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our experiment shows that our R implementation outperforms the implementation in Spark MLlib on a large parallel machine.
 R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
 
 #### other stuff
 
 Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashR with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashR and scale to very large dense matrices. Both of their in-memory and out-of-core execution significantly outperforms the implementations in Spark MLlib.
 
+<div class="fig-container" id="fig:flashr-perf">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR.png" style="height: 300px;"/>
+The runtime of FlashR both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
+</div>
+
+<div class="fig-container" id="fig:flashr-mem">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR-mem.png" style="height: 300px;"/>
+The memory consumption of FlashR both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
+</div>
+
 - R code: https://github.com/zheng-da/FlashX/tree/dev-zd/Rpkg/R
-- Performance: https://github.com/neurodata/SIMPLEX/blob/gh-pages/Q4/imgs/FlashR.png
 - Tutorial of FlashR: https://github.com/zheng-da/FlashX/wiki/FlashR-programming-tutorial
 
 # Statistical Science
