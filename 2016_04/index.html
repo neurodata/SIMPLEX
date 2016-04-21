@@ -193,13 +193,13 @@ We provide a web application using the R Shiny package for real-time exploratory
 ### Matrices
 
 
-We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset, the user has the following capabilities:
+We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset (the current release accepts csv, xlsx, and txt files), the user has the following capabilities:
 - Visualizing the data in a table format with column reordering, sorting, and searching
 - Selecting a subset of the data for further analysis
-- Constructing a heatmap and dendrogram for the remaining data
+- Constructing a heatmap and dendrogram for the remaining data. For data with a large number of samples or features the dendrogram option is disabled.
 - Constructing the marginal distributions of the the data feature columns with the option of conditioning on a class column of the user's choosing
 - Using Mahalanobis distance to flag outliers within the data at a certain significance level
-- Constructing the Pearson correlation and distance matrix of the select data
+- Constructing the Pearson correlation and distance matrix of the selected data
 - Visualizing the distribution of the feature columns via a scatter plot, box plot, and violin plot
 - Using PCA or t-SNE to 2D embed the data and visualize it
 - Using k-means to cluster the embedded data into a chosen number of clusters
