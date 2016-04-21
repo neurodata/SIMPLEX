@@ -430,7 +430,7 @@ Many scientific, government, and corporate groups are collecting and processing 
 
 CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.
 
-<img src="imgs/comparison.png" style="width: 640px;"/>
+<img src="/SIMPLEX/figs/imgs/comparison.png" style="width: 640px;"/>
 
 
 Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Image-LDDMM and MI-BSpline pipelines when aligning 3 different CLARITY brains to the [Allen Rererence Atlas (ARA)](http://mouse.brain-map.org/static/atlas). Image-LDDMM performed well when aligning CLARITY images to other CLARITY images. [KVC16]
