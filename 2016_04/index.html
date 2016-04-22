@@ -341,12 +341,12 @@ We implement the following graph algorithms with C++ in FlashGraph and provide R
  We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
 
 <div class="fig-container" id="fig:k-means-perf">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-perf.png" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/k-means-perf.png" style="height: 300px;"/>
 Figure: The per iteration performance of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 </div>
 
 <div class="fig-container" id="fig:k-means-mem">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-mem.png" style="height: 300px;"/>
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/k-means-mem.png" style="height: 300px;"/>
 Figure: The peak memory usage of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 
 </div>
