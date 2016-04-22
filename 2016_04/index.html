@@ -129,10 +129,10 @@ You can reproduce our Tilecache benchmarks using the following steps:
 
 NDBlaze is a memory based buffer using Redis and Spark that accelerates random writes to a spatial database. It improves the user-perceived write throughput by up to 38 times and the I/O throughput to disk by 3.3 times. All interfaces to this system are RESTful web services and they provide a consistent view of the data to the user.
 
-![](figs/throughput_perceived.png)
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/master/figs/throughput_perceived.png" style="height: 300px;"/>
 Figure above shows the write throughput of the NDBlaze as a function of data blob size for different number of threads. We refer to these results as the perceived write throughput, because the user witnesses these data completion rates for I/O bursts. We achieve a peak write throughput of 108GB/sec for 128 threads and 1GB data blob size.
 
-![](figs/throughput_real.png)
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/master/figs/throughput_real.png" style="height: 300px;"/>
 Beyond burst performance, NDBlaze improves the sustained I/O performance to the spatial database, because it makes I/O more sequential. Figure above shows the write throughput to NDBlaze from the write queue. For this benchmark, we pre-fill the queue with 16GB of merged and spatial index sorted data, which is then written by celery workers. We experiment over multiple celery workers ranging from 1 to 16 and receive a peak at 8 workers of 9.5GB/sec which is about 3.3 times faster then 2.8GB/sec peak for random writes with 32 workers.
 
 
