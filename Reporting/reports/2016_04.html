@@ -24,10 +24,10 @@
 
 	<!-- bower:css -->
 	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
-	<link rel="stylesheet" href="../fonts/gentona/gentona.css">
-	<link rel="stylesheet" href="../fonts/titling-gothic/titling-gothic.css">
-	<link rel="stylesheet" href="../fonts/quadon/quadon.css">
-	<link rel="stylesheet" href="../fonts/arnhem/arnhem.css">
+	<link rel="stylesheet" href="../../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../../fonts/arnhem/arnhem.css">
 	<!-- endbower -->
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -129,10 +129,10 @@ You can reproduce our Tilecache benchmarks using the following steps:
 
 NDBlaze is a memory based buffer using Redis and Spark that accelerates random writes to a spatial database. It improves the user-perceived write throughput by up to 38 times and the I/O throughput to disk by 3.3 times. All interfaces to this system are RESTful web services and they provide a consistent view of the data to the user.
 
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/master/figs/throughput_perceived.png" style="height: 300px;"/>
+<img src="../figs/throughput_perceived.png" style="height: 300px;"/>
 Figure above shows the write throughput of the NDBlaze as a function of data blob size for different number of threads. We refer to these results as the perceived write throughput, because the user witnesses these data completion rates for I/O bursts. We achieve a peak write throughput of 108GB/sec for 128 threads and 1GB data blob size.
 
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/master/figs/throughput_real.png" style="height: 300px;"/>
+<img src="../figs/throughput_real.png" style="height: 300px;"/>
 Beyond burst performance, NDBlaze improves the sustained I/O performance to the spatial database, because it makes I/O more sequential. Figure above shows the write throughput to NDBlaze from the write queue. For this benchmark, we pre-fill the queue with 16GB of merged and spatial index sorted data, which is then written by celery workers. We experiment over multiple celery workers ranging from 1 to 16 and receive a peak at 8 workers of 9.5GB/sec which is about 3.3 times faster then 2.8GB/sec peak for random writes with 32 workers.
 
 
@@ -174,14 +174,14 @@ We built an open-source Web application, NeuroDataViz, that allows users to load
 Recently, we rewrote the NeuroDataViz frontend to use WebGL to render tiles instead of displaying them as static images. Using WebGL means we can take advantage of the power of the users graphics card (even mobile phones have very powerful graphics processors integrated into their SoC, or system-on-a-chip) to enable dynamic image processing and image effects. For example, our blend mode is now faster and more accurate, since we can define our own blending functions (e.g. additive blending allows you to display two datasets overlaid in two different colors, and easily see overlap by looking for a new, third color). We also support intensity remapping (in effect allowing the user to adjust brightness and contrast) as well as gamma correction. Finally, we support dynamic false coloring of each individual layer. Not only can the user change the color of a layer on demand, but we now deliver 8-bit images, instead of 32-bit colored images, a 4-fold decrease in bandwidth usage. These options are available for use on all our public NeuroDataViz projects and are also shown in the figure below.
 
 <div class="fig-container" id="fig:ndviz:imgproc">
-<img src="http://docs.neurodata.io/SIMPLEX/figs/ndviz/ndv-weiler-multispectral.png" style="height: 500px;"/>
+<img src="../figs/ndviz/ndv-weiler-multispectral.png" style="height: 500px;"/>
 </div>
 Figure: Image processing controls on a multi-spectral dataset in NeuroDataViz.
 
 We also added a Maximum Intensity Projection service to NDStore and backended it in NeuroDataViz. Maximum intensity projection allows the user to visualize a 3D stack of images in a 2D plane with more context than viewing slice-by-slice. The figure below shows a maximum intensity projected Array Tomography dataset from our synaptomes collaboration. More datasets are available at http://synaptomes.neurodata.io/ndv/.
 
 <div class="fig-container" id="fig:ndviz:maxproj">
-<img src="http://docs.neurodata.io/SIMPLEX/figs/ndviz/maxprojectionservice.png" style="height: 500px;"/>
+<img src="../figs/ndviz/maxprojectionservice.png" style="height: 500px;"/>
 </div>
 Figure: Maximum intensity projection of an Array Tomography dataset in NeuroDataViz.
 
@@ -263,8 +263,8 @@ The code is open-source and is available [here](https://github.com/neurodata/Mat
 We leverage the Distributed MultiGrid Poisson solver [KSH](http://www.cs.jhu.edu/~misha/MyPapers/ToG10.pdf) to address 2D image stitching artefacts.  The code is open source and available on github with tutorials [here](https://github.com/mkazhdan/DMG).
 
 <div class="fig-container" id="fig:i2D">
-<img src="http://docs.neurodata.io/ndintro/images/A_full_section_2402.jpg" style="height: 300px;"/>
-<img src="http://docs.neurodata.io/ndintro/images/D_dmg_full_section_2402.jpg" style="height: 300px;"/>
+<img src="http://docs.neurodata.io/ndintro/images/A_full_section_2402.jpg" style="width: 310px;"/>
+<img src="http://docs.neurodata.io/ndintro/images/D_dmg_full_section_2402.jpg" style="width: 310px;"/>
 Figure: Before (left) and After (right) processing a plane of data to correct for 2D histogram effects.
 </div>
 
@@ -308,7 +308,7 @@ We have developed a pipeline that leverages existing processing tools in the com
 
 The ndmg pipeline is able to be run on both standalone personal computers with minimal complexity for installation, as well as scale to be deployed across large computational clusters. Tutorials exist which help users install the software, prepare their data, generate graphs, and analyze their data. The ndmg pipeline and associated resources significantly lower the barrier for entry to human connectome estimation and analysis.
 
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/ndmg_graph.png" style="height: 300px;"/>
+<img src="../figs/ndmg_graph.png" style="height: 300px;"/>
 
 #### electron microscopy
 
@@ -355,12 +355,12 @@ We implement the following graph algorithms with C++ in FlashGraph and provide R
  We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
 
 <div class="fig-container" id="fig:k-means-perf">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/k-means-perf.png" style="height: 300px;"/>
+<img src="../figs/k-means-perf.png" style="height: 300px;"/>
 Figure: The per iteration performance of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 </div>
 
 <div class="fig-container" id="fig:k-means-mem">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/k-means-mem.png" style="height: 300px;"/>
+<img src="../figs/k-means-mem.png" style="height: 300px;"/>
 Figure: The peak memory usage of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
 
 </div>
@@ -385,12 +385,12 @@ R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
 Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashMatrix with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashMatrix and scale to very large dense matrices. The experiments below compare the FlashMatrix implementations with the ones in Spark MLlib. The in-memory and out-of-core execution of these applications in FlashMatrix significantly outperforms the implementations in Spark MLlib, even though Spark MLlib keeps all data in memory. In addition, the out-of-core execution of FlashMatrix consumes little memory while achieving performance comparable to the in-memory execution of FlashMatrix.
 
 <div class="fig-container" id="fig:flashr-perf">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR.png" style="height: 300px;"/>
+<img src="../figs/FlashR.png" style="height: 300px;"/>
 The runtime of FlashMatrix both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
 </div>
 
 <div class="fig-container" id="fig:flashr-mem">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/FlashR-mem.png" style="height: 300px;"/>
+<img src="../figs/FlashR-mem.png" style="height: 300px;"/>
 The memory consumption of FlashMatrix both in memory (IM) and on SSDs (EM) vs. Spark MLlib on a dataset with one billion data points.
 </div>
 
@@ -431,12 +431,12 @@ Figure: Comparison of mean squared error between Abar (red) and Phat (blue) for 
 To estimate the mean of a collection of weighted graphs under a low rank random graph model (e.g. Stochastic Blockmodel) when observing contaminated graphs, we propose an estimator which not only inherits robustness from element-wise robust estimators but also has small variance due to application of a rank-reduction procedure. Under appropriate conditions, we prove that our estimator outperforms standard estimators via asymptotic relative efficiency. We illustrate our theory and methods by Monte Carlo simulation studies and experimental results.
 
 <div class="fig-container" id="fig:RobustLLG_est_comp">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/RobustLLG_estimator_comparison.png" style="height: 300px;"/>
+<img src="../figs/RobustLLG_estimator_comparison.png" style="height: 300px;"/>
 Figure: Comparison of Estimators. Our estimator wins according to asymptotic mean squared error by taking advantage of robust estimators and rank-reduction procedure.
 </div>
 
 <div class="fig-container" id="fig:RobustLLG_cluster">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/imgs/RobustLLG_cluster.png" style="height: 500px;"/>
+<img src="../figs/RobustLLG_cluster.png" style="height: 500px;"/>
 Figure: Plots for embedded latent positions under different circumstance. Without conatmination, out estimator (yellow) is slightly worse than element-wise MLE (green) for estimating the true latent position (black);
 With contamination, out estimator (blue), which degrades slowly, outperforms the element-wise MLE (red).
 </div>
@@ -468,7 +468,7 @@ In his landmark paper on random forests, Leo Breiman derived an upper bound for 
 
 Additionally, we recomputed performance profiles on the benchmark data under random scaling and random affine transformations. The new calculations apply more pronounced scaling factors in order to better demonstrate the effectiveness of passing the data to ranks before fitting RerF. The bottom figure shows that RerF (in green) performs better than RF (in blue) on the untransformed data, but performs worse than RF when the data is affine transformed. Rerf_r (in red), which passes to ranks before fitting RerF, performs better than RF on the affine transformed data.
 
-![](https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Q4_TT.png)
+![](../figs/Q4_TT.png)
 
 
 The merit of a particular classifier is determined by its probability of making an incorrect prediction, called the misclassification rate. It is widely known that three factors contribute to the misclassificat\
@@ -478,7 +478,7 @@ f the classifier. Estimating the bias and variance for RF and RerF under various
 der various settings.
 
 <div class="fig-container" id="fig:rerfr-bias-variance">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Sparse_parity_bias_variance.png" style="height: 300px;"/>
+<img src="../figs/Sparse_parity_bias_variance.png" style="height: 300px;"/>
 </div>
 
 ### Dependence Testing
@@ -520,7 +520,7 @@ Many scientific, government, and corporate groups are collecting and processing 
 
 CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.
 
-<img src="imgs/comparison.png" style="width: 640px;"/>
+<img src="../figs/comparison.png" style="width: 640px;"/>
 
 
 Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Image-LDDMM and MI-BSpline pipelines when aligning 3 different CLARITY brains to the [Allen Rererence Atlas (ARA)](http://mouse.brain-map.org/static/atlas). Image-LDDMM performed well when aligning CLARITY images to other CLARITY images. [KVC16]
@@ -550,7 +550,7 @@ Using the ndmg and CPAC pipelines, both structural and functional connectomes ha
 We apply our methodology of discriminability to fMRI processing. In particular, we processed 12 test-retest fMRI data sets using 64 processing pipelines. We then compute discriminability estimates of processed data sets. Based on the results, we claim CC200 is a better atlas compared to HOX, AAL and DES. In the meantime, we find that global signal regression and NFF significantly improve discriminability. No scrubbing and FSL is slightly better than scrubbing and ANTS. Furthermore, we discovered that using rank graphs is more discriminable than raw correlation graphs. We are going to further investigate processing pipeline for DTI data sets and compare discriminability of DTI and fMRI.
 
 <div class="fig-container" id="fig:optimal-pipeline">
-<img src="imgs/64_pipelines_raw.png" style="height: 300px;"/>
+<img src="../figs/64_pipelines_raw.png" style="height: 300px;"/>
 
 Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways are plotted. BNU1, BNU2, DC1, IACAS, IBATRT, IPCAS, JHNU, NYU1, SWU1, UM, UWM and XHCUMS are processed by
 64 pipelines and discriminability are computed. Colors of points indicate data set; sizes of points are proportional to the number of samples of data set. Black dots represent mean discriminability across 12 data sets. CFXXG pipeline has the best mean discriminability across data sets.
@@ -570,7 +570,7 @@ With the aid of the Python API ndio, we are able to access ndstore services prog
 Exploratory statistical analysis is being conducted on Synaptome data sets using the R language and enviroment for statistical computing and graphics. The goal is to discover synapse taxonomy for synapse level neuroscience.
 
 <div class="fig-container" id="fig:gababr-reg">
-<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Fig_gababr_reg.png" style="height: 300px;"/>
+<img src="../figs/Fig_gababr_reg.png" style="height: 300px;"/>
 
 Figure: Pair-wise regressions involving GABA<sub>B</sub>R.
 </div>
