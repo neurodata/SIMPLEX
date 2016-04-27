@@ -264,8 +264,7 @@ Reconstructing a map of neuronal connectivity is a critical challenge in contemp
 
 We built the first known fully automated images-to-graphs pipeline (i.e., a pipeline that begins with an imaged volume of neural tissue and produces a brain graph without any human interaction). To evaluate overall performance and select the best parameters and methods, we also develop a metric to assess the quality of the output graphs. We evaluate a set of algorithms and parameters, searching possible operating points to identify the best available brain graph for our assessment metric. Finally, we deploy a reference end-to-end version of the pipeline on a large, publicly available data set. This provides a baseline result and framework for community analysis and future algorithm development and testing. All code and data derivatives have been made publicly available toward eventually unlocking new biofidelic computational primitives and understanding of neuropathologies.
 
-
-
+Additionally we have released code to programmatically retrieve graphs (leveraging our RAMON data standard) as both part of ndparse and as open source Jupyter Notebooks (e.g., https://github.com/neurodata/kasthuri2015/blob/master/claims/claim9_make_graph.ipynb).
 
 
 ## Analyze
@@ -439,7 +438,7 @@ Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Im
 
 ## X-Ray Microscopy
 
-We provide novel methods to accurately detect cell bodies and blood vessels in an emerging modality called X-ray micro-tomography.  We show that this produces highly accurate reconstructions without requiring slicing, tissue damage or subsequent reconstruction steps.  This allows for a large-scale analysis of cell body size and distribution and lays the ground-work for the collection and analysis of much larger volumes in the near future.  Publication expected for submission April 2016.
+We provide novel methods to accurately detect cell bodies and blood vessels in an emerging modality called X-ray micro-tomography.  We show that this produces highly accurate reconstructions without requiring slicing, tissue damage or subsequent reconstruction steps.  This allows for a large-scale analysis of cell body size, distribution, and blood vessel segmentation.  This work lays the ground-work for the collection and analysis of much larger volumes in the near future.  Publication expected for submission May 2016, and a draft is currently available on the arXiv at: http://arxiv.org/pdf/1604.03629.pdf
 
 
 ## Multimodal Magnetic Resonance Imaging
@@ -449,8 +448,6 @@ Using the ndmg and CPAC pipelines, both structural and functional connectomes ha
 
 
 # Discovery
-
-
 
 
 ## Optimal Pipeline
