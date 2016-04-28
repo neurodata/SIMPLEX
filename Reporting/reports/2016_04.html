@@ -88,9 +88,10 @@ We have worked on four different tasks, as summarized below:
     4. Matrices
 
 2. *datafication*
-    1. Images
-    2. Shapes
-    3. Graphs
+    1. Electron Microscopy
+    1. Light Microscopy
+    2. X-Ray Microscopy
+    2. Magnetic Resonance 
 
 4. *discovery*
     1. Optimal Pipelines
@@ -509,14 +510,15 @@ Many scientific, government, and corporate groups are collecting and processing 
 | <a href='http://www.nature.com/nature/journal/v520/n7549/abs/nature14297.html'>Bock et al. Nature (2011)</a> | 1 | EM | M. musculus | (9 &times; 4 &times; 45) | (135424 &times; 119808 &times; 1239) | 1 | 1 | 20102 | <a href=’http://viz.neurodata.io/dataview/bock11’>bock11</a> |
 | <a href='http://www.nature.com/articles/sdata201446'>Weiler et al. Scientific Data (2014)</a> | 12 | AT | M. musculus | (100 &times; 100 &times; 70) | Various | 288 | 1 | 184 | <a href=’http://viz.neurodata.io/dataview/weiler14’>weiler14</a> |
 | flycol | 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (2000 &times; 2000 &times; 6240) | 1 | 1 | 24 | TBA |
-| <a href='http://www.nature.com/nmeth/journal/v10/n5/full/nmeth.2434.html'>Ahrens et al. Nature Methods (2013)</a> | 1 | Ophys | D. rerio | (650 &times; 650 &times; 5000; 0.8) | (2048 &times; 1172 &times; 30) | 1 | 100 | 7 | TBA |
 | <a href='http://www.cell.com/cell/abstract/S0092-8674(15)00824-7'>Kasthuri et al. Cell (2015)</a>| 4 | EM | M. musculus | Various| Various | 4 | 1 | 2602 | <a href=’http://viz.neurodata.io/dataview/mouseS1’>kasthuri15</a> |
 | <a href='http://www.nature.com/articles/sdata201546'>Harris et al. Scientific Data (2015)</a> | 3 | EM | R. rattus | Various | Various | 3 | 1 | 23 | <a href=’http://viz.neurodata.io/dataview/kharris15’>kharris15</a> |
 | <a href='http://www.wormatlas.org/ver1/MoW_built0.92/toc.html'>Worm Atlas</a> | 3 | EM | C. elegans | Various | Various | 6 | 1 | 2333 | TBA |
 | <a href='http://www.nature.com/nature/journal/v500/n7461/full/nature12450.html'>Takemura et al. Nature (2013)</a>| 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (12000 &times; 12000 &times; 1299) | 1 | 1 | 187 | <a href=’http://viz.neurodata.io/dataview/takemura13’>takemura13</a> |
 
 
-## CLARITY
+## Light Microscopy
+
+### CLARITY
 
 CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.
 
@@ -534,7 +536,7 @@ We provide novel methods to accurately detect cell bodies and blood vessels in a
 .r[@wg: add arxiv]
 
 
-## Multimodal Magnetic Resonance Imaging
+## Magnetic Resonance Imaging
 
 Using the ndmg and CPAC pipelines, both structural and functional connectomes have been estimated from all known publicly re-distributable datasets. These graphs have been generated across multiple brain parcellations/anatomical atlases (http://docs.neurodata.io/nddocs/mrgraphs/atlases.html), ranging in scale from approximately 50 nodes, up through a voxelwise parcellation of nearly 2 million nodes. These graphs can be found through our website (http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html), and downloaded for analysis.
 
