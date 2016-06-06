@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SIMPLEX April 2016 JHU</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+        	div.md {
+        		width:640px;
+        		margin: auto;
+       	 	}
+					div.tab {
+						width:800px;
+						margin: auto;
+					}
+      body {
+        font-family: 'gentona';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      
+      .small {
+        font-size: 0.8em;
+      }
+
+        </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+[*Back*](./index.html)
+
+# Datafication
+
+## Electron Microscopy
+
+
+| reference | number of datasets | modality | species | resolution (nm<sup>3</sup>; Hz) | #voxels / volume | #channels | #timesteps | total (GV) | Viz |
+| -----|-----|-----|-----|-----|-----|-----|-----|----- |----|
+| <a href='http://www.nature.com/nature/journal/v520/n7549/abs/nature14297.html'>Ohyama et al. Nature (2015)</a> | 2 | EM | D. melanogaster | (4 &times; 4 &times; 45) | Various | 2 | 1 | 5474 | TBA |
+| <a href='http://www.nature.com/nature/journal/v520/n7549/abs/nature14297.html'>Bock et al. Nature (2011)</a> | 1 | EM | M. musculus | (9 &times; 4 &times; 45) | (135424 &times; 119808 &times; 1239) | 1 | 1 | 20102 | <a href=’http://viz.neurodata.io/dataview/bock11’>bock11</a> |
+| <a href='http://www.nature.com/articles/sdata201446'>Weiler et al. Scientific Data (2014)</a> | 12 | AT | M. musculus | (100 &times; 100 &times; 70) | Various | 288 | 1 | 184 | <a href=’http://viz.neurodata.io/dataview/weiler14’>weiler14</a> |
+| flycol | 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (2000 &times; 2000 &times; 6240) | 1 | 1 | 24 | TBA |
+| <a href='http://www.cell.com/cell/abstract/S0092-8674(15)00824-7'>Kasthuri et al. Cell (2015)</a>| 4 | EM | M. musculus | Various| Various | 4 | 1 | 2602 | <a href=’http://viz.neurodata.io/dataview/mouseS1’>kasthuri15</a> |
+| <a href='http://www.nature.com/articles/sdata201546'>Harris et al. Scientific Data (2015)</a> | 3 | EM | R. rattus | Various | Various | 3 | 1 | 23 | <a href=’http://viz.neurodata.io/dataview/kharris15’>kharris15</a> |
+| <a href='http://www.wormatlas.org/ver1/MoW_built0.92/toc.html'>Worm Atlas</a> | 3 | EM | C. elegans | Various | Various | 6 | 1 | 2333 | TBA |
+| <a href='http://www.nature.com/nature/journal/v500/n7461/full/nature12450.html'>Takemura et al. Nature (2013)</a>| 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (12000 &times; 12000 &times; 1299) | 1 | 1 | 187 | <a href=’http://viz.neurodata.io/dataview/takemura13’>takemura13</a> |
+
+## Light Microscopy
+
+### CLARITY
+
+CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.
+
+<img src="../../figs/comparison.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+
+
+Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Image-LDDMM and MI-BSpline pipelines when aligning 3 different CLARITY brains to the [Allen Reference Atlas (ARA)](http://mouse.brain-map.org/static/atlas). Image-LDDMM performed well when aligning CLARITY images to other CLARITY images. [KVC16]
+
+
+
+## X-Ray Microscopy
+
+We provide novel methods to accurately detect cell bodies and blood vessels in an emerging modality called X-ray micro-tomography.  We show that this produces highly accurate reconstructions without requiring slicing, tissue damage or subsequent reconstruction steps.  This allows for a large-scale analysis of cell body size and distribution and lays the ground-work for the collection and analysis of much larger volumes in the near future.  Publication expected for submission April 2016.
+
+.r[@wg: add arxiv]
+
+
+## Magnetic Resonance Imaging
+
+Using the ndmg and CPAC pipelines, both structural and functional connectomes have been estimated from all known publicly re-distributable datasets. These graphs have been generated across multiple brain parcellations/anatomical atlases (http://docs.neurodata.io/nddocs/mrgraphs/atlases.html), ranging in scale from approximately 50 nodes, up through a voxelwise parcellation of nearly 2 million nodes. These graphs can be found through our website (http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html), and downloaded for analysis.
+
+
+[*Back*](./index.html)
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://neurodata.io">neurodata.io</a>  2016</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>

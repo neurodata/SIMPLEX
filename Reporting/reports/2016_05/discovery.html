@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SIMPLEX April 2016 JHU</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="../../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../../fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+        	div.md {
+        		width:640px;
+        		margin: auto;
+        	}
+      body {
+        font-family: 'gentona';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      
+      .small {
+        font-size: 0.8em;
+      }
+
+        </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+[*Back*](./index.html)
+
+# Discovery
+
+
+## Optimal Pipeline
+
+We apply our methodology of discriminability to fMRI processing. In particular, we processed 12 test-retest fMRI data sets using 64 processing pipelines. We then compute discriminability estimates of processed data sets. Based on the results, we claim CC200 is a better atlas compared to HOX, AAL and DES. In the meantime, we find that global signal regression and NFF significantly improve discriminability. No scrubbing and FSL is slightly better than scrubbing and ANTS. Furthermore, we discovered that using rank graphs is more discriminable than raw correlation graphs. We are going to further investigate processing pipeline for DTI data sets and compare discriminability of DTI and fMRI.
+
+<div class="fig-container" id="fig:optimal-pipeline">
+<img src="../../figs/64_pipelines_raw.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
+
+Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways are plotted. BNU1, BNU2, DC1, IACAS, IBATRT, IPCAS, JHNU, NYU1, SWU1, UM, UWM and XHCUMS are processed by
+64 pipelines and discriminability are computed. Colors of points indicate data set; sizes of points are proportional to the number of samples of data set. Black dots represent mean discriminability across 12 data sets. CFXXG pipeline has the best mean discriminability across data sets.
+</div>
+
+
+
+## Extensible Neurocartography
+
+With the aid of the Python API ndio, we are able to access ndstore services programmatically to substantiate the claims made in <a href=”http://www.cell.com/cell/abstract/S0092-8674(15)00824-7”>Narayanan Kasthuri’s 2015 Cell Paper</a>. Our programmatic representations of these claims, available [on GitHub](https://github.com/neurodata/kasthuri2015) in Jupyter notebooks, illustrate that it is possible to reproducibly conduct neuroscientific inquiry.
+
+
+## Synapse Spatial Point Patterns
+
+## Molecular Synapse Types
+
+Exploratory statistical analysis is being conducted on Synaptome data sets using the R language and environment for statistical computing and graphics. The goal is to discover synapse taxonomy for synapse level neuroscience.
+
+<div class="fig-container" id="fig:gababr-reg">
+<img src="../../figs/Fig_gababr_reg.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+
+Figure: Pair-wise regressions involving GABA<sub>B</sub>R.
+</div>
+
+The lab notebooks are located [here.](http://docs.neurodata.io/synaptome-stats)
+
+## CLARITY Classification
+
+[*Back*](./index.html)
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://neurodata.io">neurodata.io</a>  2016</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>

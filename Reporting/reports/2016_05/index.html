@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SIMPLEX May 2016 JHU</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="../../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../../fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+        	div.md {
+        		width:640px;
+        		margin: auto;
+        	}
+      body {
+        font-family: 'gentona';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      
+      .small {
+        font-size: 0.8em;
+      }
+
+        </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+# SIMPLEX Monthly Report
+
+| Title | Value |
+| :--- | :--- |
+| Tile of Effort | From RAGs to Riches |
+| Contract Numbers | N66001-15-C-4041 |
+| Reporting Period | May 1 2016 - May 31 2016 |
+| PI Name | Joshua T. Vogelstein |
+
+# Executive Summary
+
+We have worked on four different tasks, as summarized below:
+
+1. [*Computer science*](./cs.html):
+    1. Store
+    2. Explore
+    3. Parse
+    4. Analyze
+
+2. [*Statistical science*](./stats.html):
+    1. Time-series
+    2. Graphs
+    3. Shapes
+    4. Matrices
+
+2. [*Datafication*](./datafication.html)
+    1. Electron Microscopy
+    1. Light Microscopy
+    2. X-Ray Microscopy
+    2. Magnetic Resonance 
+
+4. [*Discovery*](./discovery.html)
+    1. Optimal Pipelines
+    2. Extensible Neurocartography
+    3. Syanpse Spatial Point Processes
+    4. Synapse Types
+    5. CLARITY Classification
+
+
+Enclosed, we provide a summary of technical progress for each task. This includes collaborations with other SIMPLEX performers as well as next steps.
+
+---
+
+# SIMPLEX Enabled Publications, Conference Presentations, & Code
+
+## Publications
+
+
+1. Burns B et al. [The Open Connectome Project Data Cluster: Scalaballe Analysis and Vision for High-Throughput Neuroscience](http://arxiv.org/abs/1306.3543).  Scientific and Statistical Database Management (SSDBM), 2013.
+
+1. Burns B, Vogelstein JT, Szalay AS. [From Cosmos to Connectomes: the Evolution of Data-Intensive Science](http://www.sciencedirect.com/science/article/pii/S0896627314007466). Neuron, 2015.
+
+1. Kazhdan M, et al. [Gradient-Domain Fusion for Color Correction in Large EM Image Stacks](http://arxiv.org/abs/1506.02079). arXiv:1506.02079
+
+1. Kutten KS, et al. [Deformably Registering and Annotating Whole CLARITY Brains to an Atlas via Masked LDDMM](https://github.com/neurodata/spiePhotonics/raw/master/spiePhotonics.pdf). SPIE Photonics. Volume 9896.
+
+1. Zheng, Da, et al. [An SSD-based eigensolver for spectral analysis on
+billion-node graphs](http://arxiv.org/abs/1602.01421), arXiv:1602.01421, 2016.
+
+1. Zheng, Da, et al. [Semi-External Memory Sparse Matrix Multiplication
+on Billion-node Graphs in a Multicore Architecture](http://arxiv.org/abs/1602.02864), arXiv:1602.02864, 2016.
+
+## Conference Presentations
+
+
+## Code
+
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://neurodata.io">neurodata.io</a>  2016</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>
