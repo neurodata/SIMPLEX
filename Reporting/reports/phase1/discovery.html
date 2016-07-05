@@ -131,7 +131,15 @@ None of the methods we experimented with (k-means with different numbers of feat
 	<img src="../../figs/m4_fear_cocaine.png" style="width: 380px;"  />
 </div>
 
+## MR Batch Effects
 
+The large database of processed graphs from MR subjects enables us the opportunity to explore mega-analyses in MRI data unlike that which has been done previously. The exemplar task we chose to illustrate this capability was exploring the significance of batch effects in data collected in different studies. The first panel shows histograms of B0 image volume intensities from various datasets. We can see slight differences in raw data through this metric, including intensity shifts either left or right by a dataset, or a dataset containing multiple populations. The data summarized here have been run through the [ndmg pipeline](http://m2g.io). We then summarized the graphs through several metrics, two of which are shown here in the second and third panels: number of non-zero edges and degree distribution. We see here that the subtle differences observed - as well as differences we didn't notice from histograms have a pronounced effect in our graphs. In order to assess the significance of these batch effects, we design a classification experiment with the graphs in which we attempt to predict subject sex from their connectome. If there were no batch effects, training with LOO-dataset or LOO-subject techniques would achieve approximately the same results (with the one factor contributing to differences being the slight difference in training sample size when we have a larger leave-out set). However, when we attempt to classify with leave out one dataset we notice that we achieve no better prediction than chance, whereas leave out one subject achieves 70% accuracy using the simplest classifier.
+<div style="width:1200px; margin:0px 0 0 -280px">
+	<img src="../../figs/multi_b0s_colourful.png"  style="height: 380px;"/>
+	<img src="../../figs/multi_nnz_desikan_scatter_colourful.png"  style="height: 350px;"/>
+	<img src="../../figs/multi_degree_desikan_hist_colourful.png"  style="height: 380px;"/>
+	<img src="../../figs/knn_vectorgraph_class.png" style="height: 350px;"  />
+</div>
 
 [*Back*](./index.html)
 
