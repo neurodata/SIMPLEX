@@ -1,0 +1,55 @@
+\begin{thebibliography}{1}
+
+\bibitem{cpac}
+S.~Sikka, J.~T. Vogelstein, and M.~P. Milham, ``{Towards Automated Analysis of
+  Connectomes: The Configurable Pipeline for the Analysis of Connectomes
+  (C-PAC)},'' in {\em Organization of Human Brain Mapping}, Neuroinformatics,
+  2012.
+
+\bibitem{fsl}
+S.~M. Smith and {et al.}, ``Advances in functional and structural mr image
+  analysis and implementation as fsl,'' {\em Neuroimage}, vol.~23, no.~Suppl
+  1:S, pp.~208--19, 2004.
+
+\bibitem{nd}
+R.~Burns and J.~Vogelstein, ``Neurodata: Enabling data-driven neuroscience at
+  scale.'' \url{http://neurodata.io}, 2016.
+
+\bibitem{Desikan2006a}
+R.~S. Desikan, F.~S\'{e}gonne, B.~Fischl, B.~T. Quinn, B.~C. Dickerson,
+  D.~Blacker, R.~L. Buckner, A.~M. Dale, R.~P. Maguire, B.~T. Hyman, M.~S.
+  Albert, and R.~J. Killiany, ``{An automated labeling system for subdividing
+  the human cerebral cortex on MRI scans into gyral based regions of
+  interest.},'' {\em NeuroImage}, vol.~31, pp.~968--980, July 2006.
+
+\bibitem{galaxyzoo}
+K.~{Land}, A.~{Slosar}, C.~{Lintott}, D.~{Andreescu}, S.~{Bamford},
+  P.~{Murray}, R.~{Nichol}, M.~J. {Raddick}, K.~{Schawinski}, A.~{Szalay},
+  D.~{Thomas}, and J.~{Vandenberg}, ``{Galaxy Zoo: the large-scale spin
+  statistics of spiral galaxies in the Sloan Digital Sky Survey},'' {\em
+  Monthly Notices of the Royal Astronomical Society}, vol.~388, pp.~1686--1692,
+  Aug. 2008.
+
+\bibitem{eyewire}
+J.~S. Kim, M.~J. Green, A.~Zlateski, K.~Lee, M.~Richardson, S.~C. Turaga,
+  M.~Purcaro, M.~Balkam, A.~R. B.~F. Behabadi, M.~Campos, W.~Denk, H.~S.
+  Seung1, and {the EyeWirers}, ``Space–time wiring specificity
+  supportsdirection selectivity in the retina,'' {\em Nature}, vol.~509,
+  no.~doi:10.1038/nature13240, 2014.
+
+\bibitem{harris15}
+K.~M. Harris, J.~Spacek, M.~E. Bell, P.~H. Parker, L.~F. Lindsey, A.~D. Baden,
+  J.~T. Vogelstein, and R.~Burns, ``A resource from 3d electron microscopy of
+  hippocampal neuropil for user training and tool development,'' {\em Nature
+  Scientific Data}, vol.~2, no.~150046, 2015.
+
+\bibitem{Chung2013a}
+K.~Chung and K.~Deisseroth, ``{CLARITY for mapping the nervous system},'' {\em
+  Nature Methods}, vol.~10, pp.~508--513, May 2013.
+
+\bibitem{weiler14}
+N.~Weiler, F.~Collman, J.~Vogelstein, R.~Burns, and S.~Smith, ``Synaptic
+  molecular imaging in spared and deprived columns of mouse barrel cortex with
+  array tomography,'' {\em Nature Scientific Data}, vol.~1, no.~140046, 2014.
+
+\end{thebibliography}

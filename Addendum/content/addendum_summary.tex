@@ -1,0 +1,60 @@
+% !TEX root = </Users/jovo/Research/Working/A/SIMPLEX/JHU-Proposal/JHU-SIMPLEX_proposal.tex>
+\section{Executive Summary}
+% \jason{ did we answer all the questions coherently?}
+% \subsection{TA1}
+
+% \begin{mdframed} \begin{center} \bb{TA1} \end{center} \end{mdframed}
+
+
+\para{What are you trying to do? Articulate your objectives using absolutely no jargon.}
+
+
+Historically, the primary bottleneck in neuroscience was data collection, now it is data analysis.  We will move the bottleneck to data modeling modeling.  We will achieve this via building open source Web-services that automate reference pipelines for three different experimental modalities spanning spatiotemporal scales: whole-brain CLARITY, large-scale optophysiology, and multimodal MRI. These Web-services will enable 1-click processing converting raw data into neuroscience ``objects'' of semantic meaning, such as regions, cells, and processes, suitable for analysis.  
+% These open source Web-services will enable anybody to model their data, or others, without needing to perform the costly intermediate analysis steps.
+
+
+\para{How is it done today, and what are the limits of current practice?}
+
+If the data are small enough,  each laboratory develops its own pipelines, typically using neuroscience students for software engineering, and limiting analysis to their own data.  
+Code is not properly documented nor open, and only runnable by the developer herself,  such that even within a lab, there will be multiple different pipelines, without comparison capabilities. For big data, labs do not even have their own pipelines, because they lack both the computational resources and expertise to implement them. Thus, data lies idle, or is never even collected because the lab heads know that the lab will be unable to analyze and therefore, utilize the data.
+
+
+\para{What is new in your approach and why do you think it will be successful?}
+
+We will deploy reference open source pipelines using the principles of ``continuous integration'' on serverless computing models (such as AWS Lambda), applied to reference data that we will make open access. Open source pipelines  would obviate the need for  labs to develop their own pipelines.  Deploying them on serverless computing models eliminates the need for labs to purchase and maintain custom clusters for data analysis.  Using continuous integration will enable the work to be fundamentally reproducible and extensible.  And developing them on reference datasets that we make open access will provide example use cases and demonstrate success, in addition to bringing fully processed data to anybody.
+ % with interest.
+% 
+This will be successful because we will simultaneously eliminate all the primary bottlenecks to developing models on state-of-the-art neuroscience data, and we have preliminarily demonstrated the ability to develop prototype pipelines.
+
+
+%  The continuous integration nature of our approach will 
+
+% for each of the above three modalities using a new serverless computing model such as AWS Lambda).  
+
+% We have already built prototype reference pipelines for each of the modalities, so we know which algorithms can run.  Deploying them via Web-servers will enable anybody to use them as much as they want. In other words, the automatic scalability of the system will mean that analysis is eliminated as the bottleneck.  For more advanced experimentalists, all the code will be open source, so it will be easy to modify the default options to utilize custom options.
+
+
+
+
+\para{Who cares? If you succeed, what difference will it make? What are the risks?}
+
+Anybody collecting CL, Ophys, or M3RI data will care immediately, others will have these success stories to build upon.  
+% 
+% We will obviate their need to own and manage clusters for analysis, because all such processing will happen in the cloud.  Their work will be imminently reproducible and extensible, because anybody can re-run the analyses.
+% 
+The main risk is that neuroscientists are accustomed to a particular scientific workflow, and this will be a disruptive technology.  That said, we have historical examples of related disruptive technologies (e.g., the Sloan Digital Sky Survey in cosmology), that caused a paradigm shift in the way science was conducted.  
+
+
+\para{How much will it cost? How long will it take?}
+
+
+Each modality will require a professional software engineering, a post-doctoral fellow, cloud computing resources, a local cluster, part-time support staff for users, travel to collaborators, and publication fees, totaling \$250,000 (direct) per year per modality, for a total of three years.
+ % (\$2,250,000 direct over three years).
+
+
+
+\para{What are the mid-term and final “exams” to check for success?}
+
+
+We will develop ``bare-bones'' examples by the end of year one, fully operational reference pipelines by the end of year two, and much improved (via community feedback) pipelines by end of year three.
+

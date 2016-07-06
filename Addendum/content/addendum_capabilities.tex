@@ -1,0 +1,93 @@
+\section{Capabilities} 
+
+
+% \emph{Describe organizational experience in relevant subject area(s), existing intellectual property, or specialized facilities. Discuss any work in closely related research areas and previous accomplishments.}
+
+
+% \clearpage
+% \subsection{Background}
+
+\subsection[ Open Connectome Project]{Open Connectome Project} \label{sss:ocp}
+
+We have previously built a petascale data-intensive computing infrastructure designed around serial electron microscopy images \cite{Burns13a}. As we will explain in greater detail below, in this proposal, we will extend existing capabilities in a number of ways.  First, we will greatly expand the different modalities and scales of data.  This will enable us to ingest and query data from worms, flies, mice, monkeys, and humans, all using the exact same API.  Second, we will greatly exapnd visualization capabilities, including both two- and three-dimensional  (2D and 3D) local and remote capabilities, to further lower the barrier to entry, enabling citizen scientists to interact with the data as we do.  Third, we will significantly enhance support for adding annotations of a wide variety of types to each data product.  This includes image annotations (for example, different atlases or local statistics), text annotations (such as names, relavant citations, etc.), and connectivity annotations.  Fourth, we will add significant analytical capabilities to the users.  
+
+Collectively, these modifications will enable workflows such as the following: (i) search for all connections to hippocampus in any brain of any animal, (ii) visualize each brain (only those parts connected to hippocampus) in 3D, (iii) grade each in terms of quality, (iv) compute an average neighborhood of hippocampus, weighted by quality score, (v) push such annotation back to the server so that others may now query against it. 
+
+
+\subsection[ Graph Analytics]{Graph Analytics} \label{sss:graph}
+
+We and others have begun foundational statistical theory for the analysis of single graphs \cite{Athreya2013, Sussman2012, rukhin2012on, Lee13a, Lee14a, Tang2013a, shuffled, Borges2011, Priebe2009a, Qin2013, lee2011random, Mhembere2013a, Wang2013a, signal-subgraph, Rukhin2011, ceyhan2007a, Tang11a, Grothendieck2010, Priebe2012, Sussman13, lee2011a, PCP10, Park2012a, Mhembere2013b, Sussman2012a, solka2002a, pilla2003adaptive, poston1997a, Naiman2001, ceyhan2006relative, Priebe2011c, Robinson2012, supervenience, RVC13, BVN, Abrams2002, Fishkind2012b, marchette2008predicting, priebe2003class}.  Similarly, we have worked on computing distances between graphs \cite{Tang14a}, as well as matching  a pair of graphs \cite{Vogelstein11a, Fishkind2012a, Lyzinski13a, Fiori13a, Lyzinski14a}, including weighted graphs, graphs with different numbers of vertices, etc. \cite{Lyzinski14b}.  However, theory for jointly embedding populations of graphs, foundational for testing as well as both supervised and unsupervised learning remains completely absent.  This includes both matched graphs (where we need not align the vertices), and unmatched graphs (where we must either align or otherwise be invariant to alignment).
+
+
+
+
+
+\subsection[ FlashGraph]{FlashGraph} \label{sss:flash}
+
+FlashGraph was developed to enable efficient processing of massive individual graphs on commodity machines \cite{Zheng14a}.  Specifically, it was designed for graph traversal algorithms, such as breadth-first-search and connected components.
+We will extend it to support semi-external memory implementations of linear algebra subroutines (including sparse matrix operations), as well as operate on populations of graphs
+
+
+\subsection[ GRAPHS vs. SIMPLEX]{GRAPHS vs. SIMPLEX}
+
+With respect to the above background subsections, our GRAPHS proposal does not address \S \ref{sss:ocp} at all.  In GRAPHS we do develop a few statistical methods on graphs, but we do not build a foundational theory of richly attributed graphs upon which a great variety of further applications may be developed.  In terms of FlashGraph, our GRAPHS proposal only addresses graph traversal style algorithms for single simple graphs, versus here where we propose to extend it to include populations of graphs and a whole suite of dense and sparse matrix operations on graphs. Thus, this proposal is entirely complementary to our SIMPLEX proposal, extending the deliverables significantly. Specifically, this proposal will enables us to fuse previously totally disparate methods and code bases under a single coherent roof to enable previously unconceptualized capabilities, both internally and for the community.
+
+
+
+\subsection[ Specialized Facilities]{Specialized Facilities}
+
+
+This proposal is heavily computational, and hence we describe the computational resources available to us at this time.  Dr.~Vogelstein and Dr.~Priebe, as core faculty in the Center for Imaging Science (CIS), have access to the CIS cluster; Dr.~Vogelstein, as core faculty also in the Institute for Computational Medicine (ICM), as access to the ICM cluster; and Dr. Vogelstein and Dr. Burns, as members of the Institute for Data Intensive Engineering and Sciences (IDIES), have access to those facilities.  Moreover, the three faculty are utilizing resources from Dr.~Vogeslstein's startup package to build a new dedicated ``Bruster'' for doing brain computations.  Finally, Dr.~Priebe and Dr.~Vogelstein, as members of CIS, have an allocation of one million compute hours on XSEDE\footnote{\url{https://www.xsede.org/}}, a nationally supported compute cluster.  The faculty and personnel on this proposal have been utilizing these resources  in preliminary work for this proposal, as well as the funded CRCNS grant (CRCNS-1208044; co-PIs Vogelstein, Burns, et al.) and Big Data grant (BIGDATA-1251208; co-PIs Vogelstein, Burns, et al.),  a CRCNS grant on computational infrastructures upon which the methods developed herein can operate at accelerated rates (NSF Proposal ID-1311505), and several others.  Below we briefly describe current resources.
+
+
+
+
+\para{{The GrayWulf Cluster}} % (fold) \label{par:paragraph_name}
+GrayWulf is a distributed database cluster at JHU consisting of 50 database nodes with 22TB and an 8-core server each, for a total of 1.1PB. The cluster was purchased on funds from the Gordon and Betty Moore Foundation, the Pan-STARRS project and Microsoft Research. The cluster already hosts several large datasets (Pan-STARRS, turbulence, SDSS, various Virtual Observatory catalogs and services, environ- mental sensor data, computer security datasets, network traffic analysis data, etc). Currently about 800TB is already utilized. The cluster has an IO performance exceeding many supercomputers: the aggregate sequential read speed is more than 70 Gbytes/sec. The internal connectivity has recently been upgraded to 10Gbps Ethernet.
+
+\para{{The HHPC Cluster}} % (fold) \label{par:paragraph_name}
+% 
+The same computer room hosts a 1400 core BeoWulf cluster, a computational facility shared among several JHU faculty.  The HHPC and the GrayWulf share a common 288-port DDR Infiniband switch for an extremely high-speed interconnect. There is an MPI interface under development that will enable very fast peer-to-peer data transfers between the compute nodes and the database nodes. The Deans of the JHU Schools provide funds to cover the management and operational costs of the two connected clusters. The second generation of the cluster is about to be purchased, adding another 2,400 cores to the system.
+
+
+\para{{NSF-MRI NVIDIA cluster}} % (fold)\label{par:paragraph_name}
+% 
+JHU has received an NSF MRI grant (CMMI-0923018), to purchase a large GPU cluster. We have 100 Fermi C2050's in production. Burns is a co-PI on this grant. There is a natural cohesion between the Data-Scope and the GPU cluster, and coordination between the principal architects of the two systems.
+
+% paragraph paragraph_name (end)
+
+\para{{Bloomberg 156 Data Center}} % (fold) \label{par:paragraph_name}
+% 
+The NSF has awarded a \$1,337,272 grant for ``Advanced CyberInfrastructure for High Performance Data Intensive Computing'' (OCI-0963185). This infrastructure project renovated room 156 in Bloomberg Hall to create a flexible, stable environment for a high density of computing equipment that supports research and research training on the Homewood Campus. The 3100 square foot room is covered with a raised floor fed with cold air from seven Liebert air conditioners, and a dedicated chilled water line is available for water-cooled racks. Bloomberg 156 supports a steady load of at least 450kVA, with potential expansion to 750kVA. To ensure a stable environment for data repositories, 150kVA of power has both battery and generator backup. The grant also upgraded the network infrastructure supporting the space from 1GigE to 10GigE to insure that users throughout campus can access the data center effectively and that data can be streamed to and from the outside world through Internet2.  This network infrastructure includes a Cisco Nexus 7000 chassis that accommodate the 100GigE uplink to Internet 2. The room has collocated the GPU cluster, HHPC, and Data-Scope. This has created a tightly coupled, heterogeneous clusters with compute, data, and GPU components, allowing computational science to be done in new ways. The center serves as a focal point for interdisciplinary activities in computational science and engineering. 
+
+% paragraph paragraph_name (end)
+
+\para{{Data-Scope}} % (fold)\label{par:paragraph_name}
+% paragraph paragraph_name (end)
+The NSF has recently awarded a \$2M MRI grant (OCI MRI-1040114, co-PI Burns) to build a 6.5PB cluster for data-intensive computations. The system components have arrived and are being commissioned. The system will have an aggregate sequential throughput in excess of 500GBps, and will also contain 90 GPU cards, providing a substantial floating point processing capability. The Data-Scope will be connected entirely through 10Gbps Ethernet. There is an ongoing NSF-funded effort to bring 100G connectivity to JHU, through a collaboration with the Mid-Atlantic Crossroads (MAX). The system components are currently evaluated and tested, and deployment is expected to happen in June.
+
+The driving goal behind the Data-Scope design is to maximize stream processing throughput over TB- size datasets while using commodity components to keep acquisition and maintenance costs low. Performing the first pass over the data directly on the servers' PCIe backplane is significantly faster than serving the data from a shared network file server to multiple compute servers. This first pass commonly reduces the data significantly, allowing one to share the results over the network without losing performance. Furthermore, providing substantial GPU capabilities on the same server enables us to avoid moving too much data across the network as it would be done if the GPUs were in a separate cluster.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.0\linewidth]{../JHU-Proposal/JHU-Figs/datascope.pdf}
+\caption[Datascope.]{Schematic illustration of our DataScope compute cluster.}
+\label{fig:orgchat}
+\end{figure}
+
+
+\para{{Open Connectome Project Mini-Cluster}} % (fold)\label{par:paragraph_name}
+% 
+% \jovo{replace this with bruster description from greg}
+By virtue of a Dean's graph to Professor Burns, Professor Burns and Dr.~Vogelstein have established an Open Connectome Project Mini-Cluster.  This cluster contains four ``braincrunch'' machines, each 4-core development boxes, along with two ``braingraph'' machines, each currently serving about 20TB of brain imaging data, and finally one ``awesome'' machine, which has 500GB of RAM and 16 128GB solid state hard drives.  These machines are all actively used already for this project by PI Vogelstein and co-I Burns.
+
+% subsection computing (end)
+
+
+\para{Center for Imaging Science Computing Resources}
+% 
+The Center for Imaging Science (CIS) offers extensive computing resources. The major computational machine within CIS is the Intel Itanium2 cluster, which is a 32 processor cluster that is part of the TeraGrid, which includes over 20 teraflops of computing power distributed at 9 sites, facilities capable of managing and storing over 1 PB of data and high-resolution visualization environments. The CIS infrastructure also includes two 32GB/8cpu and one 128GB/16cpu computational servers; 120TB of data storage; three tape libraries with a backup capacity of over 210TB; and over 35 visualization workstations.
+
+\para{Institute for Computational Medicine Computing Resources}
+% 
+The Institute for Computational Medicine (ICM) offers additional computing resources, including 250 node, 2000 core, IBM iDataPlex cluster attached to a 1 Petabyte Storage Area Network, and an IBM TotalStorage 3584 UltraScalable tape library with 4 LTO4 drives and 250 slots.

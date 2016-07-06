@@ -1,0 +1,197 @@
+%!TEX root = <JHU-SIMPLEX_proposal.tex>
+% \clearpage
+\section{Statement of Work}
+\label{sec:sow}
+% \emph{The SOW must provide a detailed task breakdown, citing specific tasks and their connection to the interim milestones and metrics, as applicable. Each year of the project should be separately defined. The SOW must not include proprietary information. For each defined task/subtask, provide:
+% % 
+% (1) A general description of the objective.
+% (2) A detailed description of the approach to be taken to accomplish each defined task/subtask.
+% (3) Identification of the primary organization responsible for task execution (prime contractor, subcontractor(s), consultant(s)), by name.
+% (4) A measurable milestone, (e.g., a deliverable, demonstration, or other event/activity that marks task completion).
+% (5) A definition of all deliverables (e.g., data, reports, software) to be provided to the Government in support of the proposed tasks/subtasks.}
+% 
+
+
+
+
+\subsection{Phase I}
+
+
+\subsubsection{Task 1: Mathematical Formalism}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{RAG Embedding:} Completion of the theoretical development and associated data structures of our RAG representation system. This includes establishing baseline methods for embeddings RAGs and populations thereof.  Specifically, we will explore both JOFC and tensor factorization methodologies, to enable understanding of the computational and statistical advantages and disadvantages of each for embedding high-dimensional non-Euclidean RAGS.
+
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstration that RAGs are able to meet TA1 goals, including encoding quantitative and qualitative knowledge, and express functional relationship among entities in complex systems.
+\item \textbf{Deliverables:} Description of mathematical framework and preliminary benchmarks evaluating performance on open access data sets and simulations.
+\end{compactitem}
+
+
+\subsubsection{Task 2: Computational Infrastructure}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Data Management:} Implementation of baseline algorithms for context-aware reasoning and inference using the representation. Development of an initial computational and data management platform, including establishing common data formats, common methods and format for query and analysis of results, and a common API through which all domain-specific users will access the framework. We will also extend our dense spatial and semantic databases, as well as our graph data format to support time-varying data, along with multi-modal data.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Completion of Phase I prototype software and services.
+\item \textbf{Deliverables:} Open source software and documentation for end-to-end prototype.
+\end{compactitem}
+
+
+
+\subsubsection{Task 3: Datafication}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Data Ingest:} Completion of data ingest techniques. Completion of research and design into microscopic and mesoscopic specific analysis tools.  Demonstration of auto-data ingestion and registration of multiple different modalities (functional to structural for both microscopic and mesoscopic data). More specifically, we will have ingested CLARITY, LFM, and M$^3$RI data into the same database schema; all M$^3$RI data will be co-registered.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstration of operational auto-ingestion and registration on two different use-cases.
+\item \textbf{Deliverables:} Open source software and documentation for datafication techniques, as well as image datasets ingested and RAGs estimated from all different data modalities.
+\end{compactitem}
+
+
+\subsubsection{Task 4: Discovery}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{RAG Construction:} 
+ Completion of research and design into microscopic and mesoscopic specific analysis tools, by designing metrics appropriate for the different data modalities.  This includes both the microscale and mesoscale functional time-series, converting into RAGs via utilizing qualitative information.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstration of RAG construction on both use cases.
+\item \textbf{Deliverables:} Open source software and documentation RAG construction techniques, as well as the derived RAGs available via our Web-services.
+\end{compactitem}
+
+
+
+\subsubsection{Task 5: Program Management}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Phase I:} Ensure successful execution of the effort. Manage the proposed effort using a proven methodology for project planning, resource allocation, task specification, and monitoring. Establish a baseline project plan with a list of tasks, specifications, requirements, and timelines; update plan periodically; document updates to the plan and share them with the project team and DARPA PM.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Meet Phase I goals.
+\item \textbf{Deliverables:} 
+(1) Comprehensive quarterly technical reports that include updates systems architecture and progress made on milestones for Phase I;
+(2) Brief month reports, including preprints of technical reports;
+(3) Final Technical Report;
+(4) Monthly Financial Reports.
+\end{compactitem}
+
+
+
+\subsection{Phase II}
+
+
+
+
+
+\subsubsection{Task 1: Mathematical Formalism}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{FlashRAG:} Implementation of all embedding and construction methodologies in FlashGraph to enable scalable implementations and processing.  Moreover, all constructed RAGs will obtain multilevel representations.  We will build R bindings to enable easy use of FlashGraph for data scientists.  We will check that our implementations and bindings yield approximately the same answer as benchmark methods, on data sufficiently small that benchmark methods can run.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Fully operational FlashGraph and R bindings for embedding and constructing methodologies.
+\item \textbf{Deliverables:} Open source software and documentation for end-to-end prototype for embedding and constructing RAGs. This includes an R package for FlashGraph.
+\end{compactitem}
+
+
+\subsubsection{Task 2: Computational Infrastructure}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Remote Access:} Implementation of prototype platform for remote access. This will include Web-services for uploading the raw data, and downloading the derived data products (RAGs and intermediate data products), as well as both 2D and 3D visualization and annotation tools, which will support multiple kinds of analytic overlays, all of which will support multiple data scales. Moreover, we will have made theoretical and practical refinements to the representation to enable scalable implementation of several foundational algorithms on RAGs, implementing the embedding methodologies developed in Task 1 of Phase I into our semi-external memory formalism.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Fully operational Web-services supporting uploading, visualizing, annotation, querying, downloading, and analyzing the data.
+\item \textbf{Deliverables:} Open source software and documentation for end-to-end prototype. This includes an R package for FlashGraph which extends it capabilities to RAGs, rather than simply graphs.
+\end{compactitem}
+
+
+\subsubsection{Task 3: Datafication}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Data Register:} Integration of domain-specific computational models across modalities and scales. This includes completion of statistical multi-modal referencing, including alignment of structural and functional imaging data, for both microscopic and mesoscopic data sets.  We will also complete functional inference capabilities. We will align data both via scaling up multidimensional out-of-core image alignment algorithms, and RAG matching, which extends graph matching by incorporating attributes.  This will enable us to determine optimal alignments using data priors and known topological structure, rather than relying on images to align well.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstration of multi-modal registration for both microscopic and mesoscopic use cases.
+\item \textbf{Deliverables:} Open source software and documentation for datafication techniques, as well as registered multi-modal image datasets ingested and aligned RAGs from both microscale and mesoscale.
+\end{compactitem}
+
+
+\subsubsection{Task 4: Discovery}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{RAG Summary Statistics:} Utilize RAG knowledge representation to estimate population moments, motifs, and/or modes from both  micro- and meso-scale RAGs.  More specifically, we will utilize the various joint embedding methodologies developed in Task 1 to estimate these summary statistics.  The different approaches, JOFC versus tensor factorization, will enable incorporating different kinds of prior knowledge and constraints, so they will therefore lead to different bias/variance trade-offs.  We will explore these options empirical on the real data, to complement our experiments in Task 1, to discover both (i) the best methods for estimation these summary statistics, and (ii) the best estimates of the summary statistics for the two different scales.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstration utility of RAG representation of data for estimating summary statistics for multi-modal data.
+\item \textbf{Deliverables:} Estimated summary statistics from micro- and meso-scale RAGs available for download in various formats, as well as open source code for the different estimators. 
+\end{compactitem}
+
+
+
+% \subsubsection{Task 4: Discovery}
+% \begin{compactitem}
+% \item \textbf{Goal:} \emph{RAG Independence:} Instantiation of first-generation analysis tools, including tests for independence between connectivity and graph, vertex, and/or edge attributes, and application of those tools to both use cases. We will leverage the RAG representation system to discover whether mouse or human graph connectivity is independent of graph attributes. For both inference tasks, we will utilize and extending the scalable embedding methodologies developed in Task 2 of Phase II. 
+% \item \textbf{Primary Site:} JHU
+% \item \textbf{Milestone:} Demonstration utility of RAG representation of data for multi-modal neuroscientific discoveries for both microscale and mesoscale.
+% \item \textbf{Deliverables:} Discovered multi-modal motifs from microscale data and hypothesis testing results and visualizations from mesoscale data.
+% \end{compactitem}
+
+\subsubsection{Task 5: Program Management}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Phase II Goals:} Ensure successful execution of the effort. Manage the proposed effort using a proven methodology for project planning, resource allocation, task specification, and monitoring. Establish a baseline project plan with a list of tasks, specifications, requirements, and timelines; update plan periodically; document updates to the plan and share them with the project team and DARPA PM.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Meet Phase II goals.
+\item \textbf{Deliverables:} 
+(1) Comprehensive quarterly technical reports that include updates systems architecture and progress made on milestones for Phase II;
+(2) Brief month reports, including preprints of technical reports;
+(3) Final Technical Report;
+(4) Monthly Financial Reports.
+\end{compactitem}
+
+
+\subsection{Phase III}
+
+
+
+\subsubsection{Task 1: Mathematical Formalism}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{RAG Testing:} Demonstration of capabilities and objectives on both microscale and mesoscale data, as well as one additional SIMPLEX performer. To achieve this, we will extend our embedding methodologies, to derive provably approximately optimal embeddings for conducting one-sample and two-sample tests on RAGs; two fundamental testing procedures in statistics.  Our tests will leverage our ability to efficiently sample RAGs, as they will be resampling based tests, analogs to the classic parametric and non-parametric bootstrap.  We will apply these tests to test, for example, whether our data are sampled from relatively simple RAGs statistical models, and whether population means that we obtained in Phase I are significantly different from one another.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Demonstrate our mechanism for relating qualitative and quantitative knowledge, and relating multiple heterogeneous datasets, on both heterogeneous scales (use cases). Specifically, testing whether multiple heterogeneous datasets are statistically different from one another.
+\item \textbf{Deliverables:} Description of capabilities, emphasizing generalizability to multiple use cases, open source code from implementing our tests, visualizations and numerical summaries of test results.
+\end{compactitem}
+
+
+% \subsubsection{Task 1: Mathematical Formalism}
+% \begin{compactitem}
+% \item \textbf{Goal:} \emph{RAG Learning:} Completion of mathematical tools for hypothesis generation, testing, and model validation using RAGs. This will include context aware algorithms capable of running in interactive time.  More specifically, we will extend the toolbox of inferential techniques to include unsupervised, semi-supervised, and fully supervised methods for clustering RAGs.  All these methods will utilize  the estimation and embedding strategies developed in the previous tasks for this proposal.  Moreover, we will extend such embedding methodologies to optimize them for the particular learning tasks.  Theoretical and numerical results will support the utility of these methodologies.
+% \item \textbf{Primary Site:} JHU
+% \item \textbf{Milestone:} Demonstration of the full suite of mathematical capabilities on RAGs, including estimating, testing, and un-/semi-/fully-supervised learning methodologies. 
+% \item \textbf{Deliverables:} Complete description of capabilities of RAGs, as well as open source code to run all analyses in R on commodity hardware.
+% \end{compactitem}
+
+
+\subsubsection{Task 2: Computational Infrastructure}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Local Analysis:} Completion of an integrated system on both heterogeneous scales (as well as additional domains).  This system ingests and registers imaging data and semantic and qualitative knowledge, converts them into RAGs, allows query and recall, visualization, hypothesis generation, and analysis. We will also release open source packages containing all of the key resources, such as an R package (which calls igraph or FlashGraph) containing all of the developed methods, and GPU optimized visualization and annotation tools. This will enable anybody to implement analyses locally by running the code on their machine.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Fully operation Web-services to auto-ingest, register, store in compact representation, and query, as well as operate locally.
+\item \textbf{Deliverables:} Open source software and documentation for end-to-end prototype. including FlashGraphR and GPU optimized visualization and annotation tool.
+\end{compactitem}
+
+
+\subsubsection{Task 3: Datafication}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Quality Control:} Completion of quality control of all datasets.  For each different modality, and each different scale, we will have already converted the raw data into RAGs.  Now, we will build automatic quality controls, so that with each dataset, we automatically generate a quality control report, quantifying the key quality metrics appropriate for that data (see Table \ref{tab:qa}).   
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} All datasets have been checked for quality.
+\item \textbf{Deliverables:} Open source software and documentation for datafication techniques, including quality control scripts, and resulting outputs.
+\end{compactitem}
+
+
+\subsubsection{Task 4: Discovery}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{RAG Prediction:} Completion of toolset for analysis, modeling, and data-driven hypothesis generation and testing in both microscale and mesoscale heterogeneous use cases. This will include multiscale prediction; prediction of mouse status from microscale RAGs, and human personality from human RAGs.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone:} Successful integration with TA1 technology and end-of-program demonstrations of our integrated system on both microscale and mesocale.
+\item \textbf{Deliverables:} All data-derived products available for visualization utilizing our Web-services and quality control pages, as well as for download and further analysis using our open source code.
+\end{compactitem}
+
+
+\subsubsection{Task 5: Program Management}
+\begin{compactitem}
+\item \textbf{Goal:} \emph{Phase III:} Ensure successful execution of the effort. Manage the proposed effort using a proven methodology for project planning, resource allocation, task specification, and monitoring. Establish a baseline project plan with a list of tasks, specifications, requirements, and timelines; update plan periodically; document updates to the plan and share them with the project team and DARPA PM.
+\item \textbf{Primary Site:} JHU
+\item \textbf{Milestone} Meet Phase III goals.
+\item \textbf{Deliverables:} 
+(1) Comprehensive quarterly technical reports that include updates systems architecture and progress made on milestones for Phase III;
+(2) Brief month reports, including preprints of technical reports;
+(3) Final Technical Report;
+(4) Monthly Financial Reports.
+\end{compactitem}

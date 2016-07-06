@@ -1,0 +1,98 @@
+\documentclass[11pt]{nih}
+
+\input{preamble}
+\setlength{\parindent}{15pt} % Default is 15pt.
+\usepackage[parfill]{parskip}
+
+
+\tolerance=500
+
+\begin{document}
+
+%\tableofcontents
+%\newpage
+
+
+
+
+\clearpage
+\thispagestyle{empty}
+\input{content/addendum_coversheet}
+
+
+% \newpage
+% \setcounter{page}{1}
+% \section{Official Transmittal Letter}
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=1\linewidth]{../JHU-Proposal/JHU-Figs/LOS_Vogelstein_DARPA2014.pdf}
+% \end{figure}
+
+
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+
+% \clearpage
+% \listoftodos
+
+\clearpage
+\input{content/addendum_summary}
+
+\newpage
+% \setcounter{section}{1}
+\thispagestyle{empty}
+\section{Executive Summary Slide}
+% \jason{ is this updated?}
+% \marginpar{this is a test}
+\begin{figure}[h!]
+\centering
+% \includegraphics[width=1\linewidth]{../JHU-Proposal/JHU-Figs/JHU-SIMPLEX_slide.pdf}
+\end{figure}
+
+
+
+\clearpage
+\input{content/summary.blci}
+\input{content/desc.blci}
+
+
+\clearpage
+% \input{goals/addendum_goals}
+
+\input{content/addendum_technicalplan}
+
+% \input{content/addendum_management}
+
+% \input{content/addendum_personnel}
+
+% \input{content/addendum_capabilities}
+
+\input{content/addendum_SOW}
+
+\input{content/addendum_schedule}
+
+
+% \section{Cost Summary}
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[width=1\linewidth]{../JHU-Proposal/JHU-Figs/Cost_summary.pdf}
+% \end{figure}
+
+\clearpage
+% \input{content/addendum_administrivia}
+
+
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{bib/library,bib/rb,bib/blci} %, rb, minh}
+\normalsize
+
+% \clearpage
+% \begin{center}
+% {\Large \bb{Volume II, Cost Proposal }}
+% \end{center}
+
+
+\end{document}
