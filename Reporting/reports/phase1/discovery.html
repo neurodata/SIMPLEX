@@ -89,7 +89,7 @@ Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways 
 With the aid of the Python API ndio, we are able to access ndstore services programmatically to substantiate the claims made in <a href=”http://www.cell.com/cell/abstract/S0092-8674(15)00824-7”>Narayanan Kasthuri’s 2015 Cell Paper</a>. Our programmatic representations of these claims, available [on GitHub](https://github.com/neurodata/kasthuri2015) in Jupyter notebooks, illustrate that it is possible to reproducibly conduct neuroscientific inquiry.
 
 
-## Synapse Spatial Point Patterns (Q3 2016)
+## Synapse Spatial Point Patterns
 Through analyzing large annotated image volumes we are able to explore the distribution of synapses in space. We have setup [interactive Jupyter notebooks](https://github.com/neurodata/ndpaper/blob/gh-pages/spatialsynapses/synapse_viz.ipynb) attached with sliders which enable combing through the data and investagting properties at local scales which may be overwhelmed when observing the gross data.
 
 <img src="../../figs/mip.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
@@ -107,7 +107,7 @@ Figure: Pair-wise regressions involving GABA<sub>B</sub>R.
 
 The lab notebooks are located [here.](http://docs.neurodata.io/synaptome-stats)
 
-## Using MGC for Human Brain Classification (Q3 2016)
+## Using MGC for Human Brain Classification
 We first investigate whether brain shape and disease status are dependent on one another. Previous investigations have linked major depressive disorder to the hippocampus shape, though global tests were unable to detect a statistically significant dependence structure at the α = 0.05 level. This brain shape versus disease dataset consists of n = 114 subjects, for each we have an MRI scan as well as a discrete variable indicating whether the subject is clinically depressed (2), high-risk (1), or non-affected (0). From the MRI data, previous work extracted both the left and right hippocampi. For the brain shape “view” of the data, they computed the interpoint comparison matrices using a nonlinear landmark matching approach. For the discrete disorder variable, we use squared Euclidean distance, then add 1 to every non-diagonal entry (so only the diagonals are of distance 0).
 
 The next experiment investigates whether brain networks are independent of creativity. Neural correlates of creativity have previously been investigated, though largely using structural MRI and cortical thickness. Here, we used data from a previously published result on graph similarity, which included for each of n = 109 subjects, we have both diffusion weighted (DW-) MRI data as well as the subject’s “creativity composite index” (CCI). We processed the raw DW- MRI data via MIGRAINE, a pipeline for estimating brain networks from diffusion data. To compute the distance between graphs, we use the semiparameteric test statistic, developed specifically to compare pairs of graphs with labeled vertices. This test statistic was developed to reduce the noise due to the very high-dimensionality of adjacency matrices via employing adjacency spectral graph embedding to reduce the dimensionality into something much smaller; in this case, we chose to embed each graph into 2 dimensions for simplicity. We use simple squared error (Euclidean metric) to compare CCI values.
@@ -129,7 +129,7 @@ None of the methods we experimented with (k-means with different numbers of feat
 <img src="../../figs/m4_fear_control.png"  style="width: 400px; margin:0px 0 0 120px;"/>
 <img src="../../figs/m4_fear_cocaine.png" style="width: 400px; margin:0px 0 0 120px;"  />
 
-## MR Batch Effects (Q3 2016)
+## MR Batch Effects
 
 The large database of processed graphs from MR subjects enables us the opportunity to explore mega-analyses in MRI data unlike that which has been done previously. The exemplar task we chose to illustrate this capability was exploring the significance of batch effects in data collected in different studies. The first panel shows histograms of B0 image volume intensities from various datasets. We can see slight differences in raw data through this metric, including intensity shifts either left or right by a dataset, or a dataset containing multiple populations.
 
