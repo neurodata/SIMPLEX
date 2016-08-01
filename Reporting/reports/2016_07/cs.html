@@ -329,6 +329,8 @@ users write R code and FlashMatrix executes them efficiently. It reimplements
 many matrix operations from the R base package to execute R code
 in parallel and out of core automatically. FlashMatrix scales matrix
 operations beyond memory capacity by utilizing solid-state drives (SSDs).
+As such, FlashMatrix is a simple platform for users to experiment new machine
+learning algorithms for large datasets.
 
 The paper on the design of FlashMatrix is published on arxiv: http://arxiv.org/pdf/1604.06414v1.pdf
 
@@ -336,6 +338,14 @@ The paper on the design of FlashMatrix is published on arxiv: http://arxiv.org/p
 
 We implement Gaussian Mixture Model in FlashMatrix with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashMatrix execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our experiment shows that our R implementation outperforms the implementation in Spark MLlib on a large parallel machine.
 R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
+
+#### LOL
+We implement new machine learning algorithms called LOL for high-dimension datasets and measure its performance (both runtime speed and accuracy when used for classification) on very large datasets. Again, LOL is implemented in the R code completely. We show that the R implementation of LOL scales to datasets with hundreds of millions of dimensions and has high precision when being used for classification.
+<div class="fig-container" id="fig:LOL">
+<img src="../../figs/LOL_scalability.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+Figure: The scalability of LOL and prediction accuracy when used in classification.
+</div>
+R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/LOL.R
 
 #### other stuff
 
