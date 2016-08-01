@@ -73,18 +73,17 @@
 
 ## Optimal Pipeline
 
-We apply our methodology of discriminability to fMRI processing. In particular, we processed 12 test-retest fMRI data sets using 64 processing pipelines. We then compute discriminability estimates of processed data sets. Based on the results, we claim CC200 is a better atlas compared to HOX, AAL and DES. In the meantime, we find that global signal regression and NFF significantly improve discriminability. No scrubbing and FSL is slightly better than scrubbing and ANTS. Furthermore, we discovered that using rank graphs is more discriminable than raw correlation graphs. We are going to further investigate processing pipeline for DTI data sets and compare discriminability of DTI and fMRI.
+We apply our methodology of discriminability to DTI processing. In particular, we processed 4 test-retest DTI data sets using 15 atlases and 3 different edge weights. 
+The discriminability estimates of processed data sets is computed. It turns out DTI data sets have comparable discriminability as fMRI data sets. 
 
 <div class="fig-container" id="fig:optimal-pipeline">
-<img src="../../figs/64_pipelines_raw.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
+<img src="../../figs/four_dti.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
-Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways are plotted. BNU1, BNU2, DC1, IACAS, IBATRT, IPCAS, JHNU, NYU1, SWU1, UM, UWM and XHCUMS are processed by
-64 pipelines and discriminability are computed. Colors of points indicate data set; sizes of points are proportional to the number of samples of data set. Black dots represent mean discriminability across 12 data sets. CFXXG pipeline has the best mean discriminability across data sets.
+Figure: Discriminability of BNU1, HNU1, SWU4 and KKI are computed. Data sets are registered by 15 atlases with ROI ranging from 48 to 1875. We consider raw, log and rank edge weights. We found no significant relationship between discriminability and the number of ROI.
+Log and rank edge weights seem to be better than raw edge weights especially when the number of ROI is large.
 </div>
 
-## Joint Embedding
 
-We develop a procedure to jointly embed multiple graphs. Contrast to adjacency spectral embedding and laplacian eigenmap, joint embedding take adavantage of multiple graphs to get a more stable estimates of embeddings. 
 
 
 ## Extensible Neurocartography

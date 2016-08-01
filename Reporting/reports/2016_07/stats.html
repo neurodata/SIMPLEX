@@ -118,10 +118,17 @@ With contamination, out estimator (blue), which degrades slowly, outperforms the
 We propose a methodology to cluster the vertices in a graph through optimization approach. By balancing between estimation of the probability matrix and the approximate block structure, we obtain the estimated latent positions and the cluster memberships simultaneously. We demonstrate in simulation that our optimization approach outperforms adjacency spectral embedding. Moreover, it is as good as empirical bayes approach but runs much faster.
 
 
-### Joint Embedding
+## Joint Embedding
 
-We develop an algorithm to jointly embed multiple graphs into low dimensional space. The algorithm learns a set of rank one symmetric matrices and embed multiple graphs simultaneously into the subspace spanned by these matrices. Embeddings can be used to cluster or classify graphs by various standard learning algorithms. We proved theories which demonstrate that under some random graph models the algorithm provides estimates of parameters with small errors. The algorithm is implemented in R and we run it on simulated and real data sets. We demonstrate our algorithm provides better classification performance compared to other algorithms which embed graphs separately.
+We develop a procedure to jointly embed multiple graphs. Contrast to adjacency spectral embedding and laplacian eigenmap, joint embedding take adavantage of multiple graphs to get a more stable estimates of embeddings. The method identifies a linear subspace
+spanned by rank one symmetric matrices and projects adjacency matrices of graphs into the subspace. The embedding coefficients can be
+treated as features of graphs. We propose a random graph model which can be used to model multiple random graphs. It can be
+shown that under the model our method produces estimates of parameters with small errors. 
+<div class="fig-container" id="fig:joint-embedding">
+<img src="../../figs/leig_je_acc.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
+Figure: Classification accuracy based on two embedding approaches are plotted. Two classes of SBM graphs are generated and a K-NN classifier is used to classify graphs based on their embeddings. Joint embedding can take advantage of multiple graphs and achieve perfect classification perfarmance.
+</div>
 
 ## Matrices
 
