@@ -120,6 +120,25 @@ are independent by construction. For each brain region, we test: is activity of 
 <img src="../../figs/brainstates.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
 (A) Local correlation p-value curves with respect to k = 2, . . . , 114 at l = 4 for brain vs disease. l = 4 is the largest possible neighborhood size for the disease data, as it is categorical. Thick solid black lines correspond to the largest region of p-values &lt; 0.05. (B) Local correlation p-value heat map with respect to k = 2,...,109 and l = 2,...,38 for brain MIGRAINE vs CCI. l = 38 is the largest possible neighborhood size for the CCI data, due to repeated distance entries. (C) Density estimate for the false positive rates of MGC on the brain vs noise experiments, with the actual rate of each data shown as dots above the x-axis.
 
+## CLARITY Registration
+
+To segment CLARITY brains into ROIs for analysis we developed a pipeline to register them to the Allen Institute's Reference Mouse Brain Atlas (ARA). 
+Version 2 of the ARA includes an average image and a label map which divides the brain into over 700 distinct regions.
+Image registration was done using the Large Deformation Diffeomorphic Metric Mapping (LDDMM) algorithm, a deformable registration algorithm which computes smooth invertable transforms between a template and a target image.
+
+<img src="../../figs/lddmmFlowchart.png"  style="width: 650px; margin:0px 0 0 0px"/>
+
+Traditionally LDDMM is computed using a Mean Square Error (MSE) matching term which assumes that bright regions match bright regions and dark regions match dark regions.
+Since the intensity profile of CLARITY brains differ greatly from the ARA average, this asumption does not hold.
+Thus our original solution was to register CLARITY brains to the ARA indirectly using their masks.
+This technique had several drawbacks including an inablility to handle missing data and the potential misalignment of deep brain structures.
+These issues were addressed by replacing the MSE matching term with an intensity invariant Mutual Information (MI) term.
+This allowed us to direclty align CLARITY brains to the ARA.
+The figure below depicts how the corpos callosum is incorrectly aligned with MSE but correcly aligned with MI.
+
+
+<img src="../../figs/miLddmm.png"  style="width: 400px; margin:0px 0 0 120px"/>
+
 
 ## CLARITY Classification
 
