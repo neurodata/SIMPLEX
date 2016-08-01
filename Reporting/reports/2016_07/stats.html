@@ -128,23 +128,21 @@ We develop an algorithm to jointly embed multiple graphs into low dimensional sp
 
 ### Randomer Forest
 
-In his landmark paper on random forests, Leo Breiman derived an upper bound for generalization error of random forests which depends on only two factors: 1) correlation among decision trees and 2) strength of individual decision trees. Lower correlation and stronger individual trees both enhance performance of the decision forest classifier. We have recently initiated an extensive sensitivity analysis of RerF to two different hyperparameters in order to understand how they affect both correlation and strength of decision trees, as well as overall classification performance. One of these hyperparameters controls the average number of nonzeros in candidate random projections sampled at split nodes. The other specifies the number of random projections sampled at each node. Preliminary results on the Sparse Parity simulated dataset with n (number of samples) = 1000 and p (number of dimensions) = 25 suggest that both hyperparameters have a significant effect on classification performance, with mtry having a more pronounced effect (top left figure, link below). To our knowledge, most studies typically only try values of mtry in the range of 1 to p. Even in Breiman’s analysis, he only tries values of mtry on the order of or less than p. However, our results suggest that the optimal value of mtry can be much larger than p. The top right figure plots out-of-bag error for individual trees as a function of average number of nonzeros of selected split projections for three different values of mtry. The larger spread of points and lower average OOB error as mtry increases suggests that larger values of mtry improve classification performance by both increasing strength of individual trees and decreasing correlation. We are now conducting this analysis on our suite of benchmark datasets. These efforts will hopefully aid us in understanding more deeply how these parameters affect classification performance and allow us to more efficiently tune these parameters on any given classification task.
-
-Additionally, we recomputed performance profiles on the benchmark data under random scaling and random affine transformations. The new calculations apply more pronounced scaling factors in order to better demonstrate the effectiveness of passing the data to ranks before fitting RerF. The bottom figure shows that RerF (in green) performs better than RF (in blue) on the untransformed data, but performs worse than RF when the data is affine transformed. Rerf_r (in red), which passes to ranks before fitting RerF, performs better than RF on the affine transformed data.
+We submitted a <a href="http://arxiv.org/pdf/1506.03410.pdf">manuscript to NIPS summarizing our most recent results and findings on randomer forests</a> 
+Based on reviewer's feedback, we have begun to adopt new metrics for evaluating randomer forests on simulated and benchmark datasets (see figure below) and are conducting more rigorous methods for evaluations of randomer forests. 
 
 <div class="fig-container" id="fig:q4_tt">
-<img src="../../figs/Q4_TT.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+<img src="../../figs/benchmark_histogram.png" style="width: 700px; margin: 0px 0 0 -30px;" />
 </div>
 
+Additionally, we are endeavoring to tailor randomer forests to exploit structural relationships among covariates when such structure is known to exist. One such example is image object recognition. We have constructed a simple example of images in which one class has horizontal lines and the other class has vertical lines. The task is to learn this rule for distinguishing classes. Examples of simulated images and results are shown below.
 
-The merit of a particular classifier is determined by its probability of making an incorrect prediction, called the misclassification rate. It is widely known that three factors contribute to the misclassificat\
-ion rate. One of these contributions is the intrinsic noise in the data and does not depend on the classifier. The other two contributions stem from the classification procedure, and are the bias and variance o\
-f the classifier. Estimating the bias and variance for RF and RerF under various settings will help to elucidate the underlying forces contributing to overall classifier performance, and will aid in fine-tuning\
- the design of RerF. While several bias/variance decompositions have been proposed, we adopt that proposed by Kohavi and Wolpert (1996). Using their definitions, we estimated bias and variance of RF and RerF un\
-der various settings.
+<div class="fig-container" id="fig:q4_tt">
+<img src="../../figs/image_stripes_data.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+</div>
 
-<div class="fig-container" id="fig:rerfr-bias-variance">
-<img src="../../figs/Sparse_parity_bias_variance.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+<div class="fig-container" id="fig:q4_tt">
+<img src="../../figs/image_stripes_results.png" style="width: 700px; margin: 0px 0 0 -30px;" />
 </div>
 
 ### Dependence Testing
