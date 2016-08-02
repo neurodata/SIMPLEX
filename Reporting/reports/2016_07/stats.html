@@ -105,6 +105,15 @@ To estimate the mean of a collection of weighted graphs under a low rank random 
 Figure: Comparison of Estimators. Our estimator wins according to asymptotic mean squared error by taking advantage of robust estimators and rank-reduction procedure.
 </div>
 
+
+<div class="fig-container" id="fig:RobustLLG_est_comp">
+<img src="../../figs/RobustLLG_sim_eps.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+Figure: Comparison of Estimators in the simulation setting. X-axis represent the proportion of the contamination. MLE outperforms a little bit when there is no contamination, but it degrades dramatically when contamination increases while MLqE still does a good job. Applying ASE to either entry-wise MLE or entry-wise MLqE reduces the variance by bias towards the low rank approximation. Our estimator based on ASE of MLqE inherits the robustness from MLqE, and it has low variance. When contamination is large enough, our estimator performs the best among all the four.
+</div>
+
+
+
+
 <div class="fig-container" id="fig:RobustLLG_cluster">
 <img src="../../figs/RobustLLG_cluster.png" style="width: 700px; margin: 0px 0 0 -30px;"/>
 Figure: Plots for embedded latent positions under different circumstance. Without conatmination, out estimator (yellow) is slightly worse than element-wise MLE (green) for estimating the true latent position (black);
