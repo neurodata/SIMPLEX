@@ -96,7 +96,7 @@ We are currently in the process of migrating our spatial database to AWS cloud i
 
 <img src="../../figs/neurodata_cluster.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
-Figure above shows the new architecture where the data will be stored on AWS S3 object store. S3 will be used as near line storage because it is cheaper to store data and more reliable. For optimal performance, data being actively used will be cached on dedicated SSD's on AWS instances using various distributed databases. NDstore back-end currently supports MySQL, DynamoDB, Cassandra and Riak. This data will dynamically migrate between S3 and SSD's providing a unified interface to the user.
+Figure above shows the new architecture where the data will be stored on AWS S3 object store. S3 will be used as near line storage because it is cheaper to store data and more reliable. For optimal performance, data being actively used will be cached on dedicated SSD's on AWS instances using various distributed databases. NDstore back-end currently supports MySQL, DynamoDB, Cassandra and Riak. This data will dynamically migrate between S3 and SSD's providing a unified interface to the user. In addition, the data ingest for AWS will leverage Lambda and SQS to allow parallel ingest of data and acclearate the ingest process.
 
 ### Authentication and Authorization
 
