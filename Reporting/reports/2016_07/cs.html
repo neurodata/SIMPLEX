@@ -74,7 +74,7 @@
 
 ### Images
 
- In the project one of the workload is to run computer vision algorithms at scale to detect cell bodies in the data. This workload can be split into three sections to provide a better understanding of the problem. First section, reading sub volumes of data from the spatial database using multiple readers. The NDStore backend is scalable and is capable of upto 9GB/sec read throughput one a single node running MySQL. Usually, we run multiple nodes providing much higher read throughput. Second section, to detect cell bodies in the data using a large compute cluster. We will talk more about this in the next section. Third section, to write the detected cell bodies as annotation back to the database. We can achieve upto 1.5GB/sec write throughput with 16 threads on a single nodes running MySQL. With high read and write throughput we avoid bottlenecks in the first and third section for large scale runs.
+ In the project one of the workload is to run computer vision algorithms at scale to detect cell bodies in the data. This workload can be split into three sections to provide a better understanding of the problem. First section, reading sub volumes of data from the spatial database using multiple readers. The NDStore backend is scalable and is capable of upto 4.5GB/sec read throughput one a single node running MySQL. Usually, we run multiple nodes using a load balancer providing much higher read throughput. Second section, to detect cell bodies in the data using a large compute cluster. We will talk more about this in the next section. Third section, to write the detected cell bodies as annotation back to the database. We can achieve upto 1.5GB/sec write throughput with 16 threads on a single nodes running MySQL. With high read and write throughput we avoid bottlenecks in the first and third section for large scale runs.
 
 You can reproduce our Read/Write throughput benchmarks using the following steps:
 <ul>
@@ -90,6 +90,19 @@ You can reproduce our Tilecache benchmarks using the following steps:
 </ul>
 </p>
 
+### AWS Cloud Migration
+
+We are currently in the process of migrating our spatial database to AWS cloud infrastructure. The AWS cloud offers us scalability which is essential as we expand and high uptime which is important to keep our services available to all users.
+
+<img src="../../figs/neurodata_cluster.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
+
+Figure above shows the new architecture where the data will be stored on AWS S3 object store. S3 will be used as near line storage because it is cheaper to store data and more reliable. For optimal performance, data being actively used will be cached on dedicated SSD's on AWS instances using various distributed databases. NDstore back-end currently supports MySQL, DynamoDB, Cassandra and Riak. This data will dynamically migrate between S3 and SSD's providing a unified interface to the user.
+
+### Authentication and Authorization
+
+We have now enabled all our storage services to be accessible over HTTPS as per standard practices to ensure data privacy and integrity. With HTTPS, all communication with our back-end will occur over a connection encrypted by TLS/SSL. These services can operate using both, session cookies for browsers as well as OAUTH2.0 tokens for the python API's or third party tools.
+
+### Write Buffers
 
 NDBlaze is a memory based buffer using Redis and Spark that accelerates random writes to a spatial database. It improves the user-perceived write throughput by up to 38 times and the I/O throughput to disk by 3.3 times. All interfaces to this system are RESTful web services and they provide a consistent view of the data to the user.
 
