@@ -50,7 +50,7 @@
         font-weight: 400;
         margin-bottom: 0;
       }
-      
+
       .small {
         font-size: 0.8em;
       }
@@ -99,13 +99,19 @@ Figure above shows the write throughput of the NDBlaze as a function of data blo
 
 Beyond burst performance, NDBlaze improves the sustained I/O performance to the spatial database, because it makes I/O more sequential. Figure above shows the write throughput to NDBlaze from the write queue. For this benchmark, we pre-fill the queue with 16GB of merged and spatial index sorted data, which is then written by celery workers. We experiment over multiple celery workers ranging from 1 to 16 and receive a peak at 8 workers of 9.5GB/sec which is about 3.3 times faster then 2.8GB/sec peak for random writes with 32 workers.
 
+#### Image Statistics
+
+Histograms provide a useful first look at large image datasets. For example, many basic statistics can be computed directly from the histogram. Histograms can also be used to compute quality control metrics, or to determine a proper window for resampling 16-bit data into 8-bit images. Computing the histogram of a multi-TB dataset is difficult, because the data does not fit into workstation memory. We built a histogram statistics service and integrated it into NDStore. The service computes histograms using a background job on the data server, iterating over cuboids. This negates the need for a custom script or a costly data transfer to a local compute cluster. Each histogram has the same number of bins as intensity values in the dataset (e.g. the histogram for a 8-bit image dataset has 2<sup>8</sup> bins). The computed histogram is then stored in the NDStore database, available for retrieval using a RESTful request or the Histogram Explorer tool. Statistics can be computed from the histogram on demand using the Statistics API. Supported statistics currently include mean, standard deviation, arbitrary percentiles, or extrema.
+
+In addition to computing histograms across the entire image, we have deployed a new service that computes an image histogram on a user specified 3D rectangular region (region of interest, or ROI) in the dataset. Just like the histogram service, the histogram ROI service computes the image histogram and stores the result in the NDStore database. The ROI in question is also stored, and all ROIs (and their corresponding histograms) can be queried from the Web interface. We have used this service to generate histograms for specific ROIs in CLARITY data, and plan to make both the histograms and data publicly available soon.
 
 ### Shapes
 
 The vast majority of the imaging data we collect is 3-dimensional data imaged in 2-dimensional slices. Analysis is done on each slice, creating a series of 2-dimensional analysis overlays which we call “annotations”. These annotations can be skeleton annotations, where a centroid or a particularly interesting point is labeled and multiple points are connected, or paint annotations, where cells or intracellular components are labeled by “coloring”. There is high demand from the neuroscience community for 3D visualization of these annotations, both for quality control and analysis purposes.
 
-In the course of investigating 3D visualization of annotations, it became clear that we needed to generate the 3D representation of the annotation. Initially, we hoped to generate 3D representations on-the-fly. But, after generating different 3D representations, we believe a mesh or line segment based representation will be more compact than the 2D representation we currently store. To investigate further, we are building a geometric object database that stores mesh or segment representations of 3D objects using the same spatial layout as ND Store. We have built a prototype of the database and are currently in the process of accelerating the code used to generate the 3D representation of an annotation and insert it. The process of generating these representations is more compute-intensive than the process of inserting images into ND Store. Thus, we have been utilizing new programming technologies, such as the Go programming language, to leverage parallelism from the start and optimize memory usage. We plan to develop a prototype of the database and run comparisons between the 3D representations in the geometric object database and the image-based representations in ND store.
+In the course of investigating 3D visualization of annotations, it became clear that we needed to generate the 3D representation of the annotation. Initially, we hoped to generate 3D representations on-the-fly. But, after generating different 3D representations, we believe a mesh or line segment based representation will be more compact than the 2D representation we currently store. To investigate further, we are building a geometric object database that stores mesh or segment representations of 3D objects using the same spatial layout as ND Store. We have built a prototype of the database and are currently in the process of accelerating the code used to generate the 3D representation of an annotation and insert it. The process of generating these representations is more compute-intensive than the process of inserting images into ND Store. Thus, we have been utilizing new programming technologies, such as the Go programming language, to leverage parallelism from the start and optimize memory usage.
 
+As of August 2016, we have developed a framework for ingesting (reading) data into the database and running spatial queries. The framework is entirely written in the Go programming language. We are now in the process of refining and optimizing both the ingest and query code, as well as deploying the database framework as a RESTful Web interface, similar to <em>ndstore</em>.
 
 ### Graphs with Rich Attributes Database
 
@@ -125,23 +131,26 @@ We use a document-based (schemaless) database built in MongoDB to store dataset 
 
 #### Python API
 
-We provide ndio, a publicly accessible Python API, to aid in interactions with ndstore, ndlims, grute, and other NeuroData services. ndio is available on the [Python Package Index](https://pypi.python.org/pypi/ndio/), with a stable version 1.0 planned for release at the end of March 2016.  This API enables big data neuroscience for researchers from a wide-variety of backgrounds and experience levels.  RESTful queries and database details are handled by the API, which allows users to complete basic queries, gets and puts with only a few lines of code.
+We provide ndio, a publicly accessible Python API, to aid in interactions with ndstore, ndlims, grute, and other NeuroData services. ndio is available on the [Python Package Index](https://pypi.python.org/pypi/ndio/), with a stable version 1.0 released in April 2016.  This API enables big data neuroscience for researchers from a wide-variety of backgrounds and experience levels.  RESTful queries and database details are handled by the API, which allows users to complete basic queries, gets and puts with only a few lines of code. In particular, ndio allows neuroscientists to both upload their raw voxel data (using the <em>post_cutout</em> function) and their metadata, using our RAMON ontology. By coupling metadata with raw voxel data, we are able to generate richly attributed graphs from any properly attributed dataset uploaded to the ndstore system.
 
+### Histogram Explorer
 
+Data queried from ndstore is often returned in a raw format (e.g. JSON) that is difficult to analyze. The Histogram Explorer allows the user to visualize both the image histogram and view various statistics computed from the stored histogram side-by-side. The image histogram and associated statistics are requested dynamically from ndstore. The Histogram Explorer was initially designed for users wishing to resample 16-bit data to 8-bit image tiles. It is often necessary to set a new minimum and maximum bound when resampling the 16-bit dataset, especially if data is clustered in a smaller range than [0, 2<sup>16</sup>). The Histogram Explorer allows users to adjust this resampling range (dubbed the “Window”) dynamically. The Histogram Explorer leverages the power of the ndstore API to allow users to dynamically visualize and interact with histograms from any dataset without writing code or downloading data to their local computer.
+
+The Histogram Explorer is publicly available at <a href="hx.neurodata.io">hx.neurodata.io</a>.
+
+<div class="fig-container" id="fig:ndviz:maxproj">
+<img src="../../figs/ndviz/histogramexplorer.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+</div>
+Figure: The NeuroData Histogram Explorer.
 
 ## Explore
 
 ### Images
 
-We built an open-source Web application, NeuroDataViz, that allows users to load multi-TB image datasets in their Web browser. When ingesting a new dataset, we downsample the raw image files multiple times to create an image hierarchy. Each level of the image hierarchy is further chopped up into cuboids. By leveraging this subdivison of images, we are able to load large volumes of data (by using the downsampled representation) quickly, and then loading higher resolution cuboids as the user zooms in. NeuroDataViz also leverages our backend infrastructure to provide point-and-click metadata support, false coloring, and fast loads when panning back and forth through z-space (by caching tiles/cuboids as they leave the server). Several public projects are available for browsing. Visit http://viz.neurodata.io/ and click “Data” in the upper-right corner of the navigation bar.
+We built an open-source Web application, ndviz, that allows users to load multi-TB image datasets in their Web browser. When ingesting a new dataset, we downsample the raw image files multiple times to create an image hierarchy. Each level of the image hierarchy is further chopped up into cuboids. By leveraging this subdivison of images, we are able to load large volumes of data (by using the downsampled representation) quickly, and then loading higher resolution cuboids as the user zooms in. NeuroDataViz also leverages our backend infrastructure to provide point-and-click metadata support, false coloring, and fast loads when panning back and forth through z-space (by caching tiles/cuboids as they leave the server). Several public projects are available for browsing. Visit http://viz.neurodata.io/ and click “Data” in the upper-right corner of the navigation bar.
 
 Recently, we rewrote the NeuroDataViz frontend to use WebGL to render tiles instead of displaying them as static images. Using WebGL means we can take advantage of the power of the users graphics card (even mobile phones have very powerful graphics processors integrated into their SoC, or system-on-a-chip) to enable dynamic image processing and image effects. For example, our blend mode is now faster and more accurate, since we can define our own blending functions (e.g. additive blending allows you to display two datasets overlaid in two different colors, and easily see overlap by looking for a new, third color). We also support intensity remapping (in effect allowing the user to adjust brightness and contrast) as well as gamma correction. Finally, we support dynamic false coloring of each individual layer. Not only can the user change the color of a layer on demand, but we now deliver 8-bit images, instead of 32-bit colored images, a 4-fold decrease in bandwidth usage. These options are available for use on all our public NeuroDataViz projects and are also shown in the figure below.
-
-
-One important statistics use case is resampling 16-bit images to fit into 8-bit image space. 
-The data for many image datasets is obtained using a 12-bit camera, but is stored in a 16-bit file format. 
-To properly view the images, the 16-bit image must be re-sampled into an 8-bit image.
-Typically, a new intensity range (or intensity "window") is set, with the minimum intensity value corresponding to some small percentage (e.g. 5\%) of the overall intensity value in the 16-bit dataset and the maximum intensity value corresponding to a large percentage (e.g. 99\%) of the overall intensity value. 
 
 <div class="fig-container" id="fig:ndviz:imgproc">
 <img src="../../figs/ndviz/ndv-weiler-multispectral.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
@@ -329,6 +338,8 @@ users write R code and FlashMatrix executes them efficiently. It reimplements
 many matrix operations from the R base package to execute R code
 in parallel and out of core automatically. FlashMatrix scales matrix
 operations beyond memory capacity by utilizing solid-state drives (SSDs).
+As such, FlashMatrix is a simple platform for users to experiment new machine
+learning algorithms for large datasets.
 
 The paper on the design of FlashMatrix is published on arxiv: http://arxiv.org/pdf/1604.06414v1.pdf
 
@@ -336,6 +347,14 @@ The paper on the design of FlashMatrix is published on arxiv: http://arxiv.org/p
 
 We implement Gaussian Mixture Model in FlashMatrix with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashMatrix execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our experiment shows that our R implementation outperforms the implementation in Spark MLlib on a large parallel machine.
 R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
+
+#### LOL
+We implement new machine learning algorithms called LOL for high-dimension datasets and measure its performance (both runtime speed and accuracy when used for classification) on very large datasets. Again, LOL is implemented in the R code completely. We show that the R implementation of LOL scales to datasets with hundreds of millions of dimensions and has high precision when being used for classification.
+<div class="fig-container" id="fig:LOL">
+<img src="../../figs/LOL_scalability.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+Figure: The scalability of LOL and prediction accuracy when used in classification.
+</div>
+R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/LOL.R
 
 #### other stuff
 

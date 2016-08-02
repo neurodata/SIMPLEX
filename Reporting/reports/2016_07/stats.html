@@ -92,8 +92,8 @@ Figure: Scaled average relative efficiency with different N and fixed M of 1000 
 </div>
 
 <div class="fig-container" id="fig:LLG_JHU">
-<img src="https://raw.githubusercontent.com/TangRunze/LLG/master/Draft/JHU.png" style="width: 700px; margin: 0px 0 0 -30px;" />
-Figure: Comparison of mean squared error between Abar (red) and Phat (blue) for JHU dataset while embedding the graphs into different dimensions with different size M of the subsamples. The dimension chosen by Zhu and Ghodsi is denoted in green (2nd elbow) and purple (3rd elbow). Dashed lines represent the 95% confidence interval. When M is small, Phat outperforms Abar with a flexible range of the embedding dimension including what Zhu and Ghodsi selects.
+<img src="https://raw.githubusercontent.com/TangRunze/LLG/master/Draft/realdata.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+Figure: Comparison of mean squared error between Abar (solid line) and Phat (dahsed line) for three dataset (JHU, desikan and CPAC200) while embedding the graphs into different dimensions with different size M of the subsamples. The dimension chosen by the 3rd elbow of Zhu and Ghodsi is denoted in triangle, and chosen by USVT with threshold equals 0.7 is denoted in square. Vertical intervals represent the 95% confidence interval. When M is small, Phat outperforms A with a flexible range of the embedding dimension including what Zhu and Ghodsi selects.
 </div>
 
 ### Robust Law of Large Graphs
@@ -104,6 +104,15 @@ To estimate the mean of a collection of weighted graphs under a low rank random 
 <img src="../../figs/RobustLLG_estimator_comparison.png" style="width: 700px; margin: 0px 0 0 -30px;" />
 Figure: Comparison of Estimators. Our estimator wins according to asymptotic mean squared error by taking advantage of robust estimators and rank-reduction procedure.
 </div>
+
+
+<div class="fig-container" id="fig:RobustLLG_est_comp">
+<img src="../../figs/RobustLLG_sim_eps.png" style="width: 700px; margin: 0px 0 0 -30px;" />
+Figure: Comparison of Estimators in the simulation setting. X-axis represent the proportion of the contamination. MLE outperforms a little bit when there is no contamination, but it degrades dramatically when contamination increases while MLqE still does a good job. Applying ASE to either entry-wise MLE or entry-wise MLqE reduces the variance by bias towards the low rank approximation. Our estimator based on ASE of MLqE inherits the robustness from MLqE, and it has low variance. When contamination is large enough, our estimator performs the best among all the four.
+</div>
+
+
+
 
 <div class="fig-container" id="fig:RobustLLG_cluster">
 <img src="../../figs/RobustLLG_cluster.png" style="width: 700px; margin: 0px 0 0 -30px;"/>
@@ -135,7 +144,7 @@ Figure: Classification accuracy based on two embedding approaches are plotted. T
 
 ### Randomer Forest
 
-We submitted a <a href="http://arxiv.org/pdf/1506.03410.pdf">manuscript to NIPS summarizing our most recent results and findings on randomer forests</a> 
+We submitted a <a href="https://github.com/ttomita/RandomerForest/blob/master/Draft/nips2016/robust-oblique-forests.pdf">manuscript to NIPS summarizing our most recent results and findings on randomer forests</a> 
 Based on reviewer's feedback, we have begun to adopt new metrics for evaluating randomer forests on benchmark datasets (see figure below) and are conducting more rigorous methods for evaluations of randomer forests. 
 
 <div class="fig-container" id="fig:rerf_histogram">
