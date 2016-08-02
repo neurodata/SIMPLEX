@@ -73,14 +73,16 @@
 
 ## Optimal Pipeline
 
-We apply our methodology of discriminability to fMRI processing. In particular, we processed 12 test-retest fMRI data sets using 64 processing pipelines. We then compute discriminability estimates of processed data sets. Based on the results, we claim CC200 is a better atlas compared to HOX, AAL and DES. In the meantime, we find that global signal regression and NFF significantly improve discriminability. No scrubbing and FSL is slightly better than scrubbing and ANTS. Furthermore, we discovered that using rank graphs is more discriminable than raw correlation graphs. We are going to further investigate processing pipeline for DTI data sets and compare discriminability of DTI and fMRI.
+We apply our methodology of discriminability to DTI processing. In particular, we processed 4 test-retest DTI data sets using 15 atlases and 3 different edge weights. 
+The discriminability estimates of processed data sets is computed. It turns out DTI data sets have comparable discriminability as fMRI data sets. 
 
 <div class="fig-container" id="fig:optimal-pipeline">
-<img src="../../figs/64_pipelines_raw.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
+<img src="../../figs/four_dti.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
-Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways are plotted. BNU1, BNU2, DC1, IACAS, IBATRT, IPCAS, JHNU, NYU1, SWU1, UM, UWM and XHCUMS are processed by
-64 pipelines and discriminability are computed. Colors of points indicate data set; sizes of points are proportional to the number of samples of data set. Black dots represent mean discriminability across 12 data sets. CFXXG pipeline has the best mean discriminability across data sets.
+Figure: Discriminability of BNU1, HNU1, SWU4 and KKI are computed. Data sets are registered by 15 atlases with ROI ranging from 48 to 1875. We consider raw, log and rank edge weights. We found no significant relationship between discriminability and the number of ROI.
+Log and rank edge weights seem to be better than raw edge weights especially when the number of ROI is large.
 </div>
+
 
 
 
@@ -117,6 +119,25 @@ are independent by construction. For each brain region, we test: is activity of 
 
 <img src="../../figs/brainstates.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
 (A) Local correlation p-value curves with respect to k = 2, . . . , 114 at l = 4 for brain vs disease. l = 4 is the largest possible neighborhood size for the disease data, as it is categorical. Thick solid black lines correspond to the largest region of p-values &lt; 0.05. (B) Local correlation p-value heat map with respect to k = 2,...,109 and l = 2,...,38 for brain MIGRAINE vs CCI. l = 38 is the largest possible neighborhood size for the CCI data, due to repeated distance entries. (C) Density estimate for the false positive rates of MGC on the brain vs noise experiments, with the actual rate of each data shown as dots above the x-axis.
+
+## CLARITY Registration
+
+To segment CLARITY brains into ROIs for analysis we developed a pipeline to register them to the Allen Institute's Reference Mouse Brain Atlas (ARA). 
+Version 2 of the ARA includes an average image and a label map which divides the brain into over 700 distinct regions.
+Image registration was done using the Large Deformation Diffeomorphic Metric Mapping (LDDMM) algorithm, a deformable registration algorithm which computes smooth invertable transforms between a template and a target image.
+
+<img src="../../figs/lddmmFlowchart.png"  style="width: 650px; margin:0px 0 0 0px"/>
+
+Traditionally LDDMM is computed using a Mean Square Error (MSE) matching term which assumes that bright regions match bright regions and dark regions match dark regions.
+Since the intensity profile of CLARITY brains differ greatly from the ARA average, this asumption does not hold.
+Thus our original solution was to register CLARITY brains to the ARA indirectly using their masks.
+This technique had several drawbacks including an inablility to handle missing data and the potential misalignment of deep brain structures.
+These issues were addressed by replacing the MSE matching term with an intensity invariant Mutual Information (MI) term.
+This allowed us to direclty align CLARITY brains to the ARA.
+The figure below depicts how the corpos callosum is incorrectly aligned with MSE but correcly aligned with MI.
+
+
+<img src="../../figs/miLddmm.png"  style="width: 400px; margin:0px 0 0 120px"/>
 
 
 ## CLARITY Classification
