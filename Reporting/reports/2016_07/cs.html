@@ -103,7 +103,7 @@ Beyond burst performance, NDBlaze improves the sustained I/O performance to the 
 
 Histograms provide a useful first look at large image datasets. For example, many basic statistics can be computed directly from the histogram. Histograms can also be used to compute quality control metrics, or to determine a proper window for resampling 16-bit data into 8-bit images. Computing the histogram of a multi-TB dataset is difficult, because the data does not fit into workstation memory. We built a histogram statistics service and integrated it into NDStore. The service computes histograms using a background job on the data server, iterating over cuboids. This negates the need for a custom script or a costly data transfer to a local compute cluster. Each histogram has the same number of bins as intensity values in the dataset (e.g. the histogram for a 8-bit image dataset has 2<sup>8</sup> bins). The computed histogram is then stored in the NDStore database, available for retrieval using a RESTful request or the Histogram Explorer tool. Statistics can be computed from the histogram on demand using the Statistics API. Supported statistics currently include mean, standard deviation, arbitrary percentiles, or extrema.
 
-In addition to computing histograms across the entire image, we have deployed a new service that computes an image histogram on a user specified 3D rectangular region (region of interest, or ROI) in the dataset. Just like the histogram service, the histogram ROI service computes the image histogram and stores the result in the NDStore database. The ROI in question is also stored, and all ROIs (and their corresponding histograms) can be queried from the Web interface. We have used this service to generate histograms for specific ROIs in CLARITY data, and plan to make both the histograms and data publicly available soon. 
+In addition to computing histograms across the entire image, we have deployed a new service that computes an image histogram on a user specified 3D rectangular region (region of interest, or ROI) in the dataset. Just like the histogram service, the histogram ROI service computes the image histogram and stores the result in the NDStore database. The ROI in question is also stored, and all ROIs (and their corresponding histograms) can be queried from the Web interface. We have used this service to generate histograms for specific ROIs in CLARITY data, and plan to make both the histograms and data publicly available soon.
 
 ### Shapes
 
@@ -140,7 +140,7 @@ Data queried from ndstore is often returned in a raw format (e.g. JSON) that is 
 The Histogram Explorer is publicly available at <a href="hx.neurodata.io">hx.neurodata.io</a>.
 
 <div class="fig-container" id="fig:ndviz:maxproj">
-<img src="../../figs/ndviz/histogramexplorer.png" style="width: 1200px; margin: 0px 0 0 -30px;"  />
+<img src="../../figs/ndviz/histogramexplorer.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
 </div>
 Figure: The NeuroData Histogram Explorer.
 
