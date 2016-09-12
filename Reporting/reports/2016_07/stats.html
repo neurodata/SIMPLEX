@@ -127,16 +127,21 @@ With contamination, out estimator (blue), which degrades slowly, outperforms the
 We propose a methodology to cluster the vertices in a graph through optimization approach. By balancing between estimation of the probability matrix and the approximate block structure, we obtain the estimated latent positions and the cluster memberships simultaneously. We demonstrate in simulation that our optimization approach outperforms adjacency spectral embedding. Moreover, it is as good as empirical bayes approach but runs much faster.
 
 
+<div id="joint">
+
 ## Joint Embedding
 
-We develop a procedure to jointly embed multiple graphs. Contrast to adjacency spectral embedding and laplacian eigenmap, joint embedding take adavantage of multiple graphs to get a more stable estimates of embeddings. The method identifies a linear subspace
+We develop a procedure to jointly embed multiple graphs. In contrast to adjacency spectral embedding and laplacian embeddings, joint embedding takes adavantage of multiple graphs to get a more stable estimates of embeddings. The method identifies a linear subspace
 spanned by rank one symmetric matrices and projects adjacency matrices of graphs into the subspace. The embedding coefficients can be
 treated as features of graphs. We propose a random graph model which can be used to model multiple random graphs. It can be
 shown that under the model our method produces estimates of parameters with small errors. 
+
 <div class="fig-container" id="fig:joint-embedding">
 <img src="../../figs/leig_je_acc.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
-Figure: Classification accuracy based on two embedding approaches are plotted. Two classes of SBM graphs are generated and a K-NN classifier is used to classify graphs based on their embeddings. Joint embedding can take advantage of multiple graphs and achieve perfect classification perfarmance.
+Figure: Classification accuracy based on two embedding approaches are plotted. Two classes of SBM graphs are generated and a K-NN classifier is used to classify graphs based on their embeddings. Joint embedding can take advantage of multiple graphs and achieve perfect classification perfarmance, unlike Laplacian embeddings.
+</div>
+
 </div>
 
 ## Matrices
@@ -162,14 +167,26 @@ Additionally, we are endeavoring to tailor randomer forests to exploit structura
 <img src="../../figs/Image_stripes.png" style="width: 700px; margin: 0px 0 0 -30px;" />
 </div>
 
-### Dependence Testing
+
+<div id="sparse">
+
+### Dependence Testing via Grute Sparsification
 
 Discovering the potential dependency between two data sets is one of the most fundamental tasks in data analysis, which is a challenging problem for modern real data with high-dimensionality, non-linearity, noise, etc.
 
 We propose a multiscale graph correlation to test dependency between two data sets. By combining local graph information with distance correlation, our proposed test statistic is theoretically consistent, exhibits superior testing powers under various types of dependencies, is able to identify potential local relationships, is robust against outliers of the data, and can be efficiently computed.
 
 
+<div class="fig-container" id="fig:sparse">
+<img src="https://raw.githubusercontent.com/jovo/MGC/master/Figures/FigA.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
 
+Figure: We find the optimal sparsity level for dependence testing via Multiscale Graph Correlation, which results in significantly improved performance on essentially all dependence testing scenarios we have experimented with, regardless of nonlinearity, dimensionality, and sample size.
+</div>
+
+
+
+
+</div>
 
 ### Discriminability
 
