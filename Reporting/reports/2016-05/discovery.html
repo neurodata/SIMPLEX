@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SIMPLEX April 2016 JHU</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="../../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../../fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+        	div.md {
+        		width:640px;
+        		margin: auto;
+        	}
+      body {
+        font-family: 'gentona';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      
+      .small {
+        font-size: 0.8em;
+      }
+
+        </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+[*Back*](./index.html)
+
+# Discovery
+
+
+## Optimal Pipeline
+
+We apply our methodology of discriminability to DTI processing. In particular, we processed 4 test-retest DTI data sets using 15 atlases and 3 different edge weights. 
+The discriminability estimates of processed data sets is computed. It turns out DTI data sets have comparable discriminability as fMRI data sets. 
+
+<div class="fig-container" id="fig:optimal-pipeline">
+<img src="../../figs/four_dti.png"  style="width: 700px; margin: 0px 0 0 -30px;" />
+
+Figure: Discriminability of BNU1, HNU1, SWU4 and KKI are computed. Data sets are registered by 15 atlases with ROI ranging from 48 to 1875. We consider raw, log and rank edge weights. We found no significant relationship between discriminability and the number of ROI.
+Log and rank edge weights seem to be better than raw edge weights especially when the number of ROI is large.
+</div>
+
+
+
+
+## Extensible Neurocartography
+
+With the aid of the Python API ndio, we are able to access ndstore services programmatically to substantiate the claims made in <a href=”http://www.cell.com/cell/abstract/S0092-8674(15)00824-7”>Narayanan Kasthuri’s 2015 Cell Paper</a>. Our programmatic representations of these claims, available [on GitHub](https://github.com/neurodata/kasthuri2015) in Jupyter notebooks, illustrate that it is possible to reproducibly conduct neuroscientific inquiry.
+
+
+## Synapse Spatial Point Patterns
+Through analyzing large annotated image volumes we are able to explore the distribution of synapses in space. We have setup [interactive Jupyter notebooks](https://github.com/neurodata/ndpaper/blob/gh-pages/spatialsynapses/synapse_viz.ipynb) attached with sliders which enable combing through the data and investagting properties at local scales which may be overwhelmed when observing the gross data.
+
+<img src="../../figs/mip.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+<img src="../../figs/mip_3d.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+
+## Molecular Synapse Types
+
+Exploratory statistical analysis is being conducted on Synaptome data sets using the R language and environment for statistical computing and graphics. The goal is to discover synapse taxonomy for synapse level neuroscience.
+
+<div class="fig-container" id="fig:gababr-reg">
+<img src="../../figs/Fig_gababr_reg.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+
+Figure: Pair-wise regressions involving GABA<sub>B</sub>R.
+</div>
+
+The lab notebooks are located [here.](http://docs.neurodata.io/synaptome-stats)
+
+## Using MGC for Human Brain Classification
+We first investigate whether brain shape and disease status are dependent on one another. Previous investigations have linked major depressive disorder to the hippocampus shape, though global tests were unable to detect a statistically significant dependence structure at the α = 0.05 level. This brain shape versus disease dataset consists of n = 114 subjects, for each we have an MRI scan as well as a discrete variable indicating whether the subject is clinically depressed (2), high-risk (1), or non-affected (0). From the MRI data, previous work extracted both the left and right hippocampi. For the brain shape “view” of the data, they computed the interpoint comparison matrices using a nonlinear landmark matching approach. For the discrete disorder variable, we use squared Euclidean distance, then add 1 to every non-diagonal entry (so only the diagonals are of distance 0).
+
+The next experiment investigates whether brain networks are independent of creativity. Neural correlates of creativity have previously been investigated, though largely using structural MRI and cortical thickness. Here, we used data from a previously published result on graph similarity, which included for each of n = 109 subjects, we have both diffusion weighted (DW-) MRI data as well as the subject’s “creativity composite index” (CCI). We processed the raw DW- MRI data via MIGRAINE, a pipeline for estimating brain networks from diffusion data. To compute the distance between graphs, we use the semiparameteric test statistic, developed specifically to compare pairs of graphs with labeled vertices. This test statistic was developed to reduce the noise due to the very high-dimensionality of adjacency matrices via employing adjacency spectral graph embedding to reduce the dimensionality into something much smaller; in this case, we chose to embed each graph into 2 dimensions for simplicity. We use simple squared error (Euclidean metric) to compare CCI values.
+
+In the last experiment, MGC is applied to test independence between brain voxel activities and non- existent stimulus similar to a pair of studies led by Eklund et al., by using 26 resting state fMRI data sets from the 1000 functional connectomes project (http://fcon_1000.projects. nitrc.org/), consisting of a total of 1604 subjects. We used CPAC to estimate regional time-series, in particular, using the sequence of pre-processing decisions determined to optimize discriminability. The output for each scan is the resting state fMRI time-series data containing 200 regions of interest for 200 time-steps. We then also generate an independent stimulus by sam- pling from a standard normal at each time step. Of course, the brain activity data and the stimuli
+are independent by construction. For each brain region, we test: is activity of that brain region independent of the time-varying stimuli. We pool brain activity over all of the samples from the population. Any regions that are detected significant are false positives by definition. By testing reach brain region separately, we obtain a distribution of false positive rates. If our test is unbi- ased, that distribution should be centered around the significance level, which we set at 0.05 for this experiment.
+
+<img src="../../figs/brainstates.png" style="width: 700px; margin: 0px 0 0 -30px;"  />
+(A) Local correlation p-value curves with respect to k = 2, . . . , 114 at l = 4 for brain vs disease. l = 4 is the largest possible neighborhood size for the disease data, as it is categorical. Thick solid black lines correspond to the largest region of p-values &lt; 0.05. (B) Local correlation p-value heat map with respect to k = 2,...,109 and l = 2,...,38 for brain MIGRAINE vs CCI. l = 38 is the largest possible neighborhood size for the CCI data, due to repeated distance entries. (C) Density estimate for the false positive rates of MGC on the brain vs noise experiments, with the actual rate of each data shown as dots above the x-axis.
+
+## CLARITY Registration
+
+To segment CLARITY brains into ROIs for analysis we developed a pipeline to register them to the Allen Institute's Reference Mouse Brain Atlas (ARA). 
+Version 2 of the ARA includes an average image and a label map which divides the brain into over 700 distinct regions.
+Image registration was done using the Large Deformation Diffeomorphic Metric Mapping (LDDMM) algorithm, a deformable registration algorithm which computes smooth invertable transforms between a template and a target image.
+
+<img src="../../figs/lddmmFlowchart.png"  style="width: 650px; margin:0px 0 0 0px"/>
+
+Traditionally LDDMM is computed using a Mean Square Error (MSE) matching term which assumes that bright regions match bright regions and dark regions match dark regions.
+Since the intensity profile of CLARITY brains differ greatly from the ARA average, this asumption does not hold.
+Thus our original solution was to register CLARITY brains to the ARA indirectly using their masks.
+This technique had several drawbacks including an inablility to handle missing data and the potential misalignment of deep brain structures.
+These issues were addressed by replacing the MSE matching term with an intensity invariant Mutual Information (MI) term.
+This allowed us to direclty align CLARITY brains to the ARA.
+The figure below depicts how the corpos callosum is incorrectly aligned with MSE but correcly aligned with MI.
+
+
+<img src="../../figs/miLddmm.png"  style="width: 400px; margin:0px 0 0 120px"/>
+
+
+## CLARITY Classification
+
+The goal of this analysis is to show the statistical differences between the different classes of CLARITY brains. For each ROI, fourteen different properties were computed. The analysis shows that it is possible to demonstrate statistical differences between the various classes of CLARITY brains when using unsupervised clustering methods.
+
+None of the methods we experimented with (k-means with different numbers of features) achieved perfect clustering between the three classes. Therefore, we explored to clustering pairs of classes. When looking at pairs of classes at a time, it is apparent that in some cases, only a single feature is needed for classification. The following figure shows all three pairwise combinations.
+
+<img src="../../figs/m4_control_cocaine.png"  style="width: 400px; margin:0px 0 0 120px"/>
+<img src="../../figs/m4_fear_control.png"  style="width: 400px; margin:0px 0 0 120px;"/>
+<img src="../../figs/m4_fear_cocaine.png" style="width: 400px; margin:0px 0 0 120px;"  />
+
+## MR Batch Effects
+
+The large database of processed graphs from MR subjects enables us the opportunity to explore mega-analyses in MRI data unlike that which has been done previously. The exemplar task we chose to illustrate this capability was exploring the significance of batch effects in data collected in different studies. The first panel shows histograms of B0 image volume intensities from various datasets. We can see slight differences in raw data through this metric, including intensity shifts either left or right by a dataset, or a dataset containing multiple populations.
+
+<img src="../../figs/multi_b0s_colourful.png"  style="width: 700px; margin:0px 0 0 -30px"/>
+
+The data summarized here have been run through the [ndmg pipeline](http://m2g.io). We then summarized the graphs through several metrics, two of which are shown here in the second and third panels: number of non-zero edges and degree distribution. We see here that the subtle differences observed - as well as differences we didn't notice from histograms have a pronounced effect in our graphs.
+
+<img src="../../figs/multi_nnz_desikan_scatter_colourful.png"  style="width: 450px; margin:0px 0 0 70px"/>
+<img src="../../figs/multi_degree_desikan_hist_colourful.png"  style="width: 700px; margin:0px 0 0 -30px"/>
+
+ In order to assess the significance of these batch effects, we design a classification experiment with the graphs in which we attempt to predict subject sex from their connectome. If there were no batch effects, training with LOO-dataset or LOO-subject techniques would achieve approximately the same results (with the one factor contributing to differences being the slight difference in training sample size when we have a larger leave-out set). However, when we attempt to classify with leave out one dataset we notice that we achieve no better prediction than chance, whereas leave out one subject achieves 70% accuracy using the simplest classifier.
+
+<img src="../../figs/knn_vectorgraph_class.png" style="width: 450px; margin:0px 0 0 70px"  />
+
+[*Back*](./index.html)
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://neurodata.io">neurodata.io</a>  2016</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>SIMPLEX Q4 JHU</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+	<!-- Custom CSS -->
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- ocp icon -->
+	<link rel="shortcut icon" href="ocp_main3.ico">
+
+	<!-- bower:css -->
+	<!-- <link rel="stylesheet" href="/content/themes/jhu_id/bower_components/normalize-css/normalize.css"> -->
+	<link rel="stylesheet" href="../fonts/gentona/gentona.css">
+	<link rel="stylesheet" href="../fonts/titling-gothic/titling-gothic.css">
+	<link rel="stylesheet" href="../fonts/quadon/quadon.css">
+	<link rel="stylesheet" href="../fonts/arnhem/arnhem.css">
+	<!-- endbower -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+        	div.md {
+        		width:640px;
+        		margin: auto;
+        	}
+      body {
+        font-family: 'gentona';
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'quadon';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+
+        </style>
+
+    </head>
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/5.0.2/markdown-it.js" charset="utf-8"></script>
+<div class="md" id="md-raw">
+
+# Cover Page
+
+| Title |  | Thingy |
+| :--- | :---: | :--- |
+| Tile of Effort | | From RAGs to Riches |
+| Contract Numbers | | N66001-15-C-4041 |
+| Reporting Period | | Feb 1 2016 - Mar 24 2016 |
+| PI Name || Joshua T. Vogelstein |
+
+# Executive Summary
+
+We have worked on four different tasks, as summarized below:
+
+1. *computer science*:
+    - We deployed our backend infrastructure in the commercial cloud to facilitate more scalable storage and analysis.
+    - We built a geometric object database
+    - We upgraded our graph database to a GruteDB (graph with rich attributes) for more efficient storage and analysis
+    - We added feature to LIMS
+    - We have nearly completed the first version of our Python API.
+    - We added a management interface for our Image Explorer
+    - We started building a Shape/Object Explorer
+    - We added features to our Graph Explorer, such as directly loading a graph from our GruteDB
+    - We added functionality to Matrix Explorer, towards being able to run a suite of computation in the background.
+
+2. *statistical science* .r[@jv]
+
+2. *Datafication* .r[@jv]
+
+
+4. *discovery* .r[@jv]
+
+Below, we provide a summary of technical progress for each task. This includes collaborations with other SIMPLEX performers as well as next steps.
+
+# Computer Science
+
+## Store
+
+### Databases
+
+#### Spatial Database
+
+ In the project one of the workload is to run computer vision algorithms at scale to detect cell bodies in the data. This workload can be split into three sections to provide a better understanding of the problem. First section, reading sub volumes of data from the spatial database using multiple readers. The NDStore backend is scalable and is capable of upto 9GB/sec read throughput one a single node running MySQL. Usually, we run multiple nodes providing much higher read throughput. Second section, to detect cell bodies in the data using a large compute cluster. We will talk more about this in the next section. Third section, to write the detected cell bodies as annotation back to the database. We can achieve upto 1.5GB/sec write throughput with 16 threads on a single nodes running MySQL. With high read and write throughput we avoid bottlenecks in the first and third section for large scale runs.
+
+You can reproduce our Read/Write throughput benchmarks using the following steps:
+<ul>
+  <li>Launch the AWS AMI "ami-id Here".</li>
+  <li>Run the <a href="https://github.com/neurodata/ndstore/tree/microns/benchmarks/ndstore_benchmark.py">ndstore_benchmark.py</a> in the <a href="https://github.com/neurodata/ndstore/tree/microns/benchmarks">benchmarks</a> folder. The commands to run the read and write benchmarks are mentioned in the <a href="https://github.com/neurodata/ndstore/blob/microns/benchmarks/README.md">README</a> file. These commands will generate csv files for the respective benchmarks.</li>
+  <li>Run the <a href=" https://github.com/neurodata/ocp-journal-paper/blob/gh-pages/Code/Plots/ThroughputPlots.r">ThroughPlots.r</a> script in the <a href="https://github.com/neurodata/ocp-journal-paper/blob/gh-pages/Code/Plots/">Plots</a> folder. This script will generate the thorughput graphs included in the paper.</li>
+</ul>
+You can reproduce our Tilecache benchmarks using the following steps:
+<ul>
+  <li>Launch the AWS AMI "ami-id here".</li>
+  <li>Run the <a href="https://github.com/neurodata/ndtilecache/blob/master/benchmarks/ndtilecache_benchmark.py">ndtilecache_benchmark.py</a> script in the <a href="https://github.com/neurodata/ndtilecache/blob/master/benchmarks/">benchmarks</a>folder. The command to run the benchmarks are mentioned in the <a href="https://github.com/neurodata/ndtilecache/blob/master/benchmarks/README.md">README file.</a> file. These commands will generate the csv file for the benchmark.</li>
+  <li>Run the <a href="">TilecachePlots.r</a> script in the <a href="">Plots</a> folder. This script will generate the tilecache graph in the paper.</li>
+</ul>
+</p>
+
+
+#### Geometric Object Database
+
+The vast majority of the imaging data we collect is 3-dimensional data imaged in 2-dimensional slices. Analysis is done on each slice, creating a series of 2-dimensional analysis overlays which we call “annotations”. These annotations can be skeleton annotations, where a centroid or a particularly interesting point is labeled and multiple points are connected, or paint annotations, where cells or intracellular components are labeled by “coloring”. There is high demand from the neuroscience community for 3D visualization of these annotations, both for quality control and analysis purposes.
+
+In the course of investigating 3D visualization of annotations, it became clear that we needed to generate the 3D representation of the annotation. Initially, we hoped to generate 3D representations on-the-fly. But, after generating different 3D representations, we believe a mesh or line segment based representation will be more compact than the 2D representation we currently store. To investigate further, we are building a geometric object database that stores mesh or segment representations of 3D objects using the same spatial layout as ND Store. We have built a prototype of the database and are currently in the process of accelerating the code used to generate the 3D representation of an annotation and insert it. The process of generating these representations is more compute-intensive than the process of inserting images into ND Store. Thus, we have been utilizing new programming technologies, such as the Go programming language, to leverage parallelism from the start and optimize memory usage. We plan to develop a prototype of the database and run comparisons between the 3D representations in the geometric object database and the image-based representations in ND store.
+
+
+#### Graphs with Rich Attributes Database
+We develop a searchable database of biologically derived graphs that contain a rich spectrum of metadata-like attributes that are commonly associated with common exploratory graph analysis techniques. We partition the database by genus; we currently store 7 different genera, totalling nearly 30 non-human graphs and another 700 human graphs.
+Our database is accessible via scalable web-services at [http://www.openconnecto.me/graph-services/download/](http://www.openconnecto.me/graph-services/download/). We provide mechanisms to downsample, rescale and convert graph format to nearly a dozen commonly used graph formats all with a single click. We accelerate commonly used functionality like downsampling and format conversions using optimized C++ bindings.
+We develop highly scalable backend capabilities using the lightweight task queuing framework, RabbitMQ that has asynchronous callback jobs submitted to it directly through the Python interface, Celery.
+
+### Utilities
+
+<!-- #### Content Distribution Network -->
+
+
+#### Laboratory Information Management System
+We use a document-based (schemaless) database built in MongoDB to store dataset metadata. These data can be accessed and manipulated via a public-facing RESTful API, provided through the Meteor JavaScript platform. NeuroData LIMS (ndlims) can attach documents — freeform JSON trees — to arbitrary objects for retrieval. That is, we have attached individual document records to each token-channel pair as defined in ndstore, with the intention of allowing document-attachment to RAMON, locations in ndviz, features in an MR scan, or other objects in the future.
+
+
+#### Python API
+
+We provide ndio, a publicly accessible Python API, to aid in interactions with ndstore, ndlims, grute, and other NeuroData services. ndio is available on the [Python Package Index](https://pypi.python.org/pypi/ndio/), with a stable version 1.0 released at the beginning of April 2016.  This API enables big data neuroscience for researchers from a wide-variety of backgrounds and experience levels.  RESTful queries and database details are handled by the API, which allows users to complete basic queries, gets and puts with only a few lines of code.
+
+ndio also provides a common vocabulary for big-data neuroscience research, in order to improve correspondence between various backend systems.
+
+
+
+## Explore
+
+### Images
+
+We built an open-source Web application, NeuroDataViz, that allows users to load multi-TB image datasets in their Web browser. When ingesting a new dataset, we downsample the raw image files multiple times to create an image hierarchy. Each level of the image hierarchy is further chopped up into cuboids. By leveraging this subdivison of images, we are able to load large volumes of data (by using the downsampled representation) quickly, and then loading higher resolution cuboids as the user zooms in. NeuroDataViz also leverages our backend infrastructure to provide point-and-click metadata support, false coloring, and fast loads when panning back and forth through z-space (by caching tiles/cuboids as they leave the server). Several public projects are available for browsing. Visit http://viz.neurodata.io/ and click “Data” in the upper-right corner of the navigation bar.
+
+Recently, we have added a management interface, allowing users to create their own Visualization Projects (VizProjects). This tool is designed to leverage community resources, further enabling members of the community to do analysis on publicly released data. For example, a potential user might run a machine learning algorithm on some Electron Microscopy (EM) data. The user could then upload the result to our backend systems and visualize an overlay of their result on top of the original EM dataset. They could even load existing, public results for comparison purposes. We have rolled this management interface out to our internal team, and are planning on publicly releasing it soon. Documentation is available at http://docs.neurodata.io/NeuroDataViz/ under “Management”.
+
+### Shapes
+
+A 3D web-based visualization tool for neuroscience data is in high demand. 3D representations are helpful for both quality control (whether it’s checking an algorithm or viewing data as it comes off the microscope) as well as analysis. We have modified an existing desktop-based 3D viewer and are beginning to develop a Web-based version, utilizing WebGL. WebGL allows browser-based code to run on the end users graphics card. Almost all new smartphones support WebGL, and include powerful graphics processors. Therefore, a WebGL-based viewer will be cross-platform compatible, fast, and provide good 3D support. We are in the process of modifying NeuroDataViz to use WebGL for basic image processing. Once 2D WebGL is integrated into NeuroDataViz, we will begin to add 3D support.
+
+### Graphs
+
+We provide a web application using the R Shiny package for real-time exploratory analysis of graphs. While the application is optimized for small to medium sized datasets, it is scalable for large datasets as well. Functionality includes:
+
+- Visualization:
+  - Visualizing graphs stored in the neurodata database
+    - Includes Fly, Cat, Mouse, etc.
+  - User can load data in various graph formats for visualization
+    - Acceptable formats include edgelist, pajek, ncol, lgl, graphml, dimacs, graphdb, gml, dl
+  - Generation and visualization of classical graphs
+    - Includes Erdos Renyi, Barabasi, Random Dot Product, K Regular, etc.
+  - Visualization of community structures in the graph with various algorithms
+
+- Analysis:
+  - Computation of graph invariants and statistics
+    - Tabular and Graphical representations
+  - Adjacency matrix generation
+  - Vertex and edge attribute generation
+  - Parameter modulation for non pre-loaded graphs
+
+
+
+### Matrices
+
+#### Matrix Explorer
+
+We have used the R Shiny package to develop a web application that allows for real-time visualization of small to medium sized datasets. Upon uploading a dataset, the user has the following capabilities:
+- Visualizing the data in a table format with column reordering, sorting, and searching
+- Selecting a subset of the data for further analysis
+- Constructing a heatmap and dendrogram for the remaining data
+- Constructing the marginal distributions of the the data feature columns with the option of conditioning on a class column of the user's choosing
+- Using Mahalanobis distance to flag outliers within the data at a certain significance level
+- Constructing the Pearson correlation and distance matrix of the select data
+- Visualizing the distribution of the feature columns via a scatter plot, box plot, and violin plot
+- Using PCA or t-SNE to 2D embed the data and visualize it
+- Using k-means to cluster the embedded data into a chosen number of clusters
+
+The latter 2 features are shown in the figure below:
+
+<div class="fig-container" id="fig:MX">
+<img src="https://raw.githubusercontent.com/neurodata/Matrix-Explorer/master/images/MX_cropped_HR.png" style="height: 300px;"/>
+Figure: PCA embedding and k-means clustering of Iris R dataset with corresponding scree plot
+</div>
+
+## Parse
+
+
+### Image Processing
+
+#### 2D Stitching Artifact Removal
+
+We leverage the Distributed MultiGrid Poisson solver [KSH](http://www.cs.jhu.edu/~misha/MyPapers/ToG10.pdf) to address 2D image stitching artefacts.  The code is open source and available on github with tutorials [here](https://github.com/mkazhdan/DMG).
+
+<div class="fig-container" id="fig:i2D">
+<img src="http://docs.neurodata.io/ndintro/images/A_full_section_2402.jpg" style="height: 300px;"/>
+<img src="http://docs.neurodata.io/ndintro/images/D_dmg_full_section_2402.jpg" style="height: 300px;"/>
+Figure: Before (left) and After (right) processing a plane of data to correct for 2D histogram effects.
+</div>
+
+
+#### 3D Histogram Normalization
+
+ We leverage Gradient Domain Fusion [KLR](http://arxiv.org/pdf/1506.02079v1.pdf) to address 3D image stitching artefacts.  The code is open source and available with tutorials [here](http://www.cs.jhu.edu/~misha/Code/GradientDomainFusion/Version1.0/).
+
+<div class="fig-container" id="fig:i2D">
+<img src="http://docs.neurodata.io/ndintro/images/GDF2.png" style="height: 300px;"/>
+Figure: Before (left) and After (right) processing a cube of data to correct for 3D histogram effects.
+</div>
+
+
+#### Volume Registration
+
+The most efficient way to annotate image volumes is to register them to a standard atlas.
+Thus an image registration pipeline to do this was developed.  The registration pipeline consisted of rigid, affine and then deformable registration.  Deformable  registration was done by the Large Deformation Diffeomorphic Metric Mapping Algorithm (LDDMM), an algorithm which computes smooth invertible transform between image volumes. NeuroData Registration (ndreg), a python module to create LDDMM-based registration pipelines was developed. The module can be downloaded at https://github.com/neurodata/ndreg.
+
+### Object Detection
+
+
+New  neuroimaging  datasets  are  large  (10GB­-100TB),  and  volumes  may  soon  exceed  a
+petabyte for some modalities. Object detection is a canonical problem in computer vision, so a
+rich  library  of  techniques  is  available  to  aid  in  neuroscience  inference  tasks.  However,  Big Vision requires a paradigm shift to overcome challenges such as data storage, computation and multiscale  semantic understanding. We have developed open­-source tools for  scalable object detection (http://github.com/neurodata/ndparse), leveraging the databases and datasets available at neurodata. This  allows  users  to  quickly  adapt  their  algorithms  in  a  flexible,  reproducible environment.  As a case  study we  demonstrate  our  pipeline  by  generating  and  deploying  a lightweight, scalable synapse detector to find approximately 50,000 putative synapses in 60,000 um^3 of electron microscopy data.
+
+
+### Graph Estimation
+
+#### functional MRI
+
+
+
+Utilizing CPAC (Configurable Pipeline for the Analysis of Connectomes), we have estimated human connectomes from structural and functional MR images. Using Amazon EC2 instances, we were able to process and extract timeseries data for over 3,000 scans using 64 pipelines, which we then analyzed using our open source software to produce 210,000 graphs. We have made all graphs publicly available http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html, and are in the process of analyzing optimal pipeline strategies to extract connectomes that are most easily discriminable by subject.
+
+#### diffusion MRI
+
+We have developed a pipeline that leverages existing processing tools in the community and estimates human connectomes from structural and diffusion MR images. Our open-source scalable pipeline, ndmg, found at http://m2g.io, abstracts hyper-parameter selection from users and estimates connectomes reliably for downstream inference tasks.
+
+The ndmg pipeline is able to be run on both standalone personal computers with minimal complexity for installation, as well as scale to be deployed across large computational clusters. Tutorials exist which help users install the software, prepare their data, generate graphs, and analyze their data. The ndmg pipeline and associated resources significantly lower the barrier for entry to human connectome estimation and analysis.
+
+#### electron microscopy
+
+Reconstructing a map of neuronal connectivity is a critical challenge in contemporary neuroscience. Recent advances in high-throughput serial section electron microscopy (EM) have produced massive 3D image volumes of nanoscale brain tissue for the first time. The resolution of EM allows for individual neurons and their synaptic connections to be directly observed. Recovering neuronal networks by manually tracing each neuronal process at this scale is unmanageable, and therefore researchers are developing automated image processing modules. Thus far, state-of-the-art algorithms focus only on the solution to a particular task (e.g., neuron segmentation or synapse identification).
+
+We built the first known fully automated images-to-graphs pipeline (i.e., a pipeline that begins with an imaged volume of neural tissue and produces a brain graph without any human interaction). To evaluate overall performance and select the best parameters and methods, we also develop a metric to assess the quality of the output graphs. We evaluate a set of algorithms and parameters, searching possible operating points to identify the best available brain graph for our assessment metric. Finally, we deploy a reference end-to-end version of the pipeline on a large, publicly available data set. This provides a baseline result and framework for community analysis and future algorithm development and testing. All code and data derivatives have been made publicly available toward eventually unlocking new biofidelic computational primitives and understanding of neuropathologies.
+
+Additionally we have released code to programmatically retrieve graphs (leveraging our RAMON data standard) as both part of ndparse and as open source Jupyter Notebooks (e.g., https://github.com/neurodata/kasthuri2015/blob/master/claims/claim9_make_graph.ipynb).
+
+
+## Analyze
+
+### Images
+
+Camera resolution in all devices has increased as technology has improved. This has been particularly true for light microscopy, where camera resolution has increased past the point where 8-bit image formats are adequate, and 16-bit images are now becoming standard for light microscopy applications. However, very few technologies exist for displaying 16-bit images. We have developed a resampling function in ND Store (which we call the image “window”) and a corresponding front-end service to help the end user determine an appropriate window. A demonstration of the service is available at http://brainviz1.cs.jhu.edu/tra/windowexplorer/ (try ‘kharris15apical’ as the token and ‘em’ as the channel for an 8-bit example, or ‘Aratome15d_S19_W05’ and ‘dapi’ for a 16-bit example, setting the y-range to be from 100 to 1100). Our Window Explorer loads a histogram from ND Store, calculates some basic statistics from the histogram, then loads an image sample and allows the user to tweak the current window. Window values can be put back into ND Store to ensure 16-bit images display properly in NeuroDataViz.
+
+### Shapes
+
+Registering a template object (e.g. brain structure) to a target object with LDDMM lets us quantify how much the objects’ shapes differ from each other.  LDDMM computes a smooth time varying velocity field  which deforms the template to the target.  This velocity field can be integrated in time to get a displacement field.  By integrating this displacement over the template object’s space one can determine the “distance” between a template and target object.
+
+### Graphs
+
+We implement the following graph algorithms with C++ in FlashGraph and provide R bindings for the C++ implementation.  C++ code: https://github.com/zheng-da/FlashX/tree/release/flash-graph/libgraph-algs.  R wrapper: https://github.com/zheng-da/FlashX/blob/release/Rpkg/R/flashgraph.R. Tutorial: https://github.com/zheng-da/FlashX/wiki/FlashGraphR-programming-tutorial
+
+- Betweenness centrality
+- Breadth first search
+- Diameter estimation
+- Triangle counting
+- K-core
+- Scan statistics
+- PageRank
+- Strongly connected components
+- Weakly connected components
+
+### Matrices
+
+#### k-means
+
+ We radically improve the performance of k-means for both in-memory applications and those too large to fit into main memory. We modify Lloyd’s batch method for modern NUMA multi-core environments. We prioritize local memory accesses, reduced data structure interference, and intelligently adaptive scheduling of computation to produce an in-memory routine that performs up to several orders of magnitude better than state-of-the-art systems like [Spark’s MLlib](http://spark.apache.org/mllib/), [GraphLab Create (Dato)](https://dato.com/) and [H2O](http://www.h2o.ai/), while consistently using less resources. We further develop a highly scalable routine that operates out-of-core to perform clustering on data too large for RAM. We modify FlashGraph to support matrix-like computations required for k-means. We then optimize FlashGraph’s functionality by introducing a row cache that supersedes the page cache to boost performance by nearly 50%. We are able to perform clustering on billion-node datasets on a single machine, out-performing distributed in-memory systems from the perspective of resources, time and power consumption. The code can be found [here](https://github.com/zheng-da/FlashX/tree/disa-graph-attr/flash-graph). We show the performance of our implementation and contrast them with other state-of-the-art libraries below on a dataset with 66 Million datapoints, 8 dimensions and K (# clusters = 10).
+
+<div class="fig-container" id="fig:k-means-perf">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-perf.png" style="height: 300px;"/>
+Figure: The per iteration performance of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
+</div>
+
+<div class="fig-container" id="fig:k-means-mem">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/k-means-mem.png" style="height: 300px;"/>
+Figure: The peak memory usage of k||means, k||means with triangle inequality pruning and SEM-k||means compared to other systems.
+
+</div>
+
+#### gmm
+
+We implement Gaussian Mixture Model in FlashR with pure R code. The R implementation does not have any explicit parallelization in the R code and FlashR execute the code in parallel automatically and is able to scale it to very large datasets with hundreds of millions of data points. Our preliminary result shows that our R implementation outperforms the implementation in Spark MLlib.
+R code: https://github.com/zheng-da/FlashX/blob/dev-zd/Rpkg/R/GMM.R
+
+#### other stuff
+
+Similarly, we implement some other machine learning algorithms such as KMeans and singular value decomposition, and some statistics computation in FlashR with pure R code. All of these implementations are executed in parallel and out of core automatically in FlashR and scale to very large dense matrices. Both of their in-memory and out-of-core execution significantly outperforms the implementations in Spark MLlib.
+
+- R code: https://github.com/zheng-da/FlashX/tree/dev-zd/Rpkg/R
+- Performance: https://github.com/neurodata/SIMPLEX/blob/gh-pages/Q4/imgs/FlashR.png
+- Tutorial of FlashR: https://github.com/zheng-da/FlashX/wiki/FlashR-programming-tutorial
+
+# Statistical Science
+
+
+## Time-Series
+
+
+## Graphs
+
+
+### Vertex Nomination via Seeded Graph Matching
+
+We aim to identify vertices in one network that correspond to a particular vertex of interest in a second network. To this end, we consider a pair of networks for which there exists some notion of correspondence between vertices in the two networks, supposing that there is a particular vertex of interest (VOI) known to be in the first network, which has a corresponding vertex we would like to identify in the second network. We explore a principled methodology appropriate for situations in which the networks are too large for brute-force graph matching. Our methodology identifies vertices in the neighborhood of the VOI in the first network that have verifiable corresponding vertices in the second network. Leveraging these known correspondences as seeds, we match the induced subgraphs in each network generated by the neighborhoods of these verified seeds. We then rank the vertices of the second network in terms of the most likely matches to the original VOI. We demonstrate the practicality of our methodology through simulations and real data examples.
+
+
+
+
+### Law of Large Graphs
+
+We propose an algorithm to estimate the mean of a collection of graphs. Our methodology is motivated by the asymptotical distribution of the adjacency spectral embedding of random dot product graphs. To take advantage of the low-rank structure of the graphs, adjacency spectral embedding, a rank-reduction procedure, is applied to the element-wise MLE. We then give a closed form for asymptotic relative efficiency between our estimator and the element-wise MLE, which theoretically proves that our estimator has smaller variance with sufficiently large number of vertices while keeping to be asymptotically unbiased. These results are demonstrated by various simulations. Moreover, our estimator also outperforms element-wise MLE for the CoRR brain graphs, which shows our estimator is valid even when the data does not perfectly follow a SBM.
+
+### Robust Law of Large Graphs
+
+To estimate the mean of a collection of weighted graphs under a low rank random graph model (e.g. Stochastic Blockmodel) when observing contaminated graphs, we propose an estimator which not only inherits robustness from element-wise robust estimators but also has small variance due to application of a rank-reduction procedure. Under appropriate conditions, we prove that our estimator outperforms standard estimators via asymptotic relative efficiency. We illustrate our theory and methods by Monte Carlo simulation studies and experimental results.
+
+<div class="fig-container" id="fig:RobustLLG_est_comp">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/RobustLLG_estimator_comparison.png" style="height: 300px;"/>
+Figure: Comparison of Estimators. Our estimator wins according to asymptotic mean squared error by taking advantage of robust estimators and rank-reduction procedure.
+</div>
+
+<div class="fig-container" id="fig:RobustLLG_cluster">
+<img src="https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/RobustLLG_cluster.png" style="height: 500px;"/>
+Figure: Plots for embedded latent positions under different circumstance. Without conatmination, out estimator (yellow) is slightly worse than element-wise MLE (green) for estimating the true latent position (black);
+With contamination, out estimator (blue), which degrades slowly, outperforms the element-wise MLE (red).
+</div>
+
+
+### Optimization Theoretical Vertex Clustering
+
+
+We propose a methodology to cluster the vertices in a graph through optimization approach. By balancing between estimation of the probability matrix and the approximate block structure, we obtain the estimated latent positions and the cluster memberships simultaneously. We demonstrate in simulation that our optimization approach outperforms adjacency spectral embedding. Moreover, it is as good as empirical bayes approach but runs much faster.
+
+### Joint Embedding
+
+We develop an algorithm to jointly embed multiple graphs into low dimensional space. The algorithm learns a set of rank one symmetric matrices and embed multiple graphs simultaneously into the subspace spanned by these matrices. Embeddings can be used to cluster or classify graphs by various standard learning algorithms. We proved theories which demonstrate that under some random graph models the algorithm provides estimates of parameters with small errors. The algorithm is implemented in R and we run it on simulated and real data sets. We demonstrate our algorithm provides better classification performance compared to other algorithms which embed graphs separately.
+
+
+
+
+
+
+
+
+## Vectors
+
+
+### Randomer Forest
+
+In his landmark paper on random forests, Leo Breiman derived an upper bound for generalization error of random forests which depends on only two factors: 1) correlation among decision trees and 2) strength of individual decision trees. Lower correlation and stronger individual trees both enhance performance of the decision forest classifier. We have recently initiated an extensive sensitivity analysis of RerF to two different hyperparameters in order to understand how they affect both correlation and strength of decision trees, as well as overall classification performance. One of these hyperparameters controls the average number of nonzeros in candidate random projections sampled at split nodes. The other specifies the number of random projections sampled at each node. Preliminary results on the Sparse Parity simulated dataset with n (number of samples) = 1000 and p (number of dimensions) = 25 suggest that both hyperparameters have a significant effect on classification performance, with mtry having a more pronounced effect (top left figure, link below). To our knowledge, most studies typically only try values of mtry in the range of 1 to p. Even in Breiman’s analysis, he only tries values of mtry on the order of or less than p. However, our results suggest that the optimal value of mtry can be much larger than p. The top right figure plots out-of-bag error for individual trees as a function of average number of nonzeros of selected split projections for three different values of mtry. The larger spread of points and lower average OOB error as mtry increases suggests that larger values of mtry improve classification performance by both increasing strength of individual trees and decreasing correlation. We are now conducting this analysis on our suite of benchmark datasets. These efforts will hopefully aid us in understanding more deeply how these parameters affect classification performance and allow us to more efficiently tune these parameters on any given classification task.
+
+Additionally, we recomputed performance profiles on the benchmark data under random scaling and random affine transformations. The new calculations apply more pronounced scaling factors in order to better demonstrate the effectiveness of passing the data to ranks before fitting RerF. The bottom figure shows that RerF (in green) performs better than RF (in blue) on the untransformed data, but performs worse than RF when the data is affine transformed. Rerf_r (in red), which passes to ranks before fitting RerF, performs better than RF on the affine transformed data.
+
+![](https://raw.githubusercontent.com/neurodata/SIMPLEX/gh-pages/figs/Q4_TT.png)
+
+
+
+### Dependence Testing
+
+Discovering the potential dependency between two data sets is one of the most fundamental tasks in data analysis, which is a challenging problem for modern real data with high-dimensionality, non-linearity, noise, etc.
+
+We propose a multiscale graph correlation to test dependency between two data sets. By combining local graph information with distance correlation, our proposed test statistic is theoretically consistent, exhibits superior testing powers under various types of dependencies, is able to identify potential local relationships, is robust against outliers of the data, and can be efficiently computed.
+
+
+
+
+### Discriminability
+
+Many scientific, government, and corporate groups are collecting and processing massive datasets. To obtain optimal quantitative answers to any inquiry about data requires making decision about how the data should be processed. To this end, we have proposed and developed a formal definition of discriminability to guide data collection and processing. Specifically, discriminability is defined to be the probability that within subject distance to be smaller than across subject distance. We prove that discriminability provides an upper bound on Bayes predictive accuracy for any downstream inference task. Furthermore, we designed an estimator of discriminability which can be computed from test-retest data set, demonstrate that it is unbiased, and derive our estimators asymptotic distribution. We apply our discriminability methodology to neural image processing. We find the best threshold to convert the raw correlation matrices into binary graphs and find the best processing pipeline for fMRI.
+
+
+
+
+
+
+
+
+# Datafication
+
+## Electron Microscopy
+
+
+
+| reference | number of datasets | modality | species | resolution (nm<sup>3</sup>; Hz) | #voxels / volume | #channels | #timesteps | total (GV) | Viz |
+| -----|-----|-----|-----|-----|-----|-----|-----|----- |----|
+| <a href='http://www.nature.com/nature/journal/v520/n7549/abs/nature14297.html'>Ohyama et al. Nature (2015)</a> | 2 | EM | D. melanogaster | (4 &times; 4 &times; 45) | Various | 2 | 1 | 5474 | TBA |
+| <a href='http://www.nature.com/nature/journal/v520/n7549/abs/nature14297.html'>Bock et al. Nature (2011)</a> | 1 | EM | M. musculus | (9 &times; 4 &times; 45) | (135424 &times; 119808 &times; 1239) | 1 | 1 | 20102 | <a href=’http://viz.neurodata.io/dataview/bock11’>bock11</a> |
+| <a href='http://www.nature.com/articles/sdata201446'>Weiler et al. Scientific Data (2014)</a> | 12 | AT | M. musculus | (100 &times; 100 &times; 70) | Various | 288 | 1 | 184 | <a href=’http://viz.neurodata.io/dataview/weiler14’>weiler14</a> |
+| flycol | 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (2000 &times; 2000 &times; 6240) | 1 | 1 | 24 | TBA |
+| <a href='http://www.nature.com/nmeth/journal/v10/n5/full/nmeth.2434.html'>Ahrens et al. Nature Methods (2013)</a> | 1 | Ophys | D. rerio | (650 &times; 650 &times; 5000; 0.8) | (2048 &times; 1172 &times; 30) | 1 | 100 | 7 | TBA |
+| <a href='http://www.cell.com/cell/abstract/S0092-8674(15)00824-7'>Kasthuri et al. Cell (2015)</a>| 4 | EM | M. musculus | Various| Various | 4 | 1 | 2602 | <a href=’http://viz.neurodata.io/dataview/mouseS1’>kasthuri15</a> |
+| <a href='http://www.nature.com/articles/sdata201546'>Harris et al. Scientific Data (2015)</a> | 3 | EM | R. rattus | Various | Various | 3 | 1 | 23 | <a href=’http://viz.neurodata.io/dataview/kharris15’>kharris15</a> |
+| <a href='http://www.wormatlas.org/ver1/MoW_built0.92/toc.html'>Worm Atlas</a> | 3 | EM | C. elegans | Various | Various | 6 | 1 | 2333 | TBA |
+| <a href='http://www.nature.com/nature/journal/v500/n7461/full/nature12450.html'>Takemura et al. Nature (2013)</a>| 1 | EM | D. melanogaster | (4 &times; 4 &times; 45) | (12000 &times; 12000 &times; 1299) | 1 | 1 | 187 | <a href=’http://viz.neurodata.io/dataview/takemura13’>takemura13</a> |
+
+
+## CLARITY
+
+CLARITY is a process which converts biological tissues into relatively translucent transparent hygrogel-tissue hybrids for interrogation using light sheet microscopy. 12 CLARITY brains were acquired at 0.565 x 0.565 micron resolution with a slice spacing of 5 to 8 microns.  The images, which were about 1 TB each, were ingested into the NeuroData cluster.  To test the ndreg module, two registration pipelines were developed.  In the Mask-LDDMM pipeline, template and target brains were aligned using their masks.  In the Image-LDDMM pipeline, brains were aligned using their images. The pipelines were compared to an pipeline which deformably registered images using a B-Spline transform under a Mutual Information Metric (MI-BSpline).  The registration results were quantitatively evaluated by comparing the deformed templates’ mutual information, median surface error and median landmark error to that of the target.
+
+<img src="/SIMPLEX/figs/imgs/comparison.png" style="width: 640px;"/>
+
+
+Based on these metrics we found that the Mask-LDDMM pipeline outperformed the Image-LDDMM and MI-BSpline pipelines when aligning 3 different CLARITY brains to the [Allen Rererence Atlas (ARA)](http://mouse.brain-map.org/static/atlas). Image-LDDMM performed well when aligning CLARITY images to other CLARITY images. [KVC16]
+
+
+
+## X-Ray Microscopy
+
+We provide novel methods to accurately detect cell bodies and blood vessels in an emerging modality called X-ray micro-tomography.  We show that this produces highly accurate reconstructions without requiring slicing, tissue damage or subsequent reconstruction steps.  This allows for a large-scale analysis of cell body size, distribution, and blood vessel segmentation.  This work lays the ground-work for the collection and analysis of much larger volumes in the near future.  Publication expected for submission May 2016, and a draft is currently available on the arXiv at: http://arxiv.org/pdf/1604.03629.pdf
+
+
+## Multimodal Magnetic Resonance Imaging
+
+Using the ndmg and CPAC pipelines, both structural and functional connectomes have been estimated from all known publicly re-distributable datasets. These graphs have been generated across multiple brain parcellations/anatomical atlases (http://docs.neurodata.io/nddocs/mrgraphs/atlases.html), ranging in scale from approximately 50 nodes, up through a voxelwise parcellation of nearly 2 million nodes. These graphs can be found through our website (http://docs.neurodata.io/nddocs/mrgraphs/processed_data.html), and downloaded for analysis.
+
+
+
+# Discovery
+
+
+## Optimal Pipeline
+
+We apply our methodology of discriminability to fMRI processing. In particular, we processed 12 test-retest fMRI data sets using 64 processing pipelines. We then compute discriminability estimates of processed data sets. Based on the results, we claim CC200 is a better atlas compared to HOX, AAL and DES. In the meantime, we find that global signal regression and NFF significantly improve discriminability. No scrubbing and FSL is slightly better than scrubbing and ANTS. Furthermore, we discovered that using rank graphs is more discriminable than raw correlation graphs. We are going to further investigate processing pipeline for DTI data sets and compare discriminability of DTI and fMRI.
+
+<div class="fig-container" id="fig:optimal-pipeline">
+<img src="imgs/64_pipelines_raw.png" style="height: 300px;"/>
+
+Figure: Discriminability of raw fMRI graphs from 12 data sets processed 64 ways are plotted. BNU1, BNU2, DC1, IACAS, IBATRT, IPCAS, JHNU, NYU1, SWU1, UM, UWM and XHCUMS are processed by
+64 pipelines and discriminability are computed. Colors of points indicate data set; sizes of points are proportional to the number of samples of data set. Black dots represent mean discriminability across 12 data sets. CFXXG pipeline has the best mean discriminability across data sets.
+</div>
+
+## Kasthuri Claims
+
+With the aid of the Python API ndio, we are able to access ndstore services programmatically to substantiate the claims made in <a href=”http://www.cell.com/cell/abstract/S0092-8674(15)00824-7”>Narayanan Kasthuri’s 2015 Cell Paper</a>. Our programmatic representations of these claims, available [on GitHub](https://github.com/neurodata/kasthuri2015) in Jupyter notebooks, illustrate that it is possible to reproducibly conduct neuroscientific inquiry using the ndstore-ndio pipeline.
+
+ndio has now been released as a stable 1.0 version (as of early April 2016), and can be easily installed using the pip package manager (with support for the conda package manager on the way).
+
+
+# Publications
+
+
+[KVC16] Kutten KS, Vogelstein JT, Charon N, Ye L, Deisseroth K and Miller MI. Deformably Registering and Annotating Whole CLARITY Brains to an Atlas via Masked LDDMM.  SPIE Photonics. Volume 9896
+
+
+</div>
+
+
+    	<section class="copyright">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-12">
+    					<p class="copyright">designed by <a href="https://github.com/neurodata/SIMPLEX/graphs/contributors" target="_blank">us</a>.   &copy; <a href="http://neurodata.io">neurodata.io</a>  2016</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+    	<!-- jQuery -->
+    	<script src="js/jquery.js"></script>
+
+    	<!-- Bootstrap Core JavaScript -->
+    	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- Scrolling Nav JavaScript -->
+    	<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            m = markdownit({
+                html: true,
+                linkify: true,
+                typographer: true
+            });
+            document.getElementById('md-raw').innerHTML = m.render(
+                document.getElementById('md-raw').innerHTML);
+        </script>
+
+    </body>
+
+    </html>
