@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\input{preamble.tex}
+
+\title{NeuroData SIMPLEX Report}
+
+\begin{document}
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+
+%%%% Data
+\section{Data}
+\input{data/kki.tex}
+
+
+%%%% End Data
+
+
+%%%% Tools
+\section{Tools}
+
+%\input{tools/sic.tex}
+
+%% You can also use subfiles which allow you to 
+%% compile individually. Example below.
+\subfile{neurodata.io.tex}
+\subfile{meda.tex}
+\subfile{ndstore.tex}
+\subfile{ndreg.tex}
+\subfile{ndramondb.tex}
+\subfile{ndviz.tex}
+\subfile{graphexplorer.tex}
+\subfile{flashX.tex}
+\subfile{flashY.tex}
+\subfile{ndmg.tex}
+\subfile{sic.tex}
+\subfile{nonparShape.tex}
+\subfile{reducedDimensionClustering.tex}
+\subfile{rerF.tex}
+\subfile{discriminability.tex}
+\subfile{lawOfLargeGraphs.tex}
+\subfile{robustLOLG.tex}
+\subfile{LOL.tex}
+\subfile{multiscaleNetworkTest.tex}
+\subfile{MGC.tex}
+
+%%%% End Tools
+
+
+
+% \theendnotes
+\end{document}

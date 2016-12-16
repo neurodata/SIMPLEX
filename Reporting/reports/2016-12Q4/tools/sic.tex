@@ -1,0 +1,31 @@
+\subsection{sic}
+
+\begin{figure}[h!]
+\begin{cframed}
+\centering
+\includegraphics[width=\textwidth]{./figs/example_fig.pdf}
+\caption{Figures get pretty frames.}
+\label{fig:sic}
+\end{cframed}
+\end{figure}
+
+% 
+Tables \ref{tab:hurdles} also get pretty frames. 
+
+\paragraph{Woah}
+Paragraphs are bolded.
+ 
+\begin{table}[h!]
+\begin{cframed}[lgray]
+\centering
+\caption{see! I'm framed!.}
+\begin{tabular}{ l  Q  Q  L }
+\hline
+\textbf{columns}	& \textbf{are} & \textbf{often} & \textbf{bold} \\ \hline \hline
+and  & contain & useful & data \\ \hline
+\end{tabular}
+\makeatletter
+\let\@currsize\normalsize
+\label{tab:hurdles}
+\end{cframed}
+\end{table}
