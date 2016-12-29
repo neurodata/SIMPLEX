@@ -1,0 +1,58 @@
+\documentclass[simplex.tex]{subfiles}
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited; you can compile this on its own
+
+\onlyinsubfile{
+\title{NeuroData SIMPLEX Report: Data}
+}
+
+\begin{document}
+\onlyinsubfile{
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+%\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{New Datasets to the Cloud}
+We have now pushed several of our canonical datasets to the cloud,
+including 8 whole brain CLARITY specimens and two electron microscopy
+datasets: bock11, and kasthuri11:
+
+\begin{enumerate}
+\item Control258 -
+  \url{http://cloud.neurodata.io/nd/ca/Control258/Grayscale/xy/0/15000,16000/4000,5000/60/}
+\item Fear187 -
+  \url{http://cloud.neurodata.io/nd/ca/Fear187/Grayscale/xy/0/11000,12000/5000,6000/60/}
+\item Fear200 -
+  \url{http://cloud.neurodata.io/nd/ca/Fear200/Grayscale/xy/0/12000,13000/6000,7000/560/}
+\item Control181 -
+\url{http://cloud.neurodata.io/nd/ca/Control181/Grayscale/xy/0/12000,13000/6000,7000/560/}
+\item Control182 -
+  \url{http://cloud.neurodata.io/nd/ca/Control182/Grayscale/xy/0/12000,13000/6000,7000/560/}
+\item Control239 -
+  \url{http://cloud.neurodata.io/nd/ca/Control239/Grayscale/xy/0/12000,13000/6000,7000/560/}
+\item Fear197 -
+  \url{http://cloud.neurodata.io/nd/ca/Fear197/Grayscale/xy/0/12000,13000/4000,5000/100/}
+\item Control189 -
+  \url{http://cloud.neurodata.io/nd/ca/Control189/Grayscale/xy/0/8000,9000/4000,5000/100/}
+\item bock11 -
+  \url{http://cloud.neurodata.io/nd/ca/bock11/image/xy/7/0,700/0,700/3000/} 
+\item kasthur11 -
+  \url{http://cloud.neurodata.io/nd/ca/kasthuri11/xy/0/12000,13000/6000,7000/560/}
+\end{enumerate}
+
+\end{document}
