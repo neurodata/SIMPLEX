@@ -30,7 +30,10 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{ndviz}
 
-Several small ndviz interface adjustments were introduced. First and foremost, a scale bar was added to the viewer screen. Additional visual tweaks and bug fixes were made, and a new beta release was published\footnote{\href{http://viz.neurodata.io}{http://viz.neurodata.io}}.
+Several small ndviz interface adjustments were introduced. First and
+foremost, a scale bar was added to the viewer screen. Additional visual
+tweaks and bug fixes were made, and a new beta release was
+published, \href{http://viz.neurodata.io}{http://viz.neurodata.io}.
 
 The ndviz backend system was re-engineered to incorporate the React javascript library. React speeds up dynamic javascript client code by only making necessary adjustments to the Document Object Model (DOM). Updating the DOM is a slow process. To speed updating, React builds a virtual DOM. With each change, React checkpoints the virtual DOM, builds a new virtual DOM, and compares the two. Based on the comparison, changes are applied to the real DOM. Although this process is more complex, building the virtual DOM is much faster than making wide-ranging updates to the real DOM. 
 
