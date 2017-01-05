@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \input{preamble.tex}
 
+
 \title{NeuroData SIMPLEX Report}
 
 \begin{document}
@@ -23,12 +24,20 @@ The following report documents the progress made by the labs of PI Joshua~T.~Vog
 
 \newpage 
 %%%% Publications
-\bibliographystyle{IEEEtran}
 \begin{spacing}{0.5}
-\section*{Publications, Presentations, and Talks}
-\vspace{-20pt}
-\nocite{*}
-{\footnotesize	\bibliography{simplex}}
+{\footnotesize
+\nociteman{*}
+\bibliographystyleman{IEEEtran}
+\bibliographyman{manuscripts}
+ 
+\nocitetalks{*}
+\bibliographystyletalks{IEEEtran}
+\bibliographytalks{talks}
+ 
+\nociteconf{*}
+\bibliographystyleconf{IEEEtran}
+\bibliographyconf{conferences}
+}
 \end{spacing}
 %%%% End Publications
 
