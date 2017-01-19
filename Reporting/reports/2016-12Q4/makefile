@@ -4,7 +4,7 @@ TEX = simplex
 BIBTEX = bibtex
 
 default: $(TEX).tex 
-	$(LATEX) $(TEX); $(BIBTEX) $(TEX).aux; $(BIBTEX) man.aux; $(BIBTEX) talks.aux; $(BIBTEX) conf.aux; $(LATEX) $(TEX); $(LATEX) $(TEX);
+	$(LATEX) $(TEX); $(BIBTEX) $(TEX).aux; $(BIBTEX) man.aux; $(BIBTEX) talks.aux; $(BIBTEX) conf.aux; $(BIBTEX) references.aux;$(LATEX) $(TEX); $(LATEX) $(TEX);
 	$(RM) -f  *.blg *.dvi *.log *.toc *.lof *.lot *.cb *.bbl *.brf *.out *.aux $(TEX).ps 
 	open $(TEX).pdf &
 
