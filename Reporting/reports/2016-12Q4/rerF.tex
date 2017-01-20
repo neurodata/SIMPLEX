@@ -60,10 +60,10 @@ data corruption. Across all simulation settings, RerF(r) is the overall best.
 \centering
 \includegraphics[height=0.5\textheight]{./figs/RefF1.png}
 \includegraphics[height=0.5\textheight]{./figs/RefF2.png}
-\label{fig:RefF1}
 \caption{
  Randomer Forest Comparisons
 }
+\label{fig:RefF1}
 \end{cframed}
 \end{figure}
 
@@ -86,10 +86,28 @@ the source of this observed variability.
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[height=0.5\textheight]{https://github.com/ttomita/RandomerForest/blob/master/Figures/png/Benchmark_heatmap_histogram_xgboost_normalized_by_chance_2017_01_17.png}
-\label{fig:RefF3}
+\includegraphics[height=0.5\textheight]{./figs/rerF_benchmark.png}
 \caption{
-Classification performances of RF, RerF, RR-RF, and XGBoost were compared on 119 benchmark datasets. RR-RF is identical to RF except that the data is randomly rotated prior to building each tree. XGBoost is a computationally efficient implementation of gradient boosted trees and has been the winner of many recent Kaggle competitions. For each dataset, for each algorithm, error was subtracted by that of RF and normalized by the chance probability of error. Therefore, a negative value indicates that an algorithm had a lower error rate than RF. These normalized relative errors were then binned and the counts in each bin were computed. The y-axis represents the bins. Color indicates how many times the normalized relative error of an algorithm fell into a particular bin. For instance, the figure shows that RerF had a normalized relative error 0.05 to 0.10 less than that of RF on approximately 15 datasets. The "0 to 0" bin indicates the number of times the normalized relative error was exactly 0. Overall the figure indicates that RerF rarely loses to RF by much and frequently does substantially better. RR-RF and XGBoost, on the other hand, frequently perform worse than RF by a large margin.
+Classification performances of RF, RerF, RR-RF, and XGBoost were
+compared on 119 benchmark datasets. RR-RF is identical to RF except that
+the data is randomly rotated prior to building each tree. XGBoost is a
+computationally efficient implementation of gradient boosted trees and
+has been the winner of many recent Kaggle competitions. For each
+dataset, for each algorithm, error was subtracted by that of RF and
+normalized by the chance probability of error. Therefore, a negative
+value indicates that an algorithm had a lower error rate than RF. These
+normalized relative errors were then binned and the counts in each bin
+were computed. The y-axis represents the bins. Color indicates how many
+times the normalized relative error of an algorithm fell into a
+particular bin. For instance, the figure shows that RerF had a
+normalized relative error 0.05 to 0.10 less than that of RF on
+approximately 15 datasets. The ``0 to 0'' bin indicates the number of
+times the normalized relative error was exactly 0. Overall the figure
+indicates that RerF rarely loses to RF by much and frequently does
+substantially better. RR-RF and XGBoost, on the other hand, frequently
+perform worse than RF by a large margin.
+}
+\label{fig:RefF3}
 \end{cframed}
 \end{figure}
 
