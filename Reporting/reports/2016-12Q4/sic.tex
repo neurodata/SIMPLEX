@@ -29,15 +29,30 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{Science in the Cloud (SIC)}
 
-A framework for \itshape{science in the cloud} (SIC) was developed which was
-designed for extensibility of scientific findings. This work was
-developed alongside a live demonstration, available at
-\href{http://scienceinthe.cloud}{http://scienceinthe.cloud}, which illustrates this framework. There are
-six key components which much be considered in sic: data storage, data
-organization, interactive demos, virtualization, computing, and
-deployment. The selection made for each of these components will have a
-significant impact on available selections for the others. The final
-product will be a highly interdependent network of tools and data.
+Science in the cloud~(SIC) is an extensibility-focused scientific framework which addresses universal
+challenges in the computational sciences. Currently, re-performing and extending published analyses
+whether through new data or code is often unbearably difficult; (i) data may be closed-access; (ii) data 
+may be organized in an ad hoc fashion; (iii) the code may be closed-source or undocumented; (iv) code may
+have been run with undocumented parameters and dependencies; (v) analyses may have run with specifically
+hardware compiled code. These properties make validating and extending scientific claims challenging.
+
+We propose a solution to these gaps in the form of a framework which leverages publicly documented and deployable
+cloud instances with specific pipelines installed and configured to extend published findings; an implementation we
+simply term ''science in the cloud,'' or, SIC~(Latin for ''thus was it written'').
+To address data access, we put data in the cloud.
+To address data organization, we utilize recently proposed data standards.
+To address closed source and undocumented, we generate open-source code and interactive demonstrations.
+To address software and hardware dependencies, we utilize virtualization, automated deployment, and cloud computing.
+SIC puts these pieces together to create a computing instance launched in the cloud designed for not only
+producing reproducible research, but enabling easily accessible and extensible science for everyone. SIC is designed
+to minimize the bottlenecks between publication and novel discoveries; leveraging the experience of the community,
+we propose a solution for transitioning to a universal, and ''future-proof,'' deployment of software to the cloud.
+
+A live demonstration is available at \href{http://scienceinthe.cloud}{http://scienceinthe.cloud}, which illustrates
+this framework. There are six key components which much be considered in sic: data storage, data organization,
+interactive demos, virtualization, computing, and deployment. The selection made for each of these components
+will have a significant impact on available selections for the others. The final product will be a highly
+interdependent network of tools and data.
 
 \begin{figure}[h!]
 \begin{cframed}
@@ -54,16 +69,6 @@ product will be a highly interdependent network of tools and data.
 \label{fig:sic}
 \end{cframed}
 \end{figure}
-
-We have refined our framework for science in the cloud (sic) and
-submitted the manuscript to GigaScience. In particular, we have clearly
-defined six crucial components to adopt this model of extensible
-scientific tool production. These six components are: cloud data
-storage, data organization, interactive demonstrations, virtualization,
-deployment, and computing. Table~\ref{fig:sicTab} summarizes some tools for
-each of these components, as well as the selection made in our
-particular implementation of sic.
-
 
 \begin{figure}[h!]
 \begin{cframed}
