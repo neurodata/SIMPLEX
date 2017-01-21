@@ -84,22 +84,22 @@ Input: Data set, Pipeline $\Psi_1$, Pipeline $\Psi_2$
 Output: Reject or do not reject the null hypothesis
 
 
-\begin{enumerate}
+\begin{compactenum}
 \item Process the data set with pipelines $\Psi_1$ and $\Psi_2$
 \item Compute $\hat D(\Psi_1)$ and $\hat D(d)$  
 \item For \{$i$ in 1 through number of repeats\} 
-  \begin{enumerate}
+  \begin{compactenum}
   \item For \{$j$ in 1 through number of subjects\} 
-    \begin{enumerate}
+    \begin{compactenum}
     \item Randomly select two subjects from data set 
     \item Linearly combine measurements of these subjects
-    \end{enumerate}
-  \end{enumerate}
+    \end{compactenum}
+  \end{compactenum}
 \item EndFor
 \item Compute pairwise differences $D^{(i)}(\Psi_1) - D^{(i’)}(\Psi_1)$ and $D^{(i)}(\Psi_2) - D^{(i’)}(\Psi_2)$
 \item Compute p-value which is the fraction of times that $\hat D(\Psi_1)−\hat D(\Psi_2) > D^{(i)}(\Psi_j) − D^{(i‘)}(\Psi_j)$
 \item Reject the null hypothesis if $p$-value is less than 0.05.
-\end{enumerate}
+\end{compactenum}
 
 
 We are currently running the test procedure on 13 data sets
