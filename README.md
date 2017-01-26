@@ -18,7 +18,8 @@ options below
   - subfiles/sections may be included with `\input` or `\subfile`
   - [input](https://en.wikibooks.org/wiki/LaTeX/Modular_Documents#Getting_LaTeX_to_process_multiple_files) is simple and is like pasting your file into the document.
   - [subfile](https://en.wikibooks.org/wiki/LaTeX/Modular_Documents#Subfiles) is more complicated, but allows you to compile your file
-    individually. 
+    individually.  An example file that uses subfiles is called
+`sub-file/tex`.
 
 #### Compiling the document/subfiles
 - To compile the entire document run `make` from the same directory as the
