@@ -1,0 +1,54 @@
+\documentclass[simplex.tex]{subfiles}
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited; you can compile this on its own
+
+\onlyinsubfile{
+\title{NeuroData SIMPLEX Report: Subfile}
+}
+
+\begin{document}
+\onlyinsubfile{
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+%\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{Law of Large Graphs}
+
+We have submitted it to PLOS Computational Biology. And now here
+on the arXiv is our first step:
+\href{http://arxiv.org/abs/1609.01672}{http://arxiv.org/abs/1609.01672}
+
+Estimating the mean of a population of graphs based on a sample
+is a core problem in network science. Often, this problem is
+especially difficult because the sample or cohort size is
+relatively small as compared to the number of parameters to
+estimate. While using the element-wise sample mean of the
+adjacency matrices is a common approach, this method does not
+exploit any underlying graph structure. We propose using a
+low-rank method together with tools for dimension selection and
+diagonal augmentation to improve performance over the naive
+methodology for small sample sizes. Theoretical results for the
+stochastic blockmodel show that this method will offer major
+improvements when there are many vertices. Similarly, in
+analyzing human connectome data, we demonstrate that the low-rank
+methods outperform the standard sample mean for many settings.
+These results indicate that low-rank methods should be a key part
+of the tool box for researchers studying populations of graphs.
+
+
+\end{document}

@@ -1,0 +1,119 @@
+\documentclass[simplex.tex]{subfiles}
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited; you can compile this on its own
+
+\onlyinsubfile{
+\title{NeuroData SIMPLEX Report: Data}
+}
+
+\begin{document}
+\onlyinsubfile{
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+%\vspace{-20pt}
+\nocitereferences{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{New Datasets to the Cloud}
+We have now pushed several of our canonical datasets to the cloud,
+including 8 whole brain CLARITY specimens and two electron microscopy
+datasets: bock11, and kasthuri11:\\
+%~
+%\begin{minipage}[t]{0.45\textwidth}
+%{\Large All resolutions}
+%\begin{spacing}{0.25}
+%\begin{compactenum}
+%  \item bock11 
+%  \item kasthuri11 
+%  \item kasthuri11cc 
+%  \item lee14 
+%  \item takemura13 
+%  \item Ex10R55 
+%  \item Ex12R75 
+%  \item Ex12R76 
+%  \item Ex13R51 
+%  \item Ex14R58 
+%  \item Ex2R18C1 
+%  \item Ex2R18C2 
+%  \item Ex3R43C1 
+%  \item Ex3R43C2 
+%  \item Ex3R43C3 
+%  \item Ex6R15C1 
+%  \item Ex6R15C2 
+%  \item acardona\_abd1\_5
+%  \item acardona\_0111\_8
+%  \item ZBrain
+%  \item kristina15
+%  \item bloss16
+%  \item WannerAA201605
+%  \item xbrain
+%\end{compactenum}
+%\end{spacing}
+%\end{minipage}
+%%
+%\begin{minipage}[t]{0.45\textwidth}
+%{\Large Only resolution 0}
+%
+%\begin{spacing}{0.25}
+%\begin{compactenum}
+%  \item Fear199
+%  \item Cocaine175
+%  \item Cocaine178
+%  \item Cocaine174
+%  \item Control258
+%  \item Fear187
+%  \item Fear200
+%  \item Control181
+%  \item Control182
+%  \item Control239
+%  \item Fear197
+%  \item Control189
+%  \item tobin16
+%\end{compactenum}
+%\end{spacing}
+%\end{minipage}
+
+\begin{table}[ht!]
+\begin{tabular}{rllrrrrrrr}
+  \hline
+Reference & Modality & Species & Bits & Proj & Ch & T & GV & Res & GB\\ 
+  \hline \hline
+  Bhatla\citereferences{Bhatla2015} & EM & C. elegans & 8 & 3 & 3 & 1 & 437 & 6 & 248 \\ 
+  Bock\citereferences{Bock2011} & EM & M. musculus & 8 & 1 & 1 & 1  & 20,249 & 11 & 13,312 \\ 
+  Harris\citereferences{Harris2015} & EM & R. rattus & 8 & 3 & 3 & 1  & 19 & 4 & 9 \\ 
+  Kasthuri\citereferences{Kasthuri2016} & EM & M. musculus & 8 & 1 & 1 & 1 & 1,063 & 8 & 577 \\ 
+  Lee\citereferences{Lee2016} & EM & M. musculus & 8 & 1 & 1 & 1  & 22,334 & 8 & 11,264 \\ 
+  Ohyama\citereferences{Ohyama2015} & EM & D. melanogaster & 8 & 1 & 1 & 1 & 2,609 & 7 & 2,458 \\ 
+  Takemura\citereferences{Takemura2013} & EM & D. melanogaster & 8 & 1 & 1 & 1 & 190 & 5 & 203 \\ 
+  Bloss\citereferences{Bloss2016} & AT & M. musculus & 8 & 1 & 3 & 1 & 363 & 4 & 215 \\ 
+  Collman\citereferences{Collman2015} & AT & M. musculus & 8 & 1 & 14 & 1 & 13 & 4 & 2 \\ 
+  Unpublished & AT & M. musculus & 16 & 1 & 24 & 1 & 29 & 3 & 23 \\ 
+  Weiler\citereferences{Weiler2014} & AT & M. musculus & 16 & 12 & 288 & 1 & 215 & 3 & 141 \\ 
+  Vladimirov\citereferences{Freeman2014} & Ophys & D. rerio & 16 & 1 & 1 & 100 & 9 & 4 & 9 \\ 
+  Dyer\citereferences{Dyer2016} & XCT & M. musculus & 8 & 1 & 1 & 1  & 3 & 3 & 3 \\ 
+  Randlett\citereferences{Randlett2015} & LM & D. rerio & 16 & 1 & 28 & 1  & 4 & 2 & 4 \\ 
+  Kutten\citereferences{Kutten2016} & CL & M. musculus & 16 & 1 & 23 & 1 & 7,191 & 6 & 6,727 \\ 
+  Grabner\citereferences{Grabner06} & MR & H. sapiens & 16 & 1 & 3 & 1  & $<$1 & 1 & $<1$ \\ 
+   \hline \hline
+ Totals & -- & -- & -- & 29 & 349 & --  & 47,508 & -- & 28,441 \\ 
+   \hline  
+\end{tabular}
+\label{tab:image}
+\end{table}
+
+
+
+\end{document}

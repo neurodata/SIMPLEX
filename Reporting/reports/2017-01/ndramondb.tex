@@ -1,0 +1,75 @@
+\documentclass[simplex.tex]{subfiles}
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited from simplex.tex; you can compile this on its own
+
+\onlyinsubfile{
+\title{NeuroData SIMPLEX Report: Subfile}
+}
+
+\begin{document}
+\onlyinsubfile{
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{ndramondb}
+
+Several new RAMON metadata queries were added to the ndstore RESTful
+interfaces; these include get bounding box, query by key, and top keys.
+The get bounding box query takes a RAMON metadata object ID and a base
+resolution as arguments, and retrieves the three-dimensional bounding
+box in voxel space for the specified object. Users can retrieve the
+extent of a RAMON backed annotation and easily locate the object in 3D
+space. 
+
+
+Query by key allows a user to filter available RAMON objects by
+specifying a key-value pair. For example, all RAMON objects of a
+specific type can be queried by specifying \verb+ann\_type+ as the key and
+an integer identifying the annotation type as the value. The query
+returns a list of RAMON objects, which can be further queried for more
+specific information (e.g. using the bounding box query above). 
+
+
+The RAMON metadata standard is designed for arbitrary key/value
+combinations. The top keys query allows a user to get the top K keys in
+a database, where K is a user supplied parameter. The results from the
+top key query can be used to inform a call to query by key, allowing a
+user to explore both the RAMON metadata in a database and the available
+information encapsulated within each RAMON object.
+
+
+New Webservices that return JSON formatted object describing metadata
+were implemented for all RAMON metadata queries.  The will be preferred
+to the existing interfaces that return HDF5 objects for Web
+applications.  JSON is a simple text serialization format that is widely
+supported.  It removes the HDF5 software dependency to access
+neuroscience metadata. HDF5, while powerful, is a cumbersome dependency
+in many operating systems and frameworks.
+
+
+The JSON Web services were specifically designed for the ndviz
+visulation tool, which is built on Javascript.  Ndviz now supports
+clickable metadata for any annotated location, i.e. a marked region in
+an annotation project.  Clicking an annotation brings up the type of
+annotation (neuron, axon, dendrite, synapse) properties of the
+annotation (weight, confidence), and other metadata (author, creation
+date).
+
+
+\end{document}

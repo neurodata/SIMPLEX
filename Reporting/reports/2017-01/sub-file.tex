@@ -1,0 +1,45 @@
+\documentclass[simplex.tex]{subfiles}
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited; you can compile this on its own
+
+\begin{document}
+\onlyinsubfile{
+\thispagestyle{empty}
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+%\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{Your title here}
+
+{\Large Your content here}
+%%% Your content here
+%%% Your content here
+%%% Your content here
+%%% Your content here
+%%% Your content here
+%%% Your content here
+%%% Your content here
+%%% Your content here
+
+
+\newpage
+\begin{spacing}{0.5}
+{\footnotesize
+%\nocitereferences{*}
+\bibliographystylereferences{IEEEtran}
+\bibliographyreferences{references}
+}
+\end{spacing}
+
+\end{document}
