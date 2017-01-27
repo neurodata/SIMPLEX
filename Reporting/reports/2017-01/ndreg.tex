@@ -30,72 +30,26 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{ndreg}
 
-The Large Deformation Diffeomorphic Metric Mapping (LDDMM) algorithm is
-an image registration method used to compute a smooth invertible
-transform $\phi_{10}$ which aligns template image $I_0$ to target
-image $I_1$. The log Jacobian determinant of the mapping $\log
-|D\phi_{10}|$ measures local volume change during LDDMM.  Wherever it’s
-negative the template CLARITY brain expanded to match the targeted Allen
-Reference Atlas (ARA).  Wherever it’s positive the CLARITY brain
-contracted.  Figure~\ref{fig:ndreg} shows the $\log |D\phi_{10}|$ overlaid
-on a CLARITY brain and a histogram of its values.  It’s clear that this
-brain expanded in most places to match the ARA.  This was also the case
-for 8 of 9 of the of the other brains.  Our calculations showed that
-CLARITY brains were 21\% smaller than the ARA on average.  This likely
-occurred due to shrinkage introduced by the CLARIfying processing.
+We received three new CLARITY image volumes from our colleagues at Stanford University. 
+Each dataset contained two channels of a single mouse brain hemisphere at a 585 $\mu m$ $\times$ 585 $\mu m$ $\times$ 5000 $\mu m$ resolution.
+The images were ingested and propagated to lower resolutions using NeuroData infrastructure.
+NeuroData's registration module (ndreg) was then used to register each image to the Allen institute's mouse Reference Atlas (ARA).
 
+First each image was reoriented to the ARA, the background was subtracted and a mask was generated to eliminate bright regions.
+After affine alignment, each Stanford image was deformably aligned to the ARA through Large Deformation Diffeomorphic Metric Mapping (LDDMM).
+Since the ARA and CLARITY images differed greatly in intensity profile, mutual information matching was adopted during this step.
+Alignment was done in a 3-step multi-resolution approach, with registration at coarser scales initializing the alignment at subsequent finer scales.
+It was clear from the ARA-CLARITY checkerboard composite images that registration proceeded successfully (Figure~\ref{fig:ndregAiley}).
 
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[width=.73\textwidth]{../../figs/ndreg.png}
-\includegraphics[width=0.25\textwidth]{../../figs/ndreg-md.png}\\
-\includegraphics[width=0.75\textwidth]{../../figs/ndreg-time.png}
+\includegraphics[width=0.75\textwidth]{../../figs/ndreg-ailey.png}
 \caption{
-  The metric distance between the CLARITY and ARA was computed at the
-  end point of the registration by integrating the time varying velocity
-  fields from LDDMM.  It is a measure of how much the CLARITY brain
-  differed from the ARA. The next figure compares the calculated
-  distance when a Mean Square Error (MSE) cost is used during LDDMM to
-  registration with Mutual Information (MI).  The metric distance was
-  consistently smaller for MI under all 3 conditions (Control, Cocaine
-  and Fear).  This indicates that the quality of the registration was
-  higher than under a MSE cost.
+  Coronal slices from image volumes.
+  From left to right: CLARITY before LDDMM, CLARITY after LDDMM, ARA, checkerboard composite of ARA and CLARITY after LDDMM.
 }
-\label{fig:ndreg}
-\end{cframed}
-\end{figure}
-
-NeuroData’s registration module (ndreg) uses the Large Deformation
-Diffeomorphic Metric Mapping (LDDMM) for image alignment.  LDDMM
-computes a smooth invertible mapping between template image $I_0$ and
-target image $I_1$. The plot below shows the timing results of experiments
-registering a CLARITY brain template to the Allen Reference Atlas (ARA)
-target.  In the first experiment the CLARITY image was registered to the
-(ARA) using a single-scale approach on a 50 $\mu$~m grid.  In the second
-experiment registration was done by a coarse to fine multi-scale method.
-Registration that was done at a lower resolution was used to initialize
-the algorithm at the subsequent higher resolution level.  Resolution
-levels of 800, 400, 200, 100 and then 50 $\mu$~m were used. The Mutual
-Information (MI) between the deformed CLARITY and ARA images was
-normalized to a range of $[0, 1.0]$ where 1.0 indicates that no
-registration occurred and 0 indicates the best possible scenario ($I_0 =
-I_1$).  The plot in figure~\ref{fig:ndreg} shows that the multi-scale optimization was much faster
-than the single-scale method.
-
-
-\begin{figure}[h!]
-\begin{cframed}
-\centering
-\includegraphics[width=0.75\textwidth]{../../figs/ndreg-single.png}
-\includegraphics[width=0.75\textwidth]{../../figs/ndreg-multiscale.png}
-\caption{
-  The images below are checkerboard composite images of the deformed
-  CLARITY image and the ARA.  They show that usage of the multi-scale
-  approach did not reduce registration quality when compared to the
-  single-scale method.
-}
-\label{fig:ndregChecker}
+\label{fig:ndregAiley}
 \end{cframed}
 \end{figure}
 
