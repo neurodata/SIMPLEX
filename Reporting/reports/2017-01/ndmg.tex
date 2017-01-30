@@ -30,31 +30,21 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{ndmg}
 
-We have continued the development of a reliable DWI and fMRI processing pipeline
-package, with current emphasis on performing intermediate derivative quality
-control. The quality of claims made from derived data products is heavily
-dependent upon the quality of input data to each processing step. To that end,
-it is necessary to perform quality control at each processing step of the
-pipelines including: registration, tensor estimation, and fiber estimation. We
-generate quality control images for a qualitative analysis enabling the user to
-evaluate the quality of derivatives produced (see, Figure \ref{fig:ndmg}). Quality
-control is essential to ensure accuracy of and to substantiate claims derived
-from ndmg results. In particular, investigating quality control figures has led
-to impactful improvements in the diffusion pipeline, which now is nearly
-perfectly discriminable for a variety of datasets tested. Moreover, we are
-developing a web service for fMRI uploading to streamline the process of
-analysis. Our web service will facilitate the dissemination of results and
-ensure that researchers have easy access to to a substantial array of
-pre-processed data as well as metrics computed upon them.
-
+In an effort to further verify that derivatives produced by the ndmg pipeline are high-quality and execution of a
+given dataset within the pipeline was successful, we have expanded upon a automatically generated set of quality
+control figures. In particular, we have developed the first, to our knowledge, connectome-specific graph quality
+control plot. This figure, shown as the "Degree" panel in Figure~\ref{fig:ndmgqc}, considers the intra- and inter-
+hemispheric connectivity of the graph, and plots the degree of each node for both same and across hemispheric
+connectivity. Many real-world graphs contain node and edge attributes, but often location is not among them (or it
+is used to define the edges); in connectomics, location is an important feature of each node and plays a role in its
+connectivity patterns, as in whether a connection will exist within or across hemispheres of the brain. We also are
+computing the mean connectome for the given dataset in this summary figure.
 
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[width=0.85\textwidth]{../../figs/ndmg.png}
-\caption{
-NDMG various output views.  
-}
+\includegraphics[width=0.85\textwidth]{../../figs/ndmgqcnew.png}
+\caption{Quality Control of Connectomes}
 \label{fig:ndmg}
 \end{cframed}
 \end{figure}
