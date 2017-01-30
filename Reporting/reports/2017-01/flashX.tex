@@ -117,4 +117,31 @@ Performance improvements of SEM-NMF.
 \end{cframed}
 \end{figure}
 
+\begin{figure}[h!]
+\begin{cframed}
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/FlashR.vs.RRO.png}
+\caption{
+Normalized runtime of FlashR vs. RRO on a dataset with one million data points
+	and 1000 features when running on a large parallel machine with 48 CPU cores.
+}
+\label{fig:flashr}
+\end{cframed}
+\end{figure}
+
+In the past months, we significantly advanced FlashR in both compatibility with R
+and efficiency. FlashR now overrides about 70 R matrix functions in the R
+\textit{base} package. As such, we can run existing R code with little
+modification or no modification at all. For example, we ported a few R
+implementations of machine learning algorithms in the \textit{MASS} package
+with little modification. We compare the speed of FlashR against Revolution R,
+which is also designed to parallelize and accelerate R code, on a large parallel
+machine with 48 CPU cores (Figure \ref{fig:flashr}).
+Even for the simple matrix operation such as \textit{crossprod}, FlashR
+outperforms Revolution R. As the computation gets more complex, the advantage
+of FlashR over Revolution R gets larger. When executing the LDA implementation
+(Linear Discriminant Analysis) in the MASS package, FlashR outperforms Revolution R
+by an order of magnitude.
+
+
 \end{document}
