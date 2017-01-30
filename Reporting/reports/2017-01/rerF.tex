@@ -43,51 +43,11 @@ to be tuned, rendering training of the classifier more difficult. Additionally,
 oblique methods tend to be more sensitive to data corruption than RF is. Our
 proposed method, which we call RerF, seeks to address these limitations. 	
 
-Most recently, we performed simulations in which we artificially rotated,
-scaled, 
-rotated~+~scaled (labeled ``affine'' in figure~\ref{fig:RefF1}), and corrupted two
-simulated datasets. The results demonstrate that both RerF and another existing
-oblique method called RR-RF are more sensitive to scaling and corruption of the
-data than is RF. The variants of these two methods that use rank
-transformations to rescale the data first, called RerF(r) and RR-RF(r), become
-significantly more robust to scale and corruption. While rank transformation is
-not the only scale normalizing method (z-scoring and forcing all values to be
-between $[0,1]$ are others), it is the only one that simultaneously helps against
-data corruption. Across all simulation settings, RerF(r) is the overall best.
+The previous port of RerF to R rotated input data at the tree level instead 
+of at the more desired node level.  The new port of RerF now rotates at the
+node level.  The change to R will allow a fast RerF implementation by 
+integrating the algorithm into FlashR.
 
-\begin{figure}[h!]
-\begin{cframed}
-\centering
-\includegraphics[height=0.5\textheight]{../../figs/RefF1.png}
-\includegraphics[height=0.5\textheight]{../../figs/RefF2.png}
-\caption{
- Randomer Forest Comparisons
-}
-\label{fig:RefF1}
-\end{cframed}
-\end{figure}
-
-We are developing an R implementation of the RerF algorithm in order to make it
-faster and more easily distributable.  The Rerf algorithm requires a random
-rotation of data at each node during the tree creating process, but this
-rotation of data at each node increases memory requirements and both training
-and testing times.  So, the initial R implementation will instead rotate the
-sample data once prior to creating a tree instead of at each node in the tree.
-This will still increase the same factors but not to the same degree.  Initial
-tests show that this single rotation per tree yields benefits similar to the
-per node rotation.
-
-The classification performance of RerF2 using the R implementation is similar
-to the performance of the original RerF2 implemented in MATLAB, but the
-observed differences are greater than can be explained by the use of different
-randomization algorithms.  Both implementations are being analyzed to determine
-the source of this observed variability.
-
-\begin{figure}[h!]
-\begin{cframed}
-\centering
-\includegraphics[height=0.5\textheight]{../../figs/rerF_benchmark.png}
-\caption{
 Classification performances of RF, RerF, RR-RF, and XGBoost were
 compared on 119 benchmark datasets. RR-RF is identical to RF except that
 the data is randomly rotated prior to building each tree. XGBoost is a
@@ -106,6 +66,14 @@ times the normalized relative error was exactly 0. Overall the figure
 indicates that RerF rarely loses to RF by much and frequently does
 substantially better. RR-RF and XGBoost, on the other hand, frequently
 perform worse than RF by a large margin.
+
+\begin{figure}[h!]
+\begin{cframed}
+\centering
+\includegraphics[height=0.5\textheight]{../../figs/rerF_benchmark.png}
+\caption{
+Classification performances of RF, RerF, RR-RF, and XGBoost
+on 119 benchmark datasets.
 }
 \label{fig:RefF3}
 \end{cframed}
