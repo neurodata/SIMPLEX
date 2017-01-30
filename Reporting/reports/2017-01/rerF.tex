@@ -83,6 +83,11 @@ observed differences are greater than can be explained by the use of different
 randomization algorithms.  Both implementations are being analyzed to determine
 the source of this observed variability.
 
+The previous port of RerF to R rotated input data at the tree level instead 
+of at the more desired node level.  The new port of RerF now rotates at the
+node level.  The change to R will allow a fast RerF implementation by 
+integrating the algorithm into FlashR.
+
 \begin{figure}[h!]
 \begin{cframed}
 \centering
