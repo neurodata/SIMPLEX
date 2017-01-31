@@ -2,6 +2,9 @@
 
 This repository stores Neurodata's SIMPLEX reporting documents. 
 
+- The most recent submitted report is [here](./Reporting/reports/2016-12Q4/Q4_2016_SIMPLEX.pdf)
+- The working version of the next report is [here](./Reporting/reports/2017-01/simplex.pdf)
+
 ## Reporting Instructions
 
 It is expected that everyone compile a montly 1-page progress report
