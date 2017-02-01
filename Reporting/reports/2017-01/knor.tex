@@ -36,14 +36,14 @@ frameworks in use today like Spark's MLlib, H$^2$O and GraphLab(Turi, Dato).
 We provide highly optimized routines for the
 following cases:
 
-%\begin{itemize}
-- Big-data that fits into the main memory (RAM) of a single machine, use
-        \textsf{knori}. \newline
-- Big-data that fits into the aggregate main memory (RAM) of a cluster
-        of distributed machines in the cloud, use \textsf{knord}. \newline
-- Big-data that cannot fit into the main memory (RAM) of a single machine,
+\begin{itemize}
+\item Big-data that fits into the main memory (RAM) of a single machine, use
+        \textsf{knori}. 
+\item Big-data that fits into the aggregate main memory (RAM) of a cluster
+        of distributed machines in the cloud, use \textsf{knord}. 
+\item Big-data that cannot fit into the main memory (RAM) of a single machine,
         but can be placed out-of-corek, on disk, use \textsf{knors}.
-%\end{itemize}
+\end{itemize}
 
 As part of efforts to make \textsf{knor} as user-friendly as possible we now
 support it on any platform via Docker containerization. We provide a one line
