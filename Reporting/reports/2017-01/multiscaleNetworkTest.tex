@@ -27,51 +27,21 @@ The following report documents the progress made by the labs of Randal~Burns and
 %%%% End Publications
 }
 
-\subsection{Multiscale Network Test}
+\subsection{Nonparametric Network Dependence Test} 
 
+Deciphering the association between network structures and corresponding nodal attributes of interest is a core problem in network science. We propose a new nonparametric procedure for testing dependence between network topology and nodal attributes, via diffusion maps and \texttt{MGC}. Specifically, under an exchangeable graph, we verify that the diffusion maps provide a set of conditionally independent multivariate coordinates for the nodes, which can be combined with \texttt{MGC} (or in general, any distance-based correlation measures) to yield consistent statistic for network dependence testing. In simulation, the new approach achieves superior testing performance under a variety of common network models than existing benchmarks. The diffusion maps provides a robust metric compared to adjacency matrix or geodesic distance, while \texttt{MGC} can better capture nonlinear dependencies, with their combined advantages shown in Figure~\ref{fig:threeSBM}.  
 
-%To guarantee validity and consistency of MGC applied to testing in
-%network, we should find independent and identically distributed (i.i.d.)
-%configuration of each vertex in a graph (network), of which metric well
-%reflects the distance between vertices. We demonstrated that Euclidean
-%distance of raw adjacency matrix does not satisfy i.i.d assumption
-%generally; while diffusion maps at every time step are i.i.d under
-%certain latent function, which is supported by Aldous-Hoover
-%representation theorem and de Finette’s theorem. On the other hand,
-%under these theorem, graph is empty or dense. Fortunately, we have found
-%that exchangeable graph can be generated more generally, even containing
-%sparse graphs. We generate a simple simulation to check whether MGC
-%works or not. Thus we are going to test independence between diffusion
-%maps at each time point $t$ and nodal attribute $X$. 
-%
-%For simulation, Stochastic Block Model (SBM) and additive and
-%multiplicative network model have been explored which also exhibit
-%non-linear dependence properties. What MGC does in this case is to test
-%distance matrix of diffusion maps and nodal attributes, considering
-%$(k,l)$  nearest neighbors in each.
-%
-%\begin{figure}[h!]
-%\begin{cframed}
-%\centering
-%\includegraphics[width=0.45\textwidth]{../../figs/msnt1.png}
-%\includegraphics[width=0.45\textwidth]{../../figs/msnt2.png}
-%\caption{
-%The above figures illustrate power maps of
-%three-block stochastic block model in terms of - nearest neighbor choice
-%in terms of network diffusion maps and $k$-nearest neighbor choice in
-%terms of nodal attributes. You can also notice that diffusion time
-%matters in testing. 
-%}
-%\label{fig:msnt}
-%\end{cframed}
-%\end{figure}
-%
-%Thus if there exists
-%local dependency structures or nonlinearity, the optimal neighborhood
-%choice of $(k,l)$ would not count every node in network in compute
-%distance correlation matrix. We also demonstrated that testing power of MGC
-%applied to diffusion maps is higher in SBM and also degree-corrected
-%SBM, compared to dCov, Heller-Heller-Gorfine, and latent factor network
-%test proposed by Fosdick and Hoff (2015).
+\begin{figure}[h!]
+\begin{cframed}
+		\centering
+		\includegraphics[width=0.6\textwidth]{../../figs/ThreeSBM.png}
+		\caption{Power comparison for all possible combinations of metrics and correlation measure, under the stochastic block model with three blocks. \texttt{MGC} with the diffusion maps (DM) yields the best power, comparing to using other metrics like adjacency matrix (AM), latent factors (LF), and other test statistics like distance correlation (mcorr), Heller-Heller-Gorfine (HHG) test, or Fosdick and Hoff (FH) method.}
+		\label{fig:threeSBM}
+		\end{cframed}
+\end{figure}
+
+%In order to show that \texttt{MGC} combined with diffusion maps as a network metrics perform better even in the case arbitrary noisy is added to edges or the attributes in real data, we are doing an experiment on brain network with physical locations as nodal attributes. Our proposed method not only detects the dependence between network topology and nodal attributes but also helps us to reveal possibly diverse dependence patterns through multiscale correlation maps or multiscale statistics as a function of diffusion time.
+
+The current draft is submitted to ASA Nonparametric Statistics Section Student Paper Awards, and has been selected for finalists. It will be presented in a special section of Joint Statistical Meeting this year.
 
 \end{document}
