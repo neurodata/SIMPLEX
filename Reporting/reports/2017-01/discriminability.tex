@@ -43,11 +43,12 @@ distances. If we let $x_{i,t}$ denote the t$^{\text{th}}$ trial of subject
 $i$ and $\Delta(,)$ be the metric, the (population) discriminability $D$
 is: $D= P (\Delta(x_{i,t} , x_{i,t’}) \leq  \Delta(x_{i,t} , x_{i’,t’’}))$.
 We want to search for the optimal processing pipeline which has the
-maximal discriminability. In the last month, we have been trying to finalize the paper. Specifically, we formalize three algorithms and write the pseudocode for the algorithms. The three algorithms are computing sample discriminability from test and retest data set \ref{alg:dhat}, test whether the data is better than random \ref{alg:ost}, and test whether one processing pipeline is better than another \ref{alg:tst}. The pseudocode is provided below. For the R code and functions, please see \href{http://https://github.com/neurodata/discriminability}{neurodata/discriminability}.
+maximal discriminability. 
 
+During the last month, we have been trying to finalize the paper. Specifically, we formalize three algorithms and write the pseudocode for the algorithms. The three algorithms are computing sample discriminability from test and retest data set \ref{alg:dhat}, testing whether the data is better than random \ref{alg:ost}, and testing whether one processing pipeline is better than another \ref{alg:tst}. The pseudocode is provided below. For the R code and functions, please see \href{http://https://github.com/neurodata/discriminability}{neurodata/discriminability}.
 
-Previously, we process 13 fMRI data sets with 64 pipelines, and show some pipelines yields data
-sets with high sample discriminability. We use the algorithm \ref{alg:tst} to carry out a test to compare different pipelines for each data set. Then, a single p-values is calculated by applying Fisher's method to combine p-values from multiple data sets. The result is shown in the Figure \ref{fig:pipes}. The new two sample test provide a smoother ordering of pipelines compared to ordering by Wilcoxon signed-rank test.
+Furthermore, we carry out the Algorithm \ref{alg:tst} on 13 fMRI data sets. Previously, we process 13 fMRI data sets with 64 pipelines, and show some pipelines yields data
+sets with high sample discriminability. However, we do not have a valid test to compare different pipelines other than rank them by mean discriminability. We use the algorithm \ref{alg:tst} to carry out a two sample test to compare different pipelines for each data set. Specifically, all pipelines are compared to pipeline CFXSG. Then, a single p-values is calculated by applying Fisher's method to combine p-values from 13 sets. We group the pipelines by p-values and within each group the pipelines are ordered by mean discriminability. The result is shown in the Figure \ref{fig:pipes}. The new two sample test provide a better ordering of pipelines compared to the previous ordering by Wilcoxon signed-rank test.
 
 \begin{figure}[h!]
 	\begin{cframed}
@@ -59,7 +60,7 @@ sets with high sample discriminability. We use the algorithm \ref{alg:tst} to ca
 	\end{cframed}
 \end{figure}
 
-\section*{Discriminability Algorithms}
+\subsubsection*{Discriminability Algorithms}
 \begin{algorithm}               
 	\caption{Compute discriminability estimate $\hat{D}$.  }   
 	\label{alg:dhat}                       
