@@ -28,34 +28,12 @@ The following report documents the progress made by the labs of Randal~Burns and
 }
 
 \subsection{Randomer Forest (RerF)}
-Random Forest (RF) remains one of the most widely used general purpose
-classification methods, due to its tendency to perform well in a variety of
-settings. One of its main limitations, however, is that it is restricted to
-only axis-aligned recursive partitions of the feature space. Consequently, RF
-is particularly sensitive to the orientation of the data. Several studies have
-proposed “oblique” decision forest methods to address this limitation. However,
-the ways in which these methods address this issue compromise many of the nice
-properties that RF possesses. In particular, unlike RF, these methods either
-don’t deal with incommensurate predictors, aren’t well-adapted to problems in
-which the number of irrelevant features are overwhelming, have a time and space
-complexity significantly greater than RF, or require additional hyperparameters
-to be tuned, rendering training of the classifier more difficult. Additionally,
-oblique methods tend to be more sensitive to data corruption than RF is. Our
-proposed method, which we call RerF, seeks to address these limitations. 	
-
-The previous port of RerF to R rotated input data at the tree level instead 
-of at the more desired node level.  The new port of RerF now rotates at the
-node level.  The change to R will allow a fast RerF implementation by 
-integrating the algorithm into FlashR.
-
-Classification performances of RF, RerF, RR-RF, and XGBoost were
-compared on 119 benchmark datasets. RR-RF is identical to RF except that
+Most recently, we compared classification performances of RF, RerF, RR-RF, and XGBoost on 119 benchmark datasets. RR-RF is identical to RF except that
 the data is randomly rotated prior to building each tree. XGBoost is a
 computationally efficient implementation of gradient boosted trees and
 has been the winner of many recent Kaggle competitions. For each
 dataset, for each algorithm, error was subtracted by that of RF and
-normalized by the chance probability of error. Therefore, a negative
-value indicates that an algorithm had a lower error rate than RF. These
+normalized by the chance probability of error. These
 normalized relative errors were then binned and the counts in each bin
 were computed. The y-axis represents the bins. Color indicates how many
 times the normalized relative error of an algorithm fell into a
@@ -66,6 +44,11 @@ times the normalized relative error was exactly 0. Overall the figure
 indicates that RerF rarely loses to RF by much and frequently does
 substantially better. RR-RF and XGBoost, on the other hand, frequently
 perform worse than RF by a large margin.
+
+Additionally, we have made progress towards a more scalable implementation of RerF in R. The previous port of RerF to R rotated input data at the tree level instead 
+of at the more desired node level.  The new port of RerF now rotates at the
+node level.  The change to R will allow a fast RerF implementation by 
+integrating the algorithm into FlashR.
 
 \begin{figure}[h!]
 \begin{cframed}
@@ -78,19 +61,5 @@ on 119 benchmark datasets.
 \label{fig:RefF3}
 \end{cframed}
 \end{figure}
-
-%\begin{figure}[h!]
-%\begin{cframed}
-%\centering
-%\includegraphics[height=0.5\textheight]{../../figs/RefF2.png}
-%\caption{
-% Randomer Forest Comparisons
-%}
-%\label{fig:RefF2}
-%\end{cframed}
-%\end{figure}
-
-
-
 
 \end{document}
