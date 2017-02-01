@@ -1,6 +1,9 @@
 \documentclass[simplex.tex]{subfiles}
 % NO NEED TO INPUT PREAMBLES HERE
 % packages are inherited; you can compile this on its own
+\definecolor{jgreen}{HTML}{197300}
+\definecolor{jblue}{HTML}{0000cd}
+\definecolor{jred}{HTML}{cc0000}
 
 \begin{document}
 \onlyinsubfile{
@@ -100,15 +103,30 @@ The goal of this package is to realize the following checklist: Given a new set 
    label points in scatter plots by symbol
 \end{compactitem}
 
-\onlyinsubfile{
-  \newpage
-  \begin{spacing}{0.5}
-  {\footnotesize
-  %\nocitereferences{*}
-  \bibliographystylereferences{IEEEtran}
-  \bibliographyreferences{references}
+\vspace{12pt}
+
+For point 6 (a) in the above checklist we have developed functionality
+in \verb+meda+ to plot 1-dimensional heatmaps.  The 1D heatmap is
+a different representation of a histogram, using color to denote count
+instead of bin height, see figure~\ref{fig:meda}.
+
+\begin{figure}[!h]
+\begin{cframed}
+\centering
+\includegraphics[width=0.95\textwidth]{../../figs/201701-meda-1dheat.pdf}
+\caption{A one dimensional heatmap for each of the $\log_{10}$
+  transformed feature columns of the Kristina15 synaptome dataset.
+  Colors correspond to the count of data points falling in to each bin.
+  Scott's binning streategy is used which, in this case, yields 105 bins
+  of equal width $w = 0.05$. 
+  Label colors and groups starting from the bottom:
+  \textcolor{jgreen}{Synap1\_F0 - Synapo\_F0 (green, excitatory)},
+  \textcolor{jred}{gad\_F0 - GABABR\_F0 (red, inhibatory)},
+  \textcolor{jblue}{Vglut3\_F0 - DAPI\_F0 (blue, other)}.
   }
-  \end{spacing}
-}
+\label{fig:meda}
+\end{cframed}
+\end{figure}
+
 
 \end{document}

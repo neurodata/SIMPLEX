@@ -29,60 +29,37 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{Non-Parametric Shape Clustering}
 
-We are developing non-parametric methods to cluster shapes. A shape
-consists in the geometric information contained in an object, which
-is scaling, translational, and rotational invariant. Our method consists
-in applying a modified version of k-means algorithm which incorporates a
-mathematical metric between shapes based on Procrustes alignment. This
-can have several applications, and we are particularly interested in
-using this technique to analyze similarities between neural synapses. As
-an example, the figure~\ref{fig:nonparShape} illustrates the shape extraction and
-alignment between two handwritten digits. Using the distance provided by
-this method, we are able to cluster three classes of digits more
-accurately than pure k-means method. 
+We developed a prototype algorithm for 2-dimensional shape clustering, which
+is invariant under affine transformations. This employs the procrustes
+distance between two objects, which requires feature extraction to obtain
+landmark points; see Fig.~\ref{fig:nonpar} for an example. 
+We intend to apply a variant of this method to analyze neural synapses,
+since we have such datasets from our collaborators. However, to this particular
+dataset, the preprocessing techniques may be highly sophisticated, and a new
+metric to compare different objects may be necessary. Moreover, these shapes are
+3-dimensional. We are currently working on this project
+with our collaborators, extending our existing  techniques to this 
+particular dataset.
+
+We also started working on a related, and more general, project.
+We intend to develop non-parametric clustering algorithms with statistical
+guarantees. We will use an energy-statistics based approach. Given
+two datasets $X$ and $Y$, there is an energy function $\mathcal{E}(X,Y)$
+test statistic which allows us to infer if $X$ and $Y$ have the same
+distribution. Our results thus far suggest that this can be written
+as a quadratic optimization problem
+with quadratic constraints: 
+\begin{equation}
+\max_{x,z\in \mathbb{R}^N} x^T \Delta z \qquad \mbox{s.t. $x_i^2=1$, $x+z = 0$}
+\end{equation}
+where $\Delta$ is a dissimilarity data matrix.
+There is not enough literature on
+this interesting problem, so this will very likely lead to new methods which
+can have interesting applications, in particular to neuroscience datasets.
 
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[width=0.75\textwidth]{../../figs/nonparShape.png}
-\caption{
- Example: shape extraction and alignment between two handwritten digits.
-}
-\label{fig:nonparShape}
-\end{cframed}
-\end{figure}
-
-\begin{figure}[h!]
-\begin{cframed}
-\centering
-\includegraphics[width=0.75\textwidth]{../../figs/nonpar135.png}
-\caption{
-The graph shows the accuracy
-(1 is the best possible) versus the number of elements in each class.
-Our shape clustering methods (red and cyan lines) are more accurate than
-k-means based on Euclidean distance (blue, magenta, and green lines). In
-this example the accuracy is around 85\%, which is quite good for
-unsupervised clustering on this dataset.
-}
-\label{fig:nonpar135}
-\end{cframed}
-\end{figure}
-
-To test our algorithm we used the well-known MNIST handwritten digits
-dataset. For each digit we extract landmark points, and align them
-through Procrustes. This procedure defines a distance between any two
-objects, and is illustrated in figure~\ref{fig:nonpar}~(a). Using this
-distance we then cluster three classes of digits using a modified
-K-means algorithm. 
-
-The example shown in figure~\ref{fig:nonpar}~(b)
-shows a pretty low error, around 10\%, for an unsupervised clustering
-method.
-
-\begin{figure}[h!]
-\begin{cframed}
-\centering
-
 \begin{subfigure}[t]{0.45\textwidth}
 \includegraphics[width=\textwidth]{../../figs/nonpar57.png}
 \label{fig:nonpar57}
@@ -95,12 +72,12 @@ method.
 \label{fig:nonpar357}
 \caption{
 Classification error against the size of each
-cluster --- the three classes have the same number of points --- is
+cluster (the three classes have the same number of points) is
 shown in blue. The red line is standard
-K-means with Euclidean distance for comparison.   }
+K-means with Euclidean distance for comparison.}
 \end{subfigure}
 \caption{
-  MNIST data and classification error results.
+  MNIST handwritten digits and classification error results.
 }
 \label{fig:nonpar}
 \end{cframed}
