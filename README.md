@@ -13,6 +13,11 @@ with a nice figure (caption included). These will either go in the
 Every "tool" should fit on one page, complete with a paragraph
 explaination of what was accomplished and a figure with included caption.
 
+You'll need everything in the parent folder plus all of the figures in
+the /Reporting/figs/ folder to compile the main document and
+subfiles.  The easiest way to get everything and make sure it's in 
+the right place is to clone the entire git repository.  
+
 The file structure is as follows:
 - The main file is named `simplex.tex` 
 - subfiles/sections will be
