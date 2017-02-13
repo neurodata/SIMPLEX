@@ -10,7 +10,7 @@ This repository stores Neurodata's SIMPLEX reporting documents.
 It is expected that everyone compile a montly 1-page progress report
 with a nice figure (caption included). These will either go in the
 "tools" or "data" sections of the report.
-Every "tool" should fit on one page, complete with a paragraph
+Every "tool" should fit on **one page**, complete with a paragraph
 explaination of what was accomplished and a figure with included caption.
 
 You'll need everything in the parent folder plus all of the figures in
