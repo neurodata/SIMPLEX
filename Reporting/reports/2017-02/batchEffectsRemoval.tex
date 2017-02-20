@@ -3,6 +3,17 @@
 % packages are inherited; you can compile this on its own
 \begin{document}
 \subsection{Batch effect removal in dimension reduction of multiway array data}
+Your content here. Please make sure that it fits on one page.
+
+%%%   EXAMPLE FIGURE BLOCK
+\begin{figure}[!h]
+\begin{cframed}
+\centering
+\includegraphics[width=0.15\textwidth]{neurodata_small.png}
+\caption{Please provide a detailed caption for your figure.}
+\label{fig:meda}
+\end{cframed}
+\end{figure}
 %
 %Batch effects are unwanted random variations caused by different data sources and experimental conditions. Generalized linear random effects model is effective to mitigate these confounders in traditional low dimensional data; however, there is a lack of such tool for high dimensional and multiway array data. While tensor factorization is routinely used for dimension reduction, due to the sharing of factors among all batches, the batch effects quickly populate the low dimensional core and confound the signal. In this research, we propose a different strategy by letting factor matrices vary over batches, while leaving the remaining variation in the core. This allows capturing sophisticated batch effects, while retaining the low rank structure for describing signal. To allow estimation with flexible factors, we utilize a hierarchical random effects model to borrow information among the batches. An efficient closed-form expectation conditional maxmization strategy is developed for rapid estimation. We focus the application on the joint diagonalization of brain connectivity data obtained from different sources.
 %
