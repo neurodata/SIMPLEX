@@ -30,22 +30,25 @@ The following report documents the progress made by the labs of Randal~Burns and
 
 \subsection{ndmg}
 
-In an effort to further verify that derivatives produced by the ndmg pipeline are high-quality and execution of a
-given dataset within the pipeline was successful, we have expanded upon a automatically generated set of quality
-control figures. In particular, we have developed the first, to our knowledge, connectome-specific graph quality
-control plot. This figure, shown as the "Degree" panel in Figure~\ref{fig:ndmgqc}, considers the intra- and inter-
-hemispheric connectivity of the graph, and plots the degree of each node for both same and across hemispheric
-connectivity. Many real-world graphs contain node and edge attributes, but often location is not among them (or it
-is used to define the edges); in connectomics, location is an important feature of each node and plays a role in its
-connectivity patterns, as in whether a connection will exist within or across hemispheres of the brain. We also are
-computing the mean connectome for the given dataset in this summary figure.
+Through the use of AWS Batch, a cloud deployment script has been added to the pipeline which enables users to run the
+pipeline in the cloud directly on data also stored in the cloud. This additional feature significantly lowers the
+barrier to entry for use of the pipeline, and enables researchers to process and store their data without requiring
+physical compute or data storage hardware or management expertise in house. Figure \ref{fig:ndmgcloud} shows an example
+workflow that could be used by researchers performing a study.
+
 
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[width=0.95\textwidth]{../../figs/ndmgqcnew.png}
-\caption{Quality Control of Connectomes}
-\label{fig:ndmgqc}
+\includegraphics[width=0.95\textwidth]{../../figs/ndmgcloud.pdf}
+\caption{\textbf{ndmg usage workflow}. The ndmg pipeline has been designed to minimize the technological equipment and
+expertise required to go from raw imaging data to scientific analyses. Here we suggest an example workflow which
+researchers can follow to accomplish this. After collecting multimodal MR (M3R) data for a study, the data can be
+organized in accordance with the BIDS organization standard and stored in Amazon S3. Once in the cloud, through the use
+of Amazon Batch and the ndmg pipeline's \texttt{ndmg\_cloud} routine, a series of parallel jobs can be launched which
+process all of the uploaded data and return the derivatives to the cloud. Along with quality control figures and
+measures, the derivatives are then retrievable by the researcher to perform further analysis.}
+\label{fig:ndmgcloud}
 \end{cframed}
 \end{figure}
 \end{document}
