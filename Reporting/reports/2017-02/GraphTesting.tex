@@ -2,10 +2,13 @@
 % DO NOT INCLUDE PREAMBLES/PACKAGES HERE!!
 % packages are inherited from preamble.tex; you can compile this on its own
 \begin{document}
-\subsection{Your title here}
+\subsection{Graph-testing}
 
+In neuroimaging connectomics studies, it is often desired to determine whether the observed network properties are statistically significant or not. In order to correctly achieve this, we need to define a null distribution. In order to generate the null distribution, the common technique is to  generate an average of 1000 samples of graphs with the same degree sequence of the observed graphs. However, this technique does not yield a uniform sample from the null distribution, resulting in ill-conditioned tests. Here, we investigate statistically accurate methods in graph testing. 
 
-Your content here. Please make sure that it fits on one page.
+One strategy that we have explored is generating the null distribution by sampling from graphs with the same degree-sequence of the observed graph. While the samples are not generated uniformly, we know how to rescale the samples such that we can estimate the mean of the uniform distribution of the graphs. We are currently working on to extend this algorithm to validly estimate the 95 percentile as well. 
+
+Another technique that we have explored is using parametric bootstrap to obtain the critical region for any significance level. Namely, we fit a stochastic block model to the data and use Generalized Likelihood Ratio Test to determine the number of blocks that best fit the data. In the initial experiments, as expected, we see that the power of the test increases as the graph size increase. As the next step, after finding the model that best first the data, we can sample from that distribution many times, compute the test statistic, and get the critical region for any significance level. In this strategy we are not conditioning the graphs on their degree sequence, which is an advantage as the graphs tend to include noise so we cannot use the observed degree sequence as the ground truth. 
 
 %%%   EXAMPLE FIGURE BLOCK
 \begin{figure}[!h]
