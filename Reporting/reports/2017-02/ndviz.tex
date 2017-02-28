@@ -2,7 +2,7 @@
 % DO NOT INCLUDE PREAMBLES/PACKAGES HERE!!
 % packages are inherited from preamble.tex; you can compile this on its own
 \begin{document}
-\subsection{ndviz}
+\subsection[ndviz]{ndviz}
 
 The vast majority of current high resolution imaging techniques in neuroscience are either 3-dimensional or contain a 3-dimensional component (e.g. 3-d data over time). Visualization of data produced by said techniques has traditionally been confined to the three canonical planes; $xy$, $yz$, and $xz$. However, advancements in Web graphics rendering have made dynamic, 3-dimensional visualization possible in modern Web browsers. Using WebGL, code running in a users Web browser can access the end users Graphics Processing Unit (GPU), taking advantage of specialized graphics hardware present in most modern desktops, laptops, and even smart phones. 
 
@@ -15,8 +15,11 @@ With this new version of NeuroDataViz, we can visualize all of our existing data
 \begin{figure}[!h]
 \begin{cframed}
 \centering
-\includegraphics[width=0.8\textwidth]{../../figs/ndviz3d_fig.jpg}
-\caption{NeuroDataViz, powered by Neuroglancer with pre-computed meshes displayed in 3-d. Data from Harris et al. "A resource from 3D electron microscopy of hippocampal neuropil for user training and tool development", Nature Scientific Data 2015.}
+\includegraphics[width=0.95\textwidth, height = 3in]{../../figs/ndviz3d_fig.jpg}
+\caption{NeuroDataViz, powered by Neuroglancer with pre-computed meshes
+  displayed in 3-d. Data from Harris et al. ``A resource from 3D
+  electron microscopy of hippocampal neuropil for user training and tool
+  development,'' Nature Scientific Data 2015.}
 \label{fig:name}
 \end{cframed}
 \end{figure}
