@@ -1,33 +1,7 @@
 \documentclass[simplex.tex]{subfiles}
-
 % NO NEED TO INPUT PREAMBLES HERE
 % packages are inherited; you can compile this on its own
-
-\onlyinsubfile{
-\title{NeuroData SIMPLEX Report: Subfile}
-}
-
 \begin{document}
-\onlyinsubfile{
-\maketitle
-\thispagestyle{empty}
-
-The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
-
-%%%% Table of Contents
-\tableofcontents
-
-%%%% Publications
-\bibliographystyle{IEEEtran}
-\begin{spacing}{0.5}
-\section*{Publications, Presentations, and Talks}
-%\vspace{-20pt}
-\nocite{*}
-{\footnotesize	\bibliography{simplex}}
-\end{spacing}
-%%%% End Publications
-}
-
 \subsection{knor: K-means NUMA Optimized Routines}
 
 We previously described the \textsf{knor} library. As a set of tools enabling

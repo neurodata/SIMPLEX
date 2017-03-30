@@ -3,23 +3,28 @@
 % packages are inherited from preamble.tex; you can compile this on its own
 \begin{document}
 \subsection{ndstore}
+%% Jan
+
+We continue to now migrate all our annotation datasets to the cloud. The annotation projects will now be hosted in MySQL backed with AWS EBS storage and will be converted to AWS DynamoDB soon. There will be more than 30 odd annotation datasets avaliable in the cloud for public use. The datasets can be accessed at \href{http://neurodata.io}{http://neurodata.io}.
+
+We added support for new resource and authentication web-servics in our python wrapper called ndio. This will allow our users to continue to use ndio for future interactions with the web back-end. They can now utilize the new web-services we have added and create resources using this which is more easier then using the RESTful web-services directly.
+
+We are also in the process of deploying a status page for our web-services. The status page will act as a dashboard for all our users and a single point of contact for them to check if our services are online or suffering from an outage. It will also allow us to inform all our users who are subsribed to the status page of future planned outages. This will streamline our services and is standard industry practice for other companies running web-services. The status page is located here \href{https://neurodata.statuspage.io/}{https://neurodata.statuspage.io/}.
 %
-%
-%Your content here. Please make sure that it fits on one page.
+The MRI ingest service is now active and being used by some users in the lab to ingest data into ndstore. All of this service was already deployed in the cloud and the ingested data will be avaliable at \href{http://mri.neurodata.io}{http://mri.neurodata.io}.
+
+
 Autoingest is a ndstore service for inserting image and annotation data into the data-store. The user posts information aboout the data inculding location, co-ordinates and datatype. The server uses this information and with a pull model ingests the raw image or annotation data from slices into cuboids and inserts them in the database. This service was earlier operational on local hardware deployed at Johns Hopkins. We modified this service so that it could now be run on Amazon Web Services and S3 object store. Raw data can now be staged on a publicly accessible web server or in a S3 bucket provided by us. The data can be now be inserted into MySQL as well as AWS S3 object store. \par
 
 Propagate is a ndstore service for building scaling levels over base resolution of data. This is efficient for serving data at lower resolutions for processing and visualization. There also exist auto-zoom in and out capabilties to materialize the data at higher or lower resolutions on the fly if these scaling levels are not built or being built. This service was modified so that scaling levels could be built on the data inserted into AWS S3 object store. \par
 
 In addition, we also added neariso scaling levels in addition to the exisitng scaling hierarchy. This reduces the data transfer size for 3D viewers and is the preferred interface for tools which use ndstore such as BigDataViewer and Neuroglancer. This will support easier insertion and visualization of data from collaborators. \par
 
+\subsubsection{ndingest}
+
+The access policies for the ndingest is now complete. We are currrently testing our the new service and will soon release it in beta mode to some our close collaborators. This service will allow us to speedup our data ingest rates manifold. We plan to benchmark this service once we are done deploying it.
 %
-%%%%   EXAMPLE FIGURE BLOCK
-%\begin{figure}[!h]
-%\begin{cframed}
-%\centering
-%\includegraphics[width=0.15\textwidth]{neurodata_small.png}
-%\caption{Please provide a detailed caption for your figure.}
-%\label{fig:name}
-%\end{cframed}
-%\end{figure}
+The ingest client developed witj JHU-APL, has now been converted so that it can use multiple threads in python. This capability will allow us to upload multiple slices of the data simultaneously and allow us to upload data to the cloud at a much faster rate. 
+
+\clearpage
 \end{document}
