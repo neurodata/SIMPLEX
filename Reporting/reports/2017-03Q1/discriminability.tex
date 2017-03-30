@@ -35,6 +35,10 @@ $i$ and $\Delta(,)$ be the metric, the discriminability $D$
 is: $D:= P (\Delta(x_{i,t} , x_{i,t’}) \leq  \Delta(x_{i,t} , x_{i’,t’’}))$. Large discriminability implies the clusters are more consistent, that is we can better differentiate samples from different clusters. 
 \\
 We are also developing a clustering algorithm \ref{alg:dcl} which maximizes the discriminability. The algorithm will assign each sample $i$ a cluster identity $k_i$ such that the discriminability is maximized. The algorithm is similar to K-means, but we believe discriminability provides a more robust measure than within cluster distances which is maximized in K-means.
+
+
+\subsubsection*{Discriminability Algorithms}
+
 \begin{algorithm}               
 	\caption{Cluster samples through maximizing discriminability.  }   
 	\label{alg:dcl}                       
@@ -57,9 +61,7 @@ We are also developing a clustering algorithm \ref{alg:dcl} which maximizes the 
 	\end{algorithmic}
 \end{algorithm}
 
-\clearpage
 
-\subsubsection*{Discriminability Algorithms}
 \begin{algorithm}               
 	\caption{Compute discriminability estimate $\hat{D}$.  }   
 	\label{alg:dhat}                       
