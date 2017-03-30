@@ -6,7 +6,12 @@
 %
 %
 %Your content here. Please make sure that it fits on one page.
-The autoingest and propagate service in ndstore were modified so they could now be deployed on the cloud. ndstore is now capable of ingesting data directly into AWS S3, an object store, using a single thread. Similarly, a scaling resolution can now be built for all the image and annotation data on AWS S3. This will support easier ingest of data from collaborators.
+Autoingest is a ndstore service for inserting image and annotation data into the data-store. The user posts information aboout the data inculding location, co-ordinates and datatype. The server uses this information and with a pull model ingests the raw image or annotation data from slices into cuboids and inserts them in the database. This service was earlier operational on local hardware deployed at Johns Hopkins. We modified this service so that it could now be run on Amazon Web Services and S3 object store. Raw data can now be staged on a publicly accessible web server or in a S3 bucket provided by us. The data can be now be inserted into MySQL as well as AWS S3 object store. \par
+
+Propagate is a ndstore service for building scaling levels over base resolution of data. This is efficient for serving data at lower resolutions for processing and visualization. There also exist auto-zoom in and out capabilties to materialize the data at higher or lower resolutions on the fly if these scaling levels are not built or being built. This service was modified so that scaling levels could be built on the data inserted into AWS S3 object store. \par
+
+In addition, we also added neariso scaling levels in addition to the exisitng scaling hierarchy. This reduces the data transfer size for 3D viewers and is the preferred interface for tools which use ndstore such as BigDataViewer and Neuroglancer. This will support easier insertion and visualization of data from collaborators. \par
+
 %
 %%%%   EXAMPLE FIGURE BLOCK
 %\begin{figure}[!h]
