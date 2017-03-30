@@ -1,19 +1,43 @@
 \documentclass[simplex.tex]{subfiles}
-% DO NOT INCLUDE PREAMBLES/PACKAGES HERE!!
-% packages are inherited from preamble.tex; you can compile this on its own
+
+% NO NEED TO INPUT PREAMBLES HERE
+% packages are inherited; you can compile this on its own
+
+\onlyinsubfile{
+\title{NeuroData SIMPLEX Report: Subfile}
+}
+
 \begin{document}
-\subsection{knor}
-%
-%
-%Your content here. Please make sure that it fits on one page.
-%
-%%%%   EXAMPLE FIGURE BLOCK
-%\begin{figure}[!h]
-%\begin{cframed}
-%\centering
-%\includegraphics[width=0.15\textwidth]{neurodata_small.png}
-%\caption{Please provide a detailed caption for your figure.}
-%\label{fig:name}
-%\end{cframed}
-%\end{figure}
+\onlyinsubfile{
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of Randal~Burns and Joshua~T.~Vogelstein at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\tableofcontents
+
+%%%% Publications
+\bibliographystyle{IEEEtran}
+\begin{spacing}{0.5}
+\section*{Publications, Presentations, and Talks}
+%\vspace{-20pt}
+\nocite{*}
+{\footnotesize	\bibliography{simplex}}
+\end{spacing}
+%%%% End Publications
+}
+
+\subsection{knor: K-means NUMA Optimized Routines}
+
+We previously described the \textsf{knor} library. As a set of tools enabling
+users to perform the popular k-means algorithm at scale at speeds of 10x-100x
+time of that of popular frameworks in use today like Spark's MLlib, H$^2$O
+and GraphLab(Turi, Dato).
+
+We would like to report that our \textsf{knor} paper that was submitted
+to the ACM Symposium on High-Performance Parallel and Distributed Computing (HPDC 2017)
+and publicly released it to \href{https://arxiv.org/abs/1606.08905}{arxiv}
+was \textbf{accepted} for publication to the 26th proceedings of HPDC.
+
 \end{document}
