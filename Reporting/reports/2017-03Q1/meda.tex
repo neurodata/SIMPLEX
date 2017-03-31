@@ -24,7 +24,7 @@ The goal of this package is to realize the following checklist: Given a new set 
 
 \begin{compactenum}
   \item histogram of feature types (binary, integer, non-negative, character, string etc.)
-  \item \# NaNs per row? Per column? Infs per row? Per column? "Zero" variance rows? columns?
+  \item \# NaNs per row? Per column? Infs per row? Per column? ``Zero'' variance rows? columns?
   \item Heat map of raw data that fits on screen (k-means++ to select 1000 samples, CUR to select 100 dimensions)
   \item 1st moment statistics
   \begin{compactenum}
@@ -131,11 +131,31 @@ size of the cluster.  The stacked level means plot
 of the tree.
 
 
+%\begin{figure}[!h]
+%\begin{cframed}
+%\centering
+%\includegraphics[width=0.45\textwidth, clip = true, trim = 2cm 5cm 4cm 6cm ]{../../figs/K15_samp1e4_01e3_dendro.png}
+%\includegraphics[width=0.45\textwidth, clip = true, trim = 1cm 0 5mm 1mm]{../../figs/K15_samp1e4_01e3_slcmeans.png}
+%\caption{Left:  A dendrogram showing the results of hierarchical mclust.
+%The splits are constrained to be binary and branch sizes show relative
+%cluster sizes.  Right: A stacked level means plot showing for each node
+%in the dendrogram the feature means.}
+%\label{fig:meda}
+%\end{cframed}
+%\end{figure}
+%\clearpage
+
+%% March 
+
+Updates:  Colored markers indicating whether BIC suggests $K = 2$ (green
+triangle)  or to stop with $K = 1$ (red squares) have been added to the
+dendrograms. 
+
 \begin{figure}[!h]
 \begin{cframed}
 \centering
-\includegraphics[width=0.45\textwidth, clip = true, trim = 2cm 5cm 4cm 6cm ]{../../figs/K15_samp1e4_01e3_dendro.png}
-\includegraphics[width=0.45\textwidth, clip = true, trim = 1cm 0 5mm 1mm]{../../figs/K15_samp1e4_01e3_slcmeans.png}
+\includegraphics[width=0.45\textwidth, height = 2.5in, clip = true, trim = 0 -4cm 0 0]{../../figs/meda_dend_201703.png}
+\includegraphics[width=0.45\textwidth, clip = true, trim = 1cm 0 5mm 1mm]{../../figs/meda_stacked_201703.png}
 \caption{Left:  A dendrogram showing the results of hierarchical mclust.
 The splits are constrained to be binary and branch sizes show relative
 cluster sizes.  Right: A stacked level means plot showing for each node
@@ -144,10 +164,10 @@ in the dendrogram the feature means.}
 \end{cframed}
 \end{figure}
 
+The internals of the meda package are now being re-worked so that data
+processing and plotting of results will be separate. This will allow for
+better modularity and faster turn-around. 
+
 \clearpage
-
-%% March 
-
-
 
 \end{document}
