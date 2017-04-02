@@ -1,6 +1,7 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  31 MAR 2017 14:02
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  2 APR 2017 10:21
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **simplex
 (./simplex.tex
@@ -965,21 +966,21 @@ Package: multibib 2008/12/10 v1.4 Multiple bibliographies for one document.
 \mb@biblabelwidth=\count184
 )
 \@auxoutman=\write4
-
-No file man.aux.
+ (./man.aux)
 \openout4 = `man.aux'.
 
 \@auxouttalks=\write5
-No file talks.aux.
+ (./talks.aux)
 \openout5 = `talks.aux'.
 
 \@auxoutconf=\write6
-No file conf.aux.
+ (./conf.aux)
 \openout6 = `conf.aux'.
 
 \@auxoutreferences=\write7
-No file references.aux.
+ (./references.aux)
 \openout7 = `references.aux'.
+
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
@@ -1398,7 +1399,19 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 \endnotesep=\dimen314
 \@enotes=\write10
 ))
-No file simplex.aux.
+(./simplex.aux)
+Runaway argument?
+{{3}{6}{A one dimensional heatmap for each of the $\log _{10}$ transf\ETC.
+./simplex.tex:7: File ended while scanning use of \@newl@bel.
+<inserted text> 
+                \par 
+l.7 \begin{document}
+                    
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
+
 \openout1 = `simplex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -1478,14 +1491,12 @@ LaTeX Info: Redefining \Ref on input line 513.
 LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
 LaTeX Info: Redefining \nameref on input line 7.
+
+(./simplex.out) (./simplex.out)
 \@outlinefile=\write11
 \openout11 = `simplex.out'.
 
 LaTeX Info: Redefining \Ref on input line 7.
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 .................................................
@@ -1557,7 +1568,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 7.
-(./frontmatter.tex
+ (./frontmatter.tex (./simplex.toc)
 \tf@toc=\write12
 \openout12 = `simplex.toc'.
 
@@ -1599,15 +1610,840 @@ Overfull \hbox (2.1106pt too wide) has occurred while \output is active
  []
 
 [2]) (./LOL.tex
-
-LaTeX Warning: Reference `fig:LOL' on page 3 undefined on input line 8.
-
 File: ../../figs/plot_all.pdf Graphic file (type QTm)
-<use  "../../figs/plot_all.pdf" >
+ <use  "../../figs/plot_all.pdf" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[3
+
+]
+File: ../../figs/plot_real.pdf Graphic file (type QTm)
+ <use  "../../figs/plot_real.pdf" >
+File: ../../figs/scalability.pdf Graphic file (type QTm)
+ <use  "../../figs/scalability.pdf" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[4
+
+]) (./meda.tex
+Overfull \hbox (1.77167pt too wide) in paragraph at lines 19--21
+[]\EU1/[Gentona-Light.ttf](0)/m/n/12 Example output generated from Fisher’s Iri
+s data is here: [][]http://docs.neurodata.io/meda[][] 
+ []
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[5
+
+]
+LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 93.
+
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/euenc/eu1lmtt.fd
+File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+
+LaTeX Warning: Reference `fig:meda201701' on page 6 undefined on input line 95.
+
+
+
+Overfull \hbox (18.03696pt too wide) in paragraph at lines 92--96
+[]\EU1/[Gentona-Light.ttf](0)/m/n/12 For point 6 (a) in the above checklist we 
+have developed functionality in []\EU1/lmtt/m/n/12 meda \EU1/[Gentona-Light.ttf
+](0)/m/n/12 to plot 1-dimensional
+ []
+
+File: ../../figs/201701-meda-1dheat.pdf Graphic file (type QTm)
+<use  "../../figs/201701-meda-1dheat.pdf" >
 File: neurodata_small.png Graphic file (type QTm)
  <use  "neurodata_small.png" >
 Overfull \hbox (2.1106pt too wide) has occurred while \output is active
 [][][][][][]  
  []
 
-[3
+[6]
+
+LaTeX Warning: Reference `fig:meda201702' on page 7 undefined on input line 127
+.
+
+
+LaTeX Warning: Reference `fig:meda201702' on page 7 undefined on input line 130
+.
+
+File: ../../figs/meda_dend_201703.png Graphic file (type QTm)
+<use  "../../figs/meda_dend_201703.png" >
+File: ../../figs/meda_stacked_201703.png Graphic file (type QTm)
+
+<use  "../../figs/meda_stacked_201703.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[7
+
+]) (./MGC.tex
+
+LaTeX Warning: Reference `fig:mgcall' on page 8 undefined on input line 7.
+
+File: ../../figs/FigHDPowerSummary.png Graphic file (type QTm)
+<use  "../../figs/FigHDPowerSummary.png" >
+Overfull \hbox (2.78494pt too wide) in paragraph at lines 18--19
+[]\EU1/[Gentona-Light.ttf](0)/m/n/12 Upon final draft polishing and addressing 
+feedback from statisticians and biologists, the newest
+ []
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[8
+
+]) (./multiscaleNetworkTest.tex
+
+LaTeX Warning: Reference `fig:threeSBM201701' on page 9 undefined on input line
+ 21.
+
+File: ../../figs/ThreeSBM.png Graphic file (type QTm)
+<use  "../../figs/ThreeSBM.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[9
+
+]
+
+LaTeX Warning: Reference `fig:threeSBM201703' on page 10 undefined on input lin
+e 44.
+
+File: ../../figs/twoGraphs1.pdf Graphic file (type QTm)
+<use  "../../figs/twoGraphs1.pdf" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[10
+
+]) (./RerF.tex
+File: ../../figs/rerF_benchmark.png Graphic file (type QTm)
+ <use  "../../figs/rerF_benchmark.png" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[11
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 44--49
+
+ []
+
+File: ../../figs/RerF_2017_02.png Graphic file (type QTm)
+<use  "../../figs/RerF_2017_02.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[12
+
+]
+File: ../../figs/RerF_2017_03.png Graphic file (type QTm)
+ <use  "../../figs/RerF_2017_03.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[13
+
+]) (./nonparShape.tex
+
+LaTeX Warning: Reference `fig:nonpar' on page 14 undefined on input line 10.
+
+File: ../../figs/nonpar57.png Graphic file (type QTm)
+<use  "../../figs/nonpar57.png" >
+File: ../../figs/nonPar357.png Graphic file (type QTm)
+ <use  "../../figs/nonPar357.png" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[14
+
+]
+
+LaTeX Warning: Reference `fig:nonpar' on page 15 undefined on input line 101.
+
+File: ../../figs/energy_hists.pdf Graphic file (type QTm)
+<use  "../../figs/energy_hists.pdf" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[15
+
+]
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 148.
+
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 155.
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 173.
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 176.
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 177.
+
+
+LaTeX Warning: Reference `fig:plots' on page 16 undefined on input line 179.
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 180.
+
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 182.
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 184.
+
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 184.
+
+File: ../../figs/plot1.pdf Graphic file (type QTm)
+<use  "../../figs/plot1.pdf" >
+File: ../../figs/plot2.pdf Graphic file (type QTm)
+ <use  "../../figs/plot2.pdf" >
+Underfull \hbox (badness 10000) in paragraph at lines 193--195
+[][]
+ []
+
+File: ../../figs/plot3.pdf Graphic file (type QTm)
+<use  "../../figs/plot3.pdf" >
+File: ../../figs/plot4.pdf Graphic file (type QTm)
+ <use  "../../figs/plot4.pdf" >
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+[][]
+ []
+
+
+LaTeX Warning: Reference `eq:opt' on page 16 undefined on input line 207.
+
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 207.
+
+
+LaTeX Warning: Reference `eq:energy' on page 16 undefined on input line 207.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[16
+
+]) (./discriminability.tex
+
+LaTeX Warning: Reference `alg:dcl' on page 17 undefined on input line 37.
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 43.
+
+LaTeX Font Warning: Font shape `EU1/[Gentona-Light.ttf](0)/m/sc' undefined
+(Font)              using `EU1/[Gentona-Light.ttf](0)/m/n' instead on input lin
+e 48.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[17
+
+]
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[18]
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[19]
+
+LaTeX Warning: Reference `fig:cci1' on page 20 undefined on input line 159.
+
+File: ../../figs/cci_data.png Graphic file (type QTm)
+<use  "../../figs/cci_data.png" >
+File: ../../figs/cci_data.png Graphic file (type QTm)
+ <use  "../../figs/cci_data.png" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[20
+
+]) (./robustLOLG.tex
+
+LaTeX Warning: Reference `fig:robDim' on page 21 undefined on input line 35.
+
+File: ../../figs/CCI_m2g_ndmg_Weighted_q_0.9_EIG.png Graphic file (type QTm)
+<use  "../../figs/CCI_m2g_ndmg_Weighted_q_0.9_EIG.png" >
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[21
+
+]
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[22]
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[23
+
+]
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[24
+
+]) (./FlashX.tex
+File: ../../figs/FlashR.vs.RRO.png Graphic file (type QTm)
+ <use  "../../figs/FlashR.vs.RRO.png" >
+
+LaTeX Warning: Reference `fig:flashr' on page 25 undefined on input line 33.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[25
+
+]
+
+LaTeX Warning: Reference `tbl:scale' on page 26 undefined on input line 45.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[26
+
+]
+
+LaTeX Warning: Reference `fig:FlashX' on page 27 undefined on input line 113.
+
+File: ../../figs/hist-indeg.pdf Graphic file (type QTm)
+<use  "../../figs/hist-indeg.pdf" >
+File: ../../figs/pg_xy_heatmap.pdf Graphic file (type QTm)
+ <use  "../../figs/pg_xy_heatmap.pdf" >
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[27
+
+]) (./ndstore.tex
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[28
+
+]) (./ndviz.tex
+Overfull \hbox (1.12805pt too wide) in paragraph at lines 9--10
+[]\EU1/[Gentona-Light.ttf](0)/m/sc/12 Using WebGL for dynamic rendering improve
+s both the performance and capability of a graph-
+ []
+
+File: ../../figs/ndviz3d_fig.jpg Graphic file (type QTm)
+<use  "../../figs/ndviz3d_fig.jpg" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[29
+
+]) (./knor.tex
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
+
+ []
+
+
+LaTeX Warning: Reference `fig:rmvm' on page 30 undefined on input line 36.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
+
+ []
+
+File: ../../figs/perf.iter.rmvm.png Graphic file (type QTm)
+<use  "../../figs/perf.iter.rmvm.png" >
+File: ../../figs/mem.rmvm.png Graphic file (type QTm)
+ <use  "../../figs/mem.rmvm.png" >
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[30
+
+]
+
+LaTeX Warning: Text page 31 contains only floats.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[31]) (./ndreg.tex
+
+LaTeX Warning: Reference `fig:ndregAiley' on page 32 undefined on input line 17
+.
+
+File: ../../figs/ndreg-ailey.png Graphic file (type QTm)
+<use  "../../figs/ndreg-ailey.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[32
+
+]
+
+LaTeX Warning: Reference `fig:comparison' on page 33 undefined on input line 45
+.
+
+File: ../../figs/ssdCoronal.png Graphic file (type QTm)
+<use  "../../figs/ssdCoronal.png" >
+File: ../../figs/maskCoronal.png Graphic file (type QTm)
+ <use  "../../figs/maskCoronal.png" >
+File: ../../figs/miCoronal.png Graphic file (type QTm)
+
+<use  "../../figs/miCoronal.png" >
+File: ../../figs/lmkError.png Graphic file (type QTm)
+ <use  "../../figs/lmkError.png" >
+
+LaTeX Warning: Hyper reference `fig:clarityCoronalSSD' on page 33 undefined on 
+input line 77.
+
+
+LaTeX Warning: Reference `sub@fig:clarityCoronalSSD' on page 33 undefined on in
+put line 77.
+
+
+LaTeX Warning: Hyper reference `fig:clarityCoronalMask' on page 33 undefined on
+ input line 77.
+
+
+LaTeX Warning: Reference `sub@fig:clarityCoronalMask' on page 33 undefined on i
+nput line 77.
+
+
+LaTeX Warning: Hyper reference `fig:clarityCoronalMI' on page 33 undefined on i
+nput line 77.
+
+
+LaTeX Warning: Reference `sub@fig:clarityCoronalMI' on page 33 undefined on inp
+ut line 77.
+
+
+LaTeX Warning: Hyper reference `fig:clarityCoronalSSD' on page 33 undefined on 
+input line 77.
+
+
+LaTeX Warning: Reference `sub@fig:clarityCoronalSSD' on page 33 undefined on in
+put line 77.
+
+
+LaTeX Warning: Hyper reference `fig:clarityCoronalMI' on page 33 undefined on i
+nput line 77.
+
+
+LaTeX Warning: Reference `sub@fig:clarityCoronalMI' on page 33 undefined on inp
+ut line 77.
+
+
+LaTeX Warning: Hyper reference `fig:lmkError' on page 33 undefined on input lin
+e 77.
+
+
+LaTeX Warning: Reference `sub@fig:lmkError' on page 33 undefined on input line 
+77.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[33
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 85--90
+
+ []
+
+
+LaTeX Warning: Reference `fig:idisco' on page 34 undefined on input line 93.
+
+File: ../../figs/iDISCO.png Graphic file (type QTm)
+<use  "../../figs/iDISCO.png" >
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[34
+
+]) (./data.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--9
+
+ []
+
+
+Package natbib Warning: Citation `Bhatla2015' on page 35 undefined on input lin
+e 16.
+
+
+Package natbib Warning: Citation `Bock2011' on page 35 undefined on input line 
+17.
+
+
+Package natbib Warning: Citation `Harris2015' on page 35 undefined on input lin
+e 18.
+
+
+Package natbib Warning: Citation `Kasthuri2016' on page 35 undefined on input l
+ine 19.
+
+
+Package natbib Warning: Citation `Lee2016' on page 35 undefined on input line 2
+0.
+
+
+Package natbib Warning: Citation `Ohyama2015' on page 35 undefined on input lin
+e 21.
+
+
+Package natbib Warning: Citation `Takemura2013' on page 35 undefined on input l
+ine 22.
+
+
+Package natbib Warning: Citation `Bloss2016' on page 35 undefined on input line
+ 23.
+
+
+Package natbib Warning: Citation `Collman2015' on page 35 undefined on input li
+ne 24.
+
+
+Package natbib Warning: Citation `Weiler2014' on page 35 undefined on input lin
+e 26.
+
+
+Package natbib Warning: Citation `Freeman2014' on page 35 undefined on input li
+ne 27.
+
+
+Package natbib Warning: Citation `Dyer2016' on page 35 undefined on input line 
+28.
+
+
+Package natbib Warning: Citation `Randlett2015' on page 35 undefined on input l
+ine 29.
+
+
+Package natbib Warning: Citation `Kutten2016' on page 35 undefined on input lin
+e 30.
+
+
+Package natbib Warning: Citation `Grabner06' on page 35 undefined on input line
+ 31.
+
+
+Overfull \hbox (19.20518pt too wide) in paragraph at lines 12--37
+[][]
+ []
+
+)
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[35
+
+] (./data.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--9
+
+ []
+
+
+Package natbib Warning: Citation `Bhatla2015' on page 36 undefined on input lin
+e 16.
+
+
+Package natbib Warning: Citation `Bock2011' on page 36 undefined on input line 
+17.
+
+
+Package natbib Warning: Citation `Harris2015' on page 36 undefined on input lin
+e 18.
+
+
+Package natbib Warning: Citation `Kasthuri2016' on page 36 undefined on input l
+ine 19.
+
+
+Package natbib Warning: Citation `Lee2016' on page 36 undefined on input line 2
+0.
+
+
+Package natbib Warning: Citation `Ohyama2015' on page 36 undefined on input lin
+e 21.
+
+
+Package natbib Warning: Citation `Takemura2013' on page 36 undefined on input l
+ine 22.
+
+
+Package natbib Warning: Citation `Bloss2016' on page 36 undefined on input line
+ 23.
+
+
+Package natbib Warning: Citation `Collman2015' on page 36 undefined on input li
+ne 24.
+
+
+Package natbib Warning: Citation `Weiler2014' on page 36 undefined on input lin
+e 26.
+
+
+Package natbib Warning: Citation `Freeman2014' on page 36 undefined on input li
+ne 27.
+
+
+Package natbib Warning: Citation `Dyer2016' on page 36 undefined on input line 
+28.
+
+
+Package natbib Warning: Citation `Randlett2015' on page 36 undefined on input l
+ine 29.
+
+
+Package natbib Warning: Citation `Kutten2016' on page 36 undefined on input lin
+e 30.
+
+
+Package natbib Warning: Citation `Grabner06' on page 36 undefined on input line
+ 31.
+
+
+Overfull \hbox (19.20518pt too wide) in paragraph at lines 12--37
+[][]
+ []
+
+)
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[36
+
+] (./sic.tex
+File: ../../figs/sic.png Graphic file (type QTm)
+ <use  "../../figs/sic.png" >
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: ../../figs/sicTab.png Graphic file (type QTm)
+<use  "../../figs/sicTab.png" >
+
+Package natbib Warning: Citation `kiar2016sic' on page 37 undefined on input li
+ne 54.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--63
+
+ []
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[37
+
+]
+
+LaTeX Warning: Text page 38 contains only floats.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[38]) (./ndmg.tex
+
+LaTeX Warning: Reference `fig:ndmgqc' on page 39 undefined on input line 12.
+
+File: ../../figs/ndmgqcnew.png Graphic file (type QTm)
+<use  "../../figs/ndmgqcnew.png" >
+
+LaTeX Warning: Reference `fig:ndmgcloud' on page 39 undefined on input line 32.
+
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[39
+
+]
+
+LaTeX Warning: Reference `fig:ndmg_meanconnectome' on page 40 undefined on inpu
+t line 40.
+
+File: ../../figs/fig_meanconnectome.png Graphic file (type QTm)
+<use  "../../figs/fig_meanconnectome.png" >) (./clarity.tex
+File: neurodata_small.png Graphic file (type QTm)
+
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[40
+
+]) (./backmatter.tex
+File: neurodata_small.png Graphic file (type QTm)
+ <use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[41]
+No file references.bbl.
+)
+
+Package natbib Warning: There were undefined citations.
+
+\Changes@OutFile=\write13
+\openout13 = `simplex.soc'.
+
+File: neurodata_small.png Graphic file (type QTm)
+<use  "neurodata_small.png" >
+Overfull \hbox (2.1106pt too wide) has occurred while \output is active
+[][][][][][]  
+ []
+
+[4
