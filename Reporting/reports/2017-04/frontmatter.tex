@@ -1,0 +1,38 @@
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+\maketitle
+\thispagestyle{empty}
+
+The following report documents the progress made by the labs of PI Joshua~T.~Vogelstein and Co-PIs Randal~Burns and Carey~Priebe at Johns Hopkins University towards goals set by the DARPA SIMPLEX grant.
+
+%%%% Table of Contents
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%%%% List of Figures.
+%% Ended up being too long, because it added
+%% the entire caption. There is an option to add
+%% a short caption.
+%\listoffigures
+
+\newpage
+\section{Bibliography}
+%%%% Publications
+\begin{spacing}{0.5}
+{\footnotesize
+\nociteman{*}
+\bibliographystyleman{IEEEtran}
+\bibliographyman{manuscripts}
+ 
+\nocitetalks{*}
+\bibliographystyletalks{IEEEtran}
+\bibliographytalks{talks}
+ 
+%\nociteconf{*}
+%\bibliographystyleconf{IEEEtran}
+%\bibliographyconf{conferences}
+}
+\end{spacing}
+%%%% End Publications
+
+\clearpage
