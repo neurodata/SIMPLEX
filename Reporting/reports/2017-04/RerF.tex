@@ -91,7 +91,7 @@ The R version of RerF is now functional and is an order of magnitude faster than
 
 
 \clearpage
-The R version of Rerf, \href{https://github.com/neurodata/R-RerF}{R-Rerf} tbc.
+The R version of Rerf, \href{https://github.com/neurodata/R-RerF}{R-Rerf}, has been tested on a 400Mb artificial dataset.  The training time on this data set is about 3.5 minutes/tree using 1 core, with the training time scaling linearly with the number of cores added.  The increased memory requirements of the multicore implementation are higher than anticipated though -- requiring 8 times the size of the input data per core.  To reduce the memory requirements we are testing depth first vs breadth first tree growing methods.  
 
 \clearpage
 \end{document}
