@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Data}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}New Datasets to the Cloud}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Tools}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}meda}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Randomer Forest (RerF)}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}ndstore}{7}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}ndingest}{7}{subsubsection.2.3.1}
+\contentsline {subsection}{\numberline {2.4}ndreg}{8}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}FlashX}{9}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}ndmg}{12}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Non-Parametric Shape Clustering}{13}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Batch effect removal in dimension reduction of multiway array data}{14}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Discriminability}{15}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}Law of Large Graphs}{18}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.11}Robust Law of Large Graphs}{19}{subsection.2.11}
+\contentsline {subsection}{\numberline {2.12}LOL}{21}{subsection.2.12}
+\contentsline {subsection}{\numberline {2.13}Multiscale Generalized Correlation (MGC)}{22}{subsection.2.13}
