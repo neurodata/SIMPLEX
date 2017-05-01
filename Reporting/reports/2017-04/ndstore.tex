@@ -2,39 +2,16 @@
 % DO NOT INCLUDE PREAMBLES/PACKAGES HERE!!
 % packages are inherited from preamble.tex; you can compile this on its own
 \begin{document}
-\subsection{ndstore}
-%% Jan
+\subsection[ndstore]{ndstore}
+%% April Boss Update
 
-We ported neariso scaling levels from MySQL to the cloud. Now neariso data can also be deployed on AWS for serving data to visualization tools.
-Neariso scaling levels for all pre-existing datasets were generated.
-This will ensure that all old and new data will now support this feature.
-We added services to read and write data from different levels of the storage hierarchy.
-There are now 2 access levels, one for cache which is low latency and directed towards visualization workloads.
-Second, one is direct access to the object store for scaled but high latency workloads like machine annotation of imaging data.
-These new features are also now supported in ndio, the python wrapper library for ndstore.
-We are also benchmarking the storage system to determine the performance characteristics of our system.
-\par
-
-%We continue to now migrate all our annotation datasets to the cloud. The annotation projects will now be hosted in MySQL backed with AWS EBS storage and will be converted to AWS DynamoDB soon. There will be more than 30 odd annotation datasets avaliable in the cloud for public use. The datasets can be accessed at \href{http://neurodata.io}{http://neurodata.io}.
-
-%We added support for new resource and authentication web-servics in our python wrapper called ndio. This will allow our users to continue to use ndio for future interactions with the web back-end. They can now utilize the new web-services we have added and create resources using this which is more easier then using the RESTful web-services directly.
-
-%We are also in the process of deploying a status page for our web-services. The status page will act as a dashboard for all our users and a single point of contact for them to check if our services are online or suffering from an outage. It will also allow us to inform all our users who are subsribed to the status page of future planned outages. This will streamline our services and is standard industry practice for other companies running web-services. The status page is located here \href{https://neurodata.statuspage.io/}{https://neurodata.statuspage.io/}.
-%%
-%The MRI ingest service is now active and being used by some users in the lab to ingest data into ndstore. All of this service was already deployed in the cloud and the ingested data will be avaliable at \href{http://mri.neurodata.io}{http://mri.neurodata.io}.
+With the release of Python 3.6 in December of last year, Python 3 has now reached sufficient maturity for us to begin migrating our infrastructure from Python 2.7 to Python 3.x. In addition to the large number of new features in the programming language that were introduced in Python 3, significant performance and stability improvements have also been introduced. We are particularly interested in using the much richer set of exceptions and increased performance for iterators present in Python 3. As a user-facing web service, NDStore must be both performant and stable, and return meaningful error messages to users when something goes wrong (e.g. bad user parameters, an internal system issue, or even a bug in the code). 
 
 
-%Autoingest is a ndstore service for inserting image and annotation data into the data-store. The user posts information aboout the data inculding location, co-ordinates and datatype. The server uses this information and with a pull model ingests the raw image or annotation data from slices into cuboids and inserts them in the database. This service was earlier operational on local hardware deployed at Johns Hopkins. We modified this service so that it could now be run on Amazon Web Services and S3 object store. Raw data can now be staged on a publicly accessible web server or in a S3 bucket provided by us. The data can be now be inserted into MySQL as well as AWS S3 object store. \par
+To that end, we have been working with our collaborators at JHUAPL to move to a standardized Python 3 codebase for large (teravoxel) imaging volumes. We have successfully deployed a Python 3 endpoint, caching infrastructure, and some miscellaneous background processing modules (e.g for data ingest) in Amazon Web Services. We are now working to determine how best to unify our existing infrastructure with our new Python 3 infrastructure, with the overarching goal of maintaining a consistent interface across all of our assorted data types (e.g. electron and light microscopy, functional time-series imaging, magnetic resonance imaging) while minimizing duplication of effort between JHU and JHUAPL. 
 
-%Propagate is a ndstore service for building scaling levels over base resolution of data. This is efficient for serving data at lower resolutions for processing and visualization. There also exist auto-zoom in and out capabilties to materialize the data at higher or lower resolutions on the fly if these scaling levels are not built or being built. This service was modified so that scaling levels could be built on the data inserted into AWS S3 object store. \par
 
-%In addition, we also added neariso scaling levels in addition to the exisitng scaling hierarchy. This reduces the data transfer size for 3D viewers and is the preferred interface for tools which use ndstore such as BigDataViewer and Neuroglancer. This will support easier insertion and visualization of data from collaborators. \par
-
-%\subsubsection{ndingest}
-
-%The access policies for the ndingest is now complete. We are currrently testing our the new service and will soon release it in beta mode to some our close collaborators. This service will allow us to speedup our data ingest rates manifold. We plan to benchmark this service once we are done deploying it.
-%%
-%The ingest client developed witj JHU-APL, has now been converted so that it can use multiple threads in python. This capability will allow us to upload multiple slices of the data simultaneously and allow us to upload data to the cloud at a much faster rate. 
+We have also spent considerable effort testing the data ingest client among JHU team members. We are hoping to deploy the ingest client to collaborators in the coming months. Allowing collaborators to ingest data with minimal JHU intervention increases the corpus of data we are able to collect, which provides more resources for training, running algorithms, or doing analysis. 
 
 \clearpage
 \end{document}
