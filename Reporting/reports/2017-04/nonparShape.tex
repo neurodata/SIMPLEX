@@ -3,6 +3,91 @@
 % packages are inherited; you can compile this on its own
 \begin{document}
 \subsection{Non-Parametric Shape Clustering}
+
+We have been developing a non-parametric method for clustering
+based on energy statistics. We were able to formulate the problem
+in a precise mathematical form, which amounts to solve a quadratic
+optimization problem with quadratic constraints, which is NP-hard.
+Using the relation between energy statistics and kernel functions, we
+implemented an algorithm in the same spirit as kernel k-means, but
+consistent with energy statistics. Below we show some preliminary results,
+where we cluster one-dimensional normal data, and also two-dimensional
+circles with noise. The results of our method are shown in the column
+$\mathcal{E}$-clustering. We compare with standard k-means and gaussian
+mixture models (GMM). We compute the accuracy (which is 
+between $[0,1]$, the higher
+the better) based on the true labels.
+In this example we can see that $\mathcal{E}$-clustering attains the
+same accuracy as GMM and k-means for normally distributed data, while
+it is superior for data that are not normally distributed.
+Now that we have a precise mathematical formulation and also a working
+clustering
+algorithm, we will start to perform more consistent numerical tests.
+
+
+\begin{figure}[h!]
+\begin{cframed}
+\centering
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../../figs/hist_gauss1.pdf}\\
+\begin{tabular}{ l l l}
+\hline
+$\mathcal{E}$-clustering &  GMM~~ & $k$-means \\
+\hline
+0.823 &
+0.798 &
+0.826 \\
+0.852 & 
+0.852 & 
+0.853 \\
+0.842 &
+0.842 &
+0.839 \\
+\hline
+\end{tabular}
+\end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../../figs/circles.pdf}
+\begin{tabular}{ l l l}
+\hline
+$\mathcal{E}$-clustering & GMM~~ & $k$-means \\
+\hline
+0.74 &
+0.516 &
+0.536 \\
+0.706 &
+0.516 &
+0.503 \\
+0.633 &
+0.553 &
+0.52 \\
+\hline
+\end{tabular}
+\end{subfigure}
+\caption{
+(a) Two clusters in one dimension where
+$x \sim \tfrac{1}{2}\left( \mathcal{N}(\mu_1, \Sigma_1) +
+\mathcal{N}(\mu_2, \Sigma_2)\right)$, with $\mu_1 = 0$, $\mu_2=2$,
+$\Sigma_1 = \Sigma_2 = 1$,
+and $500$ points on each cluster. 
+(b) We generate two circles with random noise.
+The radius of the circles are $1$ and $0.2$. The gaussian noise has size $0.2$.
+We have 200 points on each class. The tables below each figure show
+the accuracy, based on the true labels, for three experiments.
+We compare our method with GMM and k-means. We can see that for gaussian
+data the three of them achieve the same accuracy, which is close to Bayes
+error, while for the data in
+(b) energy statistics based clustering is superior.
+}
+\label{fig:nonpar}
+\end{cframed}
+\end{figure}
+\clearpage
+
+\end{document}
+
 %% Jan
 We developed a prototype algorithm for 2-dimensional shape clustering, which
 is invariant under affine transformations. This employs the procrustes
