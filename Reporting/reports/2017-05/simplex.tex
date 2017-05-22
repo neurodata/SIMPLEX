@@ -1,0 +1,64 @@
+% !TEX root = simplex.tex
+\documentclass[12pt]{article}
+\input{preamble.tex}
+
+\title{NeuroData SIMPLEX Report: May 2017}
+
+\begin{document}
+\input{frontmatter.tex} %% Manuscripts, Talks, Conferences bib, title
+
+\newpage
+%%% Do not add content here.
+%%% You can use subfiles (Ex1) or \input (Ex2)
+%%% EXAMPLE 1
+%%% \subfile{sub-file.tex}
+%%% \clearpage
+%%%
+%%% EXAMPLE 2
+%%% \input{stuff.tex}
+%%% \clearpage
+
+
+
+\section{Statistical Theory and Methods}
+%\subfile{LOL.tex}
+\subfile{meda.tex}
+\subfile{MGC.tex}
+\subfile{multiscaleNetworkTest.tex}
+\subfile{RerF.tex}
+\subfile{discriminability.tex}
+\subfile{lawOfLargeGraphs.tex}
+\subfile{nonparShape.tex}
+\subfile{robustLOLG.tex}
+%\subfile{batchEffectsRemoval.tex}
+%\subfile{reducedDimensionClustering.tex}
+%\subfile{GraphTesting.tex}
+
+\section{Scalable Algorithm Implementations}
+\subfile{FlashX.tex}
+%\subfile{ndviz.tex}
+\subfile{knor.tex}
+%\subfile{ndreg.tex}
+
+\section{Data: What's in the Cloud}
+\subfile{data.tex}
+%\clearpage
+
+\section{Scientific Pipelines: Infrastructure \& Dataset Specific Progress}
+
+%\subfile{sic.tex}
+%\subsection{ndstore}
+%\subfile{ndmg.tex}
+\subfile{ndstore.tex}
+\subfile{ndviz.tex}
+%\subsection{MRI}
+\subfile{clarity.tex}
+%\subsection{Ophys}
+
+
+
+%%%% End Tools
+
+
+\input{backmatter.tex}
+\end{document}
