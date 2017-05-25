@@ -5,68 +5,45 @@
 \subsection{knor: K-means NUMA Optimized Routines}
 
 %% Jan
+\textsf{knor} is a highly optimized k-means library that performs one to two
+orders of magnitude better than other state-of-the-art machine learning
+libraries like Spark's MLlib, H$_2$O and Dato.
 
-As part of our commitment to readily available tools
-we migrated \textsf{knor} to the FlashX organization
-\href{https://github.com/flashxio}{https://github.com/flashxio} to increase
-visibility. Furthermore, we extended the capability of \textsf{knor} by
-providing the option of using \textsf{knor} as an initialization tool
-for other clustering algorithms. The intention is to allow users to
-seamlessly add \textsf{knor} to their workflow.
-We pushed a new release named \textit{african jallof} to
-provide this capability: \\
-\href{https://github.com/flashxio/knor/releases}
-{https://github.com/flashxio/knor/releases}.
-
-We benchmarked our Semi-external memory routine, \textsf{knors} in the cloud
-using Amazon EC2 using a single 32 core i3.16xlarge machine with 8 SSDs on Amazon EC2 compared
-to \textsf{knord}, MLlib and an optimized MPI routine running in a cluster.
-We run \textsf{knors} with 48 threads, with extra parallelism coming
-from symmetric multiprocessing. We show comparable to in-memory
-performance and outperform MLlib with much less hardware resources.
-We added these results the paper which shall be published in HPDC '17.
-
-\begin{table}[!htb]
-    \caption{The datasets under evaluation in this study. \textit{Friendster}
-    %\citereferences{friendster}
-        is a social network. We obtain the graph containing friend relationships and
-compute Eigenvalues and Eigenvectors.}
-\vspace{-10pt}
-\begin{center}
-\footnotesize
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Data Matrix} & $n$ & $d$ & \textbf{Size}\\
-\hline
-Friendster-8 eigenvectors & $66$M &
-  $8$ & $4$GB\\
-\hline
-Friendster-32 eigenvectors & $66$M &
-  $32$ & $16$GB\\
-\hline
-Rand-Multivariate (RM-856M)& $856$M & 16 & $103$GB\\
-\hline
-Rand-Multivariate (RM-1B)& $1.1$B & 32 & $251$GB\\
-\hline
-\end{tabular}
-\normalsize
-\end{center}
-\label{tbl:matrices}
-\end{table}
+As part of our commitment to developing user-friendly and easily integratable
+opensource tools, we developed both R and Python bindings for \textsf{knor}.
+We have one line-installable R
+package that has all the in-memory functionality of \textsf{knor}. We link the
+Github repo \\
+\href{https://github.com/flashxio/knorR}{https://github.com/flashxio/knorR}.
+We also develop Python bindings that have the same functionality as those within
+R. Our bindings are integrated into our main repo \\
+\href{https://github.com/flashxio/knor/tree/dev/python}{https://github.com/flashxio/knor/tree/dev/python}.
+We measure the performance of our bindings relative to the native C++ and find
+them to compare well when we perform experiments with data on disk for our
+in-memory routine called \textsf{knori}. Figure \ref{fig:bindings} displays our
+performance. We provide base docker images to test the functionality and
+performance of our bindings at\\
+\href{https://hub.docker.com/r/flashxio/knorr-base/}{https://hub.docker.com/r/flashxio/knorr-base/}.
+Figure \ref{fig:binding-docker} displays our \textit{pullable} docker images.
 
 \begin{figure}[!h]
 \begin{cframed}
     \centering
-    \includegraphics[width=.5\textwidth]{../../figs/perf.iter.sem-ec2.png}
-\caption{Performance comparison of \textsf{knors} to distributed packages.
-\textsf{knors} uses one i3.16xlarge machine with 32 physical cores.
-\textsf{knord}, MLlib-EC2 and MPI use 3 c4.8xlarge with a total of 48 physical
-cores for all datasets other than RU-1B where they use 8 c4.8xlarge with a
-total of 128 physical cores.}
-\label{fig:sem-ec2}
-
+    \includegraphics[width=.45\textwidth]{../../figs/binding-from-disk.png}
+\caption{The performance of bindings when data are located on disk.}
+\label{fig:bindings}
 \end{cframed}
 \end{figure}
+
+\begin{figure}[!h]
+\begin{cframed}
+    \centering
+    \includegraphics[width=.45\textwidth]{../../figs/binding-docker.png}
+\caption{The docker hub base R image.}
+\label{fig:binding-docker}
+\end{cframed}
+\end{figure}
+
 \clearpage
 
 \end{document}
