@@ -4,6 +4,91 @@
 \begin{document}
 \subsection{Non-Parametric Shape Clustering}
 
+We proposed a clustering algorithm based on energy statistics.
+Energy statistics provides a nonparametric test-statistic  for equality
+of distributions in the sense that 
+it does not assume any distribution of the data. We used this formalism to
+propose a clustering algorithm consistent with energy statistics.
+Our method can be shortly summarized as follows. Suppose we have
+data $\{ x_i \}_{i=1}^{n}$, where $x_i \in \mathcal{X}$ lives in
+an arbitrary space endowed with a semimetric of negative type
+$\rho : \mathcal{X} \times \mathcal{X} \to \mathbb{R}$, 
+and we want to find $k$ disjoint partitions
+$\{ \mathcal{C}_1, \dotsc, \mathcal{C}_k \}$.
+We minimize the within energy function
+$W = \sum_{i=1}^k \tfrac{n_j}{2} g(\mathcal{C}_j, \mathcal{C}_j)$,
+where $g(\mathcal{C}_i, \mathcal{C}_j) = \tfrac{1}{n_i n_j} \sum_{x\in
+\mathcal{C}_i}\sum_{y\in\mathcal{C}_j} \rho(x,y)$. We demonstrated that this
+is equivalent to the following QCQP problem:
+\begin{equation}
+\label{eq:qcqp}
+\max_Y \textnormal{Tr} \, 
+\left\{ Y^\top K Y \right\} \qquad \mbox{s.t. $Y^\top Y = I$, 
+$Y\ge 0$, $Y Y^\top e = e$}
+\end{equation}
+where $e=(1,1,\dotsc,1)^\top$ is the all-ones vector. Above, the kernel
+matrix $K$ is computed based on $\rho$. The above problem also appears
+in connection to kernel $k$-means, spectral clustering, and normalized cuts,
+thus we bring energy statistics based clustering into this broad picture.
+We developed an iterative algorithm
+to find local optimizers of \ref{eq:qcqp}, which is NP-hard thus finding
+global
+solutions are not feasible. Our method is \emph{(i)} nonparametric, 
+\emph{(ii)} does not use the
+concept of a cluster mean, which can be problematic for some datasets such as
+images, \emph{(iii)} can work on arbitrary 
+spaces $\mathcal{X}$, and \emph{(iv)} flexible enough to
+incorporate prior information about the data by choosing a suitable
+$\rho$. We compare our method to standard $k$-means and GMM, which are 
+by large the most used methods. In
+Figure~\ref{fig:nonpar} we can see how energy clustering can outperform
+these two methods even on gaussian settings.
+We are currently finalizing a paper on this topic which should be submitted
+for publication soon.
+
+\begin{figure}[h!]
+\begin{cframed}
+\centering
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../../figs/lognormal.pdf}\\[-.5em]
+(a)
+\end{subfigure}
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../../figs/gauss_means.pdf}\\[-.5em]
+(b)
+\end{subfigure}
+\begin{subfigure}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\textwidth]{../../figs/circles.pdf}\\[-.5em]
+(c)
+\end{subfigure}
+%\begin{subfigure}[t]{0.32\textwidth}
+%\centering
+%\includegraphics[width=.7\textwidth]{../../figs/circles_data.pdf}\\[-.5em]
+%(d)
+%\end{subfigure}
+\end{cframed}
+\caption{
+\label{fig:nonpar}
+We compute the clustering accuracy based on the true labels.
+Our algorithm correspond to the red dots in the plots, which in these
+experiments is always superior than $k$-means or GMM .
+(a) Two log-normal distributions with $\mu_1=0$, $\sigma_1=0.3$, $\mu_2=-1.5$,
+and $\sigma_2=1.5$. 
+(b) Two normal distributions where we increase
+the number of dimensions and keep the number of points fixed. We have
+$\Sigma_1 = \Sigma_2 = I$, $\mu_1=0$, $\mu_2=0.7\times(1,\cdots,1,0,\cdots,0)$
+where we have signal in the first 10 dimensions only.
+(c) Two concentric circles
+with some noise. 
+}
+\end{figure}
+
+
+
+\begin{comment}
 We have been developing a non-parametric method for clustering
 based on energy statistics. We were able to formulate the problem
 in a precise mathematical form, which amounts to solve a quadratic
@@ -85,6 +170,8 @@ error, while for the data in
 \end{cframed}
 \end{figure}
 \clearpage
+
+\end{comment}
 
 \end{document}
 
