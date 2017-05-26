@@ -4,23 +4,52 @@
 \begin{document}
 \subsection{FlashX}
 
-%%%%%% April
-This month, we improve FlashR deployment to simplify the use of FlashR in
-a production environment. First, we integrate FlashR into Jupyter Notebook.
-As such, users can analyze large datasets stored on a server, simply using
-a Web browser. Figure \ref{fig:FlashX2} shows an example of using this
-environment to compute singular value decomposition on a graph with billions
-of vertices and generate the screeplot for singular values. In addition,
-we deploy FlashR in docker to enable FlashR to run in various environments
-easily, such as Macbook, Windows laptops and clouds.
+We re-implement Gaussian Mixture Model (GMM) with FlashR, which follows
+the implementation in scikit-learn. This GMM implementation is much more
+stable and mature than the previous one and supports covariance matrices
+with different constraints. To demonstrate the speed and scalability of
+our GMM implementation, we run our implementation on the k15f0 dataset,
+which has over a million data points, and compare it against mclust.
+As shown in Table \ref{tbl:GMM}, the GMM implementation in FlashR takes
+a few minutes to converge on the dataset, while mclust takes hours and
+eventually fails to converge. Figure \ref{fig:GMM} further shows
+the BIC value for different GMM models on the dataset, which suggests
+that the dataset have about 20 clusters.
+
+\begin{table}
+\begin{center}
+\caption{Runtime of FlashR GMM vs. mclust on the k15f0 dataset with over
+a million data points.}
+\vspace{-10pt}
+\footnotesize
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+& FlashR & mclust \\
+\hline
+k=40, cov.type="full" & 11 min & hours and fails to converge \\
+\hline
+k=10, cov.type="full" & 2.5 min & hours and fails to converge \\
+\hline
+k=40, cov.type="diag" & 7.6 min & hours and fails to converge \\
+\hline
+k=10, cov.type="diag" & 1.2 min & hours and fails to converge \\
+\hline
+\end{tabular}
+\normalsize
+\label{tbl:GMM}
+\end{center}
+\vspace{-10pt}
+\end{table}
 
 \begin{figure}[!h]
 \begin{cframed}
 \centering
-\includegraphics[width=0.6\textwidth]{../../figs/PG-screeplot.png}
-\caption{Generate a screeplot for singular values of a graph with billions
-	of vertices.}
-\label{fig:FlashX2}
+\includegraphics[width=0.6\textwidth]{../../figs/GMM.png}
+\caption{Model selection for GMM on the dataset with BIC. We vary
+the number of clusters (k) and the type of covariance matrices.
+"diag" means diagonal covariance matrices and "full" means unconstrained
+covariance matrices.}
+\label{fig:GMM}
 \end{cframed}
 \end{figure}
 
