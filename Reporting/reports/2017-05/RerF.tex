@@ -9,7 +9,7 @@ Most recently, we have implemented a method for computing the relative importanc
 \begin{figure}[h!]
 \begin{cframed}
 \centering
-\includegraphics[height=0.33\textheight]{Sparse_parity_feature_importance_2017_05_27.png}
+\includegraphics[height=0.33\textheight]{../../figs/Sparse_parity_feature_importance_2017_05_27.png}
 \caption{
 Importance of the 25 features with the highest importance as found by RerF. The top three features precisely the three dimensions that have signal. The remaining 22 features are linear combinations of these three dimensions.
 }
@@ -37,5 +37,5 @@ Importance of the 25 features with the highest importance as found by RerF. The 
 % %\clearpage
 % The R version of Rerf, \href{https://github.com/neurodata/R-RerF}{R-Rerf}, has been tested on a 400Mb artificial dataset.  The training time on this data set is about 3.5 minutes/tree using 1 core, with the training time scaling linearly with the number of cores added.  The increased memory requirements of the multicore implementation are higher than anticipated though -- requiring 8 times the size of the input data per core.  To reduce the memory requirements we are testing depth first vs breadth first tree growing methods.  
 
-% \clearpage
+ \clearpage
 \end{document}

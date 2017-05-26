@@ -16,7 +16,7 @@ eventually fails to converge. Figure \ref{fig:GMM} further shows
 the BIC value for different GMM models on the dataset, which suggests
 that the dataset have about 20 clusters.
 
-\begin{table}
+\begin{table}[!ht]
 \begin{center}
 \caption{Runtime of FlashR GMM vs. mclust on the k15f0 dataset with over
 a million data points.}
@@ -44,7 +44,7 @@ k=10, cov.type="diag" & 1.2 min & hours and fails to converge \\
 \begin{figure}[!h]
 \begin{cframed}
 \centering
-\includegraphics[width=0.6\textwidth]{../../figs/GMM.png}
+\includegraphics[width=0.6\textwidth]{../../figs/GMM.jpg}
 \caption{Model selection for GMM on the dataset with BIC. We vary
 the number of clusters (k) and the type of covariance matrices.
 "diag" means diagonal covariance matrices and "full" means unconstrained
@@ -53,4 +53,5 @@ covariance matrices.}
 \end{cframed}
 \end{figure}
 
+\clearpage
 \end{document}
