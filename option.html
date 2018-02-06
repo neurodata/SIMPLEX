@@ -277,7 +277,8 @@
 
       name:opening
 
-      #### A Multiscale Graph Knowledge Representation System:  <br> Experiments, Theory, and Beyond
+      #### A Multiscale Graph Knowledge Representation System
+      ##### Applications: Experiments, Theory, and Beyond
 
 
       <br><br>
@@ -402,9 +403,9 @@
       ### Applications
 
       - **independence testing** [[1]](https://arxiv.org/abs/1609.05148), [[2]](https://arxiv.org/abs/1710.09768)
-      - graph topology vs. attributes [[2]](https://arxiv.org/abs/1703.10136)
-      - signal subgraph detection [[3]](https://arxiv.org/abs/1801.07683)
-      - clustering (ish) [[4]](https://arxiv.org/abs/1710.09859)
+      - graph topology vs. attributes [[3]](https://arxiv.org/abs/1703.10136)
+      - signal subgraph detection [[4]](https://arxiv.org/abs/1801.07683)
+      - clustering (ish) [[5]](https://arxiv.org/abs/1710.09859)
       --
 
       - K-sample testing
@@ -451,9 +452,31 @@
       $$H\_A: F\_{XY} \neq F\_X F\_Y $$
 
 
+
+
+      ---
+      class: top, left
+
+
+      ### Empirical Desiderata/Properties
+
+      Strong performance with reasonable computational time in the following settings:
+
+      |  name | principle |
+      |  ---   | --- |
+      |  linear | &#x2705;|
+      |  non-linear | &#x2705;|
+      |  low-dimensional | &#x2705; |
+      |  high-dimensional | &#x2705; |
+      |  Euclidean | &#x2705; |
+      |  non-Euclidean | &#x2705;  |
+      |  low-sample size | &#x2705; |
+      |  high-sample size | &#x2705; |
+
+
       ---
 
-      ### Procedure
+      ### Multiscale Graph Correlation (MGC)
 
       - For X modality, compute all pairwise distances
       - For k < n, compute the k-nearest neighbors of each point in X
@@ -559,7 +582,7 @@
       class: top, left
 
 
-      ### Theoretical Desiderata
+      ### Theoretical Desiderata/Properties
 
       <!-- <br> -->
 
@@ -583,7 +606,23 @@
       ---
       class: middle, center
 
-      # quantify geometry of relationships
+      ### quantify geometry of relationships
+
+
+      ---
+      class: top, left
+
+
+      ### Empirical Desiderata
+
+
+      |  name | principle |
+      |  ---   | --- |
+      |  multiscale | &#x2705;|
+      |  quantitative | &#x2705;|
+      |  image | &#x2705; |
+      |  n<sup>2</sup> time | &#x2705; |
+      |  unique | ? |
 
 
 
@@ -610,54 +649,120 @@
       <img src="images/Fig4_jk_v5.png" style="width: 100%;"/>
 
 
-
       ---
 
       ### conjecture
 
       MGC image is unique for a given $F_{XY}$ pair.
 
-      ---
+      --
 
-      ### Overall Summary
+      ### implication
+
+      Can use difference of MGC images as test statistic to compare two different dependence functions, eg, in batch effect detection
 
 
-      - Oracle MGC theoretically dominates, even in finite samples
-      - MGC empirically nearly dominates on extensive simulations
-      - Visual quantitative characterization of arbitrary relationships
-      - MGC reveals geometry of dependence in real data
-
-      <br>
-      - MGC mitigate "post selection inference" problems
 
 
       ---
+      class: middle, center
 
-      ### Some Extensions
+      # batch effects
 
-      <br>
 
-      - Foundational theory for MGC [[1]](https://arxiv.org/abs/1710.09768)
-      - MGC for independence between graph topology & attributes [[2]](https://arxiv.org/abs/1703.10136)
-      - MGC for signal subgraph detection [[3]](https://arxiv.org/abs/1801.07683)
-      - MGC for clustering (ish) [[4]](https://arxiv.org/abs/1710.09859)
+      ---
 
-      <br>
+      ### general form
 
-      - MGC for K-sample testing
-      - MGC for feature selection
-      - MGC for batch effect detection
-      - MGC for effect size characterization
+      - $y$ is response variable
+      - $x$ is feature vector
+      - $\epsilon$ is iid noise
+      - $b$ indicates batch $1,...,B$
+      - $i$ indexes samples $1,...,n$
+      - $y_i^b = f^b(x^b_i) + \epsilon_i^b$
+
+      --
+
+      ### simple linear scennario
+
+      - $y^i = a_1^b x^i_1 + a_2^b x^i_2 + \epsilon$
+      - $y^i = a_1^{b'} x^i_1 + a_2^{b'} x^i_2 + \epsilon$
+      -  $a_1^b = a_1^{b'}$,  $a_2^b \neq a_2^{b'}$
+
+
+      ---
+
+      ### possible strategies
+
+
+      1. operate on each dataset separately
+      2. pool the data together (pretending no batch effect)
+      3. use MGC to test for batch effects for each $a$, and pool variables when no effect
+
+
+      --
+
+      <img src="images/screen_batch_reg.png" STYLE="HEIGHT:300px;"/>
+
+
+      ---
+
+      ### real data example
+
+      - data consist of (graph,sex) pairs
+      - two batches with 467 & 300 samples
+      - graphs have 70 vertices each
+
+
+      ---
+
+      ### two strategies
+
+      - step 1:
+        - remove vertices that are uninformative with respect to sex
+        - remove vertices that are informative with respect to batch
+      - step 2: Bayes plug-in sex classifier on remaining vertices
+
+
+      <img src="images/sex_sig_batch_insig.png" STYLE="HEIGHT:300px;"/>
+
+
+      ---
+
+      ###  Summary
+
+
+      - MGC for independence testing
+      - MGC for quantifying relationship geometry
+      - MGC for batch effect mitigation
+
 
 
       ---
 
       ### Next Steps
 
-      <br><br>
+      - independence testing [[1]](https://arxiv.org/abs/1609.05148), [[2]](https://arxiv.org/abs/1710.09768)
+      - graph topology vs. attributes [[3]](https://arxiv.org/abs/1703.10136)
+      - signal subgraph detection [[4]](https://arxiv.org/abs/1801.07683)
+      - clustering (ish) [[5]](https://arxiv.org/abs/1710.09859)
+      - **K-sample testing**
+      - **feature selection**
+      - **quantify relationship geometry**
+      - **batch effect detection & mitigation**
 
-      - Make R package from open source code ([github link](https://github.com/neurodata/mgc))
-      - Scale up for larger n
+
+      ---
+
+      ### Further Steps
+
+
+      - Connections between MGC and **Random Forest**
+        - Scale up to be **linear** in $N_m$
+        - We search over $N_1 \times N_2 \times \cdots N_M$ kernels, can we more efficiently **learn** the right kernels?
+      - Using **Deep Learning** inside MGC
+      - Additional applications
+      - Put existing [R package]((https://github.com/neurodata/mgc) on CRAN
 
 
 
@@ -670,7 +775,7 @@
       ## Questions?
 
 
-      [joshua t. vogelstein](mailto:jovo@jhu.edu)
+      [Joshua T. Vogelstein](mailto:jovo@jhu.edu)
       <br>
       {[bme](http://www.bme.jhu.edu/),[icm](http://icm.jhu.edu/),[cis](http://cis.jhu.edu/),[idies](http://idies.jhu.edu/),[kavli](http://kavlijhu.org/),[cs](http://engineering.jhu.edu/computer-science/), [ams](http://engineering.jhu.edu/ams/), [neuro](http://neuroscience.jhu.edu/), [minds](https://www.minds.jhu.edu/)} | [jhu](https://www.jhu.edu/)
       <br>
