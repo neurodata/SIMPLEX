@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MGC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="fonts/quadon/quadon.css">
+    <link rel="stylesheet" href="fonts/gentona/gentona.css">
+    <style type="text/css">
+        body {
+          font-family: 'gentona'; /* Varela Round */
+          font-size: 1.0em;
+          /*color: #dfd6c2;*/
+          color: #a6bcd7;*/
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'quadon';
+          font-weight: 400;
+          margin-bottom: 0;
+          color: #a6bcd7;*/
+          text-align: center;
+          /*text-shadow: 2px 2px gray; /*#ff0000;*/*/
+        }
+        .remark-slide-content {
+          font-size: 1.5em;
+          background: #28282e;
+          background: -webkit-radial-gradient(circle, #28282e, #15120e, black); /* Safari */
+          background: -o-radial-gradient(circle, #28282e, #15120e, black); /* Opera 11.6 to 12.0 */
+          background: -moz-radial-gradient(circle, #272822, #15120e, black); /* Firefox 3.6 to 15 */
+          background: radial-gradient(circle, #28282e, #15120e, black); /* Standard syntax */
+          color: #dfd6c2;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+
+        hi {
+        position: absolute;
+        left: 100px;
+        top: 50px;
+        }
+        .remark-slide-content h1 { font-size: 3em; }
+        .remark-slide-content h2 { font-size: 2em; }
+        .remark-slide-content h3 { font-size: 1.6em; }
+        .remark-slide-content h4 { font-size: 1.4em; }
+        .footnote {
+          position: absolute;
+          bottom: 3em;
+        }
+        .navbar {
+          position: absolute;
+          float: center;
+          top: 0em;
+          font-family: 'titling-gothic';  /* Yanone Kaffeesatz */
+          font-weight: 200;
+          color: #A7A7A7;
+        }
+        .navbar a {
+          color: #A7A7A7;
+        }
+        .bbar {
+          position: absolute;
+          bottom: 13px;
+          left: 13px;
+          font-family: 'titling-gothic';  /* Yanone Kaffeesatz */
+          font-weight: 200;
+          color: #A7A7A7;
+        }
+        .bbar a {
+          color: #A7A7A7;
+        }
+        .cbar {
+          position: absolute;
+          bottom: 13px;
+          left: 13px;
+          font-family: 'titling-gothic';  /* Yanone Kaffeesatz */
+          font-weight: 200;
+          /*color: #A7A7A7;*/
+          color: #bdbcbc;
+        }
+        .cbar a{
+         color: #bdbcbc;
+        }
+
+        .btn {
+          background: #424242;
+          height: 2em;
+        }
+        li p { line-height: 1.25em; }
+        .r { color: #fa0000; }
+        .w {color: white;}
+        .ye { color: #FFFF00; }
+        .y { color: #fcfaf6; }
+        .pink { color: #FF87F3;}
+        .orange { color: #FFA500;}
+        .g { color: #00CC00; }
+        .blue { color: #75E9FF;}
+        .s {color :#318dde;}
+        .purple { color: #A149A9;}
+        .large { font-size: 2em; }
+        .black { color: black; background-color: white;}
+        a, a > code {
+          color:#318dde;
+          text-decoration: none; /*underline*/
+        }
+
+        a:hover {
+          color: white;
+        }
+
+        code {
+          background: #424242;
+          border-radius: 5px;
+        }
+        .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+        .remark-code-line-highlighted     { background-color: #373832; }
+        /*      .pull-left {
+          float: left;
+          width: 47%;
+        }*/
+
+        .pull-left {
+          float: left;
+          width: 47%;
+        }
+        .pull-right {
+          float: right;
+          width: 47%;
+        }
+        .center {
+          margin: auto;
+          width: 100%;
+          padding: 10px;
+        }
+        .small {
+          font-size: 0.8em;
+        }
+        /*      .pull-right {
+          float: right;
+          width: 47%;
+        }*/
+        .pull-bottom {
+          position: absolute;
+          bottom: 0;
+        }
+        .bottom {
+          position: absolute;
+          bottom: 35px;
+          left: 13px;
+          font-family: 'Yanone Kaffeesatz';
+        }
+        .pull-right ~ p {
+          clear: both;
+        }
+        #slideshow .slide .content code {
+          font-size: 0.8em;
+        }
+        #slideshow .slide .content pre code {
+          font-size: 0.9em;
+          padding: 15px;
+        }
+        .inverse {
+          background: white;
+          color: white;
+          text-shadow: 0 0 20px #333;
+        }
+        .inverse p {
+          color: white;
+        }
+        .inverse h1, .inverse h2 {
+          color: #f3f3f3;
+          line-height: 0.8em;
+        }
+        #frame { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
+
+        #outer {
+          width: 100%;
+          text-align: center;
+        }
+        #inner {
+          display: inline-block;
+        }
+
+        /* Slide-specific styling */
+        #slide-inverse .footnote {
+          bottom: 12px;
+          left: 20px;
+        }
+        #slide-how .slides {
+          font-size: 0.9em;
+          position: absolute;
+          top:  151px;
+          right: 140px;
+        }
+        #slide-how .slides h3 {
+          margin-top: 0.2em;
+        }
+        #slide-how .slides .first, #slide-how .slides .second {
+          padding: 1px 20px;
+          height: 90px;
+          width: 120px;
+          -moz-box-shadow: 0 0 10px #777;
+          -webkit-box-shadow: 0 0 10px #777;
+          box-shadow: 0 0 10px #777;
+        }
+        #slide-how .slides .first {
+          background: #fff;
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          z-index: 1;
+        }
+        #slide-how .slides .second {
+          position: relative;
+          background: #fff;
+          z-index: 0;
+        }
+
+        /* Two-column layout */
+        .left-column {
+          color: #777;
+          width: 20%;
+          height: 92%;
+          float: left;
+        }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+        .right-column {
+          width: 75%;
+          float: right;
+          padding-top: 1em;
+        }
+        br {
+          line-height: 50%;
+        }
+        .task {
+          float: right;
+          font-size: 0.9em;
+          padding-top: 0.6em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even){background-color: #4a484c}
+        th {
+            background-color: #6cace4;
+            color: white;
+        }
+
+        .remark-slide-number {
+          font-size: 10pt;
+          margin-bottom: -11.6px;
+          margin-right: 10px;
+          color: black; /*#FFFFFF; /* white */
+          opacity: 0; /* default: 0.5 */
+        }
+
+        /*code.has-jax {
+          font: inherit;
+          font-size: 100%;
+          background: inherit;
+          border: inherit;
+        }*/
+        </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+      class: middle
+
+      name:opening
+
+      #### A Multiscale Graph Knowledge Representation System:
+      #### Experiments, Theory, and Beyond
+
+
+      <!-- .center[ -->
+      presented by,       [joshua t. vogelstein](mailto:jovo@jhu.edu)
+      <br>
+      {[bme](http://www.bme.jhu.edu/),[icm](http://icm.jhu.edu/),[cis](http://cis.jhu.edu/),[idies](http://idies.jhu.edu/),[kavli](http://kavlijhu.org/),[cs](http://engineering.jhu.edu/computer-science/), [ams](http://engineering.jhu.edu/ams/), [neuro](http://neuroscience.jhu.edu/), [minds](https://www.minds.jhu.edu/)} | [jhu](https://www.jhu.edu/)
+      <br>
+      please interrupt & ask questions: [jovo@jhu.edu](mailto:jovo at jhu dot edu)!
+      <br>
+      <br>
+
+      joint work with: Cencheng Shen, Youjin Lee, Shangsi Wang,
+      <br>
+      Qing Wang,
+      Eric Bridgeford,
+      Carey E Priebe, Mauro Maggioni,
+
+      <br>
+
+      <http://neurodata.io/tools/MGC/>
+
+
+
+      ---
+
+      ### What is a graph in this context?
+
+      - a set of nodes (defined by points)
+      - a set of edges (defined by pairwise functions)
+        - weighted?
+        - directed?
+
+
+      ---
+
+
+      #### A brief history of graphs in knowledge representation
+
+      --
+
+      - Machine Learning
+        - k-Nearest Neighbors  (Stone, 1977)
+        - kernel learning (Vapnik, 1995)
+      --
+
+      - Hypothesis Testing
+        -  graph dependence (Friedman & Rafsky, 1983)
+        - distance correlation (Szekely et al, 2007)
+      --
+
+      - Manifold Learning
+        - Isomap (Tenebaum et al,  2000)
+        - Locally Linear Embedding (Roweis & Saul, 2000)
+      --
+
+      - Heterogeneous Data & Semi-Supervised Learning
+        - Multiple Kernel Learning (Jordan et al, 2004)
+
+
+
+
+
+      ---
+      <!-- class: center, middle -->
+      class: left
+
+      #### Three Strategies Using Graphs for KRS
+
+      1. choose k a priori
+      2. estimate k from data using cross-validation
+      3. let n=k
+
+      problems with each
+
+      --
+
+      1. how to choose a good one for the given data
+      2. computationally and statistically costly
+      3. fails to leverage locality principle
+
+
+      ---
+
+
+      ### Our Approach: Multiscale Graphs
+
+      1. for each modality, compute n nearest neighbor graphs
+      2. combine them
+      3. jointly find the optimal scales using a surrogate function
+
+      --
+
+      ### Our Result
+
+      - unifying framework for disparate exploitation tasks
+      - universal consistency
+      - computational efficiency
+      - empirical performance
+      - flexibility
+
+
+      ---
+
+      ### Parallels: PCA vs NMF
+
+      - PCA
+        - nested: N low-rank representations of data
+        - theoretical gurantees with finite data
+
+
+      --
+
+
+      - NMF
+        - no guarantees of "best"
+        - must compute d+1 representation "from scratch"
+
+      --
+
+      - Multiscale Graph Knowledge Representation
+        - nested: for each of $M$ modalities we build $N_m$ graphs
+        - theoretical guarantees with finite data
+        - the "graph" version PCA
+
+
+      ---
+      class: center, middle
+
+      # applications
+
+
+      ---
+
+      ### Applications
+
+      - **independence testing** [[1]](https://arxiv.org/abs/1609.05148), [[2]](https://arxiv.org/abs/1710.09768)
+      - graph topology vs. attributes [[2]](https://arxiv.org/abs/1703.10136)
+      - signal subgraph detection [[3]](https://arxiv.org/abs/1801.07683)
+      - clustering (ish) [[4]](https://arxiv.org/abs/1710.09859)
+      --
+
+      - K-sample testing
+      - feature selection
+      - **quantify geometry of relationships**
+      - **batch effect detection & mitigation**
+
+
+      ---
+      class: middle, center
+
+      # indepedence testing
+
+
+
+      ---
+      ### Independence Testing
+
+      <br>
+
+      | \\(X\\) | \\(Y\\) |
+      | :--- | :--- |
+      | clouds | grass wetness |
+      | brain  | mind |
+      | gene expression | cell type |
+      | thermoelectric materials | performance |
+      | anything | anything else |
+
+      ---
+      class: center
+
+      #### Formal Definition of Independence Testing
+
+      <br><br>
+
+      <!-- <img src="images/setup.png" alt="Drawing" style="width: 60%;"/> -->
+
+
+
+
+      $$(X\_i,Y\_i) \sim F\_{XY} = F\_{X|Y} F\_Y, \quad i \in \{1,\ldots,n\}$$
+
+      $$H\_0: F\_{XY} = F\_X F\_Y $$
+      $$H\_A: F\_{XY} \neq F\_X F\_Y $$
+
+
+      ---
+
+      ### Procedure
+
+      - For X modality, compute all pairwise distances
+      - For k < n, compute the k-nearest neighbors of each point in X
+      - For Y modality, compute all pairwise distances
+      - For l < n, compute the l-nearest neighbors of each point in Y
+      - For all (k,l) pairs, compute the local correlation between distances
+      - Select (k,l) pair with maximum correlation (after smoothing)
+      - Permutation test
+
+      ### Notes
+
+      - leveraging locality
+      - surrogate function to find best local scale
+
+
+      ---
+      class:  left
+
+      ### intuition
+
+      <img src="images/linear.png" alt="Drawing" style="height: 300px;"/>
+      --
+
+      <img src="images/spiral.png" alt="Drawing" style="height: 300px;"/>
+
+
+
+
+
+      ---
+      class: top, left
+
+      ### 20 Different Functions (1D version)
+
+
+      <img src="images/FigSimVisual.png"  alt="local"  style="width: 100%;"/>
+
+
+
+
+      ---
+      class: top, left
+
+      ### Definitions
+
+      - **null assumption**: <br>data are independent
+      - **power**: <br>probability of rejecting the null when the alternative is true
+      - **N<sub>&Beta;</sub>(t)**: <br># of samples required to achieve power $\beta$ using test statistic $t$
+
+      - **statistical efficiency**: $N\_\beta(t') / N\_\beta( \text{MGC}) \geq 1  \text{ for all }
+        n, \, d, \, F\_{XY}, \text{ and } t' $
+        <!-- $$\beta\_n(\text{MGC}) > \beta\_n(t')  \text{ for all } -->
+        <!-- n, \, t' \in \mathcal{T}, \text{ and } F\_{XY} $$ -->
+      <!-- 2. quantification of relationship -->
+
+
+
+
+      ---
+      class: top, left
+
+      ###  MGC Outperforms Benchmarks
+
+
+      <br>
+
+
+      <img src="images/Fig2_jk.png"  alt="local"  style="width: 100%;"/>
+      <!-- -- -->
+      <!-- <img src="images/FigHDPowerSummarySize.png"  alt="local"  style="position:absolute;  LEFT: 460px; height: 280px;"/> -->
+
+
+      <!-- .center[
+      <img src="https://github.com/neurodata/MGC/raw/master/Figures/FigHDPowerMGCM.png" alt="Drawing" style="width: 900px;"/>
+      ] -->
+
+      ---
+      class: top, left
+
+      ###  MGC Outperforms Benchmarks
+
+
+      <br>
+
+
+      <img src="images/table_benchmarks.png"  alt="local"  style="width: 100%;"/>
+
+
+
+      ---
+      class: top, left
+
+      ### MGC Discovers Relationships between Brain & Mental Properties
+
+      <br><br>
+
+      <img src="images/table.png" alt="Drawing" style="width: 100%;"/>
+
+
+
+
+      ---
+      class: top, left
+
+
+      ### Theoretical Desiderata
+
+      <!-- <br> -->
+
+      |  name | principle |
+      |  ---   | --- |
+      |  boundedness | $0 \leq T \leq 1 $|
+      | symmetric   | $T(X,Y) = T(Y,X)$ |
+      |  1-linear. | $  T= 1 \Leftrightarrow y = A x + b$ |
+      |  0-indep. | $T=0 \Leftrightarrow H(X \lvert Y) = H(X)$ |
+      |  ortho. invar. | $T(X,Y) = T(a_1 + b_1  C_1  X, a_2 + b_2  C_2  Y)$ |
+      |  univ. consist. | $\beta\_n(T) \to 1, \, \forall \, F\_{XY} \neq F_X F_Y$ |
+      |  dominance | $\beta\_n(T) \geq \beta\_n(T'), \, \forall n,\, T' \in \mathcal{T}, \forall F\_{XY}$ |
+      |  convergence | $\beta_n(t) \to \beta_n(T)$ as $n \to \infty$ |
+      <!-- |  efficiency | $\mathbb{E}\beta_n(t) \geq \mathbb{E}\beta_n(t'), \, \forall n, t' \in \mathcal{T}$ | -->
+
+      <!-- | | comp. efficiency | $\mathcal{O}(d n^2 \log n)$ space and time | -->
+      <!-- 9. "reveal the "geometry/topology" of the relationship" -->
+
+
+
+      ---
+      class: middle, center
+
+      # quantify geometry of relationships
+
+
+
+      ---
+      class: top, left
+
+      #### MGC "Image"
+
+      <img src="images/Fig1DHeat.png"  alt="local"  style="width: 100%;"/>
+
+      <!-- .center[
+      <img src="https://github.com/neurodata/MGC/raw/master/Figures/FigHDHeat.png"  style="width: 900px;"/>
+      ] -->
+
+
+
+
+      ---
+      class: top, left
+
+      ### MGC Reveals Geometry of Real Data
+
+
+      <img src="images/Fig4_jk_v5.png" style="width: 100%;"/>
+
+
+      ---
+
+      ### Overall Summary
+
+
+      - Oracle MGC theoretically dominates, even in finite samples
+      - MGC empirically nearly dominates on extensive simulations
+      - Visual quantitative characterization of arbitrary relationships
+      - MGC reveals geometry of dependence in real data
+
+      <br>
+      - MGC mitigate "post selection inference" problems
+
+
+      ---
+
+      ### Some Extensions
+
+      <br>
+
+      - Foundational theory for MGC [[1]](https://arxiv.org/abs/1710.09768)
+      - MGC for independence between graph topology & attributes [[2]](https://arxiv.org/abs/1703.10136)
+      - MGC for signal subgraph detection [[3]](https://arxiv.org/abs/1801.07683)
+      - MGC for clustering (ish) [[4]](https://arxiv.org/abs/1710.09859)
+
+      <br>
+
+      - MGC for K-sample testing
+      - MGC for feature selection
+      - MGC for batch effect detection
+      - MGC for effect size characterization
+
+
+      ---
+
+      ### Next Steps
+
+      <br><br>
+
+      - Make R package from open source code ([github link](https://github.com/neurodata/mgc))
+      - Scale up for larger n
+
+
+      ---
+      class:   middle, center
+
+
+      ## Questions?
+
+
+      <br>
+
+
+      e: [jovo@jhu.edu](mailto:jovo@jhu.edu)
+      <br>
+      w: [neurodata.io/tools/MGC/](http://neurodata.io/tools/MGC/)
+
+
+      <img src="http://brainx.io/images/funding/nsf_fpo.png" STYLE="position:absolute; TOP:550px; LEFT:10px; HEIGHT:100px;"/>
+
+      <img src="http://brainx.io/images/funding/nih_fpo.png" STYLE="position:absolute; TOP:550px; LEFT:120px; HEIGHT:100px;"/>
+
+      <img src="http://brainx.io/images/funding/darpa_fpo.png" STYLE="position:absolute; TOP:550px; LEFT:230px; HEIGHT:100px;"/>
+
+      <img src="http://brainx.io/images/funding/iarpa_fpo.jpg" STYLE="position:absolute; TOP:550px; LEFT:430px; HEIGHT:100px;"/>
+
+      <img src="http://brainx.io/images/funding/kavli_fpo.png" STYLE="position:absolute; TOP:550px; LEFT:550px; HEIGHT:100px;"/>
+
+      <img src="http://brainx.io/images/funding/kndi_fpo.png" STYLE="position:absolute; TOP:550px; LEFT:650px; HEIGHT:100px;"/>
+
+
+
+      ---
+
+      ### Computational Desiderata
+
+      1. fast
+      2. open source
+
+      <br>
+
+      | Method | Complexity |
+      | :---: | :---: |
+      | Dcorr |  n<sup>2</sup> |
+       | HHG |  n<sup>2</sup> log n |
+      | MGC |  n<sup>2</sup> log n / T  |
+
+      - MATLAB and R code at [http://neurodata.io/tools/MGC/](http://neurodata.io/tools/MGC/)
+
+
+
+      <!-- --- -->
+
+      <!-- ### 1D Power All -->
+
+
+      <!-- <img src="https://github.com/neurodata/MGC/raw/master/Figures/Fig1DPowerAll.png" alt="Drawing" style="width: 800px;"/> -->
+
+
+      <!-- --- -->
+
+      <!-- ### HD Power All -->
+
+
+      <!-- <img src="https://github.com/neurodata/MGC/raw/master/Figures/FigHDPowerAll.png" alt="Drawing" style="width: 800px;"/> -->
+
+
+      <!-- --- -->
+
+      <!-- ### 1D Heat -->
+
+      <!-- <img src="https://github.com/neurodata/MGC/raw/master/Figures/Fig1DHeat.png" alt="Drawing" style="width: 800px;"/> -->
+
+
+    </textarea>
+    <!-- <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script> -->
+    <script src="remark-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+      var options = {};
+      var renderMath = function() {
+        renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+      }
+      var slideshow = remark.create(options, renderMath);
+
+    </script>
+  </body>
+</html>
